@@ -1,0 +1,45 @@
+/**
+ * GuateGeeks theme — derived from the original CiudadBots publication tokens:
+ *   ink #1f2330 · paper #f4f5f0 · coral #e58d68/#cf7654 · teal #2d8a93 · gold #d8c078
+ * Infima primary is set to the CiudadBots teal.
+ */
+
+:root {
+  --ifm-color-primary: #2d8a93;
+  --ifm-color-primary-dark: #297c84;
+  --ifm-color-primary-darker: #26757d;
+  --ifm-color-primary-darkest: #206067;
+  --ifm-color-primary-light: #3198a2;
+  --ifm-color-primary-lighter: #349fa9;
+  --ifm-color-primary-lightest: #3fb0bb;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* Shared GuateGeeks design tokens (used by custom components). */
+  --gg-ink: #1f2330;
+  --gg-ink-2: #465062;
+  --gg-paper: #f4f5f0;
+  --gg-card: #ffffff;
+  --gg-line: #dddcd4;
+  --gg-coral: #e58d68;
+  --gg-coral-dark: #cf7654;
+  --gg-teal: #2d8a93;
+  --gg-teal-soft: #edf7f8;
+  --gg-gold: #d8c078;
+  --gg-radius: 16px;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4fb3bd;
+  --ifm-color-primary-dark: #3fa8b2;
+  --ifm-color-primary-darker: #3b9fa9;
+  --ifm-color-primary-darkest: #31838b;
+  --ifm-color-primary-light: #63bdc6;
+  --ifm-color-primary-lighter: #6dc2cb;
+  --ifm-color-primary-lightest: #8bced5;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --gg-card: #1d2028;
+  --gg-line: #333844;
+  --gg-teal-soft: rgba(45, 138, 147, 0.12);
+}

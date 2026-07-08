@@ -1,0 +1,150 @@
+.shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 20px 56px;
+}
+
+.hero {
+  background: linear-gradient(180deg, #2a2d3a 0%, #202430 100%);
+  color: #f5f5f7;
+  border-radius: 24px;
+  padding: 44px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 56px rgba(15, 19, 28, 0.18);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b9baca;
+}
+
+.title {
+  font-size: 40px;
+  line-height: 1.05;
+  margin: 12px 0 0;
+  font-weight: 900;
+  max-width: 20ch;
+}
+
+.lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d4d5dd;
+  max-width: 48rem;
+  margin-top: 14px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.primary,
+.secondary {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.primary {
+  background: var(--gg-gold);
+  color: #201f25;
+}
+
+.primary:hover {
+  background: #e3cc87;
+  color: #201f25;
+  text-decoration: none;
+}
+
+.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  text-decoration: none;
+}
+
+.programs {
+  margin-top: 40px;
+}
+
+.programsTitle {
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  display: block;
+  border: 1px solid var(--gg-line);
+  border-radius: 18px;
+  padding: 22px;
+  background: var(--gg-card);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px rgba(27, 34, 42, 0.12);
+}
+
+.card h3 {
+  margin: 12px 0 8px;
+  font-size: 20px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--gg-ink-2);
+  margin: 0 0 12px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gg-teal);
+  background: var(--gg-teal-soft);
+  border: 1px solid var(--gg-line);
+  border-radius: 999px;
+  padding: 4px 10px;
+}
+
+.cardLink {
+  font-weight: 700;
+  color: var(--gg-teal);
+}
+
+.cardPlaceholder {
+  border-style: dashed;
+  background: var(--gg-paper);
+  cursor: default;
+}
+
+.cardPlaceholder:hover {
+  transform: none;
+  box-shadow: none;
+}

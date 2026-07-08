@@ -1,0 +1,162 @@
+.panel {
+  border: 1px solid var(--gg-line);
+  border-radius: var(--gg-radius);
+  background: var(--gg-card);
+  padding: 20px;
+  margin: 24px 0;
+  box-shadow: 0 14px 32px rgba(27, 34, 42, 0.06);
+}
+
+.top {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.heading {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 44rem;
+  font-size: 14px;
+  color: var(--gg-ink-2);
+}
+
+.kpis {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.kpi {
+  background: var(--gg-teal-soft);
+  border: 1px solid var(--gg-line);
+  border-radius: 12px;
+  padding: 10px 14px;
+  text-align: center;
+  min-width: 96px;
+}
+
+.kpi strong {
+  display: block;
+  font-size: 20px;
+  color: var(--gg-teal);
+}
+
+.kpi span {
+  font-size: 11px;
+  color: var(--gg-ink-2);
+}
+
+.bar {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--gg-line);
+  overflow: hidden;
+  margin: 16px 0 6px;
+}
+
+.barFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gg-teal), var(--gg-coral));
+  transition: width 0.25s ease;
+}
+
+.actions {
+  margin: 8px 0 12px;
+}
+
+.reset {
+  border: 1px solid var(--gg-line);
+  background: transparent;
+  color: var(--gg-ink-2);
+  border-radius: 9px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.reset:hover:not(:disabled) {
+  background: var(--gg-paper);
+}
+
+.reset:disabled {
+  opacity: 0.5;
+  cursor: progress;
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}
+
+.row {
+  border: 1px solid var(--gg-line);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.rowTop {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.rowTitle {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.rowSub {
+  font-size: 12px;
+  color: var(--gg-ink-2);
+}
+
+.rowStatus {
+  font-size: 12px;
+  color: var(--gg-ink-2);
+  white-space: nowrap;
+}
+
+.dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  border: 1px solid var(--gg-line);
+  background: var(--gg-paper);
+  color: var(--gg-ink-2);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.dotDone {
+  background: var(--gg-teal);
+  border-color: var(--gg-teal);
+  color: #fff;
+}
+
+.rowBar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--gg-line);
+  overflow: hidden;
+}
+
+.rowBarFill {
+  height: 100%;
+  background: var(--gg-teal);
+  transition: width 0.25s ease;
+}
