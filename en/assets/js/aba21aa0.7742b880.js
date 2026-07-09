@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkprogramas_educativos=globalThis.webpackChunkprogramas_educativos||[]).push([[742],{7093(a){a.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"default"}')}}]);
