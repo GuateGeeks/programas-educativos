@@ -1,0 +1,64 @@
+.rubric {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+}
+
+.row > div {
+  padding: 10px 12px;
+  font-size: 13px;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  border-left: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.row > div:first-child {
+  border-left: none;
+}
+
+.head {
+  background: #1c1c24;
+  color: #fff;
+  font-weight: 700;
+}
+
+.head > div {
+  border-top: none;
+  border-left-color: rgba(255, 255, 255, 0.12);
+}
+
+.criterion {
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  background: var(--ifm-background-color);
+}
+
+.level[data-level='4'] {
+  color: #2f7d55;
+}
+.level[data-level='3'] {
+  color: #3a8f63;
+}
+.level[data-level='2'] {
+  color: #9a7b1f;
+}
+.level[data-level='1'] {
+  color: #b4553f;
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+  .row > div {
+    border-left: none;
+  }
+  .head {
+    display: none;
+  }
+}

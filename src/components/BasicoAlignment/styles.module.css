@@ -1,0 +1,41 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 780px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.card h4 {
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: var(--ifm-font-color-base);
+}
+
+.card p {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.card ul {
+  margin: 0 0 0 16px;
+  padding: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 12px;
+  line-height: 1.55;
+}

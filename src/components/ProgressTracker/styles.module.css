@@ -1,10 +1,10 @@
 .panel {
-  border: 1px solid var(--gg-line);
-  border-radius: var(--gg-radius);
-  background: var(--gg-card);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 16px;
+  background: var(--ifm-background-surface-color);
   padding: 20px;
   margin: 24px 0;
-  box-shadow: 0 14px 32px rgba(27, 34, 42, 0.06);
+  box-shadow: 0 14px 32px var(--glass-shadow);
 }
 
 .top {
@@ -24,7 +24,7 @@
   margin: 0;
   max-width: 44rem;
   font-size: 14px;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
 }
 
 .kpis {
@@ -34,8 +34,8 @@
 }
 
 .kpi {
-  background: var(--gg-teal-soft);
-  border: 1px solid var(--gg-line);
+  background: rgba(239, 133, 86, 0.08);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 12px;
   padding: 10px 14px;
   text-align: center;
@@ -45,25 +45,25 @@
 .kpi strong {
   display: block;
   font-size: 20px;
-  color: var(--gg-teal);
+  color: var(--gg-coral-500);
 }
 
 .kpi span {
   font-size: 11px;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
 }
 
 .bar {
   height: 10px;
   border-radius: 999px;
-  background: var(--gg-line);
+  background: var(--ifm-color-emphasis-300);
   overflow: hidden;
   margin: 16px 0 6px;
 }
 
 .barFill {
   height: 100%;
-  background: linear-gradient(90deg, var(--gg-teal), var(--gg-coral));
+  background: linear-gradient(90deg, var(--gg-coral-500), var(--gg-sky-500));
   transition: width 0.25s ease;
 }
 
@@ -72,9 +72,9 @@
 }
 
 .reset {
-  border: 1px solid var(--gg-line);
+  border: 1px solid var(--ifm-color-emphasis-300);
   background: transparent;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
   border-radius: 9px;
   padding: 6px 12px;
   font-size: 13px;
@@ -82,7 +82,7 @@
 }
 
 .reset:hover:not(:disabled) {
-  background: var(--gg-paper);
+  background: var(--ifm-background-color);
 }
 
 .reset:disabled {
@@ -96,7 +96,7 @@
 }
 
 .row {
-  border: 1px solid var(--gg-line);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 12px;
   padding: 12px 14px;
 }
@@ -115,12 +115,12 @@
 
 .rowSub {
   font-size: 12px;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
 }
 
 .rowStatus {
   font-size: 12px;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
   white-space: nowrap;
 }
 
@@ -135,28 +135,28 @@
   width: 34px;
   height: 34px;
   border-radius: 9px;
-  border: 1px solid var(--gg-line);
-  background: var(--gg-paper);
-  color: var(--gg-ink-2);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-emphasis-700);
   font-weight: 700;
   cursor: pointer;
 }
 
 .dotDone {
-  background: var(--gg-teal);
-  border-color: var(--gg-teal);
+  background: var(--gg-coral-500);
+  border-color: var(--gg-coral-500);
   color: #fff;
 }
 
 .rowBar {
   height: 6px;
   border-radius: 999px;
-  background: var(--gg-line);
+  background: var(--ifm-color-emphasis-300);
   overflow: hidden;
 }
 
 .rowBarFill {
   height: 100%;
-  background: var(--gg-teal);
+  background: var(--gg-coral-500);
   transition: width 0.25s ease;
 }

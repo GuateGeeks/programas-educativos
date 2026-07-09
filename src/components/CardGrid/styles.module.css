@@ -1,0 +1,42 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+@media (max-width: 620px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 5px;
+  color: var(--ifm-font-color-base);
+}
+
+.card p {
+  font-size: 12px;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  margin: 0 0 6px;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card a {
+  color: var(--gg-coral-400);
+  font-weight: 700;
+}

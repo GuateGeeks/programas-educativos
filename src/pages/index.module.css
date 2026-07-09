@@ -54,14 +54,15 @@
 }
 
 .primary {
-  background: var(--gg-gold);
-  color: #201f25;
+  background: linear-gradient(135deg, var(--gg-coral-500), var(--gg-coral-600));
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(239, 133, 86, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .primary:hover {
-  background: #e3cc87;
-  color: #201f25;
+  color: #fff;
   text-decoration: none;
+  box-shadow: 0 8px 32px rgba(239, 133, 86, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .secondary {
@@ -93,10 +94,10 @@
 
 .card {
   display: block;
-  border: 1px solid var(--gg-line);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 18px;
   padding: 22px;
-  background: var(--gg-card);
+  background: var(--ifm-background-surface-color);
   text-decoration: none;
   color: inherit;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -116,7 +117,7 @@
 
 .card p {
   font-size: 14px;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
   margin: 0 0 12px;
 }
 
@@ -126,21 +127,21 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--gg-teal);
-  background: var(--gg-teal-soft);
-  border: 1px solid var(--gg-line);
+  color: var(--gg-coral-500);
+  background: rgba(239, 133, 86, 0.08);
+  border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 999px;
   padding: 4px 10px;
 }
 
 .cardLink {
   font-weight: 700;
-  color: var(--gg-teal);
+  color: var(--gg-coral-500);
 }
 
 .cardPlaceholder {
   border-style: dashed;
-  background: var(--gg-paper);
+  background: var(--ifm-background-color);
   cursor: default;
 }
 

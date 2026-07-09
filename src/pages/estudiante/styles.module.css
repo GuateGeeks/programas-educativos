@@ -80,7 +80,7 @@
   margin-top: 12px;
   font-size: 13px;
   line-height: 1.6;
-  color: var(--gg-ink-2);
+  color: var(--ifm-color-emphasis-700);
 }
 
 @media (max-width: 760px) {

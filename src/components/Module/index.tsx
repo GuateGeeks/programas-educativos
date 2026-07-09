@@ -1,8 +1,14 @@
 import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import {getModule, PROGRAMS_BASE} from '@site/src/data/ciudadbots';
-import type {Phase} from '@site/src/data/ciudadbots/types';
 import BuildGuide from '@site/src/components/BuildGuide';
+import PhaseTimeline from '@site/src/components/PhaseTimeline';
+import CnbBlock from '@site/src/components/CnbBlock';
+import CardGrid from '@site/src/components/CardGrid';
+import AchievementIndicators from '@site/src/components/AchievementIndicators';
+import InternationalAlignment from '@site/src/components/InternationalAlignment';
+import CnbSourceLinks from '@site/src/components/CnbSourceLinks';
+import RubricTable, {type RubricRow} from '@site/src/components/RubricTable';
 import styles from './styles.module.css';
 
 interface ModuleProps {
@@ -24,22 +30,7 @@ const RUBRIC_LEVELS = [
   'Lo demuestra de forma correcta y suficiente para cumplir la meta.',
   'Lo demuestra parcialmente o necesita apoyo para completarlo.',
   'Todavía no logra aplicarlo o explicarlo con claridad.',
-];
-
-function PhaseCard({phase, index}: {phase: Phase; index: number}): JSX.Element {
-  return (
-    <div className={styles.phase}>
-      <div className={`${styles.phaseHdr} ${styles[phase.kind]}`}>
-        <div className={styles.phCircle}>{index + 1}</div>
-        <div>
-          <div className={styles.phLbl}>{phase.label}</div>
-          <div className={styles.phTitle}>{phase.title}</div>
-        </div>
-      </div>
-      <p className={styles.phaseCopy}>{phase.body}</p>
-    </div>
-  );
-}
+] as const;
 
 /**
  * Reusable renderer for a program module's structured fields. Driven entirely
@@ -50,6 +41,11 @@ export default function Module({id}: ModuleProps): JSX.Element {
   const m = getModule(id);
   const [tab, setTab] = useState<TabKey>('metodo');
   const programHref = useBaseUrl(`${PROGRAMS_BASE}${m.program}`);
+  const pdfHref = useBaseUrl('/assets/ciudadbots/trazamapas-chapin-guia-construccion.pdf');
+  const rubricRows: RubricRow[] = m.evaluation.map((criterion) => ({
+    criterion,
+    levels: RUBRIC_LEVELS,
+  }));
 
   return (
     <section className={styles.module}>
@@ -76,9 +72,7 @@ export default function Module({id}: ModuleProps): JSX.Element {
               </span>
             ))}
           </div>
-          {m.phases.map((phase, i) => (
-            <PhaseCard phase={phase} index={i} key={phase.kind} />
-          ))}
+          <PhaseTimeline phases={m.phases} />
         </div>
       )}
 
@@ -98,6 +92,9 @@ export default function Module({id}: ModuleProps): JSX.Element {
           {m.guide ? (
             <div className={styles.guideBlock}>
               <BuildGuide guide={m.guide} />
+              <a className={styles.pdfLink} href={pdfHref} download>
+                Descargar guía en PDF
+              </a>
             </div>
           ) : (
             <div className={`${styles.resourceCard} ${styles.pending}`}>
@@ -114,18 +111,17 @@ export default function Module({id}: ModuleProps): JSX.Element {
 
       {tab === 'cnb' && (
         <div className={styles.panel}>
-          <h4 className={styles.blockTitle}>Alineación CNB · Ciclo Básico</h4>
-          <ul className={styles.list}>
-            {m.cnb.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
-          <h4 className={styles.blockTitle}>Estándares internacionales</h4>
-          <ul className={styles.list}>
-            {m.standards.map((x) => (
-              <li key={x}>{x}</li>
-            ))}
-          </ul>
+          <CnbBlock
+            badge="CNB"
+            title="Alineación Guatemala · Ciclo Básico · 1.º, 2.º y 3.º básico"
+            items={m.cnb.map((text) => ({area: 'Área curricular', text}))}
+          />
+          <AchievementIndicators moduleTitle={m.title} />
+          <InternationalAlignment />
+          <CardGrid
+            items={m.standards.map((text) => ({title: 'Aplicación específica del módulo', text}))}
+          />
+          <CnbSourceLinks />
         </div>
       )}
 
@@ -134,26 +130,7 @@ export default function Module({id}: ModuleProps): JSX.Element {
           <p className={styles.scaleNote}>
             Escala sugerida: 4 = Sobresaliente, 3 = Logrado, 2 = En proceso, 1 = Inicial.
           </p>
-          <div className={styles.rubric}>
-            <div className={`${styles.rubricRow} ${styles.rubricHead}`}>
-              <div>Criterio</div>
-              <div>4 · Sobresaliente</div>
-              <div>3 · Logrado</div>
-              <div>2 · En proceso</div>
-              <div>1 · Inicial</div>
-            </div>
-            {m.evaluation.map((criterion) => (
-              <div className={styles.rubricRow} key={criterion}>
-                <div className={styles.criterion}>{criterion}</div>
-                {RUBRIC_LEVELS.map((lvl, i) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <div className={styles.level} data-level={4 - i} key={i}>
-                    {lvl}
-                  </div>
-                ))}
-              </div>
-            ))}
-          </div>
+          <RubricTable rows={rubricRows} />
         </div>
       )}
     </section>

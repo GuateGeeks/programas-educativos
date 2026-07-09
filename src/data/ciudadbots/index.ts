@@ -1,6 +1,7 @@
 import {modules, getModule, PROGRAMS_BASE, BUILD_GUIDE_BASE} from './modules';
 
 export * from './types';
+export * from './standards';
 export {modules, getModule, PROGRAMS_BASE, BUILD_GUIDE_BASE};
 
 // Import-time integrity check. Runs during SSR/build (and in the browser),

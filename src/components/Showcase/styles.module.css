@@ -1,0 +1,10 @@
+.showcase {
+  display: grid;
+  gap: 14px;
+}
+
+.scaleNote {
+  font-size: 13px;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}

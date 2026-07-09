@@ -10,13 +10,18 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'GuateGeeks · Programas Educativos',
   tagline: 'Robótica aplicada y ciudadanía tecnológica para Guatemala',
-  favicon: 'img/guategeeks-logo.png',
+  favicon: 'img/favicon.ico',
 
-  // Placeholder deployment values — replace when a hosting target is chosen.
-  url: 'https://programas.guategeeks.gt',
-  baseUrl: '/',
+  // Served at https://guategeeks.com/programas-educativos/ — the org user-pages
+  // repo (guategeeks.github.io) owns the guategeeks.com custom domain and GitHub
+  // propagates it to project repos, so no per-repo CNAME is needed here.
+  url: 'https://guategeeks.com',
+  baseUrl: '/programas-educativos/',
+  // true so the docs overview at /ciudadbots/ resolves its `./slug` relative
+  // links as children (…/ciudadbots/slug/) rather than siblings under baseUrl.
+  trailingSlash: true,
 
-  organizationName: 'guategeeks',
+  organizationName: 'GuateGeeks',
   projectName: 'programas-educativos',
 
   onBrokenLinks: 'throw',
@@ -57,7 +62,7 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/guategeeks-logo.png',
+    image: 'img/social-card.png',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -102,6 +107,11 @@ const config: Config = {
         },
       ],
       copyright: `© ${'2026'} GuateGeeks · Programas Educativos.`,
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+      },
     },
     prism: {
       theme: prismThemes.github,

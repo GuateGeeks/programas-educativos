@@ -42,7 +42,7 @@ function HeroCanvas(): JSX.Element {
       const ambient = new THREE.AmbientLight(0xffffff, 0.9);
       const key = new THREE.DirectionalLight(0xffc7a8, 1.7);
       key.position.set(7, 10, 6);
-      const fill = new THREE.DirectionalLight(0x7acfd5, 0.85);
+      const fill = new THREE.DirectionalLight(0x5fbad6, 0.85);
       fill.position.set(-6, 5, -3);
       scene.add(ambient, key, fill);
 
@@ -73,7 +73,7 @@ function HeroCanvas(): JSX.Element {
       city.add(roadGlow);
 
       const baseBlockGeo = new THREE.BoxGeometry(0.9, 1, 0.9);
-      const blockColors = [0xf0a07c, 0x7acfd5, 0xb8d289, 0x516884];
+      const blockColors = [0xf0a07c, 0x5fbad6, 0xb8d289, 0x516884];
       const blocks: import('three').Mesh[] = [];
       for (let i = 0; i < 14; i += 1) {
         const h = 0.8 + (i % 4) * 0.45 + (i % 3) * 0.18;
@@ -93,8 +93,8 @@ function HeroCanvas(): JSX.Element {
 
       const beaconGeo = new THREE.CylinderGeometry(0.06, 0.06, 1.4, 12);
       const beaconMat = new THREE.MeshStandardMaterial({
-        color: 0x93e0e5,
-        emissive: 0x2c8c91,
+        color: 0x8dd0e4,
+        emissive: 0x3fa0bf,
         emissiveIntensity: 1.4,
       });
       for (let i = 0; i < 4; i += 1) {
@@ -111,7 +111,7 @@ function HeroCanvas(): JSX.Element {
       );
       const shell = new THREE.Mesh(
         new THREE.BoxGeometry(0.68, 0.32, 0.8),
-        new THREE.MeshStandardMaterial({color: 0x2d8a93, metalness: 0.18, roughness: 0.55}),
+        new THREE.MeshStandardMaterial({color: 0x3fa0bf, metalness: 0.18, roughness: 0.55}),
       );
       shell.position.y = 0.18;
       const head = new THREE.Mesh(
@@ -154,7 +154,7 @@ function HeroCanvas(): JSX.Element {
 
       const pathLine = new THREE.Line(
         new THREE.BufferGeometry().setFromPoints(curve.getPoints(160)),
-        new THREE.LineBasicMaterial({color: 0x7be0e6, transparent: true, opacity: 0.48}),
+        new THREE.LineBasicMaterial({color: 0x8dd0e4, transparent: true, opacity: 0.48}),
       );
       pathLine.position.y = 0.02;
       city.add(pathLine);
