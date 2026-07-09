@@ -1,0 +1,76 @@
+---
+sidebar_position: 6
+sidebar_label: "06 · Cargador Compacto"
+title: "Cargador Compacto"
+description: "Giroscopio y dirección"
+---
+
+import Module from '@site/src/components/Module';
+
+# 06 · Cargador Compacto
+
+:::note Para el docente
+Revise primero la pestaña **Implementación** (fases y conceptos), prepare los **Recursos**
+(programa base y guía), y cierre planificando con **CNB y estándares** y **Evaluación**. Puede
+rotar los roles del equipo —Constructor, Organizador, Programador— durante el módulo.
+:::
+
+<Module id="m6">
+  <Module.Question>
+    ¿Cómo mantiene su dirección un robot cuando el terreno es irregular, como una calle en
+    reparación o una ladera?
+  </Module.Question>
+
+  <Module.Context>
+    El minicargador GuateGeeks introduce control de orientación usando yaw/giroscopio. Permite
+    trabajar movimiento recto corregido, giros de 45 grados y pala frontal para pequeñas tareas
+    urbanas o comunitarias.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Yaw y orientación',
+    'Corrección de trayectoria',
+    'Pala y brazo',
+    'Centro de gravedad',
+    'Movimiento en ciudad',
+  ]} />
+
+  <Module.Phase kind="act" label="Activar · 12 min" title="Máquinas pequeñas, grandes problemas">
+    Listar tareas urbanas donde una máquina grande estorba: aceras, jardinería, nieve, tierra o
+    reparación menor.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explorar · 25 min" title="Orientación del hub">
+    Explicar que el hub puede saber si giró. Probar resetear yaw y comparar giros sin corrección y
+    con corrección.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Crear · 70-100 min" title="Ruta con pala">
+    Construir el Cargador Compacto. Programar mantener dirección, avanzar una distancia, girar 45
+    grados y empujar/transportar un objeto.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflexionar · 15 min" title="Control por retroalimentación">
+    Comparar un programa por tiempo contra uno que mira orientación. ¿Cuál resiste mejor los
+    errores?
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'Matemáticas: ángulos, dirección, estimación y medición.',
+    'Ciencias Naturales: movimiento, fricción y estabilidad.',
+    'Productividad y Desarrollo: herramientas para tareas locales.',
+    'Comunicación: interpretación de resultados y explicación de pruebas.',
+  ]} />
+
+  <Module.Standards items={[
+    'CSTA: sensores y ciclos de control.',
+    'ISTE: pensamiento computacional y depuración.',
+    'NGSS ETS: mejorar con base en evidencia.',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Usa orientación para corregir movimiento.',
+    'Programa giros medidos.',
+    'Documenta al menos dos ciclos de mejora.',
+  ]} />
+</Module>

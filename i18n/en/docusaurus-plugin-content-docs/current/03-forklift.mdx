@@ -1,0 +1,75 @@
+---
+sidebar_position: 3
+sidebar_label: "03 · Forklift"
+title: "Forklift"
+description: "Precision, load, and maneuvering"
+---
+
+import Module from '@site/src/components/Module';
+
+# 03 · Forklift
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m3">
+  <Module.Question>
+    How does a robot move a load in a market, warehouse, or workshop without crashing or losing
+    precision?
+  </Module.Question>
+
+  <Module.Context>
+    Students build a forklift inspired by local warehouses, markets, and workshops. The module
+    works with centimeter-level movement, controlled turns, motorized lifting, and repeatable
+    maneuvers.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Maneuverability",
+    "Distance-based movement",
+    "Rack and pinion",
+    "Load lifting",
+    "Precision testing",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Warehouses and logistics">
+    Show images or describe a supermarket/warehouse. Why does a forklift need precision?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Chassis and forks">
+    Identify the drive motors and the manipulator motor. Review how the rack converts rotation into
+    vertical movement.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Pick up and place a container">
+    Build the Forklift. Program a measured approach, raise the forks, approach the container, turn,
+    and place it in a marked zone.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Precision isn't luck">
+    Measure how far the load ended up from the target. Build a table of attempt, error, and
+    adjustment.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: measurement, estimation, angles, and data logging.",
+    "Natural Sciences: motion transfer and mechanisms.",
+    "Communication and Language: arguing for technical decisions.",
+    "Productivity and Development: work processes, logistics, and efficiency.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: testing and debugging.",
+    "ISTE: computational thinking.",
+    "NGSS ETS: optimization through testing.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Programs measured, repeatable movements.",
+    "Recognizes the relationship between mechanism and function.",
+    "Uses test data to improve.",
+  ]} />
+</Module>

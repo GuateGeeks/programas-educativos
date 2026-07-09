@@ -1,0 +1,75 @@
+---
+sidebar_position: 3
+sidebar_label: "03 · Montacargas"
+title: "Montacargas"
+description: "Precisión, carga y maniobra"
+---
+
+import Module from '@site/src/components/Module';
+
+# 03 · Montacargas
+
+:::note Para el docente
+Revise primero la pestaña **Implementación** (fases y conceptos), prepare los **Recursos**
+(programa base y guía), y cierre planificando con **CNB y estándares** y **Evaluación**. Puede
+rotar los roles del equipo —Constructor, Organizador, Programador— durante el módulo.
+:::
+
+<Module id="m3">
+  <Module.Question>
+    ¿Cómo logra un robot mover carga en un mercado, bodega o taller sin chocar ni perder
+    precisión?
+  </Module.Question>
+
+  <Module.Context>
+    Los estudiantes construyen un montacargas inspirado en bodegas, mercados y talleres locales. El
+    módulo trabaja movimiento por centímetros, giros controlados, elevación con motor y maniobras
+    repetibles.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Maniobrabilidad',
+    'Movimiento por distancia',
+    'Rack y piñón',
+    'Elevación de carga',
+    'Prueba de precisión',
+  ]} />
+
+  <Module.Phase kind="act" label="Activar · 12 min" title="Almacenes y logística">
+    Mostrar imágenes o describir un supermercado/almacén. ¿Por qué un montacargas necesita
+    precisión?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explorar · 25 min" title="Chasis y horquillas">
+    Identificar motores de movimiento y motor del manipulador. Revisar cómo la cremallera convierte
+    giro en movimiento vertical.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Crear · 70-100 min" title="Recoger y colocar contenedor">
+    Construir el Montacargas. Programar avance medido, levantar horquillas, acercarse al
+    contenedor, girar y ubicarlo en una zona marcada.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflexionar · 15 min" title="Precisión no es suerte">
+    Medir qué tan lejos quedó la carga del objetivo. Hacer una tabla de intento, error y ajuste.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'Matemáticas: medición, estimación, ángulos y registro de datos.',
+    'Ciencias Naturales: transferencia de movimiento y mecanismos.',
+    'Comunicación y Lenguaje: argumentación de decisiones técnicas.',
+    'Productividad y Desarrollo: procesos de trabajo, logística y eficiencia.',
+  ]} />
+
+  <Module.Standards items={[
+    'CSTA: prueba y depuración.',
+    'ISTE: pensamiento computacional.',
+    'NGSS ETS: optimización por pruebas.',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Programa movimientos medidos y repetibles.',
+    'Reconoce relación entre mecanismo y función.',
+    'Usa datos de prueba para mejorar.',
+  ]} />
+</Module>

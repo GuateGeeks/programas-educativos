@@ -1,0 +1,72 @@
+---
+sidebar_position: 5
+sidebar_label: "05 · Tower Crane"
+title: "Tower Crane"
+description: "Pulleys, winch, and control"
+---
+
+import Module from '@site/src/components/Module';
+
+# 05 · Tower Crane
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m5">
+  <Module.Question>
+    How does a crane move a heavy load with precision and balance on a job site in our city?
+  </Module.Question>
+
+  <Module.Context>
+    Students build a GuateGeeks construction crane. The module combines pulley mechanics, a winch,
+    motor positions, manual control, and autonomous sensor-based operation.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Fixed and movable pulleys",
+    "Winch and rope",
+    "Angular position",
+    "Manual/autonomous control",
+    "Balance and load",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Building at height">
+    Ask what machines students have seen on construction sites. What would happen if a crane moved
+    without precision?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="Pulleys and load">
+    Compare fixed and movable pulleys. Observe how the winch spools the rope and how the arm turns.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Move loads between points">
+    Build the Tower Crane. Program raising/lowering the load, turning the arm, and automate a
+    transfer using measured positions.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Force, balance, and safety">
+    Discuss why speed isn't always the goal. The crane must be stable, predictable, and safe.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: force, simple machines, pulleys, and balance.",
+    "Mathematics: degrees, measurement, and proportionality.",
+    "Productivity and Development: safety in construction processes.",
+    "Communication and Language: oral technical explanation.",
+  ]} />
+
+  <Module.Standards items={[
+    "NGSS: simple machines and engineering design.",
+    "CSTA: events and variables.",
+    "ISTE: systematic testing of solutions.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Relates pulleys to effort reduction.",
+    "Uses motor positions to control the load.",
+    "Prioritizes safety in the program's design.",
+  ]} />
+</Module>

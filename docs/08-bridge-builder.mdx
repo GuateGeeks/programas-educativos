@@ -1,0 +1,74 @@
+---
+sidebar_position: 8
+sidebar_label: "08 · Constructor de Puentes"
+title: "Constructor de Puentes"
+description: "Infraestructura y precisión"
+---
+
+import Module from '@site/src/components/Module';
+
+# 08 · Constructor de Puentes
+
+:::note Para el docente
+Revise primero la pestaña **Implementación** (fases y conceptos), prepare los **Recursos**
+(programa base y guía), y cierre planificando con **CNB y estándares** y **Evaluación**. Puede
+rotar los roles del equipo —Constructor, Organizador, Programador— durante el módulo.
+:::
+
+<Module id="m8">
+  <Module.Question>
+    ¿Cómo puede un robot construir un puente por etapas para conectar dos comunidades?
+  </Module.Question>
+
+  <Module.Context>
+    Los estudiantes colocan secciones de puente inspiradas en la necesidad de conectar territorios
+    separados por ríos, barrancos o caminos difíciles. El módulo trabaja transmisión, color como
+    referencia, posiciones de brazo y construcción incremental.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Construcción por etapas',
+    'Sensor de color',
+    'Transmisión con engranajes cónicos',
+    'Posiciones de manipulador',
+    'Medición de avance',
+  ]} />
+
+  <Module.Phase kind="act" label="Activar · 12 min" title="Puentes en la comunidad">
+    Conversar sobre ríos, barrancos, tráfico y conexión entre lugares. ¿Qué hace que un puente sea
+    importante?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explorar · 25 min" title="Tracción y brazo">
+    Observar transmisión 4x4, motor de avance, sensor de color y brazo. Identificar posiciones
+    baja, media y alta.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Crear · 90-120 min" title="Colocar secciones">
+    Construir el Constructor de Puentes. Medir avance por rotación, detectar inicio/fin con color,
+    colocar sección y regresar por otra.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflexionar · 15 min" title="Infraestructura y planificación">
+    Discutir por qué construir por etapas requiere referencias claras, medición y repetibilidad.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'Medio Social y Natural: infraestructura, comunidad y movilidad.',
+    'Matemáticas: medición, unidades, comparación y proporcionalidad.',
+    'Ciencias Naturales: mecanismos y transmisión.',
+    'Productividad y Desarrollo: planificación de procesos técnicos.',
+  ]} />
+
+  <Module.Standards items={[
+    'NGSS ETS: diseñar bajo restricciones.',
+    'CSTA: automatización por sensores.',
+    'ISTE: colaboración y prototipado.',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Mide distancia por rotación.',
+    'Usa posiciones de brazo para una tarea real.',
+    'Explica cómo el color sirve como referencia de construcción.',
+  ]} />
+</Module>

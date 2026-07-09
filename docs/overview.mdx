@@ -11,15 +11,14 @@ import ProgressTracker from '@site/src/components/ProgressTracker';
 import FlagNote from '@site/src/components/FlagNote';
 import BasicoAlignment from '@site/src/components/BasicoAlignment';
 import InternationalAlignment from '@site/src/components/InternationalAlignment';
-import CnbBlock from '@site/src/components/CnbBlock';
 import ScopeOptions from '@site/src/components/ScopeOptions';
-import {transversalCnb} from '@site/src/data/ciudadbots';
+import TransversalCnbBlock from '@site/src/components/TransversalCnbBlock';
 
 # CiudadBots Guatemala
 
-Ruta docente para trabajar **robótica aplicada** con retos cercanos al contexto guatemalteco.
-Aquí encontrará la secuencia del programa, los recursos por módulo y la guía para llevar cada
-experiencia al aula: implementación, seguimiento y evaluación en un solo lugar.
+Ruta docente para trabajar **robótica aplicada** con retos de ingeniería urbana. Aquí encontrará
+la secuencia del programa, los recursos por módulo y la guía para llevar cada experiencia al aula:
+implementación, seguimiento y evaluación en un solo lugar.
 
 <div style={{display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '16px', margin: '20px 0'}}>
   <div style={{height: '380px'}}>
@@ -93,11 +92,7 @@ prueba, explicación técnica y mejora del diseño.
 
 <InternationalAlignment />
 
-<CnbBlock
-  badge="CNB"
-  title="Alineación transversal Guatemala · Ciclo Básico"
-  items={transversalCnb}
-/>
+<TransversalCnbBlock />
 
 <FlagNote tone="info" title="Qué se espera del docente">
 El programa está pensado para que usted conduzca la experiencia, decida el ritmo, organice roles,
@@ -107,16 +102,16 @@ aprendizaje de sus estudiantes.
 
 ## Sesiones del programa
 
-1. [01 · Trazamapas Chapín](./trazamapas-chapin) — Planos, distancia y giros
-2. [02 · Quetzal Express](./quetzal-express) — Carga, ruta y código PIN
-3. [03 · CargaXela](./cargaxela) — Precisión, carga y maniobra
-4. [04 · AquaMaya](./aquamaya) — Sensor de color y manipulación
-5. [05 · Grúa Ceiba](./grua-ceiba) — Poleas, winch y control
-6. [06 · Volcancito Loader](./volcancito-loader) — Giroscopio y dirección
-7. [07 · Brazo Mercado](./brazo-mercado) — Color, posiciones y subrutinas
-8. [08 · Puente Motagua](./puente-motagua) — Infraestructura y precisión
-9. [09 · Elevador Tikal](./elevador-tikal) — Variables, pisos y seguridad
-10. [10 · Aurora Móvil](./aurora-movil) — Rutas por color y orientación
-11. [11 · Bombero Volcán](./bombero-volcan) — Búsqueda, sensor y rescate
-12. [12 · Rueda de Feria Chapina](./rueda-feria-chapina) — Velocidad, variable y parada
+1. [01 · Robot Cartógrafo](./mapper-bot) — Planos, distancia y giros
+2. [02 · Robot de Entregas](./delivery-bot) — Carga, ruta y código PIN
+3. [03 · Montacargas](./forklift) — Precisión, carga y maniobra
+4. [04 · Brazo Reparador](./repair-arm) — Sensor de color y manipulación
+5. [05 · Grúa Torre](./tower-crane) — Poleas, winch y control
+6. [06 · Cargador Compacto](./compact-loader) — Giroscopio y dirección
+7. [07 · Brazo Clasificador](./sorting-arm) — Color, posiciones y subrutinas
+8. [08 · Constructor de Puentes](./bridge-builder) — Infraestructura y precisión
+9. [09 · Elevador](./elevator) — Variables, pisos y seguridad
+10. [10 · Auto Urbano](./city-car) — Rutas por color y orientación
+11. [11 · Unidad de Rescate](./fire-rescue-unit) — Búsqueda, sensor y rescate
+12. [12 · Rueda de la Fortuna](./ferris-wheel) — Velocidad, variable y parada
 13. [★ Showcase y evaluación](./showcase) — Cierre, evidencia, presentación y evaluación final

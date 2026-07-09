@@ -1,4 +1,5 @@
 import React from 'react';
+import {translate} from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 export interface RubricRow {
@@ -9,11 +10,9 @@ export interface RubricRow {
 
 interface RubricTableProps {
   rows: readonly RubricRow[];
-  /** Optional label for the criterion header column (defaults to "Criterio"). */
+  /** Optional label for the criterion header column (defaults to a translated "Criterio"). */
   headerLabel?: string;
 }
-
-const LEVEL_HEADERS = ['4 · Sobresaliente', '3 · Logrado', '2 · En proceso', '1 · Inicial'] as const;
 
 /**
  * 4-level evaluation rubric table, ported from the original HTML's
@@ -21,12 +20,21 @@ const LEVEL_HEADERS = ['4 · Sobresaliente', '3 · Logrado', '2 · En proceso', 
  * tab (generic level text applied to each module's criteria) and the
  * Showcase page's final rubric (criterion-specific level text).
  */
-export default function RubricTable({rows, headerLabel = 'Criterio'}: RubricTableProps): JSX.Element {
+export default function RubricTable({rows, headerLabel}: RubricTableProps): JSX.Element {
+  const resolvedHeaderLabel =
+    headerLabel ?? translate({id: 'ciudadbots.rubricTable.criterion', message: 'Criterio'});
+  const levelHeaders = [
+    translate({id: 'ciudadbots.rubricTable.level4', message: '4 · Sobresaliente'}),
+    translate({id: 'ciudadbots.rubricTable.level3', message: '3 · Logrado'}),
+    translate({id: 'ciudadbots.rubricTable.level2', message: '2 · En proceso'}),
+    translate({id: 'ciudadbots.rubricTable.level1', message: '1 · Inicial'}),
+  ] as const;
+
   return (
     <div className={styles.rubric}>
       <div className={`${styles.row} ${styles.head}`}>
-        <div>{headerLabel}</div>
-        {LEVEL_HEADERS.map((h) => (
+        <div>{resolvedHeaderLabel}</div>
+        {levelHeaders.map((h) => (
           <div key={h}>{h}</div>
         ))}
       </div>

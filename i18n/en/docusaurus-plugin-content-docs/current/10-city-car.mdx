@@ -1,0 +1,74 @@
+---
+sidebar_position: 10
+sidebar_label: "10 · City Car"
+title: "City Car"
+description: "Color-based routes and orientation"
+---
+
+import Module from '@site/src/components/Module';
+
+# 10 · City Car
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m10">
+  <Module.Question>
+    How can a vehicle decide its route by reading signals from a city's environment?
+  </Module.Question>
+
+  <Module.Context>
+    The City Car uses color markers to turn, move forward, head to a charging station, or stop. It
+    integrates a color sensor, messages, and orientation to imagine cleaner, more orderly urban
+    mobility.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Autonomous navigation",
+    "Color markers",
+    "Messages",
+    "Yaw-based turns",
+    "Urban route design",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Cars and traffic">
+    Discuss traffic, small vehicles, clean energy, and signals. What information does an
+    autonomous car need?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Markers and decisions">
+    Assign meaning to colors: blue right, purple left, green charge, red stop. Test reading them
+    before the route.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Urban circuit">
+    Build the City Car. Create messages for each color. Program continuous movement, detection, and
+    the corresponding action.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Communication between vehicles">
+    Imagine how several City Cars would share information to avoid collisions.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Civic Education: mobility, road safety, and coexistence.",
+    "Mathematics: orientation, sequences, and angles.",
+    "Natural Sciences: energy, sensors, and motion.",
+    "Productivity and Development: solutions for urban transport.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: events, messages, and conditionals.",
+    "ISTE: digital citizenship and design.",
+    "NGSS ETS: transportation systems.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Maps colors to the correct actions.",
+    "Programs a verifiable autonomous route.",
+    "Explains how environmental signals change decisions.",
+  ]} />
+</Module>

@@ -1,15 +1,26 @@
 import React from 'react';
-import type {Phase} from '@site/src/data/ciudadbots/types';
+import type {PhaseKind} from '@site/src/data/ciudadbots/types';
 import styles from './styles.module.css';
+
+/**
+ * One learning-cycle phase's locale-specific content. The four kinds map to
+ * Activar/Explorar/Crear/Reflexionar (or, for the Showcase closing session,
+ * Preparación/Presentación/Reflexión) — authored per module, per locale.
+ */
+export interface Phase {
+  kind: PhaseKind;
+  label: string;
+  title: string;
+  body: React.ReactNode;
+}
 
 interface PhaseTimelineProps {
   phases: readonly Phase[];
 }
 
 /**
- * Renders a sequence of learning-cycle phases (Activar/Explorar/Crear/Reflexionar
- * or, for the Showcase closing session, Preparación/Presentación/Reflexión).
- * Shared between `Module`'s "Implementación" tab and the `Showcase` page.
+ * Renders a sequence of learning-cycle phases. Shared between `Module`'s
+ * "Implementation" tab and the `Showcase` page.
  */
 export default function PhaseTimeline({phases}: PhaseTimelineProps): JSX.Element {
   return (

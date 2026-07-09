@@ -1,0 +1,76 @@
+---
+sidebar_position: 6
+sidebar_label: "06 · Compact Loader"
+title: "Compact Loader"
+description: "Gyroscope and steering"
+---
+
+import Module from '@site/src/components/Module';
+
+# 06 · Compact Loader
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m6">
+  <Module.Question>
+    How does a robot hold its heading when the terrain is uneven, like a street under repair or a
+    slope?
+  </Module.Question>
+
+  <Module.Context>
+    The GuateGeeks mini-loader introduces orientation control using yaw/gyroscope. It works with
+    corrected straight-line movement, 45° turns, and a front blade for small urban or community
+    tasks.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Yaw and orientation",
+    "Trajectory correction",
+    "Blade and arm",
+    "Center of gravity",
+    "Movement in the city",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Small machines, big problems">
+    List urban tasks where a large machine gets in the way: sidewalks, gardening, snow, dirt, or
+    minor repairs.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Hub orientation">
+    Explain that the hub can tell if it turned. Test resetting yaw and compare turns without
+    correction versus with correction.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Route with the blade">
+    Build the Compact Loader. Program it to hold its heading, move forward a distance, turn 45°,
+    and push/carry an object.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Feedback-based control">
+    Compare a time-based program against one that watches orientation. Which resists errors
+    better?
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: angles, direction, estimation, and measurement.",
+    "Natural Sciences: motion, friction, and stability.",
+    "Productivity and Development: tools for local tasks.",
+    "Communication: interpreting results and explaining tests.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: sensors and control loops.",
+    "ISTE: computational thinking and debugging.",
+    "NGSS ETS: improving based on evidence.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses orientation to correct movement.",
+    "Programs measured turns.",
+    "Documents at least two improvement cycles.",
+  ]} />
+</Module>

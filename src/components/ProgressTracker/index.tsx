@@ -1,5 +1,7 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {modules} from '@site/src/data/ciudadbots';
+import {translate} from '@docusaurus/Translate';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {modules, getModuleTitle} from '@site/src/data/ciudadbots';
 import styles from './styles.module.css';
 
 // Program-scoped storage key (kept from the original publication).
@@ -19,13 +21,6 @@ function recommendedSessions(range: string): number {
   const nums = String(range).match(/\d+/g) || [];
   return nums.length ? Math.max(...nums.map(Number)) : 1;
 }
-
-const items: TrackerItem[] = modules.map((m) => ({
-  id: m.id,
-  title: m.title,
-  detail: `${m.sessions} sesiones sugeridas`,
-  steps: recommendedSessions(m.sessions),
-}));
 
 function loadState(): TrackerState {
   try {
@@ -50,8 +45,23 @@ function valuesFor(state: TrackerState, item: TrackerItem): boolean[] {
  * first client render match (both start empty).
  */
 export default function ProgressTracker(): JSX.Element {
+  const {i18n} = useDocusaurusContext();
   const [state, setState] = useState<TrackerState>({});
   const [mounted, setMounted] = useState(false);
+
+  const items: TrackerItem[] = useMemo(
+    () =>
+      modules.map((m) => ({
+        id: m.id,
+        title: getModuleTitle(m.id, i18n.currentLocale),
+        detail: translate(
+          {id: 'ciudadbots.progressTracker.sessionsSuggested', message: '{sessions} sesiones sugeridas'},
+          {sessions: m.sessions},
+        ),
+        steps: recommendedSessions(m.sessions),
+      })),
+    [i18n.currentLocale],
+  );
 
   useEffect(() => {
     setState(loadState());
@@ -99,30 +109,39 @@ export default function ProgressTracker(): JSX.Element {
     }
     const percent = totalSteps ? Math.round((doneSteps / totalSteps) * 100) : 0;
     return {totalSteps, doneSteps, completedModules, percent};
-  }, [state]);
+  }, [items, state]);
 
   return (
     <section className={styles.panel} aria-live="polite">
       <div className={styles.top}>
         <div>
-          <h3 className={styles.heading}>Seguimiento docente del programa</h3>
+          <h3 className={styles.heading}>
+            {translate({id: 'ciudadbots.progressTracker.heading', message: 'Seguimiento docente del programa'})}
+          </h3>
           <p className={styles.lead}>
-            Marque las sesiones ya implementadas. El avance se guarda en este navegador y le
-            permite visualizar cuánto del programa ya trabajó con su grupo.
+            {translate({
+              id: 'ciudadbots.progressTracker.lead',
+              message:
+                'Marque las sesiones ya implementadas. El avance se guarda en este navegador y le permite visualizar cuánto del programa ya trabajó con su grupo.',
+            })}
           </p>
         </div>
         <div className={styles.kpis}>
           <div className={styles.kpi}>
-            <strong>{summary.doneSteps}/{summary.totalSteps}</strong>
-            <span>Sesiones marcadas</span>
+            <strong>
+              {summary.doneSteps}/{summary.totalSteps}
+            </strong>
+            <span>{translate({id: 'ciudadbots.progressTracker.kpi.sessions', message: 'Sesiones marcadas'})}</span>
           </div>
           <div className={styles.kpi}>
-            <strong>{summary.completedModules}/{items.length}</strong>
-            <span>Módulos completos</span>
+            <strong>
+              {summary.completedModules}/{items.length}
+            </strong>
+            <span>{translate({id: 'ciudadbots.progressTracker.kpi.modules', message: 'Módulos completos'})}</span>
           </div>
           <div className={styles.kpi}>
             <strong>{summary.percent}%</strong>
-            <span>Avance global</span>
+            <span>{translate({id: 'ciudadbots.progressTracker.kpi.percent', message: 'Avance global'})}</span>
           </div>
         </div>
       </div>
@@ -133,7 +152,7 @@ export default function ProgressTracker(): JSX.Element {
 
       <div className={styles.actions}>
         <button className={styles.reset} onClick={reset} type="button" disabled={!mounted}>
-          Reiniciar seguimiento
+          {translate({id: 'ciudadbots.progressTracker.reset', message: 'Reiniciar seguimiento'})}
         </button>
       </div>
 
@@ -150,7 +169,10 @@ export default function ProgressTracker(): JSX.Element {
                   <div className={styles.rowSub}>{item.detail}</div>
                 </div>
                 <div className={styles.rowStatus}>
-                  {done} de {item.steps} sesiones
+                  {translate(
+                    {id: 'ciudadbots.progressTracker.rowStatus', message: '{done} de {steps} sesiones'},
+                    {done, steps: item.steps},
+                  )}
                 </div>
               </div>
               <div className={styles.dots}>
@@ -162,7 +184,10 @@ export default function ProgressTracker(): JSX.Element {
                     className={`${styles.dot} ${val ? styles.dotDone : ''}`}
                     onClick={() => toggle(item, idx)}
                     aria-pressed={val}
-                    aria-label={`Marcar sesión ${idx + 1} de ${item.title}`}>
+                    aria-label={translate(
+                      {id: 'ciudadbots.progressTracker.markSession', message: 'Marcar sesión {n} de {title}'},
+                      {n: idx + 1, title: item.title},
+                    )}>
                     {idx + 1}
                   </button>
                 ))}

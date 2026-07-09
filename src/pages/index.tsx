@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
+import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 
@@ -12,46 +13,68 @@ import styles from './index.module.css';
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout title="Programas Educativos" description={siteConfig.tagline}>
+    <Layout
+      title={translate({id: 'ciudadbots.home.pageTitle', message: 'Programas Educativos'})}
+      description={siteConfig.tagline}>
       <main className={styles.shell}>
         <section className={styles.hero}>
           <div className={styles.eyebrow}>GuateGeeks · Programas Educativos</div>
-          <h1 className={styles.title}>Robótica aplicada y ciudadanía tecnológica para Guatemala</h1>
+          <h1 className={styles.title}>
+            <Translate id="ciudadbots.home.title">
+              Robótica aplicada y ciudadanía tecnológica para Guatemala
+            </Translate>
+          </h1>
           <p className={styles.lead}>
-            Un hub de programas educativos con retos cercanos al contexto guatemalteco. Cada programa
-            reúne su secuencia docente, recursos por módulo, alineación curricular y evaluación en un
-            solo lugar.
+            <Translate id="ciudadbots.home.lead">
+              Un hub de programas educativos con retos de ingeniería urbana. Cada programa reúne
+              su secuencia docente, recursos por módulo, alineación curricular y evaluación en un
+              solo lugar.
+            </Translate>
           </p>
           <div className={styles.actions}>
             <Link className={styles.primary} to="/ciudadbots">
-              Explorar CiudadBots
+              <Translate id="ciudadbots.home.exploreLink">Explorar CiudadBots</Translate>
             </Link>
             <Link className={styles.secondary} to="/estudiante">
-              Modo estudiante
+              <Translate id="ciudadbots.home.studentModeLink">Modo estudiante</Translate>
             </Link>
           </div>
         </section>
 
         <section className={styles.programs}>
-          <h2 className={styles.programsTitle}>Programas</h2>
+          <h2 className={styles.programsTitle}>
+            <Translate id="ciudadbots.home.programsTitle">Programas</Translate>
+          </h2>
           <div className={styles.grid}>
             <Link className={styles.card} to="/ciudadbots">
-              <span className={styles.badge}>Ciclo Básico</span>
+              <span className={styles.badge}>
+                <Translate id="ciudadbots.home.cicloBasicoBadge">Ciclo Básico</Translate>
+              </span>
               <h3>CiudadBots Guatemala</h3>
               <p>
-                12 misiones de robótica LEGO SPIKE con retos de ciudad: cartografía, entrega,
-                logística, infraestructura, emergencia y más. Incluye guía docente, programas base y
-                rúbricas.
+                <Translate id="ciudadbots.home.ciudadbotsCardBody">
+                  12 misiones de robótica LEGO SPIKE con retos de ciudad: cartografía, entrega,
+                  logística, infraestructura, emergencia y más. Incluye guía docente, programas
+                  base y rúbricas.
+                </Translate>
               </p>
-              <span className={styles.cardLink}>Ver programa →</span>
+              <span className={styles.cardLink}>
+                <Translate id="ciudadbots.home.viewProgram">Ver programa →</Translate>
+              </span>
             </Link>
 
             <div className={`${styles.card} ${styles.cardPlaceholder}`}>
-              <span className={styles.badge}>Próximamente</span>
-              <h3>Nuevos programas</h3>
+              <span className={styles.badge}>
+                <Translate id="ciudadbots.home.comingSoonBadge">Próximamente</Translate>
+              </span>
+              <h3>
+                <Translate id="ciudadbots.home.newProgramsTitle">Nuevos programas</Translate>
+              </h3>
               <p>
-                Este hub está diseñado para crecer. Los próximos programas educativos de GuateGeeks
-                aparecerán aquí, con su propia ruta y recursos.
+                <Translate id="ciudadbots.home.newProgramsBody">
+                  Este hub está diseñado para crecer. Los próximos programas educativos de
+                  GuateGeeks aparecerán aquí, con su propia ruta y recursos.
+                </Translate>
               </p>
             </div>
           </div>

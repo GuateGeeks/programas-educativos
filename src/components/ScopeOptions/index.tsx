@@ -1,12 +1,13 @@
 import React from 'react';
-import {scopeOptions} from '@site/src/data/ciudadbots';
+import {useStandardsContent} from '@site/src/data/ciudadbots';
 import styles from './styles.module.css';
 
 /**
- * The four pacing options for implementing the program (compacta/estándar/
- * extendida/por proyectos). Ported from the original HTML's `.scope-list`.
+ * The four pacing options for implementing the program (compact/standard/
+ * extended/project-based). Ported from the original HTML's `.scope-list`.
  */
 export default function ScopeOptions(): JSX.Element {
+  const {scopeOptions} = useStandardsContent();
   return (
     <div className={styles.list}>
       {scopeOptions.map((opt) => (

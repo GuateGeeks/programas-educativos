@@ -1,14 +1,15 @@
 import React from 'react';
-import {basicoLevels, basicoComparison} from '@site/src/data/ciudadbots';
+import {useStandardsContent} from '@site/src/data/ciudadbots';
 import ImpactTable from '@site/src/components/ImpactTable';
 import styles from './styles.module.css';
 
 /**
- * The 1º/2º/3º básico alignment breakdown: three level cards (goal +
- * checklist) plus a 4-axis comparison table. Ported from the original HTML's
- * `basicoAlignment()`. Used on the overview page and the Showcase page.
+ * The grade 7/8/9 (Ciclo Básico) alignment breakdown: three level cards
+ * (goal + checklist) plus a 4-axis comparison table. Ported from the original
+ * HTML's `basicoAlignment()`. Used on the overview page and the Showcase page.
  */
 export default function BasicoAlignment(): JSX.Element {
+  const {basicoLevels, basicoComparison} = useStandardsContent();
   return (
     <>
       <div className={styles.grid}>

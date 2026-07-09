@@ -1,23 +1,15 @@
 // Typed schema for a CiudadBots program module.
-// One shape shared by all modules so the <Module> renderer stays consistent.
+// Structural, locale-independent fields only — narrative content (title,
+// driving question, context, concepts, phase text, CNB, standards,
+// evaluation) is authored per locale in each module's MDX file and supplied
+// to the <Module> compound component as children. See openspec design for
+// `neutralize-module-names-i18n`.
 
 /** Learning-cycle phase kind: Activar · Explorar · Crear · Reflexionar. */
 export type PhaseKind = 'act' | 'exp' | 'cre' | 'ref';
 
-export interface Phase {
-  /** Phase kind, drives the accent color. */
-  kind: PhaseKind;
-  /** Short label, e.g. "Activar · 15 min". */
-  label: string;
-  /** Phase title. */
-  title: string;
-  /** Phase description. */
-  body: string;
-}
-
 /** Reference to a paginated visual build guide (images in static/). */
 export interface GuideRef {
-  title: string;
   pages: number;
   /** URL prefix for page images; page number + ".jpg" is appended. */
   imageBase: string;
@@ -28,29 +20,14 @@ export interface Module {
   id: string;
   /** Two-digit number, e.g. "01". */
   n: string;
-  /** URL/file slug, e.g. "trazamapas-chapin". */
+  /** URL/file slug, shared by both locales, e.g. "mapper-bot". */
   slug: string;
-  title: string;
-  /** One-line summary of the module focus. */
-  short: string;
   /** Suggested session range, e.g. "2-3". */
   sessions: string;
-  /** Driving question. */
-  question: string;
-  /** Context / scenario narrative. */
-  context: string;
-  /** Key robotics/CS concepts. */
-  concepts: string[];
-  /** Exactly four phases: act, exp, cre, ref. */
-  phases: readonly [Phase, Phase, Phase, Phase];
-  /** CNB curriculum alignment lines. */
-  cnb: string[];
-  /** International standards (CSTA/ISTE/NGSS) lines. */
-  standards: string[];
-  /** Evaluation rubric criteria. */
-  evaluation: string[];
   /** Downloadable LEGO SPIKE program filename. */
   program: string;
+  /** Ordered sequence of the four learning-phase kinds, driving accent color and matching each locale's <Module.Phase> order. */
+  phaseKinds: readonly [PhaseKind, PhaseKind, PhaseKind, PhaseKind];
   /** Optional visual build guide. */
   guide?: GuideRef;
 }

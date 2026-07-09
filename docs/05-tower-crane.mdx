@@ -1,0 +1,74 @@
+---
+sidebar_position: 5
+sidebar_label: "05 · Grúa Torre"
+title: "Grúa Torre"
+description: "Poleas, winch y control"
+---
+
+import Module from '@site/src/components/Module';
+
+# 05 · Grúa Torre
+
+:::note Para el docente
+Revise primero la pestaña **Implementación** (fases y conceptos), prepare los **Recursos**
+(programa base y guía), y cierre planificando con **CNB y estándares** y **Evaluación**. Puede
+rotar los roles del equipo —Constructor, Organizador, Programador— durante el módulo.
+:::
+
+<Module id="m5">
+  <Module.Question>
+    ¿Cómo mueve una grúa una carga pesada con precisión y equilibrio en una obra de nuestra
+    ciudad?
+  </Module.Question>
+
+  <Module.Context>
+    Los estudiantes construyen una grúa de obra GuateGeeks. El módulo une mecánica de poleas,
+    winch, posiciones de motor, control manual y operación autónoma con sensor.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Polea fija y móvil',
+    'Winch y cuerda',
+    'Posición angular',
+    'Control manual/autónomo',
+    'Equilibrio y carga',
+  ]} />
+
+  <Module.Phase kind="act" label="Activar · 15 min" title="Construcción en altura">
+    Preguntar qué máquinas han visto en construcciones. ¿Qué pasaría si una grúa se mueve sin
+    precisión?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explorar · 30 min" title="Poleas y carga">
+    Comparar polea fija y móvil. Observar cómo el winch enrolla cuerda y cómo el brazo gira.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Crear · 90-120 min" title="Mover cargas entre puntos">
+    Construir la Grúa Torre. Programar subir/bajar carga, girar brazo y automatizar una
+    transferencia usando posiciones medidas.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflexionar · 15 min" title="Fuerza, equilibrio y seguridad">
+    Discutir por qué la velocidad no siempre es el objetivo. La grúa debe ser estable, predecible y
+    segura.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'Ciencias Naturales: fuerza, máquinas simples, poleas y equilibrio.',
+    'Matemáticas: grados, medición y proporcionalidad.',
+    'Productividad y Desarrollo: seguridad en procesos de construcción.',
+    'Comunicación y Lenguaje: explicación técnica oral.',
+  ]} />
+
+  <Module.Standards items={[
+    'NGSS: máquinas simples y diseño de ingeniería.',
+    'CSTA: eventos y variables.',
+    'ISTE: prueba sistemática de soluciones.',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Relaciona poleas con reducción de esfuerzo.',
+    'Usa posiciones de motor para controlar carga.',
+    'Prioriza seguridad en el diseño del programa.',
+  ]} />
+</Module>

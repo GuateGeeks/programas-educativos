@@ -1,0 +1,73 @@
+---
+sidebar_position: 8
+sidebar_label: "08 · Bridge Builder"
+title: "Bridge Builder"
+description: "Infrastructure and precision"
+---
+
+import Module from '@site/src/components/Module';
+
+# 08 · Bridge Builder
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m8">
+  <Module.Question>
+    How can a robot build a bridge in stages to connect two communities?
+  </Module.Question>
+
+  <Module.Context>
+    Students place bridge sections inspired by the need to connect areas separated by rivers,
+    ravines, or difficult roads. The module works with transmission, color as a reference, arm
+    positions, and incremental construction.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Staged construction",
+    "Color sensor",
+    "Bevel-gear transmission",
+    "Manipulator positions",
+    "Progress measurement",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Bridges in the community">
+    Talk about rivers, ravines, traffic, and connecting places. What makes a bridge important?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Traction and arm">
+    Observe the 4x4 transmission, drive motor, color sensor, and arm. Identify low, medium, and
+    high positions.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Place sections">
+    Build the Bridge Builder. Measure progress by rotation, detect start/end with color, place a
+    section, and go back for another.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Infrastructure and planning">
+    Discuss why building in stages requires clear references, measurement, and repeatability.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Social and Natural Environment: infrastructure, community, and mobility.",
+    "Mathematics: measurement, units, comparison, and proportionality.",
+    "Natural Sciences: mechanisms and transmission.",
+    "Productivity and Development: planning technical processes.",
+  ]} />
+
+  <Module.Standards items={[
+    "NGSS ETS: designing under constraints.",
+    "CSTA: sensor-based automation.",
+    "ISTE: collaboration and prototyping.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Measures distance by rotation.",
+    "Uses arm positions for a real task.",
+    "Explains how color serves as a construction reference.",
+  ]} />
+</Module>

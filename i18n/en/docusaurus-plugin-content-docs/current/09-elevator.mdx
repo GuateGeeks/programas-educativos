@@ -1,0 +1,75 @@
+---
+sidebar_position: 9
+sidebar_label: "09 · Elevator"
+title: "Elevator"
+description: "Variables, floors, and safety"
+---
+
+import Module from '@site/src/components/Module';
+
+# 09 · Elevator
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m9">
+  <Module.Question>
+    How does an elevator know where it is, where it needs to go, and when to safely open its
+    doors?
+  </Module.Question>
+
+  <Module.Context>
+    This module introduces stateful systems through a GuateGeeks elevator for buildings, malls, or
+    school libraries: variables for current floor, selected floor, maximum floors, doors, and a
+    sensor for the initial reference point.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Variables",
+    "Events and messages",
+    "Current state vs. destination",
+    "Safety doors",
+    "Initial floor calibration",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Real elevators">
+    Ask what an elevator does before it moves. Why shouldn't it open its doors at any moment?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="A system with memory">
+    Identify the winch, doors, force sensor, and display. Introduce variables: floor, current
+    floor, and maximum floor.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 120 min" title="Select and move between floors">
+    Build the Elevator. Program button selection, floor display, calculated movement, and
+    opening/closing the doors.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 20 min" title="Safety and state">
+    Analyze what would fail if the elevator didn't remember the current floor. Connect it to other
+    everyday systems.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: integers, the difference between values, and operations.",
+    "Natural Sciences: force, pulleys, and vertical movement.",
+    "Communication: describing a stateful system.",
+    "Productivity and Development: safety in automated systems.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: variables, events, and messages.",
+    "ISTE: advanced computational thinking.",
+    "NGSS ETS: safety as a design constraint.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses variables to represent state.",
+    "Integrates buttons, display, motor, and doors.",
+    "Explains risks and safety measures.",
+  ]} />
+</Module>

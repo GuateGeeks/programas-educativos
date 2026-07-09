@@ -1,0 +1,76 @@
+---
+sidebar_position: 7
+sidebar_label: "07 · Sorting Arm"
+title: "Sorting Arm"
+description: "Color, positions, and subroutines"
+---
+
+import Module from '@site/src/components/Module';
+
+# 07 · Sorting Arm
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m7">
+  <Module.Question>
+    How does a robot decide where to take products or packages based on the information it
+    receives?
+  </Module.Question>
+
+  <Module.Context>
+    The robot sorts packages by color, as if organizing products in a market, warehouse, or
+    collection center. This is the strongest module for conditionals, angular positions,
+    subroutines, and sorting systems.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Color sorting",
+    "Conditionals",
+    "Subroutines",
+    "Angular positions",
+    "Error correction",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Where do we use sorting?">
+    Recyclables, fruit, packages, a library, or a supermarket. What data does a person use to
+    sort?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="Arm and sensor">
+    Analyze the fixed base, gripper, lift motor, grip motor, and color sensor. Calibrate colors
+    before programming.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 120 min" title="Sort four colors">
+    Build the Sorting Arm. Create subroutines: raise, lower, grip, release. Read color and move to
+    positions of 45, 135, 225, or 315 degrees.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 20 min" title="From object to data">
+    Explain how a physical signal becomes a program decision. Record which color caused the most
+    errors and why.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: sorting, patterns, angles, and data tables.",
+    "Natural Sciences: sensors and systematic observation.",
+    "Communication: explaining if/then rules in natural language.",
+    "Productivity and Development: automating repetitive processes.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: conditionals, procedures, and data.",
+    "ISTE: automated solutions.",
+    "NGSS ETS: comparative testing.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Integrates color reading with decisions.",
+    "Organizes the program into reusable subroutines.",
+    "Proposes handling for sorting errors.",
+  ]} />
+</Module>

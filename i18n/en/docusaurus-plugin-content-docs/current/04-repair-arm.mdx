@@ -1,0 +1,73 @@
+---
+sidebar_position: 4
+sidebar_label: "04 · Repair Arm"
+title: "Repair Arm"
+description: "Color sensor and manipulation"
+---
+
+import Module from '@site/src/components/Module';
+
+# 04 · Repair Arm
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m4">
+  <Module.Question>
+    How can a robot help repair a water pipe without putting a person at risk?
+  </Module.Question>
+
+  <Module.Context>
+    The mission simulates repairing water infrastructure in a community. It introduces a color
+    sensor, reference marks, a manipulator arm, gripping, and part replacement.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Color sensor",
+    "Black mark as a signal",
+    "Manipulator and gripper",
+    "Urban maintenance",
+    "Collaborative work between robots",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Water infrastructure">
+    Talk about pipes, drinking water, and repair risks. Why does it make sense to send a robot?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Detection and arm">
+    Review the color sensor, the arm motor, and the gripper. Test how the reading changes with
+    different colors.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Remove and replace">
+    Build the Repair Arm. Program it to move forward to the black mark, stop, pick up the damaged
+    part, back up, and place the new part.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Sensors as decisions">
+    Distinguish between moving for a set time and moving until something is detected. Which is more
+    robust, and why?
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: resources, water, safety, and the impact of technology.",
+    "Mathematics: condition, comparison, and spatial location.",
+    "Productivity and Development: solving community problems.",
+    "Communication and Language: reporting on the procedure performed.",
+  ]} />
+
+  <Module.Standards items={[
+    "CSTA: conditionals and sensors.",
+    "ISTE: innovative designer.",
+    "NGSS ETS: safety and efficiency criteria.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses the sensor as a stopping condition.",
+    "Coordinates movement and manipulation.",
+    "Explains the value of automation in risky tasks.",
+  ]} />
+</Module>

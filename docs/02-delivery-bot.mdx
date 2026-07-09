@@ -1,0 +1,76 @@
+---
+sidebar_position: 2
+sidebar_label: "02 · Robot de Entregas"
+title: "Robot de Entregas"
+description: "Carga, ruta y código PIN"
+---
+
+import Module from '@site/src/components/Module';
+
+# 02 · Robot de Entregas
+
+:::note Para el docente
+Revise primero la pestaña **Implementación** (fases y conceptos), prepare los **Recursos**
+(programa base y guía), y cierre planificando con **CNB y estándares** y **Evaluación**. Puede
+rotar los roles del equipo —Constructor, Organizador, Programador— durante el módulo.
+:::
+
+<Module id="m2">
+  <Module.Question>
+    ¿Cómo diseñamos un robot que entregue un paquete de forma segura en un barrio, aldea o campus
+    escolar?
+  </Module.Question>
+
+  <Module.Context>
+    El robot simula un servicio de entrega local GuateGeeks: llevar medicina, refacción, libros o
+    materiales a la persona correcta. Trabaja movimiento autónomo, subrutinas, apertura/cierre de
+    compartimento, botones, pantalla del hub y lógica de acceso.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Subrutinas',
+    'Apertura y cierre con motor',
+    'Secuencias de ruta',
+    'Botones y PIN',
+    'Diseño seguro de entrega',
+  ]} />
+
+  <Module.Phase kind="act" label="Activar · 15 min" title="Robots en servicios de entrega">
+    Conversar sobre pedidos de comida, paquetes y seguridad. ¿Qué problemas reales enfrentaría un
+    robot repartidor en la calle?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explorar · 25 min" title="Compartimento y mecanismo">
+    Analizar motor grande, motores medianos, tapa y mecanismo de manivela. Probar manualmente abrir
+    y cerrar sin forzar piezas.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Crear · 60-90 min" title="Ruta con acceso">
+    Construir el Robot de Entregas. Crear bloques para abrir, cerrar, girar izquierda, girar
+    derecha y avanzar. Integrar una secuencia de PIN con botones antes de abrir.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflexionar · 15 min" title="Seguridad y experiencia de usuario">
+    Cada grupo explica cómo evitaría entregas equivocadas y qué haría si el robot encuentra un
+    obstáculo.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'Matemáticas: patrones, secuencia y comparación de rutas.',
+    'Comunicación y Lenguaje: instrucciones claras y explicación de reglas.',
+    'Formación Ciudadana: seguridad, responsabilidad y servicios comunitarios.',
+    'Productividad y Desarrollo: diseño de soluciones para necesidades locales.',
+  ]} />
+
+  <Module.Standards items={[
+    'CSTA: procedimientos y eventos.',
+    'ISTE: uso creativo de tecnología para resolver problemas.',
+    'NGSS ETS: comparar soluciones según criterios y restricciones.',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Divide acciones complejas en subrutinas.',
+    'Integra ruta y apertura sin intervención manual.',
+    'Justifica reglas de seguridad del sistema.',
+  ]} />
+</Module>

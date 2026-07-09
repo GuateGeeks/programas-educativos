@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import BrowserOnly from '@docusaurus/BrowserOnly';
+import Translate, {translate} from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 /**
@@ -236,7 +237,13 @@ function HeroCanvas(): JSX.Element {
     };
   }, []);
 
-  return <div className={styles.canvas} ref={mountRef} aria-label="Escena 3D de CiudadBots" />;
+  return (
+    <div
+      className={styles.canvas}
+      ref={mountRef}
+      aria-label={translate({id: 'ciudadbots.hero.canvasAriaLabel', message: 'Escena 3D de CiudadBots'})}
+    />
+  );
 }
 
 export default function CityBotsHero(): JSX.Element {
@@ -244,8 +251,10 @@ export default function CityBotsHero(): JSX.Element {
     <BrowserOnly
       fallback={
         <div className={styles.fallback}>
-          Vista conceptual de CiudadBots. Si la escena 3D no carga en este navegador, el contenido
-          del programa sigue funcionando completo.
+          <Translate id="ciudadbots.hero.fallback">
+            Vista conceptual de CiudadBots. Si la escena 3D no carga en este navegador, el
+            contenido del programa sigue funcionando completo.
+          </Translate>
         </div>
       }>
       {() => <HeroCanvas />}

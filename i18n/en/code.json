@@ -1,0 +1,577 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "This page crashed.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Scroll back to top",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archive",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archive",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blog list page navigation",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Newer entries",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Older entries",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blog post page navigation",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Newer post",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Older post",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "View all tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "system mode",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "light mode",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "dark mode",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Switch between dark and light mode (currently {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Breadcrumbs",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Previous",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Next",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "One doc tagged|{count} docs tagged",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} with \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Edit this page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.admonition.caution": {
+    "message": "caution",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "note",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "tip",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "warning",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Blog recent posts navigation",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Expand sidebar category '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Collapse sidebar category '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(opens in new tab)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Main",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "On this page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read more",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Read more about {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Toggle word wrap",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs sidebar",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Home page",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Expand the dropdown",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Collapse the dropdown",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.blog.post.plurals": {
+    "message": "One post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagged with \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Authors",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "View all authors",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Unlisted page",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Draft page",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "description": "The draft content banner message"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 item|{count} items",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Try again",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "ciudadbots.home.pageTitle": {
+    "message": "Educational Programs"
+  },
+  "ciudadbots.home.title": {
+    "message": "Applied robotics and tech citizenship for Guatemala"
+  },
+  "ciudadbots.home.lead": {
+    "message": "A hub of educational programs with urban-engineering challenges. Each program brings together its teaching sequence, module resources, curriculum alignment, and evaluation in one place."
+  },
+  "ciudadbots.home.exploreLink": {
+    "message": "Explore CiudadBots"
+  },
+  "ciudadbots.home.studentModeLink": {
+    "message": "Student view"
+  },
+  "ciudadbots.home.programsTitle": {
+    "message": "Programs"
+  },
+  "ciudadbots.home.cicloBasicoBadge": {
+    "message": "Lower Secondary"
+  },
+  "ciudadbots.home.ciudadbotsCardBody": {
+    "message": "12 LEGO SPIKE robotics missions with city challenges: mapping, delivery, logistics, infrastructure, emergency response, and more. Includes a teacher guide, base programs, and rubrics."
+  },
+  "ciudadbots.home.viewProgram": {
+    "message": "View program →"
+  },
+  "ciudadbots.home.comingSoonBadge": {
+    "message": "Coming soon"
+  },
+  "ciudadbots.home.newProgramsTitle": {
+    "message": "New programs"
+  },
+  "ciudadbots.home.newProgramsBody": {
+    "message": "This hub is designed to grow. GuateGeeks' next educational programs will appear here, each with its own path and resources."
+  },
+  "ciudadbots.achievementIndicators.howToReadTitle": {
+    "message": "How to read this alignment",
+    "description": "Title of the note explaining how to read the grade-by-grade CNB alignment"
+  },
+  "ciudadbots.achievementIndicators.competenciesTitle": {
+    "message": "Base lower-secondary competencies related to the program",
+    "description": "Title of the CNB base competencies block"
+  },
+  "ciudadbots.achievementIndicators.suggestedTitle": {
+    "message": "Suggested achievement indicators for this module",
+    "description": "Title of the suggested achievement indicators note"
+  },
+  "ciudadbots.buildGuide.page": {
+    "message": "Page {page} / {pages}",
+    "description": "Build-guide page counter label"
+  },
+  "ciudadbots.buildGuide.previous": {
+    "message": "Previous",
+    "description": "Build-guide previous-page button"
+  },
+  "ciudadbots.buildGuide.next": {
+    "message": "Next",
+    "description": "Build-guide next-page button"
+  },
+  "ciudadbots.buildGuide.enlarge": {
+    "message": "Enlarge",
+    "description": "Build-guide open-lightbox button"
+  },
+  "ciudadbots.buildGuide.close": {
+    "message": "Close",
+    "description": "Build-guide close-lightbox button"
+  },
+  "ciudadbots.buildGuide.enlargedTitle": {
+    "message": "Enlarged construction view",
+    "description": "Build-guide lightbox toolbar title"
+  },
+  "ciudadbots.buildGuide.pageAlt": {
+    "message": "{title} — page {page} of {pages}",
+    "description": "Build-guide page image alt text"
+  },
+  "ciudadbots.buildGuide.enlargedAlt": {
+    "message": "{title} — page {page} enlarged",
+    "description": "Build-guide lightbox image alt text"
+  },
+  "ciudadbots.hero.canvasAriaLabel": {
+    "message": "CiudadBots 3D scene"
+  },
+  "ciudadbots.hero.fallback": {
+    "message": "Conceptual view of CiudadBots. If the 3D scene doesn't load in this browser, the program's content still works completely."
+  },
+  "ciudadbots.cnbSourceLinks.reportingTitle": {
+    "message": "Teacher use for reporting impact",
+    "description": "Title of the note explaining how to use these sources to report program impact"
+  },
+  "ciudadbots.module.rubric.level4": {
+    "message": "Demonstrates it with autonomy and precision, and can justify decisions with evidence."
+  },
+  "ciudadbots.module.rubric.level3": {
+    "message": "Demonstrates it correctly and sufficiently to meet the goal."
+  },
+  "ciudadbots.module.rubric.level2": {
+    "message": "Demonstrates it partially or needs support to complete it."
+  },
+  "ciudadbots.module.rubric.level1": {
+    "message": "Cannot yet apply or explain it clearly."
+  },
+  "ciudadbots.module.guideTitle": {
+    "message": "Visual build guide · {title}",
+    "description": "A module's build-guide title, interpolating the module's own title"
+  },
+  "ciudadbots.module.tab.metodo": {
+    "message": "Implementation"
+  },
+  "ciudadbots.module.tab.recursos": {
+    "message": "Resources"
+  },
+  "ciudadbots.module.tab.cnb": {
+    "message": "CNB & Standards"
+  },
+  "ciudadbots.module.tab.eval": {
+    "message": "Evaluation"
+  },
+  "ciudadbots.module.cnb.area": {
+    "message": "Curriculum area"
+  },
+  "ciudadbots.module.standards.itemTitle": {
+    "message": "Module-specific application"
+  },
+  "ciudadbots.module.cnb.title": {
+    "message": "Guatemala alignment · Lower Secondary · Grades 7, 8, and 9"
+  },
+  "ciudadbots.module.drivingQuestion": {
+    "message": "Driving question."
+  },
+  "ciudadbots.module.tablistLabel": {
+    "message": "Sections of {title}"
+  },
+  "ciudadbots.module.resource.programTitle": {
+    "message": "Base LEGO SPIKE / LLSP program"
+  },
+  "ciudadbots.module.resource.programBody": {
+    "message": "Use it as the module's implementation base. You can open it before class to review blocks, sensors, and the expected sequence."
+  },
+  "ciudadbots.module.resource.download": {
+    "message": "Download {program}"
+  },
+  "ciudadbots.module.resource.downloadPdf": {
+    "message": "Download guide as PDF"
+  },
+  "ciudadbots.module.resource.guideTitle": {
+    "message": "Visual build guide"
+  },
+  "ciudadbots.module.resource.guidePendingBody": {
+    "message": "A step-by-step build viewer is pending for this module. For now, rely on the base program and the implementation methodology."
+  },
+  "ciudadbots.module.resource.guidePendingTag": {
+    "message": "Viewer pending"
+  },
+  "ciudadbots.module.cnb.secondarySummary": {
+    "message": "Guatemala National Curriculum (CNB) alignment"
+  },
+  "ciudadbots.module.eval.scaleNote": {
+    "message": "Suggested scale: 4 = Outstanding, 3 = Achieved, 2 = In progress, 1 = Starting."
+  },
+  "ciudadbots.internationalAlignment.title": {
+    "message": "International standards · Lower-secondary progression",
+    "description": "Title of the international standards (ISTE/CSTA/NGSS) summary block"
+  },
+  "ciudadbots.progressTracker.sessionsSuggested": {
+    "message": "{sessions} suggested sessions"
+  },
+  "ciudadbots.progressTracker.heading": {
+    "message": "Teacher tracking for the program"
+  },
+  "ciudadbots.progressTracker.lead": {
+    "message": "Mark the sessions you've already implemented. Progress is saved in this browser and lets you see how much of the program you've covered with your group."
+  },
+  "ciudadbots.progressTracker.kpi.sessions": {
+    "message": "Sessions marked"
+  },
+  "ciudadbots.progressTracker.kpi.modules": {
+    "message": "Modules completed"
+  },
+  "ciudadbots.progressTracker.kpi.percent": {
+    "message": "Overall progress"
+  },
+  "ciudadbots.progressTracker.reset": {
+    "message": "Reset tracking"
+  },
+  "ciudadbots.progressTracker.rowStatus": {
+    "message": "{done} of {steps} sessions"
+  },
+  "ciudadbots.progressTracker.markSession": {
+    "message": "Mark session {n} of {title}"
+  },
+  "ciudadbots.rubricTable.criterion": {
+    "message": "Criterion"
+  },
+  "ciudadbots.rubricTable.level4": {
+    "message": "4 · Outstanding"
+  },
+  "ciudadbots.rubricTable.level3": {
+    "message": "3 · Achieved"
+  },
+  "ciudadbots.rubricTable.level2": {
+    "message": "2 · In progress"
+  },
+  "ciudadbots.rubricTable.level1": {
+    "message": "1 · Starting"
+  },
+  "ciudadbots.estudiante.roles.builder.name": {
+    "message": "Builder"
+  },
+  "ciudadbots.estudiante.roles.builder.desc": {
+    "message": "Assembles the robot based on the step image and confirms the structure matches before moving on."
+  },
+  "ciudadbots.estudiante.roles.organizer.name": {
+    "message": "Organizer"
+  },
+  "ciudadbots.estudiante.roles.organizer.desc": {
+    "message": "Keeps pieces organized, takes care of materials, and verifies the team completes each step calmly and clearly."
+  },
+  "ciudadbots.estudiante.roles.programmer.name": {
+    "message": "Programmer"
+  },
+  "ciudadbots.estudiante.roles.programmer.desc": {
+    "message": "When it's time, opens the base program, follows the team's instructions, and explains the robot's behavior."
+  },
+  "ciudadbots.estudiante.pageTitle": {
+    "message": "Student view · {title}"
+  },
+  "ciudadbots.estudiante.pageDescription": {
+    "message": "Step-by-step visual build guide for students."
+  },
+  "ciudadbots.estudiante.eyebrow": {
+    "message": "GuateGeeks · CiudadBots · Student view"
+  },
+  "ciudadbots.estudiante.lead": {
+    "message": "This guide lets you move step by step through building the robot with your team. Use the roles, discuss every decision, and rotate responsibilities so everyone tries a different way of working."
+  },
+  "ciudadbots.estudiante.rolesNote": {
+    "message": "Suggestion: rotate roles every so many steps so everyone experiences a different responsibility."
+  },
+  "ciudadbots.estudiante.guideUnavailable": {
+    "message": "The visual guide for this module isn't available yet."
+  },
+  "ciudadbots.estudiante.tip": {
+    "message": "Before moving on, compare the physical robot with the image. If something doesn't match, stop, adjust, and then continue to the next step."
+  },
+  "ciudadbots.overview.transversalCnbTitle": {
+    "message": "Cross-cutting Guatemala alignment · Lower Secondary"
+  }
+}
