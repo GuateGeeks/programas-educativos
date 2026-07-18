@@ -8,7 +8,7 @@ import styles from './styles.module.css';
  * (goal + checklist) plus a 4-axis comparison table. Ported from the original
  * HTML's `basicoAlignment()`. Used on the overview page and the Showcase page.
  */
-export default function BasicoAlignment(): JSX.Element {
+export default function BasicoAlignment() {
   const {basicoLevels, basicoComparison} = useStandardsContent();
   return (
     <>

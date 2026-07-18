@@ -173,7 +173,7 @@ const content: Record<Locale, ShowcaseContent> = {
  * grade-differentiated evaluation guidance, and the program-level final
  * rubric. Ported from the original HTML's `showcase()`.
  */
-export default function Showcase(): JSX.Element {
+export default function Showcase() {
   const {i18n} = useDocusaurusContext();
   const c = content[i18n.currentLocale as Locale] ?? content.es;
 

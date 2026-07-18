@@ -9,7 +9,7 @@ import FlagNote from '@site/src/components/FlagNote';
  * impact" note. Ported from the original HTML's `cnbSourceLinks()` and the
  * trailing flag in `cnbMarkup(m)`.
  */
-export default function CnbSourceLinks(): JSX.Element {
+export default function CnbSourceLinks() {
   const {cnbSourceLinks, impactReportingNote} = useStandardsContent();
   return (
     <>

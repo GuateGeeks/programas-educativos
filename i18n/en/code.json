@@ -329,38 +329,230 @@
   "ciudadbots.home.pageTitle": {
     "message": "Educational Programs"
   },
+  "ciudadbots.home.description": {
+    "message": "Applied technology programs ready to implement in educational institutions."
+  },
+  "ciudadbots.home.eyebrow": {
+    "message": "GuateGeeks - Educational Programs"
+  },
   "ciudadbots.home.title": {
-    "message": "Applied robotics and tech citizenship for Guatemala"
+    "message": "Applied technology programs ready to implement in the classroom"
   },
   "ciudadbots.home.lead": {
-    "message": "A hub of educational programs with urban-engineering challenges. Each program brings together its teaching sequence, module resources, curriculum alignment, and evaluation in one place."
+    "message": "We help educational institutions turn emerging technology into visible learning: ready-to-use content, teacher guidance, student views, evidence, showcase, and optional physical equipment."
+  },
+  "ciudadbots.home.requestDemo": {
+    "message": "Request demo"
   },
   "ciudadbots.home.exploreLink": {
     "message": "Explore CiudadBots"
   },
+  "ciudadbots.home.heroPanelLabel": {
+    "message": "GuateGeeks value summary"
+  },
+  "ciudadbots.home.metricMissions": {
+    "message": "CiudadBots missions"
+  },
+  "ciudadbots.home.metricPathways": {
+    "message": "growth pathways"
+  },
+  "ciudadbots.home.metricEvidenceValue": {
+    "message": "Evidence"
+  },
+  "ciudadbots.home.metricEvidence": {
+    "message": "for leadership and families"
+  },
+  "ciudadbots.home.promiseKicker": {
+    "message": "The real problem"
+  },
+  "ciudadbots.home.promiseTitle": {
+    "message": "Educational innovation does not last by buying equipment alone"
+  },
+  "ciudadbots.home.promiseSchoolsTitle": {
+    "message": "Institutions want differentiation"
+  },
+  "ciudadbots.home.promiseSchoolsBody": {
+    "message": "They need visible, modern programs they can defend in front of families, partners, and their education community."
+  },
+  "ciudadbots.home.promiseTeachersTitle": {
+    "message": "Teachers need structure"
+  },
+  "ciudadbots.home.promiseTeachersBody": {
+    "message": "Delivering kits is not enough. Schools need a clear path, ready resources, and support to implement without extra workload."
+  },
+  "ciudadbots.home.promiseLeadersTitle": {
+    "message": "Leadership needs evidence"
+  },
+  "ciudadbots.home.promiseLeadersBody": {
+    "message": "Every cycle should end with products, rubrics, visible learning, and a recommended next step."
+  },
+  "ciudadbots.home.ladderKicker": {
+    "message": "GuateGeeks pathway"
+  },
+  "ciudadbots.home.ladderTitle": {
+    "message": "Three levels to start small and grow with evidence"
+  },
+  "ciudadbots.home.exploradoresStatus": {
+    "message": "Validatable concept"
+  },
+  "ciudadbots.home.exploradoresTitle": {
+    "message": "Explorers"
+  },
+  "ciudadbots.home.exploradoresBody": {
+    "message": "A first contact with applied technology for schools that want to test with low risk: short experiences, simple challenges, and initial evidence."
+  },
+  "ciudadbots.home.constructoresStatus": {
+    "message": "Anchor product available"
+  },
+  "ciudadbots.home.constructoresTitle": {
+    "message": "Builders"
+  },
+  "ciudadbots.home.constructoresBody": {
+    "message": "Structured programs where students build, program, test, and explain solutions. CiudadBots lives here."
+  },
+  "ciudadbots.home.creadoresStatus": {
+    "message": "Future advanced pathway"
+  },
+  "ciudadbots.home.creadoresTitle": {
+    "message": "Creators"
+  },
+  "ciudadbots.home.creadoresBody": {
+    "message": "A premium level for original projects with impact: prototypes, documentation, public presentation, and connection to real needs."
+  },
+  "ciudadbots.home.featuredKicker": {
+    "message": "Featured product"
+  },
+  "ciudadbots.home.featuredBody": {
+    "message": "An applied robotics program for lower secondary with 12 urban missions: mapping, delivery, logistics, infrastructure, elevators, rescue, and more. Includes a teacher guide, student view, base programs, rubrics, and final showcase."
+  },
+  "ciudadbots.home.viewTeacherGuide": {
+    "message": "View teacher guide"
+  },
   "ciudadbots.home.studentModeLink": {
-    "message": "Student view"
+    "message": "View student mode"
   },
-  "ciudadbots.home.programsTitle": {
-    "message": "Programs"
+  "ciudadbots.home.featureOne": {
+    "message": "12 modules with city challenges"
   },
-  "ciudadbots.home.cicloBasicoBadge": {
-    "message": "Lower Secondary"
+  "ciudadbots.home.featureTwo": {
+    "message": "CNB, ISTE, CSTA, and NGSS alignment"
   },
-  "ciudadbots.home.ciudadbotsCardBody": {
-    "message": "12 LEGO SPIKE robotics missions with city challenges: mapping, delivery, logistics, infrastructure, emergency response, and more. Includes a teacher guide, base programs, and rubrics."
+  "ciudadbots.home.featureThree": {
+    "message": "Compact, semester, and annual routes"
   },
-  "ciudadbots.home.viewProgram": {
-    "message": "View program →"
+  "ciudadbots.home.featureFour": {
+    "message": "Showcase and final evaluation"
   },
-  "ciudadbots.home.comingSoonBadge": {
-    "message": "Coming soon"
+  "ciudadbots.home.implementationKicker": {
+    "message": "Implementation"
   },
-  "ciudadbots.home.newProgramsTitle": {
-    "message": "New programs"
+  "ciudadbots.home.implementationTitle": {
+    "message": "From diagnosis to showcase without improvising"
   },
-  "ciudadbots.home.newProgramsBody": {
-    "message": "This hub is designed to grow. GuateGeeks' next educational programs will appear here, each with its own path and resources."
+  "ciudadbots.home.stepOneTitle": {
+    "message": "Diagnose"
+  },
+  "ciudadbots.home.stepOneBody": {
+    "message": "We define goals, ages, available time, equipment, and maturity level."
+  },
+  "ciudadbots.home.stepTwoTitle": {
+    "message": "Select path"
+  },
+  "ciudadbots.home.stepTwoBody": {
+    "message": "We choose demo, pilot, semester, or annual program based on the institutional objective."
+  },
+  "ciudadbots.home.stepThreeTitle": {
+    "message": "Teacher support"
+  },
+  "ciudadbots.home.stepThreeBody": {
+    "message": "We prepare the teacher with session flow, roles, resources, and evidence criteria."
+  },
+  "ciudadbots.home.stepFourTitle": {
+    "message": "Execute and measure"
+  },
+  "ciudadbots.home.stepFourBody": {
+    "message": "Students build, test, document, and present visible results."
+  },
+  "ciudadbots.home.hardwareKicker": {
+    "message": "Physical equipment"
+  },
+  "ciudadbots.home.hardwareTitle": {
+    "message": "Hardware supports adoption; it does not block the sale"
+  },
+  "ciudadbots.home.hardwareOwn": {
+    "message": "Use compatible equipment from the school."
+  },
+  "ciudadbots.home.hardwareRent": {
+    "message": "Rent GuateGeeks equipment for pilots or cycles."
+  },
+  "ciudadbots.home.hardwareBuy": {
+    "message": "Recommend or sell kits for self-run implementation."
+  },
+  "ciudadbots.home.hardwareService": {
+    "message": "Run a full-service model with facilitation and equipment."
+  },
+  "ciudadbots.home.evidenceKicker": {
+    "message": "Evidence"
+  },
+  "ciudadbots.home.evidenceTitle": {
+    "message": "Every program should leave something leadership can show"
+  },
+  "ciudadbots.home.evidenceArtifacts": {
+    "message": "Photos, prototypes, code, or team logs."
+  },
+  "ciudadbots.home.evidenceRubrics": {
+    "message": "Rubrics for construction, logic, process, and communication."
+  },
+  "ciudadbots.home.evidenceReport": {
+    "message": "Impact report for leadership, families, or sponsors."
+  },
+  "ciudadbots.home.evidenceShowcase": {
+    "message": "Mini showcase or final learning presentation."
+  },
+  "ciudadbots.home.packagesKicker": {
+    "message": "Ways to start"
+  },
+  "ciudadbots.home.packagesTitle": {
+    "message": "Packages designed to validate quickly and grow with confidence"
+  },
+  "ciudadbots.home.packageDemoTitle": {
+    "message": "Demo Experience"
+  },
+  "ciudadbots.home.packageDemoBody": {
+    "message": "A demonstration session to open the conversation and show potential."
+  },
+  "ciudadbots.home.packagePilotTitle": {
+    "message": "Institutional pilot"
+  },
+  "ciudadbots.home.packagePilotBody": {
+    "message": "4 to 6 sessions with evidence, teacher onboarding, and mini showcase."
+  },
+  "ciudadbots.home.packageSemesterTitle": {
+    "message": "Semester program"
+  },
+  "ciudadbots.home.packageSemesterBody": {
+    "message": "A 12 to 24 session path with follow-up and final report."
+  },
+  "ciudadbots.home.packageAnnualTitle": {
+    "message": "Annual program"
+  },
+  "ciudadbots.home.packageAnnualBody": {
+    "message": "A deeper implementation with portfolio, showcase, and expansion by levels."
+  },
+  "ciudadbots.home.ctaKicker": {
+    "message": "Next step"
+  },
+  "ciudadbots.home.ctaTitle": {
+    "message": "Let's test a measurable pilot before October"
+  },
+  "ciudadbots.home.ctaBody": {
+    "message": "We can start with a CiudadBots demo or pilot, use school-owned equipment or GuateGeeks equipment, and close with evidence ready for leadership."
+  },
+  "ciudadbots.home.ctaPrimary": {
+    "message": "Request demo or pilot"
+  },
+  "ciudadbots.home.ctaSecondary": {
+    "message": "Review CiudadBots"
   },
   "ciudadbots.achievementIndicators.howToReadTitle": {
     "message": "How to read this alignment",

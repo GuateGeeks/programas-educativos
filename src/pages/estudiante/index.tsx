@@ -14,7 +14,7 @@ const STUDENT_MODULE_ID = 'm1';
  * tracker, no rubric. Currently serves the Mapper Bot build (the only module
  * with a visual guide today).
  */
-export default function EstudiantePage(): JSX.Element {
+export default function EstudiantePage() {
   const {i18n} = useDocusaurusContext();
   const module = getModule(STUDENT_MODULE_ID);
   const title = getModuleTitle(STUDENT_MODULE_ID, i18n.currentLocale);

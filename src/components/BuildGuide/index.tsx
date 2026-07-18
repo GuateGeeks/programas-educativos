@@ -21,7 +21,7 @@ function pagePath(imageBase: string, page: number): string {
  * time with prev/next (clamped), a page counter, and an enlarged lightbox view.
  * Reused by the teacher module pages and the student build view.
  */
-export default function BuildGuide({guide, title, initialPage = 1}: BuildGuideProps): JSX.Element {
+export default function BuildGuide({guide, title, initialPage = 1}: BuildGuideProps) {
   const {pages, imageBase} = guide;
   const [page, setPage] = useState(Math.min(Math.max(initialPage, 1), pages));
   const [lightbox, setLightbox] = useState(false);

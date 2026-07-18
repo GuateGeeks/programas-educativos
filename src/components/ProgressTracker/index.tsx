@@ -44,7 +44,7 @@ function valuesFor(state: TrackerState, item: TrackerItem): boolean[] {
  * localStorage, and shows aggregate progress. Hydrates after mount so SSR and
  * first client render match (both start empty).
  */
-export default function ProgressTracker(): JSX.Element {
+export default function ProgressTracker() {
   const {i18n} = useDocusaurusContext();
   const [state, setState] = useState<TrackerState>({});
   const [mounted, setMounted] = useState(false);
