@@ -10,7 +10,7 @@ interface ImpactTableProps {
  * Grade-comparison table (Nivel/Grado/Eje × grade columns), ported from the
  * original HTML's `.impact-table`/`.impact-row`/`.impact-cell` pattern.
  */
-export default function ImpactTable({rows}: ImpactTableProps): JSX.Element {
+export default function ImpactTable({rows}: ImpactTableProps) {
   const [header, ...body] = rows;
   return (
     <div className={styles.table}>

@@ -8,7 +8,7 @@ import CnbBlock from '@site/src/components/CnbBlock';
  * overview page. Wraps useStandardsContent() so MDX can render it as a plain
  * element instead of calling a hook inline.
  */
-export default function TransversalCnbBlock(): JSX.Element {
+export default function TransversalCnbBlock() {
   const {transversalCnb} = useStandardsContent();
   return (
     <CnbBlock

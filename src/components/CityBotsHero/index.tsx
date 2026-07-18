@@ -8,7 +8,7 @@ import styles from './styles.module.css';
  * and `three` is imported dynamically inside the effect, so the module never
  * loads WebGL/browser APIs during SSR or the production build.
  */
-function HeroCanvas(): JSX.Element {
+function HeroCanvas() {
   const mountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -246,7 +246,7 @@ function HeroCanvas(): JSX.Element {
   );
 }
 
-export default function CityBotsHero(): JSX.Element {
+export default function CityBotsHero() {
   return (
     <BrowserOnly
       fallback={

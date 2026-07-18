@@ -8,7 +8,7 @@ import InternationalAlignment from '@site/src/components/InternationalAlignment'
  * together on both the overview page and the Showcase page — this component
  * mirrors that pairing so it isn't hand-assembled twice.
  */
-export default function StandardsProgression(): JSX.Element {
+export default function StandardsProgression() {
   return (
     <>
       <BasicoAlignment />
