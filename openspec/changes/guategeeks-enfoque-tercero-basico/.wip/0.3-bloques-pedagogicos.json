@@ -1,0 +1,338 @@
+{
+ "01-sistemas-del-robot.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿De qué subsistemas está hecho un robot autónomo y cómo se comunican entre sí?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Antes de armar o programar, el equipo necesita un mapa mental del robot. Esta sesión separa el\n    SMARS en tres subsistemas —mecánico, eléctrico y lógico— y hace explícito que por unos cables\n    viaja energía y por otros viaja información. Ese diagrama es la referencia que se usará para\n    diagnosticar fallas durante todo el programa.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Subsistema mecánico, eléctrico y lógico',\n    'Flujo de energía frente a flujo de información',\n    'Sensor, actuador y controlador',\n    'Descomposición de un sistema',\n    'Documentación técnica con diagrama',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"¿Qué partes ves?\">\n    Mostrar el robot SMARS armado, o una fotografía si todavía no existe. Preguntar qué partes se\n    distinguen y para qué serviría cada una. Anotar en la pizarra todo lo que el grupo nombre, sin\n    corregir aún: orugas, motores, sensor, placa, batería, botones, buzzer.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Agrupar en tres subsistemas\">\n    Clasificar lo anotado en tres grupos: **mecánico** (chasis, orugas, dos motorreductores),\n    **eléctrico** (batería, interruptor, driver TB6612FNG, cableado) y **lógico** (Arduino, sensor\n    HC-SR04, dos botones, buzzer). Discutir el caso interesante: los motores aparecen en el grupo\n    mecánico y en el eléctrico. ¿Por qué?\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Diagrama anotado del sistema\">\n    Cada equipo dibuja el robot completo con los componentes etiquetados y las conexiones entre\n    ellos. Se piden dos tipos de flecha distintos: uno para energía y otro para información. Al\n    terminar, fotografiar el diagrama para el expediente del equipo.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Validar contra el robot real\">\n    Intercambiar diagramas entre equipos y buscar diferencias. El docente valida la precisión.\n    Cerrar registrando qué conexión costó más entender y por qué, porque ese punto es el candidato\n    natural a confundir durante el cableado de la sesión 7.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Arduino Uno, driver TB6612FNG y los dos motorreductores N20 para mostrar en físico',\n    'Sensor HC-SR04, dos pulsadores y buzzer pasivo',\n    'Portapilas 6×AAA con batería NiMH (sin conectar)',\n    'Pliegos o pizarra y marcadores de dos colores',\n    'Cámara o teléfono para fotografiar el diagrama',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    El motor no se conecta directamente a la batería, sino a través del driver TB6612FNG, que a su\n    vez obedece al Arduino. Expliquen por escrito por qué existe ese intermediario. Pista: comparen\n    cuánta corriente necesita un motor con cuánta puede entregar un pin del Arduino.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Diagrama con los tres subsistemas identificados y sus componentes etiquetados',\n    'Flechas que distinguen flujo de energía de flujo de información',\n    'Respuesta escrita del reto sobre el papel del driver',\n    'Registro de la conexión que resultó más difícil de entender',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "02-seguridad-y-energia.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Qué puede salir mal al conectar la batería, y cómo lo evitamos antes de que ocurra?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    El SMARS funciona con 7.2 V y motores que piden bastante corriente. Nada de eso es peligroso\n    para las personas, pero sí lo es para los componentes: un cortocircuito quema el driver en\n    segundos y un capacitor invertido puede reventar. Esta sesión convierte esos riesgos en una\n    lista concreta de verificaciones, y establece la regla que sostiene todo el programa: se revisa\n    antes de energizar, no después de que algo huela raro.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Voltaje, corriente y por qué el motor no va al pin 5V',\n    'Cortocircuito frente a circuito abierto',\n    'Polaridad en capacitores electrolíticos',\n    'Tierra común entre subsistemas',\n    'Verificación previa como práctica de ingeniería',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"¿Qué es lo peor que puede pasar?\">\n    Mostrar la batería, el Arduino y el driver sobre la mesa. Preguntar qué creen que ocurriría si\n    se conectaran mal. Recoger las respuestas sin corregir. Luego mostrar (o describir) un driver\n    quemado: la conversación cambia cuando el daño es concreto.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Medir antes de creer\">\n    Con la batería desconectada del robot, medir su voltaje con el multímetro: debe rondar 7.2 V.\n    Comparar con lo que tolera cada componente. Introducir la distinción clave: por el pin 5V del\n    Arduino pasa poca corriente, y los motores piden mucha, por eso su energía viene del\n    interruptor directo al driver y nunca del Arduino.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Completar y firmar el checklist\">\n    Cada equipo recorre el checklist de seguridad punto por punto sobre su propio kit, anotando los\n    valores medidos donde se piden. Al terminar, el responsable de seguridad y el docente firman.\n    Fotografiar el checklist completado para el expediente.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Reglas propias del equipo\">\n    Cada equipo agrega dos reglas de seguridad propias, específicas de su espacio de trabajo: dónde\n    guardan la batería, quién autoriza energizar, qué hacen si huele a quemado. Las reglas que uno\n    mismo escribe se cumplen más que las que le imponen.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Multímetro (uno por cada dos o tres equipos)',\n    'Portapilas 6×AAA con batería NiMH cargada',\n    'Driver TB6612FNG y capacitor de 470 µF para inspección',\n    'Checklist de seguridad impreso, uno por equipo',\n    'Cámara para registrar el checklist firmado',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Escriban dos reglas de seguridad propias del equipo, y para cada una completen la frase «si no\n    cumplimos esta regla, entonces…» con una consecuencia concreta y verificable. Una regla sin\n    consecuencia clara no cambia el comportamiento de nadie.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Checklist completado con los voltajes medidos anotados',\n    'Firma del responsable de seguridad y del docente',\n    'Las dos reglas propias con su consecuencia asociada',\n    'Fotografía del área de trabajo ordenada',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "03-slicer-y-tolerancias.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    Si el diseño dice 20 milímetros, ¿por qué la pieza impresa mide 20.3?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Entre el modelo digital y la pieza física hay una máquina que deposita plástico caliente capa\n    por capa, y ese proceso tiene límites. Entender la tolerancia no es un detalle técnico: decide\n    si un eje entra o no en su alojamiento, y por lo tanto si las orugas girarán libres o con roce.\n    Esta sesión introduce el slicer y produce el primer dato experimental medido del programa.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Archivo STL como malla de triángulos',\n    'Altura de capa, relleno y velocidad',\n    'Tolerancia y error de fabricación',\n    'Medición con calibrador o regla',\n    'Compromiso entre calidad y tiempo',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"De la pantalla al plástico\">\n    Abrir un archivo STL y girarlo en pantalla. Preguntar cómo creen que se convierte eso en un\n    objeto sólido. Pasar de mano en mano una pieza ya impresa y pedir que localicen las capas: la\n    respuesta está a la vista.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Los tres parámetros que deciden\">\n    En el slicer, modificar altura de capa, relleno y velocidad, observando cómo cambia el tiempo\n    estimado. Plantear la pregunta que guía la sesión: ¿cuál de los tres afecta más la precisión de\n    una medida, y cuál solo afecta la resistencia de la pieza?\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Preparar, imprimir y medir\">\n    Cada equipo carga las piezas del chasis SMARS, ajusta los parámetros acordados y genera el\n    G-code. Mientras imprime (o con piezas ya disponibles), medir cinco dimensiones críticas con\n    calibrador y compararlas con las del diseño, anotando el error de cada una.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Dónde se concentra el error?\">\n    Comparar las tablas entre equipos. ¿El error es parejo o se concentra en cierto tipo de\n    dimensión, como los agujeros? Formular una hipótesis sobre la causa. Se comprobará en la\n    sesión 5, cuando esas piezas tengan que encajar de verdad.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Computadora con slicer instalado: PrusaSlicer, Cura, OrcaSlicer o Bambu Studio',\n    'Archivos STL del chasis SMARS público',\n    'Impresora FDM con filamento PLA, o piezas impresas por encargo',\n    'Calibrador o regla milimetrada',\n    'Formato de tabla de mediciones impreso',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Midan cinco dimensiones críticas de una pieza impresa y compárenlas con el diseño. Construyan\n    una tabla con cuatro columnas: dimensión, valor esperado, valor medido y error. Al final,\n    respondan con evidencia: ¿el error es constante o depende del tamaño de la medida?\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Tabla de cinco mediciones con su error calculado',\n    'Captura de los parámetros usados en el slicer',\n    'Hipótesis escrita sobre dónde se concentra el error',\n    'Fotografía de la pieza medida junto al instrumento',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "04-impresion-y-control-de-calidad.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Cómo se decide, sin adivinar, si una pieza sirve para el robot?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    En la sesión anterior el equipo midió y encontró error. Ahora tiene que usar esos números para\n    decidir. Aceptar o rechazar no es cuestión de gusto: se define un criterio antes de mirar las\n    piezas, y luego se aplica igual a todas. Esa inversión del orden —criterio primero, inspección\n    después— es lo que distingue un control de calidad de una opinión.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Criterio de aceptación definido antes de inspeccionar',\n    'Defectos típicos: warping, desplazamiento de capa, sobreextrusión',\n    'Clasificación y trazabilidad',\n    'Prueba de encaje como verificación funcional',\n    'Ajuste de parámetros a partir de defectos observados',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Dos piezas, una decisión\">\n    Mostrar dos piezas: una correcta y otra con un defecto visible. Preguntar cuál usarían y por\n    qué. Presionar un poco: ¿y si la defectuosa fuera la única disponible? Ahí aparece la necesidad\n    de un criterio explícito en lugar de una impresión personal.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Definir el criterio\">\n    El grupo acuerda su criterio de aceptación antes de tocar las piezas: tolerancia dimensional\n    admisible, superficies sin deformación, ejes que giran libres, soportes removibles sin dañar.\n    Se escribe en la pizarra y no se cambia durante la inspección.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Inspeccionar el lote completo\">\n    Cada equipo inspecciona todas sus piezas aplicando el criterio acordado. Por cada una registra\n    aceptada o rechazada, y en caso de rechazo, el defecto concreto. Las piezas rechazadas se\n    fotografían: son la evidencia para ajustar la próxima impresión.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Del defecto al parámetro\">\n    Para cada tipo de defecto encontrado, proponer qué parámetro del slicer podría corregirlo.\n    Cerrar conectando con lo que viene: las piezas aceptadas son las que se armarán en la sesión 5,\n    y si el criterio fue laxo, se notará entonces.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Todas las piezas impresas del chasis y las orugas',\n    'Calibrador o regla milimetrada',\n    'Formato de control de calidad impreso',\n    'Cámara para documentar piezas rechazadas',\n    'Pinza de corte para retirar soportes',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Inspeccionen el lote completo y produzcan un reporte de control de calidad con el veredicto de\n    cada pieza. Para cada rechazo, propongan el ajuste de parámetro que lo corregiría y expliquen\n    por qué creen que funcionaría. Un rechazo sin propuesta de mejora es información incompleta.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Criterio de aceptación escrito antes de la inspección',\n    'Reporte con el veredicto de cada pieza y el defecto en los rechazos',\n    'Fotografías de las piezas rechazadas',\n    'Propuesta de ajuste de parámetros para la próxima impresión',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "05-ensamblaje-de-orugas.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Por qué un robot con dos motores iguales no avanza en línea recta?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    El SMARS se mueve por orugas, no por ruedas: cada lado avanza independientemente y girar\n    consiste en hacer que un lado vaya distinto del otro. Esta sesión arma esa mecánica y, de paso,\n    descubre algo incómodo: dos motorreductores del mismo modelo no se comportan igual. Esa\n    diferencia física es real, se puede medir hoy, y más adelante se corregirá con código.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Tracción por orugas y dirección diferencial',\n    'Motorreductor: relación entre par y velocidad',\n    'Fricción y alineación del eje',\n    'Tolerancia de encaje aplicada al armado',\n    'Variabilidad entre componentes nominalmente iguales',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"¿Cómo gira algo que no tiene volante?\">\n    Mostrar una excavadora o un tanque en imagen. Preguntar cómo cambian de dirección sin ruedas\n    orientables. Guiar hasta la idea de dirección diferencial: si un lado va más rápido que el\n    otro, el vehículo gira; si van en sentido opuesto, gira sobre su propio eje.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Anatomía de la transmisión\">\n    Identificar el recorrido del movimiento: motor, eje, rueda motriz, eslabones, rueda libre.\n    Localizar dónde puede aparecer fricción. Verificar con las piezas aceptadas en la sesión 4 que\n    los ejes entran sin forzar y sin holgura excesiva.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Armar y medir la diferencia\">\n    Montar el chasis, fijar los dos motorreductores y cerrar ambas orugas con sus eslabones. Con el\n    robot levantado y sin energía, dar a cada oruga el mismo impulso manual y contar cuántas\n    vueltas completa antes de detenerse. Repetir tres veces por lado y anotar.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"La asimetría que hay que recordar\">\n    Comparar los conteos de ambos lados. Casi siempre difieren. Discutir posibles causas: fricción\n    desigual, tensión distinta de la oruga, variación del propio motor. Registrar el dato: será la\n    referencia contra la que se comparen los offsets de la sesión 11.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Piezas impresas aceptadas en la sesión 4',\n    'Dos motorreductores N20 de 6 V',\n    'Segmentos de filamento para los eslabones de oruga',\n    'Destornilladores pequeños, pinza de punta y pinza de corte',\n    'Cronómetro y formato para anotar los conteos',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Con el robot levantado, den a cada oruga el mismo impulso manual y cuenten las vueltas hasta que\n    se detenga. Tres intentos por lado. Calculen el promedio de cada lado y la diferencia entre\n    ambos. Anoten también qué lado gira más libre: esa asimetría se compensará por software en la\n    sesión 11, y entonces compararán si el número coincide.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Robot armado con ambas orugas girando sin roce perceptible',\n    'Tabla con tres conteos por lado y sus promedios',\n    'Diferencia calculada entre lado izquierdo y derecho',\n    'Nota sobre qué lado resultó más libre y una hipótesis de por qué',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "06-botones-y-buzzer.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Cómo sabe el robot que alguien presionó un botón, y cómo responde sin tener pantalla?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    El SMARS se opera sin teléfono ni Bluetooth: dos botones deciden el modo y el arranque, y un\n    buzzer confirma cada acción. Esta sesión establece esa interfaz local y, de paso, introduce dos\n    ideas que sorprenden: un botón conectado a tierra que se lee como HIGH en reposo, y la necesidad\n    de esperar a que el dedo se levante para no contar una pulsación varias veces.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Entrada digital con INPUT_PULLUP',\n    'Lógica invertida: pulsado = LOW',\n    'Antirrebote por tiempo',\n    'Generación de tono con tone()',\n    'Monitor Serie como herramienta de diagnóstico',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Un robot sin pantalla\">\n    Preguntar cómo sabría el equipo que el robot entendió una orden, si no tiene pantalla ni\n    pantalla ni conexión al teléfono. Recoger propuestas: luces, sonidos, movimiento. Presentar la\n    decisión del diseño: dos botones de entrada y un buzzer de salida.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"La resistencia que no se ve\">\n    Conectar un botón entre el pin y GND y medir con el multímetro qué lee el pin en reposo.\n    Introducir `INPUT_PULLUP`: el Arduino activa una resistencia interna que mantiene el pin en\n    HIGH, y presionar el botón lo baja a LOW. Discutir por qué el diseño elige esa convención en\n    lugar de la intuitiva.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Cargar y verificar la interfaz\">\n    Cablear los dos pulsadores (D2 y D3, cada uno a GND) y el buzzer pasivo (A0). Cargar el sketch.\n    Verificar en el Monitor Serie a 9600 baudios que cada botón imprime su nombre, y de oído que\n    MODO suena más grave que INICIO. Si un botón dispara dos veces por pulsación, ahí está el\n    antirrebote.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Qué falló y en qué capa?\">\n    Cuando un botón no responde, el problema puede estar en el cable, en el pin declarado o en el\n    tiempo de antirrebote. Practicar el diagnóstico por capas: primero el Monitor Serie, después el\n    multímetro, al final el código. Registrar qué capa resultó ser la culpable.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Arduino Uno con cable USB',\n    'Dos pulsadores momentáneos y cables Dupont',\n    'Buzzer pasivo de 5 V',\n    'Multímetro para verificar continuidad',\n    'Computadora con Arduino IDE 2 y permiso de puerto serie',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Modifiquen el sketch en dos frentes y documenten el resultado. Primero, cambien las frecuencias\n    de los tonos: busquen dos que se distingan con claridad en un aula con ruido. Segundo, bajen la\n    ventana de antirrebote de 60 ms hasta encontrar el valor donde empiezan a aparecer pulsaciones\n    dobles, y anoten ese umbral. Es el primer dato experimental del programa.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Video corto donde cada botón imprime en Serie y suena distinto',\n    'Tabla con las frecuencias probadas y la elegida, con su justificación',\n    'Valor de antirrebote donde aparecen pulsaciones dobles',\n    'Registro de la capa donde estuvo la falla, si hubo alguna',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"01_botones_y_buzzer.ino\" />"
+  ]
+ },
+ "07-dos-motores-y-direccion.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Cómo le dice un pin digital a un motor no solo que gire, sino en qué sentido y qué tan rápido?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Un pin del Arduino no puede alimentar un motor: entrega poca corriente. El TB6612FNG hace de\n    intermediario, y necesita tres señales por canal: dos que definen el sentido y una que modula\n    la velocidad. Además tiene un pin de habilitación, STBY, que si queda en LOW mantiene todo\n    apagado por más correcto que esté el resto. Esa es la falla número uno de esta sesión.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Driver como intermediario de potencia',\n    'STBY: habilitación global del integrado',\n    'Dirección por par de pines complementarios',\n    'PWM y velocidad proporcional',\n    'Velocidad con signo: un solo número para sentido y magnitud',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Tres cables por motor\">\n    Recordar el diagrama de la sesión 1: el motor no se conecta al Arduino sino al driver.\n    Preguntar cuántas señales harían falta para controlar sentido y velocidad. Contrastar las\n    propuestas con la realidad: dos pines de dirección más uno de PWM, por canal.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Leer la función motor()\">\n    Analizar la función `motor()` del sketch antes de cargarlo. Recibe una velocidad con signo y la\n    descompone: el signo decide qué pin de dirección va en HIGH, y el valor absoluto se envía como\n    PWM. Preguntar qué ocurre cuando la velocidad es exactamente cero.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Cablear, levantar y cargar\">\n    Cablear el driver completo: STBY a D4, PWMA a D5, PWMB a D6, AIN1 y AIN2 a D7 y D8, BIN1 y BIN2\n    a D9 y D10. Alimentar VM desde el interruptor, nunca desde el pin 5V. **Levantar el robot.**\n    Cargar el sketch y verificar la secuencia: adelante, atrás y giro a la izquierda.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Identificar qué motor es cuál\">\n    Determinar cuál motor quedó en el canal A y cuál en el B, y si alguno gira al revés de lo\n    esperado. Anotarlo: importa para interpretar el giro en las sesiones siguientes. Si nada se\n    movió, la primera sospecha es siempre STBY.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Robot armado en la sesión 5, con soporte para levantarlo',\n    'Driver TB6612FNG montado y cableado según la tabla de pines',\n    'Capacitor de 470 µF entre VM y GND, respetando polaridad',\n    'Portapilas 6×AAA cargado, con interruptor',\n    'Multímetro y cronómetro',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    El sketch usa una velocidad segura de 160. Bajen ese valor progresivamente y encuentren, **para\n    cada oruga por separado**, el PWM mínimo con el que aún empieza a moverse. Anoten ambos\n    valores. Casi nunca coinciden, y esa diferencia es la misma asimetría que midieron a mano en la\n    sesión 5: ahora tienen su equivalente eléctrico.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Video de la secuencia completa con el robot levantado',\n    'PWM mínimo de cada oruga, con el método usado para determinarlo',\n    'Registro de qué motor corresponde al canal A y cuál al B',\n    'Comparación entre la asimetría medida hoy y la de la sesión 5',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"02_prueba_motores.ino\" />"
+  ]
+ },
+ "08-sensor-ultrasonico.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Cómo mide una distancia un sensor que solo sabe contar tiempo?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    El HC-SR04 no mide distancia: emite un pulso ultrasónico y mide cuánto tarda el eco en volver.\n    La distancia es una inferencia a partir del tiempo y de la velocidad del sonido. Esta sesión\n    hace explícita esa conversión, y luego la somete a prueba: los sensores tienen error, zonas\n    muertas y lecturas fallidas, y el programa debe estar preparado para eso.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Tiempo de vuelo como método de medición indirecta',\n    'Conversión microsegundos a centímetros: el divisor 58',\n    'Valor centinela cuando no llega eco',\n    'Error de medición y zona muerta',\n    'Repetición como forma de estimar confiabilidad',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Medir sin tocar\">\n    Preguntar cómo medirían la distancia a una pared sin acercarse. Mencionar el eco y los\n    murciélagos. Presentar el sensor: un emisor y un receptor, y entre ellos un cronómetro muy\n    preciso.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Derivar el 58 en la pizarra\">\n    Con la velocidad del sonido, calcular colectivamente cuántos microsegundos tarda el pulso en\n    recorrer un centímetro de ida y vuelta. Llegar a 58 antes de verlo en el código. Discutir qué\n    debería devolver la función cuando el eco nunca llega: el sketch devuelve 400 cm, no cero.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Caracterizar el sensor\">\n    Conectar TRIG a D12 y ECHO a D11. Cargar el sketch y abrir el Monitor Serie. Colocar un objeto\n    plano a 10, 20, 30 y 40 cm medidos con cinta métrica, y anotar varias lecturas en cada\n    distancia. Buscar además la distancia mínima a la que el sensor deja de ser confiable.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Cuánto le creemos al sensor?\">\n    Calcular el error en cada distancia y ver si crece, se mantiene o es errático. Conectar con la\n    decisión de diseño que viene: el firmware autónomo toma tres lecturas y usa la mediana. Con los\n    datos en la mano, discutir por qué la mediana y no el promedio.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Arduino Uno con sensor HC-SR04 conectado a D11 y D12',\n    'Cinta métrica o regla larga',\n    'Objeto plano y rígido, como un libro o una carpeta',\n    'Cinta adhesiva para marcar distancias en el piso o la mesa',\n    'Formato de tabla para varias lecturas por distancia',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Caractericen el sensor a 10, 20, 30 y 40 cm, con al menos cinco lecturas por distancia. Calculen\n    el error promedio en cada una y determinen si el error crece con la distancia. Busquen además\n    la zona muerta: la distancia mínima por debajo de la cual las lecturas dejan de tener sentido.\n    Ese dato explica por qué el umbral de obstáculo del firmware está en 24 cm y no en 5.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Tabla con cinco lecturas por cada una de las cuatro distancias',\n    'Error promedio calculado por distancia',\n    'Valor estimado de la zona muerta',\n    'Explicación escrita de por qué el firmware usa mediana de tres lecturas',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"03_prueba_ultrasonido.ino\" />"
+  ]
+ },
+ "09-lectura-de-codigo.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Se puede saber qué hará un programa con solo leerlo?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Hasta ahora cada sketch probaba un subsistema. Este los integra todos y añade algo nuevo: el\n    robot mantiene un **estado** y decide según él. Leer código ajeno e inferir su comportamiento es\n    una habilidad profesional concreta, y se practica mejor antes de ejecutarlo, cuando la única\n    fuente de verdad es el propio texto.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Máquina de estados: DETENIDO, EXPLORAR, DEMOSTRACION',\n    'Transición disparada por evento, aquí un botón',\n    'Filtro de mediana sobre tres lecturas',\n    'Aleatoriedad deliberada para escapar de esquinas',\n    'Constantes calibrables frente a lógica fija',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Predecir sin ejecutar\">\n    Plantear el reto de la sesión: al final, cada equipo entrega por escrito qué hará el robot ante\n    un obstáculo. No se carga el código. La única herramienta es leerlo.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Localizar las seis piezas\">\n    Recorrer el sketch identificando: las constantes de pines, los parámetros calibrables, las\n    funciones de motores, la función de distancia, la función de evasión y las decisiones del\n    `loop`. Marcarlas en una copia impresa. Notar que las tres primeras ya se conocen de las\n    sesiones 6, 7 y 8.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Dibujar la máquina de estados\">\n    Cada equipo dibuja el diagrama de estados: los tres estados como nodos, y las transiciones como\n    flechas etiquetadas con lo que las dispara. Añadir aparte la secuencia interna de\n    `evitarObstaculo()`, que no es un estado sino una maniobra completa.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Por qué al azar?\">\n    La dirección y la duración del giro son aleatorias. Preguntar qué pasaría si siempre girara al\n    mismo lado el mismo tiempo, y llevar el razonamiento hasta una esquina: repetiría la misma\n    maniobra indefinidamente. La aleatoriedad no es descuido, es la solución a ese problema.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Copia impresa del sketch, una por equipo',\n    'Marcadores de al menos tres colores para señalar secciones',\n    'Pliegos para el diagrama de estados',\n    'Computadora solo para consultar el código, sin cargarlo',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Escriban, antes de ejecutar nada, la secuencia exacta de lo que hará el robot desde que detecta\n    un obstáculo hasta que reanuda la marcha. Incluyan el orden de las acciones y los tiempos que\n    aparecen en el código. En la sesión 10 compararán su predicción con el comportamiento real, y\n    lo interesante será justamente donde no coincidan.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Sketch impreso con las seis secciones marcadas',\n    'Diagrama de estados con transiciones etiquetadas',\n    'Predicción escrita de la maniobra de evasión, paso por paso',\n    'Explicación de por qué el giro es aleatorio',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"04_smars_autonomo.ino\" />"
+  ]
+ },
+ "10-integracion-autonoma.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Coincide lo que predijimos leyendo el código con lo que hace el robot en el piso?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Los subsistemas funcionaban por separado. Al integrarlos aparecen problemas que ninguna prueba\n    aislada mostró: el sensor lee distinto cuando el robot vibra, el giro real no dura lo que dice\n    el código porque las orugas patinan. Eso se llama integración, y es donde se va la mayor parte\n    del tiempo en ingeniería real.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Integración de subsistemas ya probados',\n    'Modos de operación seleccionables por botón',\n    'Umbral de decisión y su efecto en el comportamiento',\n    'Diferencia entre comportamiento esperado y observado',\n    'Depuración por capas cuando el sistema completo falla',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Sacar la predicción del cajón\">\n    Cada equipo recupera la predicción escrita en la sesión 9 y la deja a la vista. Nadie la\n    modifica. Se anuncia el criterio: no se trata de haber acertado, sino de explicar las\n    diferencias.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Recorrer los tres modos\">\n    Cargar el firmware. Con el robot levantado, usar el botón MODO para recorrer DETENIDO,\n    EXPLORAR y DEMOSTRACION, contando los pitidos que anuncian cada uno. Verificar que INICIO\n    arranca y pausa. Solo después bajar el robot al piso.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Operación autónoma\">\n    En un espacio despejado, poner el robot en EXPLORAR y dejarlo operar. Observar sin intervenir y\n    registrar: ¿avanza con espacio libre?, ¿frena y suena al detectar?, ¿retrocede, gira y reanuda?\n    Después modificar `UMBRAL_CM` a un valor mayor y a uno menor, y documentar cómo cambia el\n    comportamiento.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Dónde falló la predicción\">\n    Comparar predicción y realidad. Las diferencias suelen estar en los tiempos: el giro no produce\n    el ángulo esperado porque las orugas patinan. Discutir qué de eso se corrige con software y qué\n    es una limitación física. La sesión 11 aborda justamente la parte corregible.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Robot completo con todos los subsistemas verificados',\n    'Espacio despejado de al menos 2×2 metros',\n    'Obstáculos simples: cajas o libros',\n    'Cronómetro y cámara para registrar el comportamiento',\n    'La predicción escrita de la sesión 9',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Modifiquen `UMBRAL_CM` —está en 24— y documenten el efecto. Con un umbral muy bajo el robot\n    reacciona tarde y llega a tocar el obstáculo; con uno muy alto esquiva cosas que no estorban y\n    se queda sin espacio libre. Encuentren el valor que mejor funcione en su espacio y justifíquenlo\n    con lo que midieron en la sesión 8 sobre el error del sensor.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Video del robot operando en modo EXPLORAR sin intervención',\n    'Comparación escrita entre la predicción de la sesión 9 y lo observado',\n    'Tabla con al menos tres valores de umbral probados y su efecto',\n    'Umbral elegido con su justificación',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"04_smars_autonomo.ino\" />"
+  ]
+ },
+ "11-calibracion.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    Si las dos orugas nunca serán idénticas, ¿cómo logramos que el robot avance recto?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Dos motores del mismo modelo no giran igual: lo comprobaron con la mano en la sesión 5 y con el\n    PWM mínimo en la sesión 7. Hay dos caminos: perseguir componentes perfectos, o aceptar la\n    diferencia y compensarla. La ingeniería casi siempre toma el segundo. Este asistente permite\n    encontrar la compensación desde el Monitor Serie, sin recompilar entre intento e intento.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Calibración como compensación de una asimetría física',\n    'Offset independiente por canal',\n    'Ajuste iterativo guiado por observación',\n    'Repetibilidad: tres ensayos en lugar de uno',\n    'Trasladar un parámetro hallado a otro programa',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Traer la evidencia previa\">\n    Recuperar los dos datos de asimetría: el conteo de vueltas a mano de la sesión 5 y el PWM\n    mínimo por oruga de la sesión 7. Preguntar si ambos apuntan al mismo lado como el más rápido.\n    Cuando coinciden, la medición se valida sola.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Cinco comandos\">\n    Revisar el asistente: `i+` e `i-` ajustan la oruga izquierda, `d+` y `d-` la derecha, y `p`\n    ejecuta una prueba de dos segundos con los valores actuales. Los ajustes se suman a una\n    velocidad base de 150. Discutir la lógica de corrección: si el robot se desvía a la derecha, el\n    lado izquierdo va más rápido, así que se baja el izquierdo.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Encontrar los offsets\">\n    Marcar una línea recta en el piso y alinear el robot sobre ella. Cargar el asistente, ejecutar\n    `p` y observar la desviación. Ajustar y repetir hasta que recorra los dos segundos sin\n    desviarse apreciablemente. Anotar los valores finales de I y D.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Se repite?\">\n    Repetir la prueba tres veces con los mismos offsets y registrar el resultado de cada una. Un\n    ajuste que solo funciona una vez no es una calibración, es una casualidad. Discutir qué otras\n    variables pueden afectar entre ensayos: carga de batería, tipo de piso, tensión de la oruga.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Robot completo y cable USB',\n    'Superficie plana con una línea recta marcada, al menos 2 metros',\n    'Cinta métrica para medir la desviación lateral',\n    'Batería con carga suficiente y estable',\n    'Formato para registrar los tres ensayos',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Encuentren los offsets que hacen avanzar recto al robot y verifiquen con tres ensayos que se\n    repiten. Después trasládenlos a `04_smars_autonomo`, sumándolos a las velocidades de la función\n    `mover()`, y comprueben si la trayectoria en modo EXPLORAR mejora. Finalmente, comparen: ¿el\n    lado que la calibración corrigió es el mismo que identificaron en la sesión 5?\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Valores finales de offset izquierdo y derecho',\n    'Registro de tres ensayos con la desviación medida en cada uno',\n    'Comparación con la asimetría detectada en las sesiones 5 y 7',\n    'Video del robot avanzando recto antes y después de calibrar',\n  ]} />"
+  ],
+  "Code": [
+   "<SessionModule.Code>\n    <SketchBlock code={sketchCode} filename=\"05_asistente_calibracion.ino\" />"
+  ]
+ },
+ "12-reto-integrador.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Puede nuestro robot operar solo durante tres minutos en un espacio que no conoce?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Todo lo del programa converge aquí: piezas que encajan porque el control de calidad fue\n    honesto, motores que responden porque el cableado está bien, un sensor cuyo error se conoce, un\n    umbral elegido con datos y una calibración que corrige la asimetría. El reto no mide suerte:\n    mide si cada decisión previa se tomó con evidencia. Y la presentación mide si el equipo puede\n    explicarlo.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Integración completa bajo condiciones no controladas',\n    'Criterio de éxito medible y acordado de antemano',\n    'Evidencia como respaldo de una afirmación técnica',\n    'Comunicación técnica ante una audiencia',\n    'Reflexión sobre el proceso, no solo sobre el resultado',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Preparar la arena y el criterio\">\n    Montar la arena de 2×2 metros con tres obstáculos. Repasar el criterio en voz alta antes de\n    empezar, para que nadie lo discuta después. Cada equipo hace una verificación final de\n    seguridad y de carga de batería.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Ensayo de reconocimiento\">\n    Cada equipo dispone de un ensayo corto para observar cómo se comporta su robot en esta arena\n    concreta, que no es donde calibró. Se permite un último ajuste de umbral u offsets, y hay que\n    anotar cuál se hizo y por qué.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"El reto y su registro\">\n    Cada equipo ejecuta el reto de tres minutos mientras otro cronometra y registra: obstáculos\n    evitados, veces que quedó atrapado y por cuánto tiempo, y si salió de la arena. Se graba en\n    video completo, sin cortes.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Presentación técnica\">\n    Presentación de cinco minutos por equipo: qué construyeron, qué decisión tomaron con qué dato,\n    qué falló y cómo lo diagnosticaron, y qué harían distinto con dos semanas más. El público hace\n    preguntas técnicas. Responder «no lo sabemos, habría que medirlo» es una respuesta válida.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Arena delimitada de 2×2 metros',\n    'Tres obstáculos simples: cajas o libros',\n    'Cronómetro y formato de registro del reto',\n    'Cámara para el video completo',\n    'Baterías cargadas y un juego de repuesto',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Operación autónoma de tres minutos en la arena, sin control externo, sin salir del área y sin\n    quedar atrapado más de diez segundos seguidos. Registren obstáculos evitados y cada incidente\n    con su duración. Si no se alcanza el criterio, el reporte debe explicar con evidencia dónde\n    estuvo el límite: mecánico, eléctrico, de sensado o de lógica.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Video completo del reto de tres minutos, sin cortes',\n    'Registro con obstáculos evitados e incidentes cronometrados',\n    'Reporte técnico final con las decisiones tomadas y el dato que las respalda',\n    'Presentación de cinco minutos con preguntas respondidas',\n    'Reflexión individual sobre lo aprendido y lo que falta',\n  ]} />"
+  ],
+  "Code": []
+ }
+}

@@ -1,0 +1,91 @@
+---
+sidebar_position: 16
+sidebar_label: "Roles y rotación"
+title: "Roles del equipo y rotación"
+description: "Cuatro responsabilidades que rotan, para que todos pasen por cada habilidad."
+---
+
+import FlagNote from '@site/src/components/FlagNote';
+
+# Roles del equipo y rotación
+
+Equipos de tres o cuatro estudiantes, con cuatro responsabilidades que **rotan cada dos o tres
+sesiones**. La rotación no es un detalle organizativo: sin ella, el equipo se especializa y quien
+tocó el código la primera vez lo toca siempre.
+
+## Las cuatro responsabilidades
+
+### Seguridad y energía
+Mide voltajes, verifica conexiones antes de energizar y firma el checklist. Tiene autoridad para
+detener el trabajo si algo no está en orden — y conviene que el docente la respalde explícitamente
+la primera vez que la ejerza.
+
+### Mecánica e impresión
+Arma el chasis, cuida tolerancias y alineación, inspecciona las piezas y decide cuáles se aceptan.
+En las sesiones 3 a 5 lleva el peso; después sostiene el mantenimiento del robot.
+
+### Electrónica
+Cablea siguiendo la tabla de pines, verifica continuidad con el multímetro y diagnostica fallas
+eléctricas. Es quien primero revisa potencia del shield, M1/M2 y librería cuando los motores no
+responden.
+
+### Código y documentación
+Carga los sketches, ajusta parámetros y registra qué se cambió y qué efecto tuvo. No es «el que
+programa»: es quien mantiene el rastro de las decisiones, que es lo que permite reproducir un
+resultado.
+
+## Esquema de rotación
+
+Con cuatro estudiantes y rotación cada tres sesiones, todos pasan por todo:
+
+| Sesiones | Estudiante A | Estudiante B | Estudiante C | Estudiante D |
+|---|---|---|---|---|
+| 1-3 | Seguridad | Mecánica | Electrónica | Código |
+| 4-6 | Código | Seguridad | Mecánica | Electrónica |
+| 7-9 | Electrónica | Código | Seguridad | Mecánica |
+| 10-12 | Mecánica | Electrónica | Código | Seguridad |
+
+Con tres estudiantes, combine Mecánica y Electrónica en las sesiones donde el trabajo mecánico es
+menor, de la 6 en adelante.
+
+<FlagNote tone="warn" title="El punto delicado de la rotación">
+Cambiar de rol justo antes de una sesión técnicamente exigente genera frustración. Las rotaciones de
+este esquema caen en los límites 3-4, 6-7 y 9-10, que coinciden con cambios de bloque temático: quien
+entra a un rol lo hace al empezar algo nuevo, no a mitad de camino.
+</FlagNote>
+
+## Cómo conducir la rotación
+
+**Anúnciela al empezar la sesión**, no a mitad. Si no se nombra, no ocurre.
+
+**Pida traspaso explícito.** Dos minutos donde quien deja el rol le cuenta a quien entra qué quedó
+pendiente y qué hay que vigilar. Es la práctica profesional que el rol enseña.
+
+**Espere una caída de rendimiento tras cada rotación.** Es normal y es parte del punto: si el equipo
+no baja el ritmo al rotar, probablemente no había rotación real.
+
+## Los roles como funciones de administración de proyectos
+
+Esta estructura no es solo organización de aula. **EP 1.3** de tercero básico pide «describir y
+organizar las funciones en la administración de proyectos», y eso es literalmente lo que hace un
+equipo que reparte responsabilidades, documenta su traspaso y rinde cuentas de su parte.
+
+Conviene nombrarlo así ante los estudiantes: no están «repartiéndose el trabajo», están practicando
+una estructura organizativa con funciones definidas.
+
+## Qué se espera en tercero básico
+
+El programa se dirige a tercero, así que la expectativa es la de ese nivel en cada rol:
+
+| Rol | Nivel esperado |
+|---|---|
+| **Seguridad y energía** | Aplica el checklist, explica el porqué de cada verificación y propone las adicionales que su contexto requiera |
+| **Mecánica e impresión** | Detecta defectos de encaje, decide qué pieza se rechaza y relaciona el defecto con el parámetro de impresión que lo causó |
+| **Electrónica** | Diagnostica de forma autónoma por capas, aislando el subsistema antes de cambiar nada |
+| **Código y documentación** | Propone cambios de parámetro, predice su efecto antes de probar y lo justifica con los datos que el equipo midió |
+
+El rasgo común de tercero es la **autonomía en el diagnóstico**: no se espera que sigan un
+procedimiento dado, sino que decidan cuál aplicar y expliquen por qué.
+
+Instituciones que trabajen con 1.º o 2.º básico encontrarán en [CiudadBots](/ciudadbots) un
+programa diseñado para ese rango.

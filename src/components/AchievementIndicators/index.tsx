@@ -16,7 +16,7 @@ interface AchievementIndicatorsProps {
  * specific to this module. Ported from the original HTML's `cnbMarkup(m)`
  * (excluding the international-standards portion, which is its own component).
  */
-export default function AchievementIndicators({moduleTitle}: AchievementIndicatorsProps): JSX.Element {
+export default function AchievementIndicators({moduleTitle}: AchievementIndicatorsProps): React.JSX.Element {
   const {depthByGradeNote, maturityByGrade, cnbOfficialCompetencies, achievementNoteFor, achievementIndicators} =
     useStandardsContent();
   return (

@@ -19,7 +19,7 @@ export const modules: readonly Module[] = [
     sessions: '2-3',
     program: '01-mapper-bot.llsp',
     phaseKinds: ['act', 'exp', 'cre', 'ref'],
-    guide: {pages: 48, imageBase: BUILD_GUIDE_BASE},
+    guide: {pages: 20, imageBase: BUILD_GUIDE_BASE},
   },
   {
     id: 'm2',

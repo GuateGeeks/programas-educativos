@@ -1,0 +1,38 @@
+PRUEBA 01: LED Indicador - Configuración Técnica
+
+PINES:
+  Pin 13 → LED ánodo (+)
+  GND    → LED cátodo (-) + resistencia 220Ω
+
+COMPONENTES:
+  - Arduino Uno
+  - LED rojo (3mm o 5mm)
+  - Resistencia 220Ω ±5%
+  - Jumpers (cables)
+  - Protoboard
+
+VOLTAJE:
+  - Pin 13 output: ~5V cuando HIGH, 0V cuando LOW
+  - LED: 2V típico (rojo), 20mA máximo
+  - Resistencia limitadora: (5V - 2V) / 20mA = 150Ω (usar 220Ω es seguro)
+
+TIMING:
+  - CYCLE_TIME: 1000ms (ajustable)
+  - LED ON: 500ms
+  - LED OFF: 500ms
+  - Frecuencia: 1 Hz
+
+SERIAL:
+  - Baud rate: 9600
+  - Formato: 8 bits, sin paridad, 1 stop bit
+  - Envía: "LED ON" o "LED OFF" línea por línea
+
+VALORES RECOMENDADOS:
+  - Para principiantes: CYCLE_TIME = 1000 (parpadeo claro)
+  - Para verificar función rápidamente: CYCLE_TIME = 500
+  - Para verificar Serial: CYCLE_TIME = 2000 (tiempo leer serial)
+
+CONSUMO DE CORRIENTE:
+  - Reposo (LED OFF): ~5mA (Arduino) + 0mA (LED)
+  - Activo (LED ON): ~5mA (Arduino) + 20mA (LED) = ~25mA
+  - Fuente: USB 500mA → Seguro

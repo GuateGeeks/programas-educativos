@@ -1,0 +1,86 @@
+---
+sidebar_position: 10
+sidebar_label: "10 · City Car"
+title: "City Car"
+description: "Color-based routes and orientation"
+---
+
+import Module from '@site/src/components/Module';
+
+# 10 · City Car
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m10">
+  <Module.Question>
+    How can a vehicle decide its route by reading signals from a city's environment?
+  </Module.Question>
+
+  <Module.Context>
+    The City Car uses color markers to turn, move forward, head to a charging station, or stop. It
+    integrates a color sensor, messages, and orientation to imagine cleaner, more orderly urban
+    mobility.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Autonomous navigation",
+    "Color markers",
+    "Messages",
+    "Yaw-based turns",
+    "Urban route design",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Cars and traffic">
+    Discuss traffic, small vehicles, clean energy, and signals. Each team designs a short circuit
+    with a lane, charging station, stop, and two turns, leaving space to retrieve the robot only when
+    it is stopped. Initial evidence: route map with colors and a criterion for avoiding collisions.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Markers and decisions">
+    Assign meaning to colors: blue right, purple left, green charge, red stop. Take readings before
+    the route, check spacing between markers, and test one action per color with only one robot in
+    the lane. Checkpoint: the team completes a color-action table and explains what the robot should
+    do if the sensor reads an unexpected color.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Urban circuit">
+    Build the City Car, create messages for each color, and program continuous movement, detection,
+    and the corresponding action. Test individual segments first and then the full circuit,
+    recording marker read, message sent, action executed, and result. If it fails, debug lighting,
+    marker spacing, yaw turn, wrong message, or drive speed.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Communication between vehicles">
+    Imagine how several City Cars would share information to avoid collisions and propose a simple
+    protocol: priority, stop, occupied charging station, or clear route. Each group submits one
+    signaling improvement based on its route log. To scale the challenge, 1st básico follows a
+    simple route, 2nd básico compares two routes with data, and 3rd básico designs rules for
+    multiple vehicles.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Social Sciences, Citizenship and Intercultural Education: mobility, road safety, coexistence, and responsible use of city signals.",
+    "Mathematics: orientation, sequences, angles, and comparing routes by markers.",
+    "Natural Sciences: energy, sensors, motion, and the relationship between environmental information and vehicle response.",
+    "Learning and Communication Technologies: reading colors, messages, conditionals, and documenting autonomous decisions.",
+    "Communication and Language, Spanish: explaining the route, signs, rules, and system decisions.",
+    "Entrepreneurship for Productivity: urban transport proposal with efficiency, safety, and local-need criteria.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.2, 1.4, and 1.5: designs a mobility solution, reasons through automated decisions, and considers safety/impact.",
+    "2026 CSTA PK-12 · Middle school: events, messages, conditionals, sensor data, and computing in society.",
+    "NGSS MS-ETS1-1 and MS-ETS1-2: defines safe-route criteria and compares mobility alternatives under constraints.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Maps colors to correct actions and verifies each signal with an observable test.",
+    "Programs an autonomous route that can be repeated and evaluated with safety criteria.",
+    "Records one reading, message, or turn failure and the adjustment applied.",
+    "Explains how environmental signals change decisions and what impact this would have on real mobility.",
+  ]} />
+</Module>

@@ -1,0 +1,86 @@
+---
+sidebar_position: 8
+sidebar_label: "08 · Bridge Builder"
+title: "Bridge Builder"
+description: "Infrastructure and precision"
+---
+
+import Module from '@site/src/components/Module';
+
+# 08 · Bridge Builder
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m8">
+  <Module.Question>
+    How can a robot build a bridge in stages to connect two communities?
+  </Module.Question>
+
+  <Module.Context>
+    Students place bridge sections inspired by the need to connect areas separated by rivers,
+    ravines, or difficult roads. The module works with transmission, color as a reference, arm
+    positions, and incremental construction.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Staged construction",
+    "Color sensor",
+    "Bevel-gear transmission",
+    "Manipulator positions",
+    "Progress measurement",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Bridges in the community">
+    Talk about rivers, ravines, traffic, and connecting places. Each team divides the bridge into
+    sections and decides which reference will mark the start, placement point, and return for another
+    piece. Initial evidence: a drawn staged-construction sequence with an alignment criterion for
+    accepting a section.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Traction and arm">
+    Observe the 4x4 transmission, drive motor, color sensor, and arm. Test low, medium, and high
+    positions with a light section, keeping the path clear before moving the robot. Checkpoint: the
+    team explains how the color mark starts or stops a stage and which arm height prevents dragging
+    the piece.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Place sections">
+    Build the Bridge Builder and program one complete stage: measure progress by rotation, detect
+    start or end with color, place a section, and return for another. Record a photo or sketch of
+    each placement with distance to the edge and alignment between sections. If it fails, debug the
+    color mark, floor traction, arm height, or travel distance before adding more stages.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Infrastructure and planning">
+    Discuss why building in stages requires clear references, measurement, and repeatability. Each
+    team identifies one decision that made the bridge more stable or better aligned. To scale the
+    challenge, 1st básico places one guided section, 2nd básico measures alignment between sections,
+    and 3rd básico redesigns the sequence to improve repeatability or save movements.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Social Sciences, Citizenship and Intercultural Education: infrastructure, mobility, and connection between communities as a planning problem.",
+    "Mathematics: measuring progress, units, section comparison, and proportionality in staged construction.",
+    "Natural Sciences: mechanisms, transmission, traction, and stability when placing pieces.",
+    "Learning and Communication Technologies: using the color sensor as a reference, programming stages, and collaboratively recording tests.",
+    "Communication and Language, Spanish: explaining the staged technical process and justifying the construction sequence.",
+    "Entrepreneurship for Productivity: planning technical processes with quality control, resources, and continuous improvement.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.7: prototypes in stages, collaborates by roles, and connects the solution to a community need.",
+    "2026 CSTA PK-12 · Middle school: programming with sensors, human-centered design, and test-based refinement.",
+    "NGSS MS-ETS1-1 and MS-ETS1-3: defines infrastructure criteria/constraints and analyzes tests to improve the method.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Measures distance by rotation and verifies whether each section lands within the expected zone.",
+    "Uses arm positions to place pieces without losing stability or reference.",
+    "Records at least one alignment failure and the adjustment applied to route, sensor, or arm.",
+    "Explains how color serves as a reference and why staged construction reduces risk.",
+  ]} />
+</Module>

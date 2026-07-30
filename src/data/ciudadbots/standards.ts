@@ -82,7 +82,7 @@ const es: StandardsContent = {
 
   cnbOfficialCompetencies: [
     {
-      area: 'Matemáticas · Básico',
+      area: 'Matemática · Básico',
       text: 'El CNB de Básico enfatiza producir y analizar información mediante patrones, relaciones, representación gráfica, modelos y resolución de problemas. En 3.º básico crece la aplicación de modelos algebraicos y geométricos para justificar soluciones.',
     },
     {
@@ -90,7 +90,11 @@ const es: StandardsContent = {
       text: 'El ciclo básico pide usar saberes científicos y tecnológicos para explicar fenómenos del entorno, comprender relaciones entre sistemas naturales y acción humana, y actuar con criterios de prevención, seguridad y conservación.',
     },
     {
-      area: 'Comunicación y Lenguaje',
+      area: 'Tecnologías del Aprendizaje y la Comunicación',
+      text: 'El área TAC aporta uso responsable de herramientas digitales, trabajo colaborativo, análisis de datos, documentación multimedia y propuestas tecnológicas para problemas educativos o comunitarios.',
+    },
+    {
+      area: 'Comunicación y Lenguaje, Idioma Español',
       text: 'Se espera escuchar, hablar, leer y escribir para construir conocimiento técnico y científico, usar códigos verbales y digitales, y producir textos o informes para explicar procesos y resolver problemas.',
     },
     {
@@ -133,14 +137,14 @@ const es: StandardsContent = {
     },
     {
       title: 'Competencias por área y grado',
-      text: 'Referencia oficial usada para aterrizar competencias afines de Matemáticas, Ciencias Naturales, Comunicación y Emprendimiento dentro del programa.',
+      text: 'Referencia oficial usada para aterrizar competencias afines de Matemática, Ciencias Naturales, TAC, Comunicación y Emprendimiento dentro del programa.',
       href: 'https://cnbguatemala.org/wiki/CNB_Ciclo_B%C3%A1sico/Todas_las_competencias_por_%C3%A1rea_y_grado',
       linkLabel: 'Ver competencias oficiales',
     },
   ],
 
   impactReportingNote:
-    'Registrar por equipo una evidencia de programación, una evidencia de ingeniería y una evidencia de comunicación. Con esas tres piezas se puede reportar avance frente a ISTE, CSTA y NGSS sin convertir la clase en una lista de contenidos aislados.',
+    'Registrar por equipo una evidencia de programación, una evidencia de ingeniería y una evidencia de comunicación. Con esas tres piezas se puede reportar avance frente a ISTE, CSTA 2026 y NGSS sin convertir la clase en una lista de contenidos aislados.',
 
   internationalCards: [
     {
@@ -148,8 +152,8 @@ const es: StandardsContent = {
       text: 'Diseñador innovador, pensador computacional, comunicador creativo, colaborador global y aprendiz empoderado.',
     },
     {
-      area: 'CSTA K-12 CS · Nivel 2',
-      text: 'Algoritmos y programación, sistemas de computación, datos y análisis, e impactos de la computación.',
+      area: 'CSTA 2026 PK-12 · Secundaria',
+      text: 'Algoritmos y diseño, programación, datos y análisis, sistemas y seguridad, computación y sociedad, con prácticas de colaboración inclusiva y diseño centrado en personas.',
     },
     {
       area: 'NGSS MS-ETS1',
@@ -166,19 +170,19 @@ const es: StandardsContent = {
     [
       '1.º básico',
       'Usa tecnología para aprender, crear una solución guiada y comunicar lo que construyó.',
-      'Crea secuencias, eventos y ciclos simples; reconoce hardware, sensores y salida del sistema.',
+      'Crea secuencias, eventos y ciclos simples; reconoce hardware, sensores, salida del sistema y prueba cambios básicos.',
       'Define el problema con criterios simples: qué debe hacer el robot, con qué materiales y bajo qué restricción.',
     ],
     [
       '2.º básico',
       'Usa retroalimentación para mejorar el prototipo y comunica decisiones con evidencia.',
-      'Aplica condicionales, subrutinas, sensores, datos de prueba y depuración sistemática.',
+      'Aplica condicionales, subrutinas, sensores, variables, datos de prueba y depuración sistemática.',
       'Compara soluciones o versiones usando criterios: precisión, seguridad, tiempo, estabilidad y confiabilidad.',
     ],
     [
       '3.º básico',
       'Diseña una solución propia, trabaja colaborativamente y presenta impacto local o comunitario.',
-      'Documenta algoritmos modulares, variables/estados, datos de desempeño e impacto de la automatización.',
+      'Documenta algoritmos modulares, variables/estados, datos de desempeño, decisiones de diseño e impacto social de la automatización.',
       'Analiza datos de pruebas para optimizar el diseño y justificar la versión final.',
     ],
   ],
@@ -213,15 +217,15 @@ const es: StandardsContent = {
       linkLabel: 'Consultar ISTE',
     },
     {
-      title: 'CSTA K-12 Computer Science Standards',
-      text: 'Referencia para algoritmos, programación, sistemas, datos e impacto de la computación.',
-      href: 'https://csteachers.org/k12standards/',
+      title: '2026 CSTA PK-12 Computer Science Standards',
+      text: 'Referencia para algoritmos y diseño, programación, datos y análisis, sistemas y seguridad, computación y sociedad.',
+      href: 'https://csteachers.org/pk12standards/view/',
       linkLabel: 'Consultar CSTA',
     },
     {
       title: 'NGSS MS-ETS1 Engineering Design',
       text: 'Referencia para definir problemas, comparar soluciones, analizar pruebas y optimizar diseños.',
-      href: 'https://www.nextgenscience.org/topic-arrangement/msengineering-design',
+      href: 'https://www.nextgenscience.org/msets1-engineering-design',
       linkLabel: 'Consultar NGSS',
     },
     {
@@ -293,7 +297,7 @@ const es: StandardsContent = {
 
   transversalCnb: [
     {
-      area: 'Matemáticas',
+      area: 'Matemática',
       text: 'Medición, geometría, proporcionalidad, variables, tablas de datos, estimación, análisis de error y solución de problemas.',
     },
     {
@@ -301,11 +305,15 @@ const es: StandardsContent = {
       text: 'Movimiento, fuerza, energía, sensores, máquinas simples, seguridad, ambiente y relación entre tecnología y comunidad.',
     },
     {
-      area: 'Comunicación y Lenguaje',
+      area: 'Tecnologías del Aprendizaje y la Comunicación',
+      text: 'Programación por bloques, uso responsable del kit y el hub, documentación digital, tablas de prueba, colaboración en archivos y presentación multimedia de soluciones.',
+    },
+    {
+      area: 'Comunicación y Lenguaje, Idioma Español',
       text: 'Bitácora, explicación oral, argumentación, vocabulario técnico, presentación de evidencias y comunicación de resultados.',
     },
     {
-      area: 'Emprendimiento / Productividad',
+      area: 'Emprendimiento para la Productividad',
       text: 'Diseño de soluciones, trabajo colaborativo, tecnología aplicada, mejora continua, innovación e impacto en necesidades locales.',
     },
   ],
@@ -366,7 +374,11 @@ const en: StandardsContent = {
       text: 'Lower secondary calls for using scientific and technological knowledge to explain everyday phenomena, understand the relationship between natural systems and human action, and act on criteria of prevention, safety, and conservation.',
     },
     {
-      area: 'Communication and Language',
+      area: 'Learning and Communication Technologies',
+      text: 'The TAC area supports responsible use of digital tools, collaborative work, data analysis, multimedia documentation, and technology proposals for educational or community problems.',
+    },
+    {
+      area: 'Communication and Language, Spanish',
       text: 'Students are expected to listen, speak, read, and write to build technical and scientific knowledge, use verbal and digital codes, and produce texts or reports that explain processes and solve problems.',
     },
     {
@@ -409,14 +421,14 @@ const en: StandardsContent = {
     },
     {
       title: 'Competencies by subject and grade',
-      text: 'Official reference used to ground related Mathematics, Natural Sciences, Communication, and Entrepreneurship competencies within the program.',
+      text: 'Official reference used to ground related Mathematics, Natural Sciences, TAC, Communication, and Entrepreneurship competencies within the program.',
       href: 'https://cnbguatemala.org/wiki/CNB_Ciclo_B%C3%A1sico/Todas_las_competencias_por_%C3%A1rea_y_grado',
       linkLabel: 'View official competencies',
     },
   ],
 
   impactReportingNote:
-    "Have each team record one piece of programming evidence, one piece of engineering evidence, and one piece of communication evidence. Those three pieces let you report progress against ISTE, CSTA, and NGSS without turning the class into a checklist of isolated content.",
+    "Have each team record one piece of programming evidence, one piece of engineering evidence, and one piece of communication evidence. Those three pieces let you report progress against ISTE, CSTA 2026, and NGSS without turning the class into a checklist of isolated content.",
 
   internationalCards: [
     {
@@ -424,8 +436,8 @@ const en: StandardsContent = {
       text: 'Innovative designer, computational thinker, creative communicator, global collaborator, and empowered learner.',
     },
     {
-      area: 'CSTA K-12 CS · Level 2',
-      text: 'Algorithms and programming, computing systems, data and analysis, and impacts of computing.',
+      area: 'CSTA 2026 PK-12 · Middle school',
+      text: 'Algorithms and design, programming, data and analysis, systems and security, computing and society, with practices for inclusive collaboration and human-centered design.',
     },
     {
       area: 'NGSS MS-ETS1',
@@ -442,19 +454,19 @@ const en: StandardsContent = {
     [
       'Grade 7',
       'Uses technology to learn, build a guided solution, and communicate what they built.',
-      'Creates simple sequences, events, and loops; recognizes hardware, sensors, and system output.',
+      'Creates simple sequences, events, and loops; recognizes hardware, sensors, system output, and basic testing changes.',
       'Defines the problem with simple criteria: what the robot must do, with what materials, and under what constraint.',
     ],
     [
       'Grade 8',
       'Uses feedback to improve the prototype and communicates decisions with evidence.',
-      'Applies conditionals, subroutines, sensors, test data, and systematic debugging.',
+      'Applies conditionals, subroutines, sensors, variables, test data, and systematic debugging.',
       'Compares solutions or versions using criteria: precision, safety, time, stability, and reliability.',
     ],
     [
       'Grade 9',
       'Designs their own solution, works collaboratively, and presents local or community impact.',
-      'Documents modular algorithms, variables/states, performance data, and the impact of automation.',
+      'Documents modular algorithms, variables/states, performance data, design decisions, and the social impact of automation.',
       'Analyzes test data to optimize the design and justify the final version.',
     ],
   ],
@@ -489,15 +501,15 @@ const en: StandardsContent = {
       linkLabel: 'Visit ISTE',
     },
     {
-      title: 'CSTA K-12 Computer Science Standards',
-      text: 'Reference for algorithms, programming, systems, data, and the impact of computing.',
-      href: 'https://csteachers.org/k12standards/',
+      title: '2026 CSTA PK-12 Computer Science Standards',
+      text: 'Reference for algorithms and design, programming, data and analysis, systems and security, computing and society.',
+      href: 'https://csteachers.org/pk12standards/view/',
       linkLabel: 'Visit CSTA',
     },
     {
       title: 'NGSS MS-ETS1 Engineering Design',
       text: 'Reference for defining problems, comparing solutions, analyzing tests, and optimizing designs.',
-      href: 'https://www.nextgenscience.org/topic-arrangement/msengineering-design',
+      href: 'https://www.nextgenscience.org/msets1-engineering-design',
       linkLabel: 'Visit NGSS',
     },
     {
@@ -577,11 +589,15 @@ const en: StandardsContent = {
       text: 'Motion, force, energy, sensors, simple machines, safety, environment, and the relationship between technology and community.',
     },
     {
-      area: 'Communication and Language',
+      area: 'Learning and Communication Technologies',
+      text: 'Block programming, responsible kit and hub use, digital documentation, test tables, shared files, and multimedia presentation of solutions.',
+    },
+    {
+      area: 'Communication and Language, Spanish',
       text: 'Logs, oral explanation, argumentation, technical vocabulary, presenting evidence, and communicating results.',
     },
     {
-      area: 'Entrepreneurship / Productivity',
+      area: 'Entrepreneurship for Productivity',
       text: 'Solution design, collaborative work, applied technology, continuous improvement, innovation, and impact on local needs.',
     },
   ],

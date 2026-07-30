@@ -1,0 +1,86 @@
+---
+sidebar_position: 11
+sidebar_label: "11 · Fire Rescue Unit"
+title: "Fire Rescue Unit"
+description: "Search, sensing, and rescue"
+---
+
+import Module from '@site/src/components/Module';
+
+# 11 · Fire Rescue Unit
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m11">
+  <Module.Question>
+    How can a robot help in an emergency without putting a person in danger?
+  </Module.Question>
+
+  <Module.Context>
+    The Fire Rescue Unit enters a house, senses distance, raises an arm with a color sensor to
+    locate fire, and carries out a neutralizing or rescue action. The module connects technology
+    with prevention and community care.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Emergency robotics",
+    "Distance sensor",
+    "Parallelogram arm",
+    "Color detection",
+    "Shortest path and rescue",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Emergencies and safety">
+    Locate the nearest fire extinguisher in the classroom and make clear that the mission uses a
+    simulated emergency, with no real fire or hazardous materials. Each team defines entry, search
+    zone, and rescue or neutralizing action. Initial evidence: route sketch with safe distance and
+    one reason to use a robot as support, not a replacement, for trained people.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="Entry, search, and arm">
+    Review the ultrasonic sensor, lifting arm, and color sensor. Test distance readings and height
+    levels while the arm moves slowly, keeping hands away from the mechanism. Checkpoint: the team
+    identifies the stopping distance, the height that detects the simulated flame, and which reading
+    could be false.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Search and neutralize">
+    Build the Fire Rescue Unit and program the mission as states: enter up to a distance, raise the
+    arm, search for color, stop at the simulated flame, and execute an extinguish or rescue action.
+    Record detected distance, color read, arm height, action, and failure point. If it fails, debug
+    minimum distance, lighting, sensor height, entry route, or neutralizing timing.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Technology with human purpose">
+    Each group identifies a dangerous task in its community where a robot could help and explains
+    which decisions would still need to be human. Submit brief evidence: rescue log and one safety
+    improvement. To scale the challenge, 1st básico identifies sensors, 2nd básico tunes search data,
+    and 3rd básico optimizes the route and argues the system's ethical limits.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: risk prevention, fire, safety, sensors, and use of technology to reduce human exposure.",
+    "Social Sciences, Citizenship and Intercultural Education: care for life, community response, and responsibility during emergencies.",
+    "Mathematics: height, distance, comparing readings, and selecting a search route or position.",
+    "Learning and Communication Technologies: reading distance/color, programming procedures, and recording rescue evidence.",
+    "Communication and Language, Spanish: clear presentation of an emergency solution with problem, tests, and improvement.",
+    "Entrepreneurship for Productivity: designing a safe and viable solution for a local protection need.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4, 1.5, and 1.7: designs technology for social impact, collaborates by roles, and communicates the solution's value.",
+    "2026 CSTA PK-12 · Middle school: programming with sensors, conditions, procedures, and ethics/social responsibility.",
+    "NGSS MS-ETS1-1 and MS-ETS1-2: defines safety criteria and evaluates solutions to reduce risk in emergencies.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Integrates distance and color into one mission with clear detection criteria.",
+    "Sequences search, detection, and action without losing the safety reference.",
+    "Records at least one failed or imprecise detection test and the improvement applied.",
+    "Explains the robot's social value and the limits of using technology in real emergencies.",
+  ]} />
+</Module>

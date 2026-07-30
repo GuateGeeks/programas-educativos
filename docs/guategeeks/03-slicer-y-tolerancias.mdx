@@ -1,0 +1,119 @@
+---
+sidebar_position: 3
+sidebar_label: "03 · Slicer y tolerancias"
+title: "Slicer y tolerancias"
+description: "De archivo STL a pieza física: parámetros de impresión y por qué lo impreso nunca mide exactamente lo diseñado."
+---
+
+import SessionModule from '@site/src/components/SessionModule';
+import StlViewer from '@site/src/components/StlViewer';
+
+# 03 · Slicer y tolerancias
+
+:::note Para el docente
+Si el centro no tiene impresora 3D, esta sesión y la siguiente funcionan igual con piezas impresas
+por encargo: lo que se aprende es a medir, interpretar el error y decidir si una pieza sirve. Ver la
+página de materiales para alternativas de fabricación.
+:::
+
+<SessionModule id="s3">
+  <SessionModule.Question>
+    Si el diseño dice 20 milímetros, ¿por qué la pieza impresa mide 20.3?
+  </SessionModule.Question>
+
+  <SessionModule.Context>
+    Entre el modelo digital y la pieza física hay una máquina que deposita plástico caliente capa
+    por capa, y ese proceso tiene límites. Entender la tolerancia no es un detalle técnico: decide
+    si un eje entra o no en su alojamiento, y por lo tanto si las orugas girarán libres o con roce.
+    Esta sesión introduce el slicer y produce el primer dato experimental medido del programa.
+  </SessionModule.Context>
+
+  <SessionModule.Concepts items={[
+    'Archivo STL como malla de triángulos',
+    'Altura de capa, relleno y velocidad',
+    'Tolerancia y error de fabricación',
+    'Medición con calibrador o regla',
+    'Compromiso entre calidad y tiempo',
+  ]} />
+
+  <SessionModule.Phase kind="act" label="Activar · 15 min" title="De la pantalla al plástico">
+    Abrir un archivo STL y girarlo en pantalla. Preguntar cómo creen que se convierte eso en un
+    objeto sólido. Pasar de mano en mano una pieza ya impresa y pedir que localicen las capas: la
+    respuesta está a la vista.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Los tres parámetros que deciden">
+    En el slicer, modificar altura de capa, relleno y velocidad, observando cómo cambia el tiempo
+    estimado. Plantear la pregunta que guía la sesión: ¿cuál de los tres afecta más la precisión de
+    una medida, y cuál solo afecta la resistencia de la pieza?
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Preparar, imprimir y medir">
+    Cada equipo carga las piezas del chasis SMARS, ajusta los parámetros acordados y genera el
+    G-code. Mientras imprime (o con piezas ya disponibles), medir cinco dimensiones críticas con
+    calibrador y compararlas con las del diseño, anotando el error de cada una.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="¿Dónde se concentra el error?">
+    Comparar las tablas entre equipos. ¿El error es parejo o se concentra en cierto tipo de
+    dimensión, como los agujeros? Formular una hipótesis sobre la causa. Se comprobará en la
+    sesión 5, cuando esas piezas tengan que encajar de verdad.
+  </SessionModule.Phase>
+
+  <SessionModule.Materials items={[
+    'Computadora con slicer instalado: PrusaSlicer, Cura, OrcaSlicer o Bambu Studio',
+    'Archivos STL del chasis SMARS público',
+    'Impresora FDM con filamento PLA, o piezas impresas por encargo',
+    'Calibrador o regla milimetrada',
+    'Formato de tabla de mediciones impreso',
+  ]} />
+
+  <SessionModule.Reto>
+    Midan cinco dimensiones críticas de una pieza impresa y compárenlas con el diseño. Construyan
+    una tabla con cuatro columnas: dimensión, valor esperado, valor medido y error. Al final,
+    respondan con evidencia: ¿el error es constante o depende del tamaño de la medida?
+  </SessionModule.Reto>
+
+  <SessionModule.Evidence items={[
+    'Tabla de cinco mediciones con su error calculado',
+    'Captura de los parámetros usados en el slicer',
+    'Hipótesis escrita sobre dónde se concentra el error',
+    'Fotografía de la pieza medida junto al instrumento',
+  ]} />
+
+  <SessionModule.Cnb items={[
+    'CN 1.3: registra, analiza y representa los datos obtenidos en la indagación (p. 22).',
+    'MAT 4.1: obtiene el valor del rango en un conjunto de datos (p. 18).',
+    'TAC 2.1: trabaja con las herramientas que proporciona una hoja de cálculo (p. 20).',
+  ]} />
+
+  <SessionModule.Standards items={[
+    'CSTA 3A-DA-11: crear representaciones computacionales de fenómenos a partir de datos.',
+    'ISTE Knowledge Constructor 3d: construir conocimiento explorando problemas del mundo real.',
+    'NGSS HS-ETS1-3: evaluar una solución frente a criterios y restricciones priorizados.',
+  ]} />
+
+  <SessionModule.Evaluation items={[
+    'Mide con el instrumento adecuado y registra unidades correctamente.',
+    'Calcula el error entre lo esperado y lo obtenido.',
+    'Relaciona al menos un parámetro del slicer con la calidad resultante.',
+    'Formula una hipótesis comprobable sobre el origen del error.',
+  ]} />
+</SessionModule>
+
+## Guía visual de impresión
+
+![Piezas SMARS impresas antes de retirar y clasificar el lote](/assets/guategeeks/smars/printed-parts.webp)
+
+Antes de abrir el slicer, observen el lote completo: el chasis concentra superficies largas, las
+ruedas necesitan ejes limpios y los eslabones se repiten muchas veces. Esa repetición vuelve visible
+cualquier error sistemático de impresión.
+
+## Las piezas de esta sesión
+
+Estas son las dos que van al slicer y sobre las que se miden tolerancias. Obsérvenlas antes de
+cargarlas: dónde hay superficies curvas, dónde agujeros, dónde paredes finas.
+
+<StlViewer file="chassis_sl.stl" name="Chasis" role="La pieza grande; define la mayoría de las tolerancias críticas" quantity={1} size="1.8 MB" />
+
+<StlViewer file="powered_wheel.stl" name="Rueda motriz" role="Acoplada al eje del motor; el diámetro del eje es la medida más delicada" quantity={2} size="1.9 MB" />

@@ -16,7 +16,7 @@ interface CardGridProps {
  * Grid of small title/text cards with an optional outbound link, ported from
  * the original HTML's `.card-grid`/`.mini-card` pattern.
  */
-export default function CardGrid({items}: CardGridProps): JSX.Element {
+export default function CardGrid({items}: CardGridProps): React.JSX.Element {
   return (
     <div className={styles.grid}>
       {items.map((item) => (

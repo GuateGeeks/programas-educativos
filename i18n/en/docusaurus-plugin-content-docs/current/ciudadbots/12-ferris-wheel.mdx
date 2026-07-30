@@ -1,0 +1,85 @@
+---
+sidebar_position: 12
+sidebar_label: "12 · Ferris Wheel"
+title: "Ferris Wheel"
+description: "Speed, variables, and stopping"
+---
+
+import Module from '@site/src/components/Module';
+
+# 12 · Ferris Wheel
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m12">
+  <Module.Question>
+    How do we design a fun fair ride that's also safe?
+  </Module.Question>
+
+  <Module.Context>
+    The technical closer turns the carousel into a fair ride. It works with speed control, tilt,
+    smooth acceleration, variables, parallel programs, and an emergency stop.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Smooth acceleration",
+    "Speed variable",
+    "Parallel control",
+    "Motorized tilt",
+    "Emergency stop",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Fun and safety">
+    Ask what makes a mechanical ride safe and observe what happens when an object spins too fast or
+    tilts without control. Each team defines minimum speed, maximum speed, allowed tilt, and a way to
+    stop the ride. Initial evidence: safety checklist with speed range, tilt limit, and emergency
+    button.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Motors and controls">
+    Identify the rotation motor, tilt motor, hub buttons, and force sensor. Test at low speed before
+    touching the wheel and stop the model before adjusting parts. Checkpoint: the team explains which
+    program controls speed, which controls tilt, and how the emergency stop interrupts motion.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Manual and autonomous mode">
+    Build the Ferris Wheel and program gradual speed increase, tilt control, and an emergency stop.
+    Test manual mode first, then autonomous mode, and finally parallel programs, recording starting
+    speed, final speed, maximum tilt, and stop response time. If it fails, debug the speed variable,
+    conflict between programs, tilt beyond range, or a button that does not stop in time.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 20 min" title="Engineering showcase">
+    Present the machine, explaining which program runs in parallel, which variable it controls, and
+    how the user is protected. Each team shows its safety checklist and one improvement before the
+    final showcase. To scale the challenge, 1st básico identifies controls, 2nd básico tests safe
+    ranges, and 3rd básico prepares a technical justification with evidence for speed, tilt, and
+    stopping.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: force, circular motion, acceleration, stability, and user safety.",
+    "Mathematics: variables, increment/decrement, safe ranges, and comparison between programmed speed and observed behavior.",
+    "Learning and Communication Technologies: parallel programs, variable control, emergency stop, and test documentation.",
+    "Communication and Language, Spanish: final technical presentation explaining program, evidence, and safety decisions.",
+    "Arts Education: experience design, aesthetics, rhythm of operation, and presentation of the ride.",
+    "Entrepreneurship for Productivity: quality criteria, continuous improvement, and safe user experience.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4, 1.5, and 1.6: designs, tests, and communicates a safe ride with creativity and technical evidence.",
+    "2026 CSTA PK-12 · Middle school: variables/data storage, loops, concurrent programs, and testing/refinement.",
+    "NGSS MS-ETS1-1 and MS-ETS1-4: defines safety constraints and optimizes operation through iterative tests.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses a variable to control speed within a defined safe range.",
+    "Implements an emergency stop and demonstrates that it works during a test.",
+    "Records how behavior changes with at least two speed or tilt values.",
+    "Describes the parallel programs and the function of each one for user safety and experience.",
+  ]} />
+</Module>

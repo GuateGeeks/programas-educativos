@@ -1,0 +1,86 @@
+---
+sidebar_position: 7
+sidebar_label: "07 · Sorting Arm"
+title: "Sorting Arm"
+description: "Color, positions, and subroutines"
+---
+
+import Module from '@site/src/components/Module';
+
+# 07 · Sorting Arm
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m7">
+  <Module.Question>
+    How does a robot decide where to take products or packages based on the information it
+    receives?
+  </Module.Question>
+
+  <Module.Context>
+    The robot sorts packages by color, as if organizing products in a market, warehouse, or
+    collection center. This is the strongest module for conditionals, angular positions,
+    subroutines, and sorting systems.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Color sorting",
+    "Conditionals",
+    "Subroutines",
+    "Angular positions",
+    "Error correction",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Where do we use sorting?">
+    Compare recycling, fruit, packages, a library, or a supermarket and ask what data a person uses
+    to sort. Each team chooses four colors and defines the destination bin for each one before
+    touching the robot. Initial evidence: a color-destination table with a prediction of which color
+    might be confused most often.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="Arm and sensor">
+    Analyze the fixed base, gripper, lift motor, grip motor, and color sensor. Calibrate each color
+    with three readings and test raise, lower, grip, and release without putting fingers in the
+    gripper or sweep area. Checkpoint: the team identifies ambiguous colors and agrees on a safe
+    home position before programming all decisions.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 120 min" title="Sort four colors">
+    Build the Sorting Arm and create small subroutines: raise, lower, grip, release, and return to
+    home. Read color and move to positions of 45, 135, 225, or 315 degrees, testing one color at a
+    time before mixing them all. Record attempts, successes, and errors by color. If it fails, debug
+    the reading, angular position, grip strength, or subroutine sequence.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 20 min" title="From object to data">
+    Explain how a physical signal becomes a program decision and use the accuracy table to identify
+    the most difficult color. Each team proposes one improvement to calibration, lighting, or
+    position. To scale the challenge, 1st básico sorts two guided colors, 2nd básico measures
+    accuracy by color, and 3rd básico adds a recovery routine for an unknown color.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: classification, patterns, angular positions, counting successes, and data tables by color.",
+    "Natural Sciences: sensors, systematic observation, and relationship between a physical signal and system response.",
+    "Learning and Communication Technologies: reading color data, reusable subroutines, and collaborative error records.",
+    "Communication and Language, Spanish: explaining if/then rules in natural language and reporting sorting failures.",
+    "Entrepreneurship for Productivity: automating repetitive processes with quality, efficiency, and error-reduction criteria.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: automates a solution, decomposes tasks, and evaluates precision with data.",
+    "2026 CSTA PK-12 · Middle school: data and analysis, programming with conditionals/procedures, and accuracy testing.",
+    "NGSS MS-ETS1-2 and MS-ETS1-3: compares solutions or adjustments from sorting tests.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Integrates color reading with correct decisions and verifies successes by category.",
+    "Organizes the program into reusable subroutines for grab, move, release, and return.",
+    "Records errors by color or position and proposes a likely cause.",
+    "Proposes and tests at least one improvement for handling sorting errors.",
+  ]} />
+</Module>

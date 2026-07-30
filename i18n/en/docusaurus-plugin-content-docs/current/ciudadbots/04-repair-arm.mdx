@@ -1,0 +1,84 @@
+---
+sidebar_position: 4
+sidebar_label: "04 · Repair Arm"
+title: "Repair Arm"
+description: "Color sensor and manipulation"
+---
+
+import Module from '@site/src/components/Module';
+
+# 04 · Repair Arm
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m4">
+  <Module.Question>
+    How can a robot help repair a water pipe without putting a person at risk?
+  </Module.Question>
+
+  <Module.Context>
+    The mission simulates repairing water infrastructure in a community. It introduces a color
+    sensor, reference marks, a manipulator arm, gripping, and part replacement.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Color sensor",
+    "Black mark as a signal",
+    "Manipulator and gripper",
+    "Urban maintenance",
+    "Collaborative work between robots",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Water infrastructure">
+    Talk about pipes, drinking water, and repair risks in narrow or dangerous spaces. Each team
+    defines an inspection zone, a damaged part, and a replacement part. Initial evidence: a simple
+    problem diagram and one technical reason to send a robot instead of a person.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Detection and arm">
+    Review the color sensor, the arm motor, and the gripper. Take readings from black, white, and
+    nearby colors before programming, and test the arm slowly without putting fingers inside the
+    gripper. Checkpoint: the team chooses a color threshold or condition, explains the grip
+    position, and predicts which reading could cause a false detection.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Remove and replace">
+    Build the Repair Arm and program the sequence as states: move forward to the black mark, stop,
+    lower the arm, pick up the damaged part, back up, and place the new part. Record a photo or note
+    for each attempt: detected the mark, picked up the part, did not drop it, and placed it in
+    position. If it fails, debug the sensor threshold, gripper alignment, closing time, and reverse
+    distance separately.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Sensors as decisions">
+    Compare moving for a set time with moving until a mark is detected. Each group justifies which
+    solution handles changes in distance or lighting better and submits one concrete improvement for
+    the next test. To scale the challenge, 1st básico compares colors, 2nd básico tunes the
+    threshold with data, and 3rd básico explains why sensor-based decisions make the repair safer.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: relationship between water, infrastructure, safety, technology, and risk prevention when automating a repair.",
+    "Mathematics: comparing readings, spatial location, and using a condition to stop or activate the arm.",
+    "Learning and Communication Technologies: reading the color sensor, debugging the threshold, and collaboratively documenting the procedure.",
+    "Communication and Language, Spanish: ordered report of problem, steps, evidence, and improvement in the procedure.",
+    "Entrepreneurship for Productivity: technical solution proposal for a community need with safety and quality criteria.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: designs and tests an automated solution using sensors as part of the process.",
+    "2026 CSTA PK-12 · Middle school: programming with conditionals, sensors, procedures, and systematic testing.",
+    "NGSS MS-ETS1-1 and MS-ETS1-2: defines safety/efficiency criteria and evaluates alternatives to repair without exposing people.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses the color sensor as a verifiable stop or activation condition.",
+    "Coordinates movement, grip, and replacement without forcing pieces or losing reference.",
+    "Documents one failed test and the adjustment applied to sensor, arm, or route.",
+    "Explains the value of automation in risky tasks with a community connection.",
+  ]} />
+</Module>

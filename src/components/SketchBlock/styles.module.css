@@ -1,0 +1,43 @@
+.wrapper {
+  margin: 16px 0 24px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: -8px;
+  padding: 10px 14px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-top: none;
+  border-radius: 0 0 var(--ifm-code-border-radius) var(--ifm-code-border-radius);
+  background: var(--ifm-background-surface-color);
+}
+
+.meta {
+  font-size: 0.82rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.download {
+  padding: 7px 14px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-button-color, #fff);
+  background: var(--ifm-color-primary);
+  border: none;
+  border-radius: var(--ifm-button-border-radius, 6px);
+  cursor: pointer;
+}
+
+.download:hover {
+  background: var(--ifm-color-primary-dark);
+}
+
+.download:focus-visible {
+  outline: 2px solid var(--ifm-color-primary-lightest);
+  outline-offset: 2px;
+}

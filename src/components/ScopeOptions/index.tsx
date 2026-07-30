@@ -6,7 +6,7 @@ import styles from './styles.module.css';
  * The four pacing options for implementing the program (compact/standard/
  * extended/project-based). Ported from the original HTML's `.scope-list`.
  */
-export default function ScopeOptions(): JSX.Element {
+export default function ScopeOptions(): React.JSX.Element {
   const {scopeOptions} = useStandardsContent();
   return (
     <div className={styles.list}>

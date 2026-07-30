@@ -13,7 +13,7 @@ interface FlagNoteProps {
  * Left-accented callout, ported from the original HTML's `.flag` pattern
  * (info/good/warn tones).
  */
-export default function FlagNote({tone, title, children}: FlagNoteProps): JSX.Element {
+export default function FlagNote({tone, title, children}: FlagNoteProps): React.JSX.Element {
   return (
     <div className={`${styles.flag} ${styles[tone]}`}>
       <div className={styles.title}>{title}</div>

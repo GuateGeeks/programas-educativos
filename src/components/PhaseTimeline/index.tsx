@@ -22,7 +22,7 @@ interface PhaseTimelineProps {
  * Renders a sequence of learning-cycle phases. Shared between `Module`'s
  * "Implementation" tab and the `Showcase` page.
  */
-export default function PhaseTimeline({phases}: PhaseTimelineProps): JSX.Element {
+export default function PhaseTimeline({phases}: PhaseTimelineProps): React.JSX.Element {
   return (
     <>
       {phases.map((phase, i) => (

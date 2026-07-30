@@ -1,0 +1,278 @@
+---
+slug: /guategeeks
+sidebar_position: 2
+sidebar_label: "GuateGeeks - SMARS"
+title: "GuateGeeks - SMARS Aula Autónomo"
+description: "Programa de robótica con Arduino para Ciclo Básico: construir un robot autónomo, programación pura, alineación CNB completa."
+---
+
+import Module from '@site/src/components/Module';
+import FlagNote from '@site/src/components/FlagNote';
+import BasicoAlignment from '@site/src/components/BasicoAlignment';
+import InternationalAlignment from '@site/src/components/InternationalAlignment';
+import TransversalCnbBlock from '@site/src/components/TransversalCnbBlock';
+import RubricTable from '@site/src/components/RubricTable';
+import CnbBlock from '@site/src/components/CnbBlock';
+
+# GuateGeeks - SMARS Aula Autónomo
+
+Programa educativo de 12 sesiones que enseña **robótica integrada con Arduino puro**: estudiantes construyen un robot autónomo que detecta obstáculos, toma decisiones y se mueve sin control externo. Alineado completamente con CNB Ciclo Básico (Ciencias Naturales, TAC, Emprendimiento, Comunicación, Matemática).
+
+## Cómo usar este material
+
+- **Navegue sesión por sesión.** Cada sesión es autónoma pero encadena hacia el proyecto completo.
+- **Estructura de fases.** Cada sesión contiene: Activar (15 min) → Explorar (25 min) → Crear (60-90 min) → Reflexionar (15 min).
+- **Roles rotativos.** 4 estudiantes, 4 roles que cambian cada sesión: Seguridad, Mecánico, Electrónico, Código.
+- **Código incluido.** Sketches Arduino listos para usar, comentados línea por línea, sin librerías externas.
+- **Alineación clara.** Cada sesión mapea a competencias específicas del CNB y estándares internacionales (CSTA, ISTE, NGSS).
+
+<FlagNote tone="info" title="Para docentes">
+Comience por la **Guía Docente** (descargar abajo). Revise la secuencia de 12 sesiones, prepare materiales, consulte rúbricas y evaluación. Cada sesión incluye orientaciones metodológicas, preguntas socráticas y evidencia esperada.
+</FlagNote>
+
+## Duración y rutas
+
+- **Intensivo:** 12 sesiones de 90-120 minutos (2-3 semanas)
+- **Escolar:** 12 sesiones de 50-60 minutos distribuidas (1 mes)
+- **Club maker:** 4 jornadas de 3 horas
+
+## Diseñado para Ciclo Básico (1.º, 2.º, 3.º básico)
+
+El programa usa el mismo proyecto (construir el robot SMARS) pero la expectativa cambia por nivel: en 1.º básico se mide comprensión de componentes y seguimiento de instrucciones; en 2.º básico se mide depuración y modificación de código; en 3.º básico se mide diseño de algoritmos, optimización y presentación técnica.
+
+## Perfiles de trabajo del equipo
+
+Organice equipos de 3-4 estudiantes con roles que rotan cada sesión:
+
+- **Responsable de Seguridad y Energía** — verifica voltajes, valida conexiones, protege al equipo
+- **Responsable Mecánico e Impresión** — arma piezas, cuida tolerancias, valida calibración física
+- **Responsable de Electrónica** — cableja circuitos, verifica continuidad, diagnostica fallas
+- **Responsable de Código y Documentación** — carga firmware, modifica parámetros, documenta resultados
+
+**Rotación sugerida:** Cambiar de rol cada 2-3 sesiones para que cada estudiante experimente cada responsabilidad.
+
+## Acceso para estudiantes
+
+Cuando la institución tenga este material en red interna, puede compartir la **vista de estudiante** para que equipos avancen a su ritmo con guías visuales, sin distracciones.
+
+## Rutas de implementación
+
+Elija según disponibilidad de sesiones:
+
+- **Compacta (12 sesiones):** 90-120 min/sesión, 2-3 semanas
+- **Estándar (12 sesiones):** 50-60 min/sesión, 4-6 semanas
+- **Extendida (12+ sesiones):** 50 min/sesión + retos avanzados, 8+ semanas
+
+## Marco curricular
+
+El programa alinea con:
+- **CNB Ciclo Básico:** Ciencias Naturales (máquinas, movimiento, método científico), TAC, Emprendimiento, Comunicación, Matemática
+- **Estándares internacionales:** CSTA (algoritmos, debugging), ISTE (diseño, pensamiento computacional), NGSS ETS (diseño de ingeniería)
+
+---
+
+## FASE 1: ACTIVAR - Sistemas y Seguridad (Sesiones 1-2)
+
+<Module id="phase1">
+  <Module.Question>
+    ¿De qué subsistemas está hecho un robot autónomo y cómo los protegemos?
+  </Module.Question>
+
+  <Module.Context>
+    En esta fase, estudiantes exploran la arquitectura del robot (mecánica, electrónica, lógica), aprenden seguridad, energía y materiales. Producen un diagrama anotado y checklist de seguridad.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Subsistemas mecánicos, eléctricos, lógicos',
+    'Seguridad con componentes energizados',
+    'Materiales: PLA, tolerancias, batería',
+    'Niveles de riesgo y mitigación',
+    'Documentación técnica básica',
+  ]} />
+
+  <Module.Phase kind="act" label="Sesión 1: Activar · 15 min" title="Sistemas del robot">
+    Mostrar video/imagen del robot SMARS completo. Pregunta: ¿Qué partes ves? ¿Qué hace cada una? Dibujar en pizarra: ruedas, motor, sensor, Arduino, batería.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Sesión 1: Explorar · 25 min" title="Diagramar subsistemas">
+    Identificar 3 subsistemas: Mecánico (ruedas, chasis), Eléctrico (batería, motor, Arduino), Lógico (sensor, decisiones). Discutir cómo se comunican.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Sesión 1: Crear · 60-90 min" title="Diagrama anotado">
+    Equipo dibuja diagrama con: componentes etiquetados, conexiones, flujo de energía, flujo de información. Foto de resultado. Reto Nivel 0: ¿Por qué el motor está conectado al Arduino en lugar de directamente a la batería?
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Sesión 1: Reflexionar · 15 min" title="Validación de diagrama">
+    Comparar diagramas entre equipos. Docente valida precisión. ¿Qué conexión fue más difícil de entender? Registrar en tabla de evidencia.
+  </Module.Phase>
+
+  <Module.Phase kind="act" label="Sesión 2: Activar · 15 min" title="Riesgos de energía">
+    Mostrar batería, Arduino, motor. Pregunta: ¿Qué peligros ves? (choque, quemadura, cortocircuito, daño a componentes)
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Sesión 2: Explorar · 25 min" title="Voltajes y límites seguros">
+    Medir voltaje de batería (≈9V). Máximo Arduino: 5V en pines. Máximo motor: especificación. Discutir reglas: nunca desconectar en caliente, verificar antes de energizar.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Sesión 2: Crear · 60-90 min" title="Checklist de seguridad">
+    Equipo llena checklist: ✓ Batería sin cortocircuitos, ✓ Arduino en lugar seguro, ✓ Motor asegurado, ✓ Área de trabajo despejada. Foto con checklist completado. Reto Nivel 0: Proponer 2 reglas adicionales de seguridad específicas para su equipo.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Sesión 2: Reflexionar · 15 min" title="Plan de operación segura">
+    Docente revisa checklists. Equipos explican qué pasa si ignoran cada regla. Registrar: "Si no verifico voltaje, entonces...". Conexión: responsabilidad.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'CN 1.1: Relaciona conocimiento científico con avances tecnológicos',
+    'CN 1.3: Máquinas simples, instrumentos tecnológicos',
+    'TAC 1.1: Describe importancia de tecnología, componentes, salud ergonómica',
+    'EP 1.2: Propone soluciones a problemas detectados',
+    'COM 2.1: Expresa resultados mediante documentos (diagrama, checklist)',
+  ]} />
+
+  <Module.Standards items={[
+    'CSTA: Abstracción, descomposición en subsistemas',
+    'ISTE: Responsabilidad digital y seguridad',
+    'NGSS ETS: Definir problemas (seguridad, función)',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Diagrama incluye todos los subsistemas con conexiones claras',
+    'Checklist de seguridad es específico al equipo y completo',
+    'Estudiante explica por qué cada medida de seguridad importa',
+    'Documentación es clara, legible, profesional',
+  ]} />
+</Module>
+
+---
+
+## FASE 2: EXPLORAR - Diseño e Impresión (Sesiones 3-4)
+
+<Module id="phase2">
+  <Module.Question>
+    ¿Cómo preparamos diseños 3D para fabricación y validamos calidad?
+  </Module.Question>
+
+  <Module.Context>
+    Estudiantes aprenden slicer, tolerancias, control de calidad. Preparan archivos STL, imprimen piezas SMARS, inspeccionan errores. Retos de medición y clasificación.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    'Archivos STL y orientación de impresión',
+    'Tolerancias en impresión 3D',
+    'Slicer: altura de capa, velocidad, relleno',
+    'Control de calidad: medición, clasificación',
+    'Documentación de errores y ajustes',
+  ]} />
+
+  <Module.Phase kind="act" label="Sesión 3: Activar · 15 min" title="De idea a pieza física">
+    Mostrar archivo STL en pantalla. Girar, acercar. Pregunta: ¿Cómo convertimos esto en plástico? Mostrar pieza impresa de referencia. ¿Qué tan exacta es? ¿Por qué?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Sesión 3: Explorar · 25 min" title="Parámetros de impresión">
+    Abrir Ultimaker Cura o similar. Mostrar: altura de capa (0.2mm), velocidad, infill (relleno). Explicar trade-off: calidad vs. tiempo. Medir una pieza con calibrador: ¿Medida real vs. STL?
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Sesión 3: Crear · 60-90 min" title="Preparar e imprimir">
+    Equipo selecciona 3 piezas SMARS. Carga STL en slicer. Ajusta parámetros. Genera G-code. Inicia impresión (o observa instructor). Reto Nivel 1: Mide 5 dimensiones críticas de una pieza impresa (espesor de pared, diámetro de eje). ¿Cuánto error hay?
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Sesión 3: Reflexionar · 15 min" title="Registro de tolerancias">
+    Tabla de mediciones: Dimensión → STL (esperado) → Impreso (real) → Error. Análisis: ¿Dónde hay más error? ¿Por qué? ¿Afecta función?
+  </Module.Phase>
+
+  <Module.Phase kind="act" label="Sesión 4: Activar · 15 min" title="Calidad y aceptación">
+    Mostrar una pieza perfecta y una con defectos (warping, layer shift, sobreimpresión). Pregunta: ¿Cuál usarías en tu robot? ¿Por qué?
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Sesión 4: Explorar · 25 min" title="Criterios de QC">
+    Docente explica criterios: dimensiones ±0.5mm OK, superficies lisas, ejes rotables, sin warping, soportes removibles. Mostrar cómo inspeccionar: mirar, tocar, probar encaje.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Sesión 4: Crear · 60-90 min" title="Control de calidad completo">
+    Equipo inspecciona 10 piezas del SMARS (chasis, ruedas, carcasas). Por cada pieza: ✓ Aceptar o ✗ Rechazar con razón. Fotodocumentar piezas defectuosas. Reto Nivel 1: Proponer ajuste de parámetros para la próxima impresión de piezas rechazadas.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Sesión 4: Reflexionar · 15 min" title="Reporte de QC">
+    Tabla: Pieza → Dimensiones OK → Defectos → Acción. Reflexión: ¿Cómo la precisión en impresión afecta el robot final?
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    'CN 1.2: Método científico: observación, hipótesis, experimentación, registro',
+    'CN 1.3: Tecnología como aplicación de ciencia (fabricación digital)',
+    'MAT: Mediciones, precisión, tolerancias, proporcionalidad',
+    'COM 2.1: Reportes de datos (tabla de mediciones, QC report)',
+  ]} />
+
+  <Module.Standards items={[
+    'CSTA: Análisis de datos (tablas, errores, tendencias)',
+    'ISTE: Investigación, validación de resultados',
+    'NGSS ETS: Especificaciones técnicas, control de calidad',
+  ]} />
+
+  <Module.Evaluation items={[
+    'Mediciones son precisas (3 decimales, unidades claras)',
+    'Clasificación QC es consistente y justificada',
+    'Reporte documenta errores comunes y sugerencias de mejora',
+    'Estudiante explica relación entre parámetros y calidad',
+  ]} />
+</Module>
+
+---
+
+## FASE 3: CREAR - Integración Técnica (Sesiones 5-10)
+
+_Sesiones 5-10: Ensamblaje mecánico, energía, motor, sensor, código base, integración autónoma. Retos Nivel 2 (Modificación) y Nivel 3 (Algoritmos). Sketches Arduino PRUEBA 01-03 + FIRMWARE 04._
+
+_(Contenido de sesiones 5-10 se expande en guía docente completa. Aquí resumen estructura.)*
+
+---
+
+## FASE 4: REFLEXIONAR - Retos y Evaluación (Sesiones 11-12)
+
+_Sesiones 11-12: Calibración, reto integrador (arena 2×2m, 3 obstáculos, autonomía 3 min), presentación final. Reto Nivel 4 (Ingeniería integrada)._
+
+---
+
+## Rúbrica de 100 puntos
+
+<RubricTable criteria={[
+  { criterion: 'Seguridad y orden de trabajo', points: 15, description: 'Prácticas seguras consistentes, espacio ordenado, energización/desconexión correcta' },
+  { criterion: 'Calidad mecánica', points: 15, description: 'Ensamblaje preciso, tolerancias respetadas, mecanismo funcional' },
+  { criterion: 'Cableado y documentación eléctrica', points: 20, description: 'Circuitos correctos, continuidad verificada, esquema documentado' },
+  { criterion: 'Programación y comprensión', points: 20, description: 'Código funcional, comentado, estudiante explica lógica' },
+  { criterion: 'Pruebas y uso de evidencia', points: 15, description: 'Datos de pruebas registrados, análisis de errores, iteración documentada' },
+  { criterion: 'Reto autónomo', points: 10, description: 'Robot completa arena sin quédarse atrapado, opera 3+ minutos' },
+  { criterion: 'Comunicación del proyecto', points: 5, description: 'Presenta hallazgos oralmente, responde preguntas técnicas' },
+]} />
+
+---
+
+## Alineación CNB
+
+<CnbBlock items={[
+  { area: 'Ciencias Naturales', grades: '1-3 básico', competency: 'CN 1.1, 1.3, 4.2', description: 'Tecnología, máquinas, movimiento, método científico' },
+  { area: 'TAC', grades: '1-3 básico', competency: 'TAC 1.1, 1.3', description: 'Componentes tecnológicos, documentación digital' },
+  { area: 'Emprendimiento', grades: '1-3 básico', competency: 'EP 1.1, 1.2', description: 'Solución de problemas, pensamiento creativo' },
+  { area: 'Comunicación', grades: '1-3 básico', competency: 'COM 2.1', description: 'Explicación técnica, reportes, presentaciones' },
+  { area: 'Matemática', grades: '1-3 básico', competency: 'MAT mediciones', description: 'Mediciones, proporcionalidad, cálculos de distancia' },
+]} />
+
+---
+
+## Descargas
+
+- [Guía Docente Completa](/recursos/guategeeks/GUIA_DOCENTE.md)
+- [Rúbrica (editable)](/recursos/guategeeks/RUBRICA_100_PUNTOS.xlsx)
+- [Checklist de Seguridad](/recursos/guategeeks/CHECKLIST_SEGURIDAD.pdf)
+- [Preguntas Socráticas](/recursos/guategeeks/PREGUNTAS_SOCRATICAS.md)
+- [Arduino Sketches (repo)](/arduino/guategeeks/)
+- [Alineación CNB Detallada](/recursos/guategeeks/ALINEACION_CNB.md)
+
+---
+
+## Soporte y Comunidad
+
+¿Preguntas? Reporta problemas o feedback en [GitHub Issues](https://github.com).
+
+Únete a la comunidad GuateGeeks en [Slack/Email].

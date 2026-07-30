@@ -1,0 +1,139 @@
+---
+sidebar_position: 5
+sidebar_label: "05 · Ensamblaje de orugas"
+title: "Ensamblaje de orugas"
+description: "Chasis, dos motorreductores y eslabones. La diferencia mecánica entre orugas se mide desde ahora."
+---
+
+import SessionModule from '@site/src/components/SessionModule';
+import StlViewer from '@site/src/components/StlViewer';
+
+# 05 · Ensamblaje de orugas
+
+:::tip Anticipa la sesión 11
+La diferencia entre las dos orugas que se mide hoy es exactamente lo que se compensará por software
+en la sesión de calibración. Guarden ese dato: se compara al final.
+:::
+
+<SessionModule id="s5">
+  <SessionModule.Question>
+    ¿Por qué un robot con dos motores iguales no avanza en línea recta?
+  </SessionModule.Question>
+
+  <SessionModule.Context>
+    El SMARS se mueve por orugas, no por ruedas: cada lado avanza independientemente y girar
+    consiste en hacer que un lado vaya distinto del otro. Esta sesión arma esa mecánica y, de paso,
+    descubre algo incómodo: dos motorreductores del mismo modelo no se comportan igual. Esa
+    diferencia física es real, se puede medir hoy, y más adelante se corregirá con código.
+  </SessionModule.Context>
+
+  <SessionModule.Concepts items={[
+    'Tracción por orugas y dirección diferencial',
+    'Motorreductor: relación entre par y velocidad',
+    'Fricción y alineación del eje',
+    'Tolerancia de encaje aplicada al armado',
+    'Variabilidad entre componentes nominalmente iguales',
+  ]} />
+
+  <SessionModule.Phase kind="act" label="Activar · 15 min" title="¿Cómo gira algo que no tiene volante?">
+    Mostrar una excavadora o un tanque en imagen. Preguntar cómo cambian de dirección sin ruedas
+    orientables. Guiar hasta la idea de dirección diferencial: si un lado va más rápido que el
+    otro, el vehículo gira; si van en sentido opuesto, gira sobre su propio eje.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Anatomía de la transmisión">
+    Identificar el recorrido del movimiento: motor, eje, rueda motriz, eslabones, rueda libre.
+    Localizar dónde puede aparecer fricción. Verificar con las piezas aceptadas en la sesión 4 que
+    los ejes entran sin forzar y sin holgura excesiva.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Armar y medir la diferencia">
+    Montar el chasis, fijar los dos motorreductores y cerrar ambas orugas con sus eslabones. Con el
+    robot levantado y sin energía, dar a cada oruga el mismo impulso manual y contar cuántas
+    vueltas completa antes de detenerse. Repetir tres veces por lado y anotar.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="La asimetría que hay que recordar">
+    Comparar los conteos de ambos lados. Casi siempre difieren. Discutir posibles causas: fricción
+    desigual, tensión distinta de la oruga, variación del propio motor. Registrar el dato: será la
+    referencia contra la que se comparen los offsets de la sesión 11.
+  </SessionModule.Phase>
+
+  <SessionModule.Materials items={[
+    'Piezas impresas aceptadas en la sesión 4',
+    'Dos motorreductores N20 de 6 V',
+    'Segmentos de filamento para los eslabones de oruga',
+    'Destornilladores pequeños, pinza de punta y pinza de corte',
+    'Cronómetro y formato para anotar los conteos',
+  ]} />
+
+  <SessionModule.Reto>
+    Con el robot levantado, den a cada oruga el mismo impulso manual y cuenten las vueltas hasta que
+    se detenga. Tres intentos por lado. Calculen el promedio de cada lado y la diferencia entre
+    ambos. Anoten también qué lado gira más libre: esa asimetría se compensará por software en la
+    sesión 11, y entonces compararán si el número coincide.
+  </SessionModule.Reto>
+
+  <SessionModule.Evidence items={[
+    'Robot armado con ambas orugas girando sin roce perceptible',
+    'Tabla con tres conteos por lado y sus promedios',
+    'Diferencia calculada entre lado izquierdo y derecho',
+    'Nota sobre qué lado resultó más libre y una hipótesis de por qué',
+  ]} />
+
+  <SessionModule.Cnb items={[
+    'CN 4.4: resuelve problemas contextualizados de movimiento circular uniforme (p. 26).',
+    'CN 4.4: representa fuerzas mediante diagramas de cuerpo libre (p. 26).',
+    'CN 1.3: expresa en tablas los datos obtenidos de la indagación realizada (p. 22).',
+  ]} />
+
+  <SessionModule.Standards items={[
+    'CSTA 3A-CS-01: explicar la interacción entre los componentes físicos de un sistema.',
+    'ISTE Innovative Designer 4b: seleccionar y usar procesos de diseño para generar prototipos.',
+    'NGSS HS-PS2-1: analizar datos para respaldar la relación entre fuerza, masa y aceleración.',
+  ]} />
+
+  <SessionModule.Evaluation items={[
+    'Arma el chasis con ambas orugas girando libremente.',
+    'Explica cómo se logra un giro sin ruedas orientables.',
+    'Mide la diferencia entre orugas con repeticiones, no con una sola prueba.',
+    'Propone una causa plausible para la asimetría observada.',
+  ]} />
+</SessionModule>
+
+## Guía visual de construcción mecánica
+
+![Cables soldados a los terminales de un motorreductor N20](/assets/guategeeks/smars/soldering-motors.webp)
+
+Preparen los motores antes de montarlos. Cada motor necesita dos cables bien soldados, con colores
+distinguibles para poder corregir dirección después. La soldadura debe quedar firme, sin exceso de
+estaño que pueda tocar el chasis o el otro terminal.
+
+![Motores colocados en los alojamientos laterales del chasis SMARS](/assets/guategeeks/smars/fit-motors.webp)
+
+Inserten los motores en sus alojamientos sin forzar el plástico. Si entra demasiado apretado, no lo
+resuelvan empujando: revisen rebabas, deformación o tolerancia de impresión.
+
+![Soporte de motores colocado sobre los motorreductores](/assets/guategeeks/smars/fit-motor-holders.webp)
+
+El soporte mantiene los motores alineados. La meta no es apretar al máximo, sino evitar que el eje
+se incline cuando la oruga haga fuerza.
+
+![Ruedas instaladas en el chasis antes de cerrar la oruga](/assets/guategeeks/smars/attach-wheels-01.webp)
+
+Comprueben que cada rueda gira libremente antes de montar la oruga. Un roce pequeño aquí se vuelve
+un desvío grande cuando el robot intente avanzar recto.
+
+![Eslabones de oruga unidos con segmentos de filamento](/assets/guategeeks/smars/tracks-01.webp)
+
+Cierren cada oruga con segmentos de filamento de 1.75 mm. Si un eslabón queda duro, sustitúyanlo:
+la calibración de la sesión 11 no debe compensar una falla mecánica que se podía corregir hoy.
+
+## Las piezas del ensamblaje
+
+La oruga se arma encadenando eslabones con segmentos de filamento. La rueda libre tensa la cadena
+en el extremo opuesto al motor.
+
+<StlViewer file="mechanical_track.stl" name="Eslabón de oruga" role="Se encadenan con segmentos de filamento" quantity={32} size="142 KB" />
+
+<StlViewer file="unpowered_wheel_sl.stl" name="Rueda libre" role="Tensa la oruga en el extremo opuesto al motor" quantity={2} size="1.1 MB" />

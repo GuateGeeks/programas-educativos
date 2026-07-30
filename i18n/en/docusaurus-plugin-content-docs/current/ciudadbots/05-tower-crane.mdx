@@ -1,0 +1,84 @@
+---
+sidebar_position: 5
+sidebar_label: "05 · Tower Crane"
+title: "Tower Crane"
+description: "Pulleys, winch, and control"
+---
+
+import Module from '@site/src/components/Module';
+
+# 05 · Tower Crane
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m5">
+  <Module.Question>
+    How does a crane move a heavy load with precision and balance on a job site in our city?
+  </Module.Question>
+
+  <Module.Context>
+    Students build a GuateGeeks construction crane. The module combines pulley mechanics, a winch,
+    motor positions, manual control, and autonomous sensor-based operation.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Fixed and movable pulleys",
+    "Winch and rope",
+    "Angular position",
+    "Manual/autonomous control",
+    "Balance and load",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Building at height">
+    Ask what machines students have seen on construction sites and draw a safe zone around the
+    load. Each team defines the origin point, destination point, and speed limit for moving without
+    excessive swing. Initial evidence: a transfer sketch with a clear area and one safety rule for
+    not touching the load while it is suspended.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="Pulleys and load">
+    Compare fixed and movable pulleys, observe how the winch spools the rope, and test arm rotation
+    without a load. Then use a light load to detect swing and check that the base does not lift.
+    Checkpoint: the team identifies which motor lifts, which motor turns, and what they would do if
+    the rope crosses itself or the load starts oscillating.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 90-120 min" title="Move loads between points">
+    Build the Tower Crane and program the mission in stages: raise the load, turn to a measured
+    position, lower it, and release or mark arrival. Record height, angle, stability, and result for
+    each attempt in a safe-load log. If it fails, debug rope spooling, load weight, unstable base,
+    motor speed, or angular position before repeating.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Force, balance, and safety">
+    Discuss why speed is not always the goal: the crane must be stable, predictable, and safe. Each
+    group explains one decision that reduced risk and one measurement that improved precision. To
+    scale the challenge, 1st básico observes pulley action and swing, 2nd básico compares
+    angles/heights, and 3rd básico proposes automatic limits for safe operation.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Natural Sciences: force, simple machines, pulleys, balance, and safety when moving loads.",
+    "Mathematics: motor degrees, measuring height/turn, proportionality, and precision records during transfer.",
+    "Learning and Communication Technologies: using motor variables or positions, testing sequences, and documenting safe load handling.",
+    "Communication and Language, Spanish: oral technical explanation using vocabulary for pulley, winch, balance, and constraint.",
+    "Entrepreneurship for Productivity: safety, quality, and continuous improvement in an automated construction process.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: tests an engineering solution while considering safety and control constraints.",
+    "2026 CSTA PK-12 · Middle school: position variables/data, events, reading code, and test-based refinement.",
+    "NGSS MS-ETS1-1 and MS-ETS1-3: defines safe-load criteria and analyzes test data to improve the crane.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Relates pulleys and winch to effort reduction or load control using observable evidence.",
+    "Uses motor positions to lift, lower, and turn the load without abrupt movements.",
+    "Records tests of precision, stability, or time and explains which adjustment improved the result.",
+    "Prioritizes one safety constraint in the program and justifies how it is verified.",
+  ]} />
+</Module>

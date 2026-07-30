@@ -350,6 +350,12 @@
   "ciudadbots.home.ciudadbotsCardBody": {
     "message": "12 LEGO SPIKE robotics missions with city challenges: mapping, delivery, logistics, infrastructure, emergency response, and more. Includes a teacher guide, base programs, and rubrics."
   },
+  "guategeeks.home.terceroBadge": {
+    "message": "Third year"
+  },
+  "guategeeks.home.smarsCardBody": {
+    "message": "12 sessions building an autonomous tracked robot with plain Arduino: two motors, an ultrasonic sensor, and a state machine. Includes a teacher guide, five verified sketches, and a rubric. Material available in Spanish."
+  },
   "ciudadbots.home.viewProgram": {
     "message": "View program →"
   },

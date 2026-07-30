@@ -1,0 +1,106 @@
+---
+sidebar_position: 0
+sidebar_label: "Cómo usar este material"
+title: "GuateGeeks · SMARS Aula Autónomo"
+description: "Programa de robótica con Arduino para tercero básico: construir un robot de orugas autónomo en 12 sesiones."
+---
+
+import FlagNote from '@site/src/components/FlagNote';
+
+# GuateGeeks · SMARS Aula Autónomo
+
+Programa de **12 sesiones** en el que los equipos construyen un robot de orugas que detecta
+obstáculos, decide una maniobra y se mueve por sí mismo. Sin teléfono, sin Bluetooth y sin
+aplicación externa: el robot se opera con dos botones y responde con un buzzer.
+
+Se programa en Arduino sobre un **shield L293D compatible con Motor Shield v1**. Los sketches que
+mueven motores usan `AFMotor`; los demás se mantienen sobre el core de Arduino. Es el complemento
+de [CiudadBots](/ciudadbots), que trabaja robótica aplicada con bloques visuales.
+
+![Robot SMARS terminado con orugas, Arduino y sensor ultrasónico](/assets/guategeeks/smars/heroshot.jpg)
+
+Está diseñado para **tercero básico**. Las competencias que ejercita —investigación tecnológica,
+comunicación de resultados con gráficos, vectores, dispersión de datos y mejora continua— son las
+de ese grado, y así están citadas en cada sesión.
+
+## Cómo se usa este material
+
+- **Una página por sesión.** Cada sesión trae su pregunta central, las cuatro fases con tiempos,
+  los conceptos, los materiales, el reto y la evidencia esperada.
+- **Cuatro fases por sesión.** Activar (15 min) → Explorar (25 min) → Crear (60-90 min) →
+  Reflexionar (15 min).
+- **Roles que rotan.** Cuatro responsabilidades por equipo, cambiando cada dos o tres sesiones.
+- **Código incluido y verificable.** Cinco sketches por capas, comentados en español, para Arduino
+  Uno y shield L293D.
+
+<FlagNote tone="info" title="Para docentes">
+Empiece por la Guía docente para ver la secuencia completa de 12 sesiones y los materiales por
+sesión. Antes de energizar cualquier robot, revise la página de Seguridad: el checklist debe estar
+firmado.
+</FlagNote>
+
+## Duración
+
+| Ruta | Formato | Calendario |
+|---|---|---|
+| Intensivo | 12 sesiones de 90-120 min | 2-3 semanas |
+| Escolar | 12 sesiones de 50-60 min | 4-6 semanas |
+| Club maker | 4 jornadas de 3 horas | 1 mes |
+
+## Las cuatro fases del programa
+
+| Fase | Sesiones | Qué se logra |
+|---|---|---|
+| **Activar** | 1-2 | Subsistemas del robot, seguridad y energía |
+| **Explorar** | 3-4 | Preparación de piezas 3D, tolerancias, control de calidad |
+| **Crear** | 5-11 | Ensamblaje, botones, dos motores, sensor, integración y calibración |
+| **Reflexionar** | 12 | Reto integrador en arena y presentación técnica |
+
+## Progresión del código
+
+Cada sketch prueba un subsistema en aislamiento antes de integrarlo. Si el robot autónomo falla,
+se puede volver a la capa anterior para localizar el problema.
+
+| Sesión | Sketch | Qué prueba |
+|---|---|---|
+| 6 | `01_botones_y_buzzer` | Entradas con `INPUT_PULLUP`, antirrebote, tonos |
+| 7 | `02_prueba_motores` | Shield L293D, M1/M2, dirección y velocidad de las dos orugas |
+| 8 | `03_prueba_ultrasonido` | Distancia por tiempo de vuelo |
+| 9-10 | `04_smars_autonomo` | Máquina de estados, tres modos, evasión de obstáculos |
+| 11 | `05_asistente_calibracion` | Compensación de la diferencia entre orugas |
+
+## Roles del equipo
+
+Equipos de 3 o 4 estudiantes, con rotación cada dos o tres sesiones para que todos pasen por cada
+responsabilidad.
+
+- **Seguridad y energía** — mide voltajes, valida conexiones antes de energizar
+- **Mecánica** — arma el chasis y las orugas, cuida tolerancias y alineación
+- **Electrónica** — cablea, verifica continuidad, diagnostica fallas
+- **Código y documentación** — carga los sketches, ajusta parámetros, registra resultados
+
+## Marco curricular
+
+Alineado al **CNB de Tercero Básico** —Ciencias Naturales, Tecnologías del Aprendizaje y la
+Comunicación, Emprendimiento para la Productividad, Comunicación y Lenguaje, y Matemática— con
+citas verificadas contra las mallas del Mineduc, incluida su página fuente.
+
+Los estándares internacionales se citan en la banda que corresponde al grado: **CSTA Nivel 3A**
+(grados 9-10), **NGSS HS-ETS1** e **ISTE** con sub-indicadores. Ver
+[Alineación curricular](/guategeeks/alineacion-cnb).
+
+<FlagNote tone="warn" title="Atribución">
+SMARS es un proyecto educativo modular creado por Kevin Thomas y desarrollado por una comunidad de
+makers. GuateGeeks no está afiliado oficialmente. El código Arduino se distribuye bajo licencia MIT.
+Los modelos 3D **se distribuyen aquí** bajo su licencia original CC BY-NC-SA, lo que sujeta al
+paquete completo a la condición No Comercial.
+</FlagNote>
+
+## El otro programa del Ciclo Básico
+
+[**CiudadBots Guatemala**](/ciudadbots) trabaja robótica aplicada con LEGO SPIKE y programación por
+bloques, a partir de retos de ingeniería urbana, y **cubre los tres grados del ciclo**. Es el
+complemento natural de este programa: donde CiudadBots parte del problema de ciudad, GuateGeeks baja
+al nivel de la electrónica y el código.
+
+Si trabaja con **1.º o 2.º básico**, CiudadBots es el programa indicado.

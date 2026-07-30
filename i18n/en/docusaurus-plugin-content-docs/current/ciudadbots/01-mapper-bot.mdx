@@ -1,0 +1,87 @@
+---
+sidebar_position: 1
+sidebar_label: "01 · Mapper Bot"
+title: "Mapper Bot"
+description: "Blueprints, distance, and turns"
+---
+
+import Module from '@site/src/components/Module';
+
+# 01 · Mapper Bot
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m1">
+  <Module.Question>
+    How can a robot draw a neighborhood's blueprint by following exact instructions?
+  </Module.Question>
+
+  <Module.Context>
+    Students build a GuateGeeks mapping robot that draws on paper. The challenge connects
+    neighborhood maps — streets, houses, markets, and services — with distance-based movement, 90°
+    and 45° turns, loops, and physically calibrating the marker.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Sequential algorithm",
+    "Distance via wheel rotation",
+    "90° and 45° turns",
+    "Loops for geometric shapes",
+    "Calibration and testing",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="City blueprints">
+    Show a simple community map and ask each team to mark the origin, destination, streets, and
+    services that should appear. The teacher helps turn the drawing into measurable instructions:
+    distance, turn, and repetition. Initial evidence: a sketch with approximate scale and a success
+    criterion for deciding whether the robot drew the expected blueprint.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Designing the drawing robot">
+    Identify two motors, a distance sensor, wheels, a caster ball, and a marker. Test the turn with
+    the robot lifted and check that the marker sits on the turning axis; if it is offset, the drawing
+    will drift. Checkpoint: the team explains which part controls distance, which part controls
+    turning, and how they will remove the marker before handling motors or wheels.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 60-90 min" title="Build, program, and calibrate">
+    Build the Mapper Bot with the visual guide and download the base program. First run a minimum
+    route: move forward 5 cm and turn 90 degrees; record actual distance, error, and likely cause.
+    Once motion is repeatable, use a loop to draw a square and extend it into a house with a roof.
+    If the trace warps, decide whether the issue comes from the wheel, marker, surface, or turn
+    block.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="From error to precision">
+    Compare drawings between teams and classify each difference as mechanical, mathematical, or
+    program-related. Each team submits brief evidence: first drawing, final drawing, and the
+    adjustment that reduced error the most. To scale the challenge, 1st básico traces guided shapes,
+    2nd básico calculates average error, and 3rd básico redesigns the route to represent more
+    community features.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: measuring distance, turn angles, geometric figures, and the error between the expected map and the real drawing.",
+    "Natural Sciences: observing motion, force, friction, and cause-effect while calibrating wheels, marker, and surface.",
+    "Learning and Communication Technologies: using the base program, documenting tests, and collaborating with calibration data.",
+    "Communication and Language, Spanish: oral or written explanation of the algorithm, adjustments, and relationship between instructions and result.",
+    "Entrepreneurship for Productivity: continuous improvement of a technology tool to represent needs in the environment.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4, 1.5, and 1.6: designs, tests, and communicates a robotics solution using calibration data.",
+    "2026 CSTA PK-12 · Middle school: algorithms and design, programming with sequences/loops, reading code, and test-based refinement.",
+    "NGSS MS-ETS1-1, MS-ETS1-3, and MS-ETS1-4: defines criteria, analyzes test data, and optimizes the drawing robot design.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Calculates or adjusts distance and turns using before/after measurement evidence.",
+    "Uses loops to simplify the program and can explain what each loop repeats.",
+    "Records at least two tests in a table with observed error and applied change.",
+    "Explains how marker position, wheel behavior, or surface affects the map result.",
+  ]} />
+</Module>

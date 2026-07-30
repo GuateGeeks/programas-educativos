@@ -1,0 +1,118 @@
+---
+sidebar_position: 4
+sidebar_label: "04 · Impresión y control de calidad"
+title: "Impresión y control de calidad"
+description: "Inspeccionar, clasificar y decidir qué pieza sirve. El criterio de aceptación como decisión de ingeniería."
+---
+
+import SessionModule from '@site/src/components/SessionModule';
+import StlViewer from '@site/src/components/StlViewer';
+
+# 04 · Impresión y control de calidad
+
+:::note Para el docente
+Esta sesión enseña a rechazar. Es tentador aceptar toda pieza que «se ve bien» para no retrasar el
+armado, pero una pieza mala descubierta en la sesión 5 cuesta mucho más que una rechazada aquí.
+:::
+
+<SessionModule id="s4">
+  <SessionModule.Question>
+    ¿Cómo se decide, sin adivinar, si una pieza sirve para el robot?
+  </SessionModule.Question>
+
+  <SessionModule.Context>
+    En la sesión anterior el equipo midió y encontró error. Ahora tiene que usar esos números para
+    decidir. Aceptar o rechazar no es cuestión de gusto: se define un criterio antes de mirar las
+    piezas, y luego se aplica igual a todas. Esa inversión del orden —criterio primero, inspección
+    después— es lo que distingue un control de calidad de una opinión.
+  </SessionModule.Context>
+
+  <SessionModule.Concepts items={[
+    'Criterio de aceptación definido antes de inspeccionar',
+    'Defectos típicos: warping, desplazamiento de capa, sobreextrusión',
+    'Clasificación y trazabilidad',
+    'Prueba de encaje como verificación funcional',
+    'Ajuste de parámetros a partir de defectos observados',
+  ]} />
+
+  <SessionModule.Phase kind="act" label="Activar · 15 min" title="Dos piezas, una decisión">
+    Mostrar dos piezas: una correcta y otra con un defecto visible. Preguntar cuál usarían y por
+    qué. Presionar un poco: ¿y si la defectuosa fuera la única disponible? Ahí aparece la necesidad
+    de un criterio explícito en lugar de una impresión personal.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Definir el criterio">
+    El grupo acuerda su criterio de aceptación antes de tocar las piezas: tolerancia dimensional
+    admisible, superficies sin deformación, ejes que giran libres, soportes removibles sin dañar.
+    Se escribe en la pizarra y no se cambia durante la inspección.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Inspeccionar el lote completo">
+    Cada equipo inspecciona todas sus piezas aplicando el criterio acordado. Por cada una registra
+    aceptada o rechazada, y en caso de rechazo, el defecto concreto. Las piezas rechazadas se
+    fotografían: son la evidencia para ajustar la próxima impresión.
+  </SessionModule.Phase>
+
+  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="Del defecto al parámetro">
+    Para cada tipo de defecto encontrado, proponer qué parámetro del slicer podría corregirlo.
+    Cerrar conectando con lo que viene: las piezas aceptadas son las que se armarán en la sesión 5,
+    y si el criterio fue laxo, se notará entonces.
+  </SessionModule.Phase>
+
+  <SessionModule.Materials items={[
+    'Todas las piezas impresas del chasis y las orugas',
+    'Calibrador o regla milimetrada',
+    'Formato de control de calidad impreso',
+    'Cámara para documentar piezas rechazadas',
+    'Pinza de corte para retirar soportes',
+  ]} />
+
+  <SessionModule.Reto>
+    Inspeccionen el lote completo y produzcan un reporte de control de calidad con el veredicto de
+    cada pieza. Para cada rechazo, propongan el ajuste de parámetro que lo corregiría y expliquen
+    por qué creen que funcionaría. Un rechazo sin propuesta de mejora es información incompleta.
+  </SessionModule.Reto>
+
+  <SessionModule.Evidence items={[
+    'Criterio de aceptación escrito antes de la inspección',
+    'Reporte con el veredicto de cada pieza y el defecto en los rechazos',
+    'Fotografías de las piezas rechazadas',
+    'Propuesta de ajuste de parámetros para la próxima impresión',
+  ]} />
+
+  <SessionModule.Cnb items={[
+    'EP 2.2: aplica técnicas y herramientas de gestión de calidad y mejora continua (p. 18).',
+    'MAT 4.1: identifica medidas de dispersión —rango y rango intercuartílico— en un conjunto de datos (p. 18).',
+    'CN 1.3: discute los resultados de la indagación y comunica el criterio aplicado (p. 22).',
+  ]} />
+
+  <SessionModule.Standards items={[
+    'CSTA 3A-DA-12: crear modelos computacionales que representen las relaciones entre elementos de un sistema.',
+    'ISTE Innovative Designer 4d: mostrar tolerancia a la ambigüedad y persistencia al trabajar con problemas abiertos.',
+    'NGSS HS-ETS1-3: evaluar una solución frente a criterios y restricciones priorizados.',
+  ]} />
+
+  <SessionModule.Evaluation items={[
+    'Define un criterio de aceptación antes de inspeccionar y lo respeta.',
+    'Clasifica de forma consistente, sin cambiar el criterio sobre la marcha.',
+    'Documenta cada rechazo con el defecto específico observado.',
+    'Relaciona un defecto con el parámetro de impresión que lo causa.',
+  ]} />
+</SessionModule>
+
+## Guía visual de control de calidad
+
+![Piezas impresas SMARS listas para inspección dimensional y prueba de encaje](/assets/guategeeks/smars/printed-parts.webp)
+
+Usen la foto como referencia de lote: no basta con que una pieza aislada se vea bien. Revisen si
+los defectos se repiten en varias ruedas o eslabones, porque un problema sistemático de impresión
+se multiplica durante el armado de las orugas.
+
+## Comparar contra el modelo
+
+El control de calidad consiste en contrastar la pieza impresa con su diseño. Tengan el modelo a la
+vista mientras inspeccionan: es más fácil detectar una deformación cuando se sabe qué forma debía tener.
+
+<StlViewer file="mechanical_track.stl" name="Eslabón de oruga" role="Se imprime 32 veces: un defecto sistemático se multiplica" quantity={32} size="142 KB" />
+
+<StlViewer file="holding_board_9v.stl" name="Soporte de motores y batería" role="Sus alojamientos deben encajar sin forzar" quantity={1} size="176 KB" />

@@ -10,7 +10,7 @@ import styles from './index.module.css';
  * the first. Future programs get their own card here without changing existing
  * program routes.
  */
-export default function Home(): JSX.Element {
+export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
@@ -56,6 +56,23 @@ export default function Home(): JSX.Element {
                   12 misiones de robótica LEGO SPIKE con retos de ciudad: cartografía, entrega,
                   logística, infraestructura, emergencia y más. Incluye guía docente, programas
                   base y rúbricas.
+                </Translate>
+              </p>
+              <span className={styles.cardLink}>
+                <Translate id="ciudadbots.home.viewProgram">Ver programa →</Translate>
+              </span>
+            </Link>
+
+            <Link className={styles.card} to="/guategeeks">
+              <span className={styles.badge}>
+                <Translate id="guategeeks.home.terceroBadge">Tercero Básico</Translate>
+              </span>
+              <h3>GuateGeeks SMARS</h3>
+              <p>
+                <Translate id="guategeeks.home.smarsCardBody">
+                  12 sesiones para construir un robot de orugas autónomo con Arduino puro: dos
+                  motores, sensor ultrasónico y máquina de estados. Incluye guía docente, cinco
+                  sketches verificados y rúbrica. Material disponible en español.
                 </Translate>
               </p>
               <span className={styles.cardLink}>

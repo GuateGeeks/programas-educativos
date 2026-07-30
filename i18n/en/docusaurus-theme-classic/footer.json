@@ -23,9 +23,9 @@
     "message": "ISTE Standards",
     "description": "The label of footer link with label=ISTE Standards linking to https://iste.org/standards/students"
   },
-  "link.item.label.CSTA K-12": {
-    "message": "CSTA K-12",
-    "description": "The label of footer link with label=CSTA K-12 linking to https://csteachers.org/k12standards/"
+  "link.item.label.CSTA 2026 PK-12": {
+    "message": "CSTA 2026 PK-12",
+    "description": "The label of footer link with label=CSTA 2026 PK-12 linking to https://csteachers.org/pk12standards/view/"
   },
   "copyright": {
     "message": "© 2026 GuateGeeks · Educational Programs.",

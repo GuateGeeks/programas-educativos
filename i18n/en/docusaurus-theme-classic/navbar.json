@@ -11,6 +11,10 @@
     "message": "CiudadBots",
     "description": "Navbar item with label CiudadBots"
   },
+  "item.label.GuateGeeks SMARS": {
+    "message": "GuateGeeks SMARS",
+    "description": "Navbar item with label GuateGeeks SMARS"
+  },
   "item.label.Modo estudiante": {
     "message": "Student view",
     "description": "Navbar item with label Modo estudiante"

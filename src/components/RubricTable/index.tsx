@@ -20,7 +20,7 @@ interface RubricTableProps {
  * tab (generic level text applied to each module's criteria) and the
  * Showcase page's final rubric (criterion-specific level text).
  */
-export default function RubricTable({rows, headerLabel}: RubricTableProps): JSX.Element {
+export default function RubricTable({rows, headerLabel}: RubricTableProps): React.JSX.Element {
   const resolvedHeaderLabel =
     headerLabel ?? translate({id: 'ciudadbots.rubricTable.criterion', message: 'Criterio'});
   const levelHeaders = [

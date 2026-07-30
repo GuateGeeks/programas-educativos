@@ -43,14 +43,40 @@ const config: Config = {
     },
   },
 
+  plugins: [
+    // Lets MDX import an Arduino sketch as a raw string:
+    //   import code from '@site/arduino/guategeeks/<dir>/<dir>.ino';
+    // webpack 5's built-in `asset/source` does this without any extra
+    // dependency (raw-loader is not installed, and asset/source supersedes it).
+    //
+    // This is what keeps the code shown on a session page and the file a
+    // student downloads from ever diverging: both come from this one import,
+    // so the .ino under arduino/guategeeks/ stays the single editable source.
+    // See design decision D11.
+    function arduinoSketchRawImport() {
+      return {
+        name: 'guategeeks-arduino-sketch-raw-import',
+        configureWebpack() {
+          return {
+            module: {
+              rules: [{test: /\.ino$/i, type: 'asset/source' as const}],
+            },
+          };
+        },
+      };
+    },
+  ],
+
   presets: [
     [
       'classic',
       {
         docs: {
           path: 'docs',
-          // Program namespace: all docs content is served under /ciudadbots/*.
-          routeBasePath: 'ciudadbots',
+          // Docs are served from the site root; each program owns a
+          // subdirectory of docs/ that supplies its URL segment, e.g.
+          // docs/ciudadbots/mapper-bot.mdx -> /ciudadbots/mapper-bot.
+          routeBasePath: '/',
           sidebarPath: './sidebars.ts',
         },
         blog: false,
@@ -80,6 +106,12 @@ const config: Config = {
           position: 'left',
           label: 'CiudadBots',
         },
+        {
+          type: 'docSidebar',
+          sidebarId: 'guategeeksSidebar',
+          position: 'left',
+          label: 'GuateGeeks SMARS',
+        },
         {to: '/estudiante', label: 'Modo estudiante', position: 'left'},
         {
           type: 'localeDropdown',
@@ -91,9 +123,10 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Programa',
+          title: 'Programas',
           items: [
             {label: 'CiudadBots Guatemala', to: '/ciudadbots'},
+            {label: 'GuateGeeks SMARS', to: '/guategeeks'},
             {label: 'Modo estudiante', to: '/estudiante'},
           ],
         },
@@ -102,7 +135,7 @@ const config: Config = {
           items: [
             {label: 'CNB Ciclo Básico', href: 'https://cnbguatemala.org/wiki/CNB_Ciclo_B%C3%A1sico'},
             {label: 'ISTE Standards', href: 'https://iste.org/standards/students'},
-            {label: 'CSTA K-12', href: 'https://csteachers.org/k12standards/'},
+            {label: 'CSTA 2026 PK-12', href: 'https://csteachers.org/pk12standards/view/'},
           ],
         },
       ],

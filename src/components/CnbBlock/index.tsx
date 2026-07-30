@@ -12,7 +12,7 @@ interface CnbBlockProps {
  * original HTML's `.cnb-block`/`.cnb-grid`/`.cnb-item` pattern. Used for CNB
  * competency summaries and the international-standards summary cards.
  */
-export default function CnbBlock({badge, title, items}: CnbBlockProps): JSX.Element {
+export default function CnbBlock({badge, title, items}: CnbBlockProps): React.JSX.Element {
   return (
     <div className={styles.block}>
       <div className={styles.top}>

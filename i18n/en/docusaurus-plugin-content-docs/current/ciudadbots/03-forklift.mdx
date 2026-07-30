@@ -1,0 +1,87 @@
+---
+sidebar_position: 3
+sidebar_label: "03 · Forklift"
+title: "Forklift"
+description: "Precision, load, and maneuvering"
+---
+
+import Module from '@site/src/components/Module';
+
+# 03 · Forklift
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m3">
+  <Module.Question>
+    How does a robot move a load in a market, warehouse, or workshop without crashing or losing
+    precision?
+  </Module.Question>
+
+  <Module.Context>
+    Students build a forklift inspired by local warehouses, markets, and workshops. The module
+    works with centimeter-level movement, controlled turns, motorized lifting, and repeatable
+    maneuvers.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Maneuverability",
+    "Distance-based movement",
+    "Rack and pinion",
+    "Load lifting",
+    "Precision testing",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Warehouses and logistics">
+    Show images or describe a supermarket, market, or warehouse and ask teams to draw an aisle with
+    a pickup zone and a delivery zone. The teacher focuses the question: what happens if the
+    forklift approaches too fast or lifts the load to the wrong height? Initial evidence: marked
+    route, container position, and a success criterion in centimeters.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Chassis and forks">
+    Identify the drive motors and the manipulator motor. Review how the rack converts rotation into
+    vertical movement and test three fork heights without a load. Checkpoint: the team moves the
+    forks without touching the rack with their fingers, explains which height picks up the container
+    best, and notes what could make the load fall.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Pick up and place a container">
+    Build the Forklift and program the mission in segments: measured approach, lift, back up, turn,
+    and place the container in a marked zone. After each attempt, measure the distance between the
+    container and target, record the adjustment, and repeat. If it fails, isolate the issue: fork
+    height, approach distance, turn angle, floor friction, or speed while carrying the load.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Precision isn't luck">
+    Measure how far the load ended up from the target and share a table of attempt, error, and
+    adjustment. The team explains which change improved the result the most and which change did not
+    matter. To scale the challenge, 1st básico identifies fork positions, 2nd básico calculates
+    average error, and 3rd básico optimizes the sequence to repeat three deliveries with the least
+    variation.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: measuring distance, angles, target error, and organizing precision data.",
+    "Natural Sciences: motion transfer, force, load balance, and the relationship between mechanism and function.",
+    "Learning and Communication Technologies: recording attempts, debugging the program, and using data to adjust maneuvers.",
+    "Communication and Language, Spanish: arguing technical decisions using a test table and mechanism vocabulary.",
+    "Entrepreneurship for Productivity: analyzing logistics, efficiency, safety, and quality indicators in work processes.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: uses iterative design and computational thinking to improve a repeatable maneuver.",
+    "2026 CSTA PK-12 · Middle school: testing and refining, performance data, and program documentation.",
+    "NGSS MS-ETS1-3 and MS-ETS1-4: analyzes test data to combine improvements and optimize the solution.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Programs measured and repeatable movements to pick up and place the load.",
+    "Recognizes how the lift mechanism transforms rotation into vertical motion.",
+    "Uses an attempt table to measure distance to target, error, and adjustment made.",
+    "Explains one safety or efficiency improvement based on test data.",
+  ]} />
+</Module>

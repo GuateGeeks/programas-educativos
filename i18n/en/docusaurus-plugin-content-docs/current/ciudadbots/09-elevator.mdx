@@ -1,0 +1,86 @@
+---
+sidebar_position: 9
+sidebar_label: "09 · Elevator"
+title: "Elevator"
+description: "Variables, floors, and safety"
+---
+
+import Module from '@site/src/components/Module';
+
+# 09 · Elevator
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m9">
+  <Module.Question>
+    How does an elevator know where it is, where it needs to go, and when to safely open its
+    doors?
+  </Module.Question>
+
+  <Module.Context>
+    This module introduces stateful systems through a GuateGeeks elevator for buildings, malls, or
+    school libraries: variables for current floor, selected floor, maximum floors, doors, and a
+    sensor for the initial reference point.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Variables",
+    "Events and messages",
+    "Current state vs. destination",
+    "Safety doors",
+    "Initial floor calibration",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Real elevators">
+    Ask what an elevator does before it moves: close doors, know the current floor, and validate the
+    destination. Each team draws a simple table with current floor, requested floor, and door state.
+    Initial evidence: one safety rule that states when the elevator may move and when it may open.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 30 min" title="A system with memory">
+    Identify the winch, doors, force sensor, and display. Introduce variables for selected floor,
+    current floor, and maximum floor; then test moving up and down without a payload and with hands
+    away from doors, rope, and winch. Checkpoint: the team calibrates the initial floor and explains
+    which variable must change before, during, and after movement.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 120 min" title="Select and move between floors">
+    Build the Elevator and program button selection, floor display, calculated movement, and
+    door opening/closing. Run test cases: same floor, one floor up, several floors, and invalid
+    destination if applicable. Record current floor, destination, direction, distance moved, and door
+    state. If it fails, debug initial calibration, movement formula, variable update, or door
+    sequence.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 20 min" title="Safety and state">
+    Analyze what would fail if the elevator did not remember the current floor or opened doors while
+    moving. Each group presents a state table and one safety improvement. To scale the challenge, 1st
+    básico traces floor changes with guidance, 2nd básico debugs the floor-to-floor formula, and 3rd
+    básico adds destination validation or operating limits.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: variables, difference between current floor and destination, counting levels, and operations to move a proportional distance.",
+    "Natural Sciences: force, pulley, vertical motion, and safety in systems that transport people or objects.",
+    "Learning and Communication Technologies: state programming, buttons, display, events, and a safety-test log.",
+    "Communication and Language, Spanish: describing a stateful system using a diagram, pseudocode, or oral explanation.",
+    "Entrepreneurship for Productivity: quality and safety in automated systems that provide a service.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: models a system with constraints, variables, and verifiable decisions.",
+    "2026 CSTA PK-12 · Middle school: variables and data storage, events, program development, and testing/refinement.",
+    "NGSS MS-ETS1-1 and MS-ETS1-2: defines safety as a constraint and evaluates rules to prevent elevator failures.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses variables to represent current floor, destination, or maximum floor without losing state.",
+    "Integrates buttons, display, motor, and doors in a verifiable sequence.",
+    "Tests at least two safety scenarios: wrong floor, open door, or initial reference.",
+    "Explains risks and safety measures using a diagram, pseudocode, or log.",
+  ]} />
+</Module>

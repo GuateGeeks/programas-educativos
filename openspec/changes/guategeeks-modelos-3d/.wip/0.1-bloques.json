@@ -1,0 +1,110 @@
+{
+ "01-sistemas-del-robot.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿De qué subsistemas está hecho un robot autónomo y cómo se comunican entre sí?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Antes de armar o programar, el equipo necesita un mapa mental del robot. Esta sesión separa el\n    SMARS en tres subsistemas —mecánico, eléctrico y lógico— y hace explícito que por unos cables\n    viaja energía y por otros viaja información. Ese diagrama es la referencia que se usará para\n    diagnosticar fallas durante todo el programa.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Subsistema mecánico, eléctrico y lógico',\n    'Flujo de energía frente a flujo de información',\n    'Sensor, actuador y controlador',\n    'Descomposición de un sistema',\n    'Documentación técnica con diagrama',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"¿Qué partes ves?\">\n    Mostrar el robot SMARS armado, o una fotografía si todavía no existe. Preguntar qué partes se\n    distinguen y para qué serviría cada una. Anotar en la pizarra todo lo que el grupo nombre, sin\n    corregir aún: orugas, motores, sensor, placa, batería, botones, buzzer.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Agrupar en tres subsistemas\">\n    Clasificar lo anotado en tres grupos: **mecánico** (chasis, orugas, dos motorreductores),\n    **eléctrico** (batería, interruptor, driver TB6612FNG, cableado) y **lógico** (Arduino, sensor\n    HC-SR04, dos botones, buzzer). Discutir el caso interesante: los motores aparecen en el grupo\n    mecánico y en el eléctrico. ¿Por qué?\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Diagrama anotado del sistema\">\n    Cada equipo dibuja el robot completo con los componentes etiquetados y las conexiones entre\n    ellos. Se piden dos tipos de flecha distintos: uno para energía y otro para información. Al\n    terminar, fotografiar el diagrama para el expediente del equipo.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Validar contra el robot real\">\n    Intercambiar diagramas entre equipos y buscar diferencias. El docente valida la precisión.\n    Cerrar registrando qué conexión costó más entender y por qué, porque ese punto es el candidato\n    natural a confundir durante el cableado de la sesión 7.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Arduino Uno, driver TB6612FNG y los dos motorreductores N20 para mostrar en físico',\n    'Sensor HC-SR04, dos pulsadores y buzzer pasivo',\n    'Portapilas 6×AAA con batería NiMH (sin conectar)',\n    'Pliegos o pizarra y marcadores de dos colores',\n    'Cámara o teléfono para fotografiar el diagrama',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    El motor no se conecta directamente a la batería, sino a través del driver TB6612FNG, que a su\n    vez obedece al Arduino. Expliquen por escrito por qué existe ese intermediario. Pista: comparen\n    cuánta corriente necesita un motor con cuánta puede entregar un pin del Arduino.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Diagrama con los tres subsistemas identificados y sus componentes etiquetados',\n    'Flechas que distinguen flujo de energía de flujo de información',\n    'Respuesta escrita del reto sobre el papel del driver',\n    'Registro de la conexión que resultó más difícil de entender',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "03-slicer-y-tolerancias.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    Si el diseño dice 20 milímetros, ¿por qué la pieza impresa mide 20.3?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    Entre el modelo digital y la pieza física hay una máquina que deposita plástico caliente capa\n    por capa, y ese proceso tiene límites. Entender la tolerancia no es un detalle técnico: decide\n    si un eje entra o no en su alojamiento, y por lo tanto si las orugas girarán libres o con roce.\n    Esta sesión introduce el slicer y produce el primer dato experimental medido del programa.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Archivo STL como malla de triángulos',\n    'Altura de capa, relleno y velocidad',\n    'Tolerancia y error de fabricación',\n    'Medición con calibrador o regla',\n    'Compromiso entre calidad y tiempo',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"De la pantalla al plástico\">\n    Abrir un archivo STL y girarlo en pantalla. Preguntar cómo creen que se convierte eso en un\n    objeto sólido. Pasar de mano en mano una pieza ya impresa y pedir que localicen las capas: la\n    respuesta está a la vista.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Los tres parámetros que deciden\">\n    En el slicer, modificar altura de capa, relleno y velocidad, observando cómo cambia el tiempo\n    estimado. Plantear la pregunta que guía la sesión: ¿cuál de los tres afecta más la precisión de\n    una medida, y cuál solo afecta la resistencia de la pieza?\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Preparar, imprimir y medir\">\n    Cada equipo carga las piezas del chasis SMARS, ajusta los parámetros acordados y genera el\n    G-code. Mientras imprime (o con piezas ya disponibles), medir cinco dimensiones críticas con\n    calibrador y compararlas con las del diseño, anotando el error de cada una.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"¿Dónde se concentra el error?\">\n    Comparar las tablas entre equipos. ¿El error es parejo o se concentra en cierto tipo de\n    dimensión, como los agujeros? Formular una hipótesis sobre la causa. Se comprobará en la\n    sesión 5, cuando esas piezas tengan que encajar de verdad.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Computadora con slicer instalado: PrusaSlicer, Cura, OrcaSlicer o Bambu Studio',\n    'Archivos STL del chasis SMARS público',\n    'Impresora FDM con filamento PLA, o piezas impresas por encargo',\n    'Calibrador o regla milimetrada',\n    'Formato de tabla de mediciones impreso',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Midan cinco dimensiones críticas de una pieza impresa y compárenlas con el diseño. Construyan\n    una tabla con cuatro columnas: dimensión, valor esperado, valor medido y error. Al final,\n    respondan con evidencia: ¿el error es constante o depende del tamaño de la medida?\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Tabla de cinco mediciones con su error calculado',\n    'Captura de los parámetros usados en el slicer',\n    'Hipótesis escrita sobre dónde se concentra el error',\n    'Fotografía de la pieza medida junto al instrumento',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "04-impresion-y-control-de-calidad.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Cómo se decide, sin adivinar, si una pieza sirve para el robot?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    En la sesión anterior el equipo midió y encontró error. Ahora tiene que usar esos números para\n    decidir. Aceptar o rechazar no es cuestión de gusto: se define un criterio antes de mirar las\n    piezas, y luego se aplica igual a todas. Esa inversión del orden —criterio primero, inspección\n    después— es lo que distingue un control de calidad de una opinión.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Criterio de aceptación definido antes de inspeccionar',\n    'Defectos típicos: warping, desplazamiento de capa, sobreextrusión',\n    'Clasificación y trazabilidad',\n    'Prueba de encaje como verificación funcional',\n    'Ajuste de parámetros a partir de defectos observados',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"Dos piezas, una decisión\">\n    Mostrar dos piezas: una correcta y otra con un defecto visible. Preguntar cuál usarían y por\n    qué. Presionar un poco: ¿y si la defectuosa fuera la única disponible? Ahí aparece la necesidad\n    de un criterio explícito en lugar de una impresión personal.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Definir el criterio\">\n    El grupo acuerda su criterio de aceptación antes de tocar las piezas: tolerancia dimensional\n    admisible, superficies sin deformación, ejes que giran libres, soportes removibles sin dañar.\n    Se escribe en la pizarra y no se cambia durante la inspección.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Inspeccionar el lote completo\">\n    Cada equipo inspecciona todas sus piezas aplicando el criterio acordado. Por cada una registra\n    aceptada o rechazada, y en caso de rechazo, el defecto concreto. Las piezas rechazadas se\n    fotografían: son la evidencia para ajustar la próxima impresión.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"Del defecto al parámetro\">\n    Para cada tipo de defecto encontrado, proponer qué parámetro del slicer podría corregirlo.\n    Cerrar conectando con lo que viene: las piezas aceptadas son las que se armarán en la sesión 5,\n    y si el criterio fue laxo, se notará entonces.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Todas las piezas impresas del chasis y las orugas',\n    'Calibrador o regla milimetrada',\n    'Formato de control de calidad impreso',\n    'Cámara para documentar piezas rechazadas',\n    'Pinza de corte para retirar soportes',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Inspeccionen el lote completo y produzcan un reporte de control de calidad con el veredicto de\n    cada pieza. Para cada rechazo, propongan el ajuste de parámetro que lo corregiría y expliquen\n    por qué creen que funcionaría. Un rechazo sin propuesta de mejora es información incompleta.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Criterio de aceptación escrito antes de la inspección',\n    'Reporte con el veredicto de cada pieza y el defecto en los rechazos',\n    'Fotografías de las piezas rechazadas',\n    'Propuesta de ajuste de parámetros para la próxima impresión',\n  ]} />"
+  ],
+  "Code": []
+ },
+ "05-ensamblaje-de-orugas.mdx": {
+  "Question": [
+   "<SessionModule.Question>\n    ¿Por qué un robot con dos motores iguales no avanza en línea recta?\n  </SessionModule.Question>"
+  ],
+  "Context": [
+   "<SessionModule.Context>\n    El SMARS se mueve por orugas, no por ruedas: cada lado avanza independientemente y girar\n    consiste en hacer que un lado vaya distinto del otro. Esta sesión arma esa mecánica y, de paso,\n    descubre algo incómodo: dos motorreductores del mismo modelo no se comportan igual. Esa\n    diferencia física es real, se puede medir hoy, y más adelante se corregirá con código.\n  </SessionModule.Context>"
+  ],
+  "Concepts": [
+   "<SessionModule.Concepts items={[\n    'Tracción por orugas y dirección diferencial',\n    'Motorreductor: relación entre par y velocidad',\n    'Fricción y alineación del eje',\n    'Tolerancia de encaje aplicada al armado',\n    'Variabilidad entre componentes nominalmente iguales',\n  ]} />"
+  ],
+  "Phase": [
+   "<SessionModule.Phase kind=\"act\" label=\"Activar · 15 min\" title=\"¿Cómo gira algo que no tiene volante?\">\n    Mostrar una excavadora o un tanque en imagen. Preguntar cómo cambian de dirección sin ruedas\n    orientables. Guiar hasta la idea de dirección diferencial: si un lado va más rápido que el\n    otro, el vehículo gira; si van en sentido opuesto, gira sobre su propio eje.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"exp\" label=\"Explorar · 25 min\" title=\"Anatomía de la transmisión\">\n    Identificar el recorrido del movimiento: motor, eje, rueda motriz, eslabones, rueda libre.\n    Localizar dónde puede aparecer fricción. Verificar con las piezas aceptadas en la sesión 4 que\n    los ejes entran sin forzar y sin holgura excesiva.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"cre\" label=\"Crear · 60-90 min\" title=\"Armar y medir la diferencia\">\n    Montar el chasis, fijar los dos motorreductores y cerrar ambas orugas con sus eslabones. Con el\n    robot levantado y sin energía, dar a cada oruga el mismo impulso manual y contar cuántas\n    vueltas completa antes de detenerse. Repetir tres veces por lado y anotar.\n  </SessionModule.Phase>",
+   "<SessionModule.Phase kind=\"ref\" label=\"Reflexionar · 15 min\" title=\"La asimetría que hay que recordar\">\n    Comparar los conteos de ambos lados. Casi siempre difieren. Discutir posibles causas: fricción\n    desigual, tensión distinta de la oruga, variación del propio motor. Registrar el dato: será la\n    referencia contra la que se comparen los offsets de la sesión 11.\n  </SessionModule.Phase>"
+  ],
+  "Materials": [
+   "<SessionModule.Materials items={[\n    'Piezas impresas aceptadas en la sesión 4',\n    'Dos motorreductores N20 de 6 V',\n    'Segmentos de filamento para los eslabones de oruga',\n    'Destornilladores pequeños, pinza de punta y pinza de corte',\n    'Cronómetro y formato para anotar los conteos',\n  ]} />"
+  ],
+  "Reto": [
+   "<SessionModule.Reto>\n    Con el robot levantado, den a cada oruga el mismo impulso manual y cuenten las vueltas hasta que\n    se detenga. Tres intentos por lado. Calculen el promedio de cada lado y la diferencia entre\n    ambos. Anoten también qué lado gira más libre: esa asimetría se compensará por software en la\n    sesión 11, y entonces compararán si el número coincide.\n  </SessionModule.Reto>"
+  ],
+  "Evidence": [
+   "<SessionModule.Evidence items={[\n    'Robot armado con ambas orugas girando sin roce perceptible',\n    'Tabla con tres conteos por lado y sus promedios',\n    'Diferencia calculada entre lado izquierdo y derecho',\n    'Nota sobre qué lado resultó más libre y una hipótesis de por qué',\n  ]} />"
+  ],
+  "Code": []
+ }
+}

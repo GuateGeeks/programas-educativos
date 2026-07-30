@@ -11,7 +11,7 @@ import CardGrid from '@site/src/components/CardGrid';
  * original HTML's `internationalAlignment()`. Used per-module (CNB tab) and
  * on the overview/Showcase pages.
  */
-export default function InternationalAlignment(): JSX.Element {
+export default function InternationalAlignment(): React.JSX.Element {
   const {internationalCards, internationalProgression, internationalEvidence, internationalSourceCards} =
     useStandardsContent();
   return (

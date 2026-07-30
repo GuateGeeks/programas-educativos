@@ -1,0 +1,44 @@
+[
+ {
+  "archivo": "chassis_sl.stl",
+  "bytes": 1849884,
+  "gzip": 636892,
+  "sha256": "f68726665ab7f04579bd30e677d5cc6de35f53322216a77a77de7af69776c1b5"
+ },
+ {
+  "archivo": "holding_board_9v.stl",
+  "bytes": 180984,
+  "gzip": 34063,
+  "sha256": "b8a4aec225bc64fce37ce45b3206a513fe78ccd83cff2ba4af64c3307346ca1e"
+ },
+ {
+  "archivo": "mechanical_track.stl",
+  "bytes": 146284,
+  "gzip": 26200,
+  "sha256": "8a32833e91b5af55c97286dbc1313405cad920d0fe1523cc709bd8a2deb22b37"
+ },
+ {
+  "archivo": "powered_wheel.stl",
+  "bytes": 1944084,
+  "gzip": 761114,
+  "sha256": "17b6f0820963bc08c131f02982c90eeec036f40c34f06303f989d5f7e95add10"
+ },
+ {
+  "archivo": "ultrasonic_1.stl",
+  "bytes": 714284,
+  "gzip": 225868,
+  "sha256": "f1f8a1dcc1248f96d3aef1d210a2dac8c16054b0b83dcd2e2d192ca3eb81a8b2"
+ },
+ {
+  "archivo": "ultrasonic_2b_v2.stl",
+  "bytes": 31684,
+  "gzip": 6397,
+  "sha256": "536f7eafc2962738129383cdab329df6cdb728b2715bd1dec2190c1a5767562e"
+ },
+ {
+  "archivo": "unpowered_wheel_sl.stl",
+  "bytes": 1134784,
+  "gzip": 432581,
+  "sha256": "955b4f8e96fa327e5b4376503083a7c57b6339e3fb43706628ddd3b3071f9fb5"
+ }
+]

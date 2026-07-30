@@ -1,0 +1,87 @@
+---
+sidebar_position: 2
+sidebar_label: "02 · Delivery Bot"
+title: "Delivery Bot"
+description: "Cargo, route, and PIN code"
+---
+
+import Module from '@site/src/components/Module';
+
+# 02 · Delivery Bot
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m2">
+  <Module.Question>
+    How do we design a robot that safely delivers a package in a neighborhood, village, or school
+    campus?
+  </Module.Question>
+
+  <Module.Context>
+    The robot simulates a local GuateGeeks delivery service: bringing medicine, a spare part,
+    books, or materials to the right person. It works with autonomous movement, subroutines,
+    opening/closing a compartment, buttons, the hub display, and access logic.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Subroutines",
+    "Opening and closing with a motor",
+    "Route sequences",
+    "Buttons and PIN",
+    "Secure delivery design",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 15 min" title="Robots in delivery services">
+    Talk about food orders, medicine, books, and school materials. Each team defines who receives
+    the package, which route the robot will follow, and which risk it must avoid: wrong delivery,
+    obstacle, or unauthorized access. Initial evidence: a mini map with destination, stop point, and
+    a safety rule for opening the compartment.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Compartment and mechanism">
+    Analyze the large motor, medium motors, lid, and crank mechanism. Test opening and closing by
+    hand before programming, using a light payload and without forcing gears. Checkpoint: the lid
+    moves freely, the package fits without binding, and the team can explain what would happen if
+    the motor tries to open while something blocks the lid.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 60-90 min" title="Route with access control">
+    Build the Delivery Bot and create subroutines to open, close, turn left, turn right, and move
+    forward. Test each route segment first, then integrate a button-based PIN sequence before
+    opening. Record in a table whether the robot reached the correct point, accepted the expected
+    PIN, and opened/closed without jamming. If it fails, debug the route, PIN, and mechanism
+    separately.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Safety and user experience">
+    Each group demonstrates a delivery and explains how they would avoid wrong deliveries, what they
+    would do if the robot encounters an obstacle, and what information they would show on the hub.
+    To scale the challenge, 1st básico runs a guided route, 2nd básico compares two routes with test
+    data, and 3rd básico designs a response when the PIN, route, or compartment fails.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: comparing routes, movement sequences, and verification steps to deliver at the correct point.",
+    "Learning and Communication Technologies: programming subroutines, buttons/PIN, and digital documentation of access tests.",
+    "Communication and Language, Spanish: writing clear instructions, delivery rules, and an explanation of the system flow.",
+    "Social Sciences, Citizenship and Intercultural Education: safety, responsibility, and analysis of community delivery services.",
+    "Entrepreneurship for Productivity: designing a local solution considering user, quality, safety, and service improvement.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4, 1.5, and 1.7: designs a delivery solution, decomposes the problem, and collaborates by roles.",
+    "2026 CSTA PK-12 · Middle school: program development with events, procedures, testing, and decisions about computing impact.",
+    "NGSS MS-ETS1-1 and MS-ETS1-2: defines safety criteria and compares routes or access rules under constraints.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Breaks route, opening, closing, and PIN verification into clear subroutines.",
+    "Integrates delivery and access without manual intervention after starting the mission.",
+    "Tests at least two scenarios: correct PIN, incorrect PIN, or obstacle on the route.",
+    "Justifies safety and user-experience rules with functioning evidence.",
+  ]} />
+</Module>

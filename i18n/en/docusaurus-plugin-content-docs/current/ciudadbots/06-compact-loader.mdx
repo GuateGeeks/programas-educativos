@@ -1,0 +1,86 @@
+---
+sidebar_position: 6
+sidebar_label: "06 · Compact Loader"
+title: "Compact Loader"
+description: "Gyroscope and steering"
+---
+
+import Module from '@site/src/components/Module';
+
+# 06 · Compact Loader
+
+:::note For the teacher
+Review the **Implementation** tab first (phases and concepts), prepare the **Resources** (base
+program and guide), then close out planning with **CNB & Standards** and **Evaluation**. You can
+rotate team roles — Builder, Organizer, Programmer — throughout the module.
+:::
+
+<Module id="m6">
+  <Module.Question>
+    How does a robot hold its heading when the terrain is uneven, like a street under repair or a
+    slope?
+  </Module.Question>
+
+  <Module.Context>
+    The GuateGeeks mini-loader introduces orientation control using yaw/gyroscope. It works with
+    corrected straight-line movement, 45° turns, and a front blade for small urban or community
+    tasks.
+  </Module.Context>
+
+  <Module.Concepts items={[
+    "Yaw and orientation",
+    "Trajectory correction",
+    "Blade and arm",
+    "Center of gravity",
+    "Movement in the city",
+  ]} />
+
+  <Module.Phase kind="act" label="Activate · 12 min" title="Small machines, big problems">
+    List urban tasks where a large machine gets in the way: sidewalks, gardening, dirt, debris, or
+    minor repairs. Each team marks a short route with a light object for the blade to move and
+    predicts where the robot might drift. Initial evidence: expected path sketch and a success
+    criterion for measuring drift.
+  </Module.Phase>
+
+  <Module.Phase kind="exp" label="Explore · 25 min" title="Hub orientation">
+    Explain that the hub can detect whether it turned and that yaw must be reset before a test. Run
+    two paths without the blade task: one time-based and one with heading correction, then measure
+    how much each one drifts. Checkpoint: the team identifies the correct hub orientation, resets
+    yaw, and keeps hands away from the blade while the robot moves.
+  </Module.Phase>
+
+  <Module.Phase kind="cre" label="Create · 70-100 min" title="Route with the blade">
+    Build the Compact Loader and program it to hold its heading, move forward a distance, turn 45
+    degrees, and push or carry a light object. Record expected path, actual path, final angle, and
+    adjustment made. If it fails, debug yaw reset, hub orientation, floor friction, jammed object, or
+    blade speed before changing the whole program.
+  </Module.Phase>
+
+  <Module.Phase kind="ref" label="Reflect · 15 min" title="Feedback-based control">
+    Compare a time-based program with one that watches orientation and decide which handles uneven
+    terrain errors better. Each team shares one drift measurement and one improvement they would
+    apply on an irregular street. To scale the challenge, 1st básico observes the difference between
+    paths, 2nd básico calculates average drift, and 3rd básico tunes the correction logic with data.
+  </Module.Phase>
+
+  <Module.Cnb items={[
+    "Mathematics: angles, orientation, estimation, measuring drift, and comparing expected vs. real trajectory.",
+    "Natural Sciences: motion, friction, stability, center of gravity, and feedback to correct trajectory.",
+    "Learning and Communication Technologies: reading yaw/gyroscope, control loops, and a digital log of adjustments.",
+    "Communication and Language, Spanish: interpreting results and explaining why a test improved or worsened.",
+    "Entrepreneurship for Productivity: using small tools for local tasks with efficiency and safety criteria.",
+  ]} />
+
+  <Module.Standards items={[
+    "ISTE 1.4 and 1.5: uses feedback to debug a trajectory and improve the prototype.",
+    "2026 CSTA PK-12 · Middle school: control algorithms, programming with sensors, and systematic testing/refinement.",
+    "NGSS MS-ETS1-3 and MS-ETS1-4: uses test data to generate and optimize modifications.",
+  ]} />
+
+  <Module.Evaluation items={[
+    "Uses orientation to correct movement and demonstrates the difference from a program without correction.",
+    "Programs measured turns with a maximum error defined by the team or teacher.",
+    "Documents at least two cycles of test, observed data, adjustment, and result.",
+    "Explains how friction, weight, or surface affects bucket stability and route.",
+  ]} />
+</Module>

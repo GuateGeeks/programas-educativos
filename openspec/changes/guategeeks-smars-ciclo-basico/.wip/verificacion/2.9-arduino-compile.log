@@ -1,0 +1,26 @@
+=== VERIFICACIÓN DE COMPILACIÓN — GuateGeeks SMARS ===
+arduino-cli: arduino-cli  Version: 1.2.0 Commit: 9c495211 Date: 2025-02-24T15:57:28Z
+core:        arduino:avr 1.8.7
+fqbn:        arduino:avr:uno
+fecha:       2026-07-30T08:22:42Z
+
+########## 01_botones_y_buzzer ##########
+Sketch uses 3464 bytes (10%) of program storage space. Maximum is 32256 bytes.
+Global variables use 209 bytes (10%) of dynamic memory, leaving 1839 bytes for local variables. Maximum is 2048 bytes.
+
+########## 02_prueba_motores ##########
+Sketch uses 2592 bytes (8%) of program storage space. Maximum is 32256 bytes.
+Global variables use 194 bytes (9%) of dynamic memory, leaving 1854 bytes for local variables. Maximum is 2048 bytes.
+
+########## 03_prueba_ultrasonido ##########
+Sketch uses 2490 bytes (7%) of program storage space. Maximum is 32256 bytes.
+Global variables use 188 bytes (9%) of dynamic memory, leaving 1860 bytes for local variables. Maximum is 2048 bytes.
+
+########## 04_smars_autonomo ##########
+Sketch uses 5906 bytes (18%) of program storage space. Maximum is 32256 bytes.
+Global variables use 225 bytes (10%) of dynamic memory, leaving 1823 bytes for local variables. Maximum is 2048 bytes.
+
+########## 05_asistente_calibracion ##########
+Sketch uses 4680 bytes (14%) of program storage space. Maximum is 32256 bytes.
+Global variables use 222 bytes (10%) of dynamic memory, leaving 1826 bytes for local variables. Maximum is 2048 bytes.
+
