@@ -1,0 +1,262 @@
+.reader {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  margin: 4px 0 2px;
+}
+
+.stepTabs {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  min-width: 0;
+}
+
+.stepTab {
+  --step-color: var(--gg-coral-500);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  min-height: 64px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-emphasis-800);
+  text-align: left;
+  cursor: pointer;
+}
+
+.stepTab:hover,
+.stepTab:focus-visible {
+  border-color: var(--step-color);
+  outline: none;
+}
+
+.stepTabActive {
+  border-color: var(--step-color);
+  box-shadow: 0 8px 26px var(--glass-shadow);
+}
+
+.stepTabActive .stepNumber {
+  background: var(--step-color);
+  color: #fff;
+}
+
+.stepNumber,
+.panelNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  font-weight: 800;
+}
+
+.stepNumber {
+  background: color-mix(in srgb, var(--step-color), transparent 82%);
+  color: var(--step-color);
+}
+
+.stepTabText {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.stepLabel {
+  color: var(--ifm-color-emphasis-700);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.stepName {
+  color: var(--ifm-color-emphasis-900);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.track {
+  display: flex;
+  min-width: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  border-radius: 8px;
+}
+
+.panel {
+  flex: 0 0 100%;
+  min-width: 0;
+  scroll-snap-align: start;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--ifm-background-surface-color);
+}
+
+.panelHeader {
+  --step-color: var(--gg-coral-500);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, var(--step-color), color-mix(in srgb, var(--step-color), #111 16%));
+  color: #fff;
+}
+
+.panelNumber {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.panelLabel,
+.panelTitle {
+  margin: 0;
+}
+
+.panelLabel {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.2;
+  opacity: 0.9;
+  text-transform: uppercase;
+}
+
+.panelTitle {
+  font-size: 18px;
+  line-height: 1.25;
+}
+
+.panelBody {
+  min-height: 150px;
+  padding: 16px;
+  color: var(--ifm-color-emphasis-800);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.panelBody p:last-child {
+  margin-bottom: 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(92px, auto) 1fr minmax(92px, auto);
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.navButton {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 13px;
+  background: linear-gradient(135deg, var(--gg-coral-500), var(--gg-coral-600));
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.navButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.count {
+  justify-self: center;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 999px;
+  padding: 5px 12px;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.act {
+  --step-color: var(--gg-coral-400);
+}
+
+.exp {
+  --step-color: var(--gg-sky-400);
+}
+
+.cre {
+  --step-color: var(--gg-plum-400);
+}
+
+.ref {
+  --step-color: var(--gg-coral-300);
+}
+
+@media (max-width: 760px) {
+  .stepTabs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stepTab {
+    min-height: 58px;
+    padding: 8px;
+  }
+
+  .stepNumber {
+    width: 26px;
+    height: 26px;
+  }
+
+  .panelBody {
+    min-height: 180px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepTabs {
+    grid-template-columns: 1fr;
+  }
+
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .count {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  .stepTabs,
+  .controls {
+    display: none;
+  }
+
+  .track {
+    display: block;
+    overflow: visible;
+  }
+
+  .panel {
+    break-inside: avoid;
+    margin: 0 0 12px;
+  }
+
+  .panel + .panel {
+    margin-left: 0;
+  }
+}

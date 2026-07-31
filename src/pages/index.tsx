@@ -6,9 +6,10 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './index.module.css';
 
 /**
- * Hub landing page. GuateGeeks is a hub of educational programs; CiudadBots is
- * the first. Future programs get their own card here without changing existing
- * program routes.
+ * Hub landing page. GuateGeeks is a hub of educational programs; CiudadBots,
+ * GuateGeeks SMARS and Tiempo Circular are the current three. Each card states
+ * the grade its program targets, so a teacher can pick between them. Future
+ * programs get their own card here without changing existing program routes.
  */
 export default function Home(): React.JSX.Element {
   const {siteConfig} = useDocusaurusContext();
@@ -26,9 +27,10 @@ export default function Home(): React.JSX.Element {
           </h1>
           <p className={styles.lead}>
             <Translate id="ciudadbots.home.lead">
-              Un hub de programas educativos con retos de ingeniería urbana. Cada programa reúne
-              su secuencia docente, recursos por módulo, alineación curricular y evaluación en un
-              solo lugar.
+              Un hub de programas educativos para el Ciclo Básico: robótica con bloques, robótica
+              con Arduino y pantallas programables. Cada programa declara el grado que atiende y
+              reúne su secuencia docente, recursos, alineación curricular y evaluación en un solo
+              lugar.
             </Translate>
           </p>
           <div className={styles.actions}>
@@ -48,7 +50,7 @@ export default function Home(): React.JSX.Element {
           <div className={styles.grid}>
             <Link className={styles.card} to="/ciudadbots">
               <span className={styles.badge}>
-                <Translate id="ciudadbots.home.cicloBasicoBadge">Ciclo Básico</Translate>
+                <Translate id="ciudadbots.home.cicloBasicoBadge">1.º a 3.º básico</Translate>
               </span>
               <h3>CiudadBots Guatemala</h3>
               <p>
@@ -80,20 +82,22 @@ export default function Home(): React.JSX.Element {
               </span>
             </Link>
 
-            <div className={`${styles.card} ${styles.cardPlaceholder}`}>
+            <Link className={styles.card} to="/tiempo-circular">
               <span className={styles.badge}>
-                <Translate id="ciudadbots.home.comingSoonBadge">Próximamente</Translate>
+                <Translate id="tiempocircular.home.segundoBadge">Segundo Básico</Translate>
               </span>
-              <h3>
-                <Translate id="ciudadbots.home.newProgramsTitle">Nuevos programas</Translate>
-              </h3>
+              <h3>Tiempo Circular</h3>
               <p>
-                <Translate id="ciudadbots.home.newProgramsBody">
-                  Este hub está diseñado para crecer. Los próximos programas educativos de
-                  GuateGeeks aparecerán aquí, con su propia ruta y recursos.
+                <Translate id="tiempocircular.home.cardBody">
+                  12 sesiones para construir un reloj sobre una pantalla circular con ESP32. La
+                  trigonometría coloca las manecillas, el color se arma bit por bit y la carátula
+                  final cuenta los ciclos del Cholq'ij. Material disponible en español.
                 </Translate>
               </p>
-            </div>
+              <span className={styles.cardLink}>
+                <Translate id="ciudadbots.home.viewProgram">Ver programa →</Translate>
+              </span>
+            </Link>
           </div>
         </section>
       </main>

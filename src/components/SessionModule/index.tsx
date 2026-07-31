@@ -5,7 +5,8 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import {getSession, WIRING_REFERENCE} from '@site/src/data/guategeeks';
 import type {PhaseKind} from '@site/src/data/guategeeks/types';
-import PhaseTimeline, {type Phase} from '@site/src/components/PhaseTimeline';
+import type {Phase} from '@site/src/components/PhaseTimeline';
+import HorizontalStepReader from '@site/src/components/HorizontalStepReader';
 import CnbBlock from '@site/src/components/CnbBlock';
 import CardGrid from '@site/src/components/CardGrid';
 import AchievementIndicators from '@site/src/components/AchievementIndicators';
@@ -244,6 +245,12 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
     criterion,
     levels: RUBRIC_LEVELS,
   }));
+  const phaseSteps = content.phases.map((phase) => ({
+    label: phase.label,
+    title: phase.title,
+    body: phase.body,
+    tone: phase.kind,
+  }));
 
   // The code panel only exists for the six sessions that work with a sketch.
   const TABS: {key: TabKey; label: string}[] = [
@@ -327,7 +334,13 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
               </span>
             ))}
           </div>
-          <PhaseTimeline phases={content.phases} />
+          <HorizontalStepReader
+            ariaLabel={translate(
+              {id: 'guategeeks.session.phaseReaderLabel', message: 'Fases de implementación de {title}'},
+              {title},
+            )}
+            steps={phaseSteps}
+          />
 
           {content.materials.length > 0 && (
             <div className={styles.resourceCard}>

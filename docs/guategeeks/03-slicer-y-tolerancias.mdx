@@ -7,6 +7,7 @@ description: "De archivo STL a pieza física: parámetros de impresión y por qu
 
 import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
+import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 03 · Slicer y tolerancias
 
@@ -101,13 +102,21 @@ página de materiales para alternativas de fabricación.
   ]} />
 </SessionModule>
 
-## Guía visual de impresión
-
-![Piezas SMARS impresas antes de retirar y clasificar el lote](/assets/guategeeks/smars/printed-parts.webp)
-
-Antes de abrir el slicer, observen el lote completo: el chasis concentra superficies largas, las
-ruedas necesitan ejes limpios y los eslabones se repiten muchas veces. Esa repetición vuelve visible
-cualquier error sistemático de impresión.
+<VisualStepGuide
+  title="Guía visual de impresión"
+  steps={[
+    {
+      image: '/assets/guategeeks/smars/printed-parts.webp',
+      alt: 'Piezas SMARS impresas antes de retirar y clasificar el lote',
+      title: 'Leer el lote antes de medir',
+      body: <>
+        Antes de abrir el slicer, observen el lote completo: el chasis concentra superficies largas,
+        las ruedas necesitan ejes limpios y los eslabones se repiten muchas veces. Esa repetición
+        vuelve visible cualquier error sistemático de impresión.
+      </>,
+    },
+  ]}
+/>
 
 ## Las piezas de esta sesión
 

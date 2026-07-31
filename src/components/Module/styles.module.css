@@ -35,6 +35,7 @@
 .tab {
   border: none;
   background: transparent;
+  min-width: 0;
   padding: 10px 14px;
   font-size: 14px;
   font-weight: 600;
@@ -42,6 +43,8 @@
   cursor: pointer;
   border-bottom: 2px solid transparent;
   margin-bottom: -2px;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .tab:hover {
@@ -63,6 +66,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
 }
 
 .chip {
@@ -70,9 +74,14 @@
   border: 1px solid var(--ifm-color-emphasis-300);
   color: var(--gg-coral-500);
   border-radius: 999px;
+  max-width: 100%;
+  min-width: 0;
   padding: 5px 12px;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 /* Resources */

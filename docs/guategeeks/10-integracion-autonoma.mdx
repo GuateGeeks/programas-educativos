@@ -7,6 +7,7 @@ description: "Cargar el firmware completo y contrastar la predicción con el rob
 
 import SessionModule from '@site/src/components/SessionModule';
 import SketchBlock from '@site/src/components/SketchBlock';
+import VisualStepGuide from '@site/src/components/VisualStepGuide';
 import sketchCode from '@site/arduino/guategeeks/04_smars_autonomo/04_smars_autonomo.ino';
 
 # 10 · Integración autónoma
@@ -108,10 +109,18 @@ primera vez que un equipo ve a su robot esquivar solo, conviene no interrumpir.
   ]} />
 </SessionModule>
 
-## Referencia visual de integración
-
-![Robot SMARS ensamblado con orugas, electrónica superior y sensor ultrasónico](/assets/guategeeks/smars/heroshot.jpg)
-
-Antes de bajar el robot al piso, comparen su montaje con esta referencia: orugas libres, sensor al
-frente, cables sin rozar las ruedas y electrónica firme sobre el chasis. La prueba autónoma se hace
-con botones y buzzer; no se usa Bluetooth ni aplicación externa.
+<VisualStepGuide
+  title="Referencia visual de integración"
+  steps={[
+    {
+      image: '/assets/guategeeks/smars/heroshot.jpg',
+      alt: 'Robot SMARS ensamblado con orugas, electrónica superior y sensor ultrasónico',
+      title: 'Revisión antes de bajar al piso',
+      body: <>
+        Antes de bajar el robot al piso, comparen su montaje con esta referencia: orugas libres,
+        sensor al frente, cables sin rozar las ruedas y electrónica firme sobre el chasis. La
+        prueba autónoma se hace con botones y buzzer; no se usa Bluetooth ni aplicación externa.
+      </>,
+    },
+  ]}
+/>

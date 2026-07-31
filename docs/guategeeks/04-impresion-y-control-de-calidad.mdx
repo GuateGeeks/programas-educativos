@@ -7,6 +7,7 @@ description: "Inspeccionar, clasificar y decidir qué pieza sirve. El criterio d
 
 import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
+import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 04 · Impresión y control de calidad
 
@@ -100,13 +101,21 @@ armado, pero una pieza mala descubierta en la sesión 5 cuesta mucho más que un
   ]} />
 </SessionModule>
 
-## Guía visual de control de calidad
-
-![Piezas impresas SMARS listas para inspección dimensional y prueba de encaje](/assets/guategeeks/smars/printed-parts.webp)
-
-Usen la foto como referencia de lote: no basta con que una pieza aislada se vea bien. Revisen si
-los defectos se repiten en varias ruedas o eslabones, porque un problema sistemático de impresión
-se multiplica durante el armado de las orugas.
+<VisualStepGuide
+  title="Guía visual de control de calidad"
+  steps={[
+    {
+      image: '/assets/guategeeks/smars/printed-parts.webp',
+      alt: 'Piezas impresas SMARS listas para inspección dimensional y prueba de encaje',
+      title: 'Inspección del lote completo',
+      body: <>
+        Usen la foto como referencia de lote: no basta con que una pieza aislada se vea bien.
+        Revisen si los defectos se repiten en varias ruedas o eslabones, porque un problema
+        sistemático de impresión se multiplica durante el armado de las orugas.
+      </>,
+    },
+  ]}
+/>
 
 ## Comparar contra el modelo
 

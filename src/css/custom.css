@@ -327,6 +327,29 @@ h1, h2, h3, h4, h5, h6 {
   border-bottom-color: rgba(239, 133, 86, 0.6);
 }
 
+@media (max-width: 996px) {
+  .theme-doc-markdown {
+    max-width: calc(100vw - 32px);
+    min-width: 0;
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  .theme-doc-markdown h1,
+  .theme-doc-markdown h2,
+  .theme-doc-markdown h3,
+  .theme-doc-markdown h4,
+  .theme-doc-markdown h5,
+  .theme-doc-markdown h6,
+  .theme-doc-markdown p,
+  .theme-doc-markdown li,
+  .theme-doc-markdown blockquote,
+  .theme-doc-markdown .alert {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+}
+
 /* ════════════════════════════════════════════════════════════════
    FOOTER
    ════════════════════════════════════════════════════════════════ */

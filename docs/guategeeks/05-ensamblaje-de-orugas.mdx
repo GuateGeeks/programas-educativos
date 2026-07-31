@@ -7,6 +7,7 @@ description: "Chasis, dos motorreductores y eslabones. La diferencia mecánica e
 
 import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
+import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 05 · Ensamblaje de orugas
 
@@ -101,33 +102,59 @@ en la sesión de calibración. Guarden ese dato: se compara al final.
   ]} />
 </SessionModule>
 
-## Guía visual de construcción mecánica
-
-![Cables soldados a los terminales de un motorreductor N20](/assets/guategeeks/smars/soldering-motors.webp)
-
-Preparen los motores antes de montarlos. Cada motor necesita dos cables bien soldados, con colores
-distinguibles para poder corregir dirección después. La soldadura debe quedar firme, sin exceso de
-estaño que pueda tocar el chasis o el otro terminal.
-
-![Motores colocados en los alojamientos laterales del chasis SMARS](/assets/guategeeks/smars/fit-motors.webp)
-
-Inserten los motores en sus alojamientos sin forzar el plástico. Si entra demasiado apretado, no lo
-resuelvan empujando: revisen rebabas, deformación o tolerancia de impresión.
-
-![Soporte de motores colocado sobre los motorreductores](/assets/guategeeks/smars/fit-motor-holders.webp)
-
-El soporte mantiene los motores alineados. La meta no es apretar al máximo, sino evitar que el eje
-se incline cuando la oruga haga fuerza.
-
-![Ruedas instaladas en el chasis antes de cerrar la oruga](/assets/guategeeks/smars/attach-wheels-01.webp)
-
-Comprueben que cada rueda gira libremente antes de montar la oruga. Un roce pequeño aquí se vuelve
-un desvío grande cuando el robot intente avanzar recto.
-
-![Eslabones de oruga unidos con segmentos de filamento](/assets/guategeeks/smars/tracks-01.webp)
-
-Cierren cada oruga con segmentos de filamento de 1.75 mm. Si un eslabón queda duro, sustitúyanlo:
-la calibración de la sesión 11 no debe compensar una falla mecánica que se podía corregir hoy.
+<VisualStepGuide
+  title="Guía visual de construcción mecánica"
+  steps={[
+    {
+      image: '/assets/guategeeks/smars/soldering-motors.webp',
+      alt: 'Cables soldados a los terminales de un motorreductor N20',
+      title: 'Preparar los motores',
+      body: <>
+        Preparen los motores antes de montarlos. Cada motor necesita dos cables bien soldados, con
+        colores distinguibles para poder corregir dirección después. La soldadura debe quedar
+        firme, sin exceso de estaño que pueda tocar el chasis o el otro terminal.
+      </>,
+    },
+    {
+      image: '/assets/guategeeks/smars/fit-motors.webp',
+      alt: 'Motores colocados en los alojamientos laterales del chasis SMARS',
+      title: 'Insertar sin forzar',
+      body: <>
+        Inserten los motores en sus alojamientos sin forzar el plástico. Si entra demasiado
+        apretado, no lo resuelvan empujando: revisen rebabas, deformación o tolerancia de
+        impresión.
+      </>,
+    },
+    {
+      image: '/assets/guategeeks/smars/fit-motor-holders.webp',
+      alt: 'Soporte de motores colocado sobre los motorreductores',
+      title: 'Alinear los motorreductores',
+      body: <>
+        El soporte mantiene los motores alineados. La meta no es apretar al máximo, sino evitar que
+        el eje se incline cuando la oruga haga fuerza.
+      </>,
+    },
+    {
+      image: '/assets/guategeeks/smars/attach-wheels-01.webp',
+      alt: 'Ruedas instaladas en el chasis antes de cerrar la oruga',
+      title: 'Probar giro libre',
+      body: <>
+        Comprueben que cada rueda gira libremente antes de montar la oruga. Un roce pequeño aquí se
+        vuelve un desvío grande cuando el robot intente avanzar recto.
+      </>,
+    },
+    {
+      image: '/assets/guategeeks/smars/tracks-01.webp',
+      alt: 'Eslabones de oruga unidos con segmentos de filamento',
+      title: 'Cerrar la oruga',
+      body: <>
+        Cierren cada oruga con segmentos de filamento de 1.75 mm. Si un eslabón queda duro,
+        sustitúyanlo: la calibración de la sesión 11 no debe compensar una falla mecánica que se
+        podía corregir hoy.
+      </>,
+    },
+  ]}
+/>
 
 ## Las piezas del ensamblaje
 

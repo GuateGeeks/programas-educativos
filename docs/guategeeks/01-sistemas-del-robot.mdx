@@ -7,6 +7,7 @@ description: "Subsistemas mecánico, eléctrico y lógico: qué hace cada parte 
 
 import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
+import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 01 · Sistemas del robot
 
@@ -102,15 +103,30 @@ estándares** y **Evaluación**. Esta sesión no energiza nada: es de observaci�
   ]} />
 </SessionModule>
 
-## Referencia visual de subsistemas
-
-![Robot SMARS completo para identificar chasis, orugas, Arduino, shield, sensor y batería](/assets/guategeeks/smars/heroshot.jpg)
-
-En esta foto, separen con colores lo mecánico, lo eléctrico y lo lógico. El sensor ultrasónico y
-las orugas son fáciles de ubicar; el punto importante es explicar por qué el Arduino no alimenta
-los motores directamente.
-
-![Arduino montado en el chasis SMARS antes de colocar o revisar el shield](/assets/guategeeks/smars/set-arduino.webp)
+<VisualStepGuide
+  title="Referencia visual de subsistemas"
+  steps={[
+    {
+      image: '/assets/guategeeks/smars/heroshot.jpg',
+      alt: 'Robot SMARS completo para identificar chasis, orugas, Arduino, shield, sensor y batería',
+      title: 'Robot completo',
+      body: <>
+        En esta foto, separen con colores lo mecánico, lo eléctrico y lo lógico. El sensor
+        ultrasónico y las orugas son fáciles de ubicar; el punto importante es explicar por qué el
+        Arduino no alimenta los motores directamente.
+      </>,
+    },
+    {
+      image: '/assets/guategeeks/smars/set-arduino.webp',
+      alt: 'Arduino montado en el chasis SMARS antes de colocar o revisar el shield',
+      title: 'Controlador sobre el chasis',
+      body: <>
+        Observen dónde se apoya el Arduino y qué espacio queda para el shield y la batería. Esa
+        posición ayuda a distinguir la estructura mecánica de la capa lógica del robot.
+      </>,
+    },
+  ]}
+/>
 
 ## Las piezas que van a construir
 
