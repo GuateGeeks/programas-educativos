@@ -45,17 +45,17 @@ The program SHALL ship exactly six Arduino sketches under `arduino/tiempo-circul
 
 ### Requirement: Sketch code is originally authored, not derived from the saved tutorial
 
-All sketch code SHALL be written for this program. The saved tutorial in `watch/` SHALL be treated as a hardware and outcome reference only.
+All sketch code SHALL be written for this program. The saved tutorial in `watch/` SHALL be treated as a hardware, imagery and outcome reference; none of its code SHALL be reproduced or adapted.
 
 #### Scenario: Origin is declared
 
 - **WHEN** `arduino/tiempo-circular/LICENCIAS.md` is read
-- **THEN** it states that the sketches are original work licensed MIT, that `watch/` supplied only the pinout, wiring, library identification and photographs of expected results, and that the saved page's code was unusable because method calls, string literals and numeric arguments were stripped from it
+- **THEN** it states that the sketches are original work licensed MIT, that `watch/` supplied the pinout, wiring, library identification and the photographs used in the program, and that the saved page's code was unusable because method calls, string literals and numeric arguments were stripped from it
 
-#### Scenario: Upstream assets are not redistributed
+#### Scenario: Upstream imagery is attributed wherever it appears
 
-- **WHEN** the built site is inspected
-- **THEN** no image file from `watch/esp32-round-circular-tft-lcd-display-assets/` is served from `static/`, and any reference to that material is an attributed link rather than a copy
+- **WHEN** a page or README displays an image taken from `watch/esp32-round-circular-tft-lcd-display-assets/`
+- **THEN** the image carries a visible credit naming esp32io.com / DIYables as its source, and the licences page records that these images are third-party material reproduced with attribution rather than GuateGeeks work
 
 ### Requirement: Time source progresses from millis() to NTP
 

@@ -1,0 +1,58 @@
+---
+sidebar_position: 0
+sidebar_label: "Available in Spanish"
+title: "Tiempo Circular"
+description: "A 12-session ESP32 circular-display clock program for the second year of lower secondary. Currently published in Spanish only."
+---
+
+import FlagNote from '@site/src/components/FlagNote';
+
+# Tiempo Circular
+
+<FlagNote tone="warn" title="This program is published in Spanish only">
+Tiempo Circular has not been translated. The pages under this section are served in Spanish
+regardless of the site language you selected. This notice exists so that is a stated fact rather
+than a silent fallback.
+</FlagNote>
+
+## What the program is
+
+A **12-session** program in which teams build a clock on a 1.28-inch circular display.
+Trigonometry places the hands, colour is assembled bit by bit, and the final face counts the cycles
+of the **Cholq'ij**, the 260-day Maya calendar.
+
+It is programmed for an **ESP32** board driving a **GC9A01** round TFT module, 240×240 over SPI.
+There is no real-time clock and no memory card: time comes first from `millis()` and later from the
+network.
+
+It targets **segundo básico**, the second year of Guatemala's lower-secondary cycle, roughly
+equivalent to grade 8. That grade's curriculum asks, in its own words, for what a circular face
+forces you to compute: right-triangle trigonometry, notable angles on the circumference, positional
+numeral systems, uniform circular motion, and the cycles of the Cholq'ij and Hab' calendars.
+International standards are cited at the matching band: CSTA Level 2, NGSS MS-ETS1 and ISTE
+sub-indicators.
+
+It is the first program in the hub that builds **an interface that displays** rather than a machine
+that moves. It complements [CiudadBots](/ciudadbots), which teaches applied robotics with visual
+blocks, covers all three years of the cycle, and **is** available in English.
+
+## Structure
+
+- Four phases — Activar, Explorar, Crear, Reflexionar — repeated as a mini-cycle inside every session
+- Four rotating team roles: safety and power, wiring, geometry, code
+- Six layered ESP32 sketches, each testing one subsystem before integration
+- Challenge levels rising from documenting to full design integration
+
+## Hardware
+
+An ESP32 development board, a 1.28-inch round GC9A01 TFT module (240×240, IPS), a USB cable, a
+breadboard and jumper wires. No real-time clock module, no SD card module.
+
+**This hardware has been specified but not purchased.** None of the six sketches has been validated
+on a physical board, and the costs given on the materials page are estimates.
+
+## Reading it in Spanish
+
+All twelve session pages, the teacher guide, the rubric and the curriculum alignment are available
+in Spanish. Switch the site language to **Español**, or browse the section directly — the content is
+the same either way, since no English translation exists yet.

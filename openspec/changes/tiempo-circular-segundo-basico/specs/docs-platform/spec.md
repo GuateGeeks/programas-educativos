@@ -46,14 +46,14 @@ Because Tiempo Circular is authored only in Spanish, the English locale SHALL se
 
 ### Requirement: Static assets for Tiempo Circular are hosted under their own namespace
 
-Media for the program SHALL be served from `static/assets/tiempo-circular/`, and SHALL NOT include redistributed third-party tutorial imagery.
+Media for the program SHALL be served from `static/assets/tiempo-circular/`. Third-party imagery reproduced there SHALL be traceable to its source.
 
 #### Scenario: Program images resolve
 
 - **WHEN** a Tiempo Circular page requests a wiring or screen photograph
 - **THEN** the image is served from `static/assets/tiempo-circular/` at a stable URL
 
-#### Scenario: Third-party tutorial images are not redistributed
+#### Scenario: Reproduced tutorial images keep their provenance
 
-- **WHEN** the built `static/` output is inspected
-- **THEN** it contains no file copied from `watch/esp32-round-circular-tft-lcd-display-assets/`
+- **WHEN** an image copied from `watch/esp32-round-circular-tft-lcd-display-assets/` is served from `static/assets/tiempo-circular/`
+- **THEN** its filename is preserved or mapped in a manifest, and the program's licences page names esp32io.com / DIYables as the source of every such file

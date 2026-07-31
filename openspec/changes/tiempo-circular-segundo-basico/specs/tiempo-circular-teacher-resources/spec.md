@@ -91,7 +91,7 @@ The program SHALL publish reusable recording templates and a licences page.
 #### Scenario: Licences and attribution are complete
 
 - **WHEN** the licences page is loaded
-- **THEN** it states the MIT licence of the program's own sketches, the CC BY-SA 4.0 licence and Mineduc/DIGECUR attribution of the CNB mallas, the licence of the `DIYables_TFT_Round` library as cited rather than vendored, and that esp32io.com material is referenced by link and not redistributed
+- **THEN** it states the MIT licence of the program's own sketches, the CC BY-SA 4.0 licence and Mineduc/DIGECUR attribution of the CNB mallas, the licence of the `DIYables_TFT_Round` library as cited rather than vendored, and a provenance table naming every image reproduced from esp32io.com / DIYables, kept separate from GuateGeeks' own material
 
 ### Requirement: Resource pages match the GuateGeeks SMARS page roster
 

@@ -333,7 +333,7 @@
     "message": "Applied robotics and tech citizenship for Guatemala"
   },
   "ciudadbots.home.lead": {
-    "message": "A hub of educational programs with urban-engineering challenges. Each program brings together its teaching sequence, module resources, curriculum alignment, and evaluation in one place."
+    "message": "A hub of educational programs for lower secondary: block-based robotics, Arduino robotics and programmable displays. Each program states the grade it targets and brings together its teaching sequence, resources, curriculum alignment and assessment in one place."
   },
   "ciudadbots.home.exploreLink": {
     "message": "Explore CiudadBots"
@@ -345,7 +345,7 @@
     "message": "Programs"
   },
   "ciudadbots.home.cicloBasicoBadge": {
-    "message": "Lower Secondary"
+    "message": "Years 1-3"
   },
   "ciudadbots.home.ciudadbotsCardBody": {
     "message": "12 LEGO SPIKE robotics missions with city challenges: mapping, delivery, logistics, infrastructure, emergency response, and more. Includes a teacher guide, base programs, and rubrics."
@@ -356,17 +356,283 @@
   "guategeeks.home.smarsCardBody": {
     "message": "12 sessions building an autonomous tracked robot with plain Arduino: two motors, an ultrasonic sensor, and a state machine. Includes a teacher guide, five verified sketches, and a rubric. Material available in Spanish."
   },
+  "tiempocircular.home.segundoBadge": {
+    "message": "Second year",
+    "description": "Badge on the Tiempo Circular card on the hub landing page"
+  },
+  "tiempocircular.home.cardBody": {
+    "message": "12 sessions building a clock on a circular display with an ESP32. Trigonometry places the hands, colour is assembled bit by bit, and the final face counts the cycles of the Cholq'ij calendar. Available in Spanish.",
+    "description": "Body text of the Tiempo Circular card on the hub landing page"
+  },
   "ciudadbots.home.viewProgram": {
     "message": "View program →"
   },
-  "ciudadbots.home.comingSoonBadge": {
+  "platform.home.pageTitle": {
+    "message": "GuateGeeks Educational Programs"
+  },
+  "platform.home.eyebrow": {
+    "message": "GuateGeeks · Educational Programs"
+  },
+  "platform.home.heroTitle": {
+    "message": "GuateGeeks Educational Programs"
+  },
+  "platform.home.heroLead": {
+    "message": "A platform of pathways for discovering, building, and creating with robotics, programming, and digital fabrication in the classroom."
+  },
+  "platform.home.hero.imageAlt": {
+    "message": "Students working in a GuateGeeks educational robotics platform."
+  },
+  "platform.home.hero.primaryAction": {
+    "message": "Enter CiudadBots"
+  },
+  "platform.home.hero.secondaryAction": {
+    "message": "Student view"
+  },
+  "platform.home.stat.levels": {
+    "message": "learning levels"
+  },
+  "platform.home.stat.available": {
+    "message": "available programs"
+  },
+  "platform.home.stat.portfolio": {
+    "message": "pathways in the portfolio"
+  },
+  "platform.home.intro.eyebrow": {
+    "message": "Progression-based platform"
+  },
+  "platform.home.intro.title": {
+    "message": "From the first circuit to a presentable prototype"
+  },
+  "platform.home.intro.body": {
+    "message": "Each level groups experiences with a clear purpose: explore concepts, build systems, and create projects that can be communicated. Available cards open active Docusaurus routes; upcoming pathways stay visible without linking to missing pages."
+  },
+  "platform.home.level.explorador.title": {
+    "message": "Explorer"
+  },
+  "platform.home.level.explorador.kicker": {
+    "message": "Discover and test"
+  },
+  "platform.home.level.explorador.imageAlt": {
+    "message": "Students exploring circuits, sensors, and first robotics ideas."
+  },
+  "platform.home.level.explorador.purpose": {
+    "message": "A first encounter with creative technology: circuits, robot storytelling, and augmented experiences for learning by doing before programming complex projects."
+  },
+  "platform.home.level.constructor.title": {
+    "message": "Builder"
+  },
+  "platform.home.level.constructor.kicker": {
+    "message": "Design and program"
+  },
+  "platform.home.level.constructor.imageAlt": {
+    "message": "Robotics classroom with students building robots and prototypes."
+  },
+  "platform.home.level.constructor.purpose": {
+    "message": "Programs where the team turns ideas into machines: structure, sensors, code, testing, and iterative improvement connected to real challenges."
+  },
+  "platform.home.level.creador.title": {
+    "message": "Creator"
+  },
+  "platform.home.level.creador.kicker": {
+    "message": "Prototype and communicate"
+  },
+  "platform.home.level.creador.imageAlt": {
+    "message": "Students creating digital prototypes, displays, and interactive objects."
+  },
+  "platform.home.level.creador.purpose": {
+    "message": "Pathways for building original artifacts: displays, wearables, creative AI, and digital fabrication with documentation, iteration, and public presentation."
+  },
+  "platform.home.status.available": {
+    "message": "Available"
+  },
+  "platform.home.status.upcoming": {
     "message": "Coming soon"
   },
-  "ciudadbots.home.newProgramsTitle": {
-    "message": "New programs"
+  "platform.home.complexity.novato": {
+    "message": "Starter"
   },
-  "ciudadbots.home.newProgramsBody": {
-    "message": "This hub is designed to grow. GuateGeeks' next educational programs will appear here, each with its own path and resources."
+  "platform.home.complexity.geek": {
+    "message": "Builder"
+  },
+  "platform.home.complexity.pro": {
+    "message": "Pro"
+  },
+  "platform.home.complexity.ariaLabel": {
+    "message": "Complexity: {complexity}"
+  },
+  "platform.home.action.openProgram": {
+    "message": "Open program"
+  },
+  "platform.home.action.upcoming": {
+    "message": "In preparation"
+  },
+  "platform.home.action.studentMode": {
+    "message": "Student view"
+  },
+  "platform.home.program.circuitos.imageAlt": {
+    "message": "Work table with lights, wires, and components for first circuits."
+  },
+  "platform.home.program.circuitos.summary": {
+    "message": "Short challenges for understanding energy, inputs, and outputs while the team builds visible prototypes from the first session."
+  },
+  "platform.home.program.talebot.imageAlt": {
+    "message": "Tale-Bot robot on an illustrated path for computational thinking."
+  },
+  "platform.home.program.talebot.summary": {
+    "message": "Sequences, spatial orientation, and debugging without screens, with classroom-ready narrative missions."
+  },
+  "platform.home.program.ar.imageAlt": {
+    "message": "Students observing an augmented scene on a learning table."
+  },
+  "platform.home.program.ar.summary": {
+    "message": "Activities for blending physical objects, scientific observation, and digital layers that help explain phenomena."
+  },
+  "platform.home.program.ciudadbots.imageAlt": {
+    "message": "CiudadBots educational robot moving through a learning city."
+  },
+  "platform.home.program.ciudadbots.summary": {
+    "message": "LEGO SPIKE robotics missions with urban challenges: mapping, delivery, logistics, infrastructure, emergency response, and communicating solutions."
+  },
+  "platform.home.program.smars.imageAlt": {
+    "message": "SMARS tracked robot with Arduino components on a work table."
+  },
+  "platform.home.program.smars.summary": {
+    "message": "Build an autonomous tracked robot with plain Arduino, two motors, an ultrasonic sensor, and a state machine."
+  },
+  "platform.home.program.makerzoid.imageAlt": {
+    "message": "Makerzoid kit prepared for a rescue mission with modular pieces."
+  },
+  "platform.home.program.makerzoid.summary": {
+    "message": "Rescue projects and fast mechanisms for working on strategy, mechanical design, and collaboration under constraints."
+  },
+  "platform.home.program.vr.imageAlt": {
+    "message": "Students using virtual reality headsets to explore environments."
+  },
+  "platform.home.program.vr.summary": {
+    "message": "Guided immersive experiences for investigating places, systems, and problems before designing a physical or digital solution."
+  },
+  "platform.home.program.tiempoCircular.imageAlt": {
+    "message": "Programmable circular display with a colorful clock face."
+  },
+  "platform.home.program.tiempoCircular.summary": {
+    "message": "Program a clock on a circular display with ESP32: trigonometry, color, coordinates, and a face inspired by the cycles of the Cholq'ij calendar."
+  },
+  "platform.home.program.wearables.imageAlt": {
+    "message": "Wearable prototype with lights and sensors sewn into fabric."
+  },
+  "platform.home.program.wearables.summary": {
+    "message": "Wearable technology labs that combine soft electronics, measurement, and human-centered design."
+  },
+  "platform.home.program.ia.imageAlt": {
+    "message": "Screen with a creative artificial intelligence interface for the classroom."
+  },
+  "platform.home.program.ia.summary": {
+    "message": "Projects for using AI as material for creation, analysis, and communication while maintaining judgment, authorship, and human review."
+  },
+  "platform.home.program.fab3d.imageAlt": {
+    "message": "3D-printed pieces and digital fabrication tools."
+  },
+  "platform.home.program.fab3d.summary": {
+    "message": "Design, fabricate, and test physical objects to solve concrete needs from the classroom, the community, or an engineering challenge."
+  },
+  "platform.home.tag.circuitos": {
+    "message": "Circuits"
+  },
+  "platform.home.tag.sensores": {
+    "message": "Sensors"
+  },
+  "platform.home.tag.primariaBasico": {
+    "message": "Upper primary and lower secondary"
+  },
+  "platform.home.tag.pensamientoComputacional": {
+    "message": "Computational thinking"
+  },
+  "platform.home.tag.secuencias": {
+    "message": "Sequences"
+  },
+  "platform.home.tag.narrativa": {
+    "message": "Storytelling"
+  },
+  "platform.home.tag.realidadAumentada": {
+    "message": "Augmented reality"
+  },
+  "platform.home.tag.exploracion": {
+    "message": "Exploration"
+  },
+  "platform.home.tag.ciencia": {
+    "message": "Science"
+  },
+  "platform.home.tag.legoSpike": {
+    "message": "LEGO SPIKE"
+  },
+  "platform.home.tag.roboticaAplicada": {
+    "message": "Applied robotics"
+  },
+  "platform.home.tag.cicloBasico": {
+    "message": "Lower secondary"
+  },
+  "platform.home.tag.arduino": {
+    "message": "Arduino"
+  },
+  "platform.home.tag.roboticaMovil": {
+    "message": "Mobile robotics"
+  },
+  "platform.home.tag.terceroBasico": {
+    "message": "Third year"
+  },
+  "platform.home.tag.mecanismos": {
+    "message": "Mechanisms"
+  },
+  "platform.home.tag.rescate": {
+    "message": "Rescue"
+  },
+  "platform.home.tag.trabajoEquipo": {
+    "message": "Teamwork"
+  },
+  "platform.home.tag.realidadVirtual": {
+    "message": "Virtual reality"
+  },
+  "platform.home.tag.investigacion": {
+    "message": "Research"
+  },
+  "platform.home.tag.diseno": {
+    "message": "Design"
+  },
+  "platform.home.tag.esp32": {
+    "message": "ESP32"
+  },
+  "platform.home.tag.pantallas": {
+    "message": "Displays"
+  },
+  "platform.home.tag.segundoBasico": {
+    "message": "Second year"
+  },
+  "platform.home.tag.wearables": {
+    "message": "Wearables"
+  },
+  "platform.home.tag.disenoHumano": {
+    "message": "Human-centered design"
+  },
+  "platform.home.tag.prototipo": {
+    "message": "Prototype"
+  },
+  "platform.home.tag.ia": {
+    "message": "AI"
+  },
+  "platform.home.tag.creatividad": {
+    "message": "Creativity"
+  },
+  "platform.home.tag.autoria": {
+    "message": "Authorship"
+  },
+  "platform.home.tag.impresion3d": {
+    "message": "3D printing"
+  },
+  "platform.home.tag.fabricacion": {
+    "message": "Fabrication"
+  },
+  "platform.home.tag.iteracion": {
+    "message": "Iteration"
   },
   "ciudadbots.achievementIndicators.howToReadTitle": {
     "message": "How to read this alignment",

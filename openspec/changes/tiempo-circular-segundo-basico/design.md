@@ -201,6 +201,147 @@ Fases por bloque: Activar 1-2, Explorar 3-4, Crear 5-11, Reflexionar 12 — idé
 
 `HorizontalStepReader` y `VisualStepGuide` acaban de aterrizar y todavía están sin versionar en git; conviene confirmar que estén comprometidos antes de construir contenido encima.
 
+**Corregido por D13:** `SessionModule` resultó no ser reutilizable. Ver esa decisión.
+
+### D12 — Las imágenes de `watch/` se usan, con atribución
+
+**Decisión del solicitante**, tomada tras plantearle el reparo: las 14 imágenes de
+`watch/esp32-round-circular-tft-lcd-display-assets/` **se copian** a
+`static/assets/tiempo-circular/` y se usan en el programa.
+
+El reparo planteado fue que son material de marketing de terceros: el diagrama de cableado lleva la
+marca de agua `https://diyables.io` repetida tres veces, y varias imágenes muestran el producto con
+la marca DIYables. La alternativa ofrecida era generar mockups SVG propios de 240×240 —las salidas
+de pantalla son determinísticas y calculables desde nuestros propios sketches— más diagramas
+propios de pinout y cableado. El solicitante confirmó el uso de las imágenes originales dos veces.
+Queda registrado y se procede.
+
+**Obligaciones que esto impone**, y que son parte del trabajo, no un anexo:
+
+1. Cada imagen reproducida lleva **crédito visible** a esp32io.com / DIYables donde se muestra.
+2. `licencias.mdx` incluye una tabla que nombra las 14 imágenes y su origen, separadas del material
+   propio de GuateGeeks.
+3. Los nombres de archivo se preservan, de modo que cualquiera pueda rastrear cada imagen hasta la
+   página original.
+4. Los dos escenarios de spec que prohibían la redistribución quedaron modificados; el cambio no
+   puede contener a la vez la prohibición y la práctica.
+
+**Riesgo residual, declarado una vez:** la marca de agua es de un competidor comercial y no hay
+licencia expresa de reproducción. Si más adelante se quiere retirar esa dependencia, la ruta de
+mockups SVG propios sigue disponible y no requiere hardware.
+
+**Qué siguen sin cubrir estas imágenes:** el módulo GC9A01 mostrado no corre nuestro código. Ninguna
+de las 14 imágenes muestra la salida de nuestros sketches —ni la carátula del Cholq'ij, ni los
+anillos, ni las marcas de 30°—, porque ese código no existía cuando se hizo el tutorial. Para esas
+pantallas no hay foto posible sin hardware, así que las sesiones 5, 6, 7 y 11 se apoyan en diagramas
+y en la descripción de lo que debe verse.
+
+### D13 — `SessionModule` se parametriza, con `guategeeks` por defecto
+
+**Problema descubierto durante la implementación.** El diseño original (D11) asumió que
+`SessionModule` era reutilizable tal cual. No lo es. Está acoplado a GuateGeeks SMARS en cinco
+puntos, y tres de ellos producirían texto **falso** en una página de Tiempo Circular:
+
+| Punto | Acoplamiento | Efecto en este programa |
+|---|---|---|
+| `index.tsx:6` | importa `getSession` de `@site/src/data/guategeeks` | `getSession` **lanza** con un id desconocido, y `s1`–`s12` ya pertenecen a SMARS |
+| `index.tsx:282` | título del bloque CNB fijo en `«Ciclo Básico · Tercero Básico»` | Grado equivocado |
+| `index.tsx:396` | «adoptado del proyecto SMARS… Arduino Uno sin librerías externas» | Las tres afirmaciones son falsas aquí |
+| `index.tsx:406` | «STBY debe quedar en HIGH para que el driver habilite los motores» | No hay STBY ni driver de motores |
+| `data/guategeeks` | `SKETCHES_BASE`, `WIRING_REFERENCE` apuntan a `/guategeeks/` | Descargas y enlaces al otro programa |
+
+**Decisión:** parametrizar. `SessionModule` acepta un prop `program` cuyo **valor por defecto es
+`'guategeeks'`**, de modo que las doce páginas de SMARS no se tocan y su salida queda idéntica.
+
+```
+   src/data/
+     guategeeks/          ← intacto
+     tiempo-circular/     ← nuevo, mismo contrato: types, sessions, titles, index
+       sessions.ts          ids tc1…tc12, slugs propios, SKETCHES_BASE
+                            '/arduino/tiempo-circular/', WIRING_REFERENCE
+                            '/tiempo-circular/materiales'
+
+   src/components/SessionModule/
+     index.tsx            ← program?: 'guategeeks' | 'tiempo-circular' = 'guategeeks'
+                            resuelve registro, grado del bloque CNB, y los dos
+                            textos de la pestaña Código desde la config del programa
+```
+
+**Alternativas descartadas:** duplicar el componente (≈480 líneas repetidas, y viola el escenario
+«no parallel session component is created» que este mismo cambio declara); componer las sesiones en
+MDX con piezas sueltas (pierde el lector por pestañas, la validación de orden de fases y la escalera
+de retos, y obligaría a reescribir el requisito de estructura de sesión).
+
+**Cuidado operativo:** `SessionModule/index.tsx` ya está modificado en el árbol de trabajo por dos
+cambios en curso (`guategeeks-smars-ciclo-basico`, `guategeeks-smars-l293d-visual-build`). El prop
+con valor por defecto mantiene la salida de SMARS byte a byte, pero conviene revisar el diff.
+
+### D14 — El defecto del reloj está documentado en la fuente, y se enseña
+
+La revisión completa del tutorial —la primera pasada solo cubrió un tercio— encontró que la fuente
+**documenta los defectos de su propio reloj**:
+
+> *«The clock hands may flicker or leave traces because the drawHand function tries to erase them by
+> drawing over in background color. Overlapping hands may not clear correctly.»*
+> *«The digital time may look slightly off-center. This is due to variable text widths.»*
+
+**Corrección:** una primera lectura de este diseño afirmó que nuestro `04_reloj_millis` heredaba el
+defecto de manecillas superpuestas. **No lo hereda.** El sketch borra las tres manecillas y las
+redibuja las tres, incondicionalmente, cada segundo:
+
+```
+   Tutorial (falla)                   Nuestro sketch (no falla)
+   ───────────────────                ─────────────────────────
+   si cambió el segundero:            si cambió el segundo:
+     borrar segundero                   borrar segundero
+     dibujar segundero                  borrar minutero
+   si cambió el minutero:               borrar horario
+     borrar minutero                    redibujar carátula
+     dibujar minutero                   dibujar horario
+                                        dibujar minutero
+   ↑ el borrado del segundero           dibujar segundero
+     corta el minutero, que no
+     se redibuja porque su            ↑ nada es condicional por manecilla,
+     ángulo no cambió                   así que el hueco no puede quedar
+```
+
+Como ningún borrado ni dibujo está condicionado al ángulo de una manecilla individual, el hueco que
+describe el tutorial no puede quedar. El costo es repintar la carátula una vez por segundo, que a
+1 Hz sobre SPI no es perceptible.
+
+**Decisión (pregunta abierta 7, resuelta):** no se introduce el defecto para luego arreglarlo. El
+sketch queda correcto, y el defecto del tutorial se enseña **como caso de estudio** en
+`misconcepciones.mdx`: por qué la versión "eficiente" que solo toca lo que cambió produce un error
+que la versión "derrochadora" no tiene. Es una lección sobre optimización prematura que se sostiene
+sin entregar código roto a un aula.
+
+Otros dos hallazgos de la misma revisión, incorporados:
+
+- **Las fuentes externas de Adafruit GFX no renderizan el símbolo `°`.** Va a
+  `misconcepciones.mdx`: una fuente no es solo una forma de las letras, es también un repertorio de
+  caracteres, y puede no traer el que se necesita.
+- **La carátula del tutorial lleva 12 números y 60 marcas de minuto.** 360/60 = 6° exactos. Contrasta
+  con el 360/13 ≈ 27.69° del Cholq'ij: dos divisores, uno entero y otro no, sobre la misma
+  circunferencia. Se usa en la sesión 6 para anticipar la sesión 11.
+
+### D15 — Bitmap y formatos de imagen entran como extensión de la sesión 12
+
+El tutorial trae el flujo completo del conversor imagen→bitmap, que es la actividad de **TAC 1.3.3**
+(formatos de imagen, resolución, tamaño en bytes) ya diseñada: subir una imagen, elegir ancho ≤240
+px, escoger color de fondo para las zonas transparentes, convertir, pegar el arreglo en un
+`bitmap.h` creado como pestaña nueva del IDE.
+
+**Decisión:** entra como **extensión de la sesión 12**, no como sesión nueva —el programa se mantiene
+en doce— y **sin tarjeta SD**: la imagen se carga desde memoria de programa. Un equipo que diseñe su
+carátula puede incluir un logo propio y calcular cuánta memoria ocupa.
+
+Aporta además la conversión de unidades que CN 1.3 pide: una imagen de 240×240 en RGB565 ocupa
+240 × 240 × 2 = **115 200 bytes**, que no caben cómodamente junto al stack de WiFi. El límite deja de
+ser una regla arbitraria y pasa a ser una cuenta.
+
+**Gotcha que se documenta:** si se modifica `bitmap.h` sin tocar el `.ino`, el Arduino IDE no
+recompila. Hay que introducir un cambio mínimo en el `.ino` para que note la actualización.
+
 ## Risks / Trade-offs
 
 - **[Nada se puede probar en hardware]** → Todo sketch se marca explícitamente como no verificado en físico; la verificación queda como tarea *human-gated*. Como máximo se ejecuta un chequeo de compilación con `arduino-cli` contra el core ESP32, y si no está disponible se reporta que no se hizo. No se declarará "funciona".
@@ -210,7 +351,9 @@ Fases por bloque: Activar 1-2, Explorar 3-4, Crear 5-11, Reflexionar 12 — idé
 - **[Costo por equipo desconocido]** → El hardware es hipotético. La página de materiales lo dice y presenta los costos como estimados, sin fingir un presupuesto validado.
 - **[MAT 1.3 aún no vista en clase de matemática]** → La guía docente indica el momento del calendario escolar en que conviene arrancar y qué preparar si la trigonometría todavía no se ha trabajado.
 - **[Citas CNB o de estándares mal transcritas]** → Cada cita se verifica contra `CNB_Guatemala_Mallas_Curriculares_Basico/` y contra la fuente del estándar antes de publicar; el número de página es parte obligatoria del formato.
-- **[Imágenes de esp32io.com filtradas a `static/`]** → Bloqueante de publicación explícito. Se sustituyen por material propio o se enlazan.
+- **[Imágenes de esp32io.com reproducidas sin licencia expresa]** → Decisión del solicitante (D12), tomada tras plantearle el reparo. Mitigación: crédito visible en cada uso, tabla de procedencia en `licencias.mdx` y nombres de archivo preservados. La ruta de mockups SVG propios queda disponible si se quiere retirar la dependencia.
+- **[Ninguna imagen muestra la salida de nuestros sketches]** → Las 14 fotografías son del tutorial original, no de nuestro código. Las sesiones 5, 6, 7 y 11 se apoyan en diagramas propios y en la descripción de lo que debe verse, no en fotos.
+- **[Parametrizar `SessionModule` toca un archivo que dos cambios en curso están editando]** → El prop `program` con valor por defecto `'guategeeks'` deja la salida de SMARS idéntica; se revisa el diff antes de dar por cerrado.
 - **[Un tercer programa recarga el navbar]** → Aceptado. Tres ítems más el selector de idioma siguen siendo manejables; si crece a un cuarto, tocará un menú desplegable de programas.
 
 ## Migration Plan
@@ -223,9 +366,10 @@ No hay migración: el cambio es puramente aditivo. Ninguna ruta, página, compon
 
 ## Open Questions
 
-1. **Ancla del Cholq'ij** — ¿qué fuente publicada se usa para la correlación, y quién la verifica? Sin respuesta, la sesión 11 se entrega con el ancla como constante que el docente configura.
-2. **Revisión cultural** — ¿quién la hace? Es compuerta de publicación, no una mejora opcional.
-3. **Fotografías** — no hay hardware, así que no hay fotos propias de cableado ni de pantalla. ¿Se publica con diagramas vectoriales propios hasta conseguir el equipo, o se retiene la publicación?
-4. **Costo real por equipo en Guatemala** — determina si el programa es de un dispositivo por equipo o uno de demostración por aula.
-5. **Bitmap y formatos de imagen (TAC 1.3.3)** — cabe como extensión de la sesión 12 sin tarjeta SD, cargando la imagen desde memoria de programa. ¿Se incluye como extensión opcional o se deja fuera?
-6. **Ventana del calendario escolar** — ¿en qué bimestre de segundo básico se ve MAT 1.3, para recomendar el arranque?
+1. **Ancla del Cholq'ij** — **resuelto en cuanto al mecanismo:** el ancla queda como constante que el docente configura, y el material trae el procedimiento de verificación —contrastar una fecha conocida contra **dos** fuentes publicadas independientes antes de darla por buena—. Qué fuente concreta se recomienda sigue siendo compuerta humana (tarea 6.2).
+2. **Revisión cultural** — ¿quién la hace? Es compuerta de publicación, no una mejora opcional. Sigue abierta por diseño: no es algo que se pueda resolver desde el código.
+3. ~~**Fotografías**~~ — **resuelto en D12:** se usan las 14 imágenes de `watch/` con atribución. Queda abierto solo si más adelante se decide sustituirlas por mockups propios.
+4. **Costo real por equipo en Guatemala** — dato externo que no se puede resolver desde aquí. Se entrega como rango estimado explícitamente marcado como tal, más una ruta de escala reducida (un dispositivo por aula) para que el programa no dependa de que el presupuesto alcance.
+5. ~~**Bitmap y formatos de imagen (TAC 1.3.3)**~~ — **resuelto en D15:** entra como extensión de la sesión 12, sin tarjeta SD.
+6. **Ventana del calendario escolar** — **resuelto sin fijar un bimestre.** Afirmar en qué bimestre cae MAT 1.3 sería inventar un dato que varía por establecimiento. En su lugar, la guía docente trae una **verificación de prerrequisito**: si la clase de matemática todavía no vio razones trigonométricas, la sesión 7 incluye un anexo de 20 minutos que introduce seno y coseno desde el triángulo rectángulo. El programa queda robusto ante cualquier calendario en vez de depender de uno supuesto.
+7. ~~**Manecillas superpuestas**~~ — **resuelto en D14:** el sketch no tiene el defecto. El del tutorial se enseña como caso de estudio.

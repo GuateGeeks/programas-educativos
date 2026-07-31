@@ -3,7 +3,8 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
-import {getSession, WIRING_REFERENCE} from '@site/src/data/guategeeks';
+import * as guategeeksData from '@site/src/data/guategeeks';
+import * as tiempoCircularData from '@site/src/data/tiempo-circular';
 import type {PhaseKind} from '@site/src/data/guategeeks/types';
 import type {Phase} from '@site/src/components/PhaseTimeline';
 import HorizontalStepReader from '@site/src/components/HorizontalStepReader';
@@ -181,9 +182,22 @@ interface SessionModuleComponent extends React.FC<SessionModuleProps> {
   Evaluation: typeof Evaluation;
 }
 
+/**
+ * Which program a session page belongs to. `SessionModule` renders both
+ * GuateGeeks SMARS and Tiempo Circular; everything that differs between them
+ * lives in `PROGRAMS` below rather than being hardcoded in the layout.
+ */
+export type ProgramKey = 'guategeeks' | 'tiempo-circular';
+
 interface SessionModuleProps {
-  /** Session id, e.g. "s1". */
+  /** Session id, e.g. "s1" for GuateGeeks or "tc1" for Tiempo Circular. */
   id: string;
+  /**
+   * Which program's session registry and copy to use. Defaults to
+   * `'guategeeks'` so every existing GuateGeeks SMARS page keeps rendering
+   * exactly as before without being edited.
+   */
+  program?: ProgramKey;
   children?: React.ReactNode;
 }
 
@@ -208,6 +222,61 @@ const RUBRIC_LEVELS = [
   }),
 ] as const;
 
+/**
+ * Per-program configuration. The layout, tab structure, rubric and reto ladder
+ * are shared; what changes between programs is the session registry, the grade
+ * the CNB block claims, and the two blurbs in the code tab — which describe
+ * that program's specific hardware and would be factually wrong if reused.
+ */
+const PROGRAMS = {
+  guategeeks: {
+    getSession: guategeeksData.getSession,
+    wiringReference: guategeeksData.WIRING_REFERENCE,
+    cnbTitle: () =>
+      translate({
+        id: 'guategeeks.session.cnb.title',
+        message: 'Alineación Guatemala · Ciclo Básico · Tercero Básico',
+      }),
+    sketchBody: () => (
+      <Translate id="guategeeks.session.sketchBody">
+        Código adoptado del proyecto SMARS bajo licencia MIT, comentado en español. Compila para
+        Arduino Uno sin librerías externas. Al abrirlo en el Arduino IDE, la carpeta y el archivo
+        deben conservar el mismo nombre.
+      </Translate>
+    ),
+    wiringBody: () => (
+      <Translate id="guategeeks.session.wiringBody">
+        Todos los sketches comparten la misma asignación de pines. Verifique el cableado antes de
+        energizar, y recuerde que STBY debe quedar en HIGH para que el driver habilite los motores.
+      </Translate>
+    ),
+  },
+  'tiempo-circular': {
+    getSession: tiempoCircularData.getSession,
+    wiringReference: tiempoCircularData.WIRING_REFERENCE,
+    cnbTitle: () =>
+      translate({
+        id: 'tiempocircular.session.cnb.title',
+        message: 'Alineación Guatemala · Ciclo Básico · Segundo Básico',
+      }),
+    sketchBody: () => (
+      <Translate id="tiempocircular.session.sketchBody">
+        Código propio de GuateGeeks bajo licencia MIT, comentado en español. Compila para ESP32 y
+        requiere la librería DIYables TFT Round con su dependencia Adafruit GFX. Al abrirlo en el
+        Arduino IDE, la carpeta y el archivo deben conservar el mismo nombre. Ningún sketch ha sido
+        validado todavía en una placa física.
+      </Translate>
+    ),
+    wiringBody: () => (
+      <Translate id="tiempocircular.session.wiringBody">
+        Los seis sketches comparten la misma asignación de pines. Verifique el cableado antes de
+        conectar el USB, y recuerde que VCC va a 3.3 V: alimentar el módulo desde un pin de datos o
+        invertir VCC y GND puede dañarlo.
+      </Translate>
+    ),
+  },
+} as const;
+
 const RETO_LABELS: Record<number, string> = {
   0: translate({id: 'guategeeks.session.reto.level0', message: 'Nivel 0 · Documentar'}),
   1: translate({id: 'guategeeks.session.reto.level1', message: 'Nivel 1 · Observar'}),
@@ -223,14 +292,19 @@ const RETO_LABELS: Record<number, string> = {
  * compound-component children authored in that session's MDX file. Every
  * session shares one layout, matching the CiudadBots module layout.
  */
-const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
-  const s = getSession(id);
+const SessionModuleImpl: React.FC<SessionModuleProps> = ({
+  id,
+  program = 'guategeeks',
+  children,
+}) => {
+  const cfg = PROGRAMS[program];
+  const s = cfg.getSession(id);
   const {metadata} = useDoc();
   const {i18n} = useDocusaurusContext();
   const title = metadata.title;
   const leadWithInternational = i18n.currentLocale === 'en';
   const [tab, setTab] = useState<TabKey>('metodo');
-  const wiringHref = useBaseUrl(WIRING_REFERENCE);
+  const wiringHref = useBaseUrl(cfg.wiringReference);
 
   const content = collectChildren(children);
   const actualKinds = content.phases.map((p) => p.kind).join(',');
@@ -274,16 +348,7 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
     text,
   }));
 
-  const cnbBlock = (
-    <CnbBlock
-      badge="CNB"
-      title={translate({
-        id: 'guategeeks.session.cnb.title',
-        message: 'Alineación Guatemala · Ciclo Básico · Tercero Básico',
-      })}
-      items={cnbItems}
-    />
-  );
+  const cnbBlock = <CnbBlock badge="CNB" title={cfg.cnbTitle()} items={cnbItems} />;
 
   const internationalBlock = (
     <>
@@ -391,13 +456,7 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
                 {label: s.sketch.label},
               )}
             </strong>
-            <p>
-              <Translate id="guategeeks.session.sketchBody">
-                Código adoptado del proyecto SMARS bajo licencia MIT, comentado en español. Compila
-                para Arduino Uno sin librerías externas. Al abrirlo en el Arduino IDE, la carpeta y
-                el archivo deben conservar el mismo nombre.
-              </Translate>
-            </p>
+            <p>{cfg.sketchBody()}</p>
           </div>
 
           {content.code}
@@ -406,13 +465,7 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({id, children}) => {
             <strong>
               <Translate id="guategeeks.session.wiringTitle">Cableado y tabla de pines</Translate>
             </strong>
-            <p>
-              <Translate id="guategeeks.session.wiringBody">
-                Todos los sketches comparten la misma asignación de pines. Verifique el cableado
-                antes de energizar, y recuerde que STBY debe quedar en HIGH para que el driver
-                habilite los motores.
-              </Translate>
-            </p>
+            <p>{cfg.wiringBody()}</p>
             <a className={styles.pdfLink} href={wiringHref}>
               <Translate id="guategeeks.session.wiringLink">Ver materiales y pines</Translate>
             </a>
