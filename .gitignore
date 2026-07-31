@@ -23,3 +23,8 @@ yarn-error.log*
 guategeeks-citybuilders*
 equipos-educativos/
 
+# WiFi credentials for the Tiempo Circular sketches. Only the .ejemplo template
+# is versioned; the real credenciales.h stays on the machine that wrote it, so a
+# classroom never publishes its school's WiFi password along with the code.
+arduino/**/credenciales.h
+

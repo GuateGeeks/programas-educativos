@@ -112,6 +112,12 @@ const config: Config = {
           position: 'left',
           label: 'GuateGeeks SMARS',
         },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tiempoCircularSidebar',
+          position: 'left',
+          label: 'Tiempo Circular',
+        },
         {to: '/estudiante', label: 'Modo estudiante', position: 'left'},
         {
           type: 'localeDropdown',
@@ -127,6 +133,7 @@ const config: Config = {
           items: [
             {label: 'CiudadBots Guatemala', to: '/ciudadbots'},
             {label: 'GuateGeeks SMARS', to: '/guategeeks'},
+            {label: 'Tiempo Circular', to: '/tiempo-circular'},
             {label: 'Modo estudiante', to: '/estudiante'},
           ],
         },
