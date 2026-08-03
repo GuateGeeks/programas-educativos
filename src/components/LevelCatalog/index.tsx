@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
-type Language = 'es' | 'en';
 type Program = {title: string; level: string; complexity: number; description: string; meta: string[]; image: string; available?: boolean; href?: string; studentHref?: string};
 type Level = {slug: string; tag: [string, string]; title: [string, string]; intro: [string, string]; image: string; theme: string; programs: Program[]};
 
@@ -33,13 +33,14 @@ const labels = {es: {back: 'Volver', programs: 'Programas del nivel', available:
 
 function Meter({value}: {value: number}): React.JSX.Element { return <span className={styles.complexityBars} aria-label={`Complexity ${value} of 3`}>{[1, 2, 3].map((step) => <i className={step <= value ? styles.active : ''} key={step} />)}</span>; }
 
-function ProgramCard({program, language}: {program: Program; language: Language}): React.JSX.Element {
+function ProgramCard({program, language}: {program: Program; language: 'es' | 'en'}): React.JSX.Element {
   const t = labels[language];
   return <article className={`${styles.programCard} ${!program.available ? styles.disabled : ''}`}><div className={styles.cardMedia}><img src={useBaseUrl(program.image)} alt={program.title} /><span className={`${styles.cardState} ${program.available ? styles.ready : ''}`}>{program.available ? t.available : t.upcoming}</span></div><div className={styles.cardBody}><span className={styles.levelChip}>{t.level}: {program.level}</span><div className={styles.titleRow}><h3>{program.title}</h3><Meter value={program.complexity} /></div><p>{program.description}</p><div className={styles.meta}>{program.meta.map((item) => <span key={item}>{item}</span>)}</div><div className={styles.ctaRow}>{program.href ? <><Link className={styles.cta} to={program.href}>{t.open}</Link>{program.studentHref && <Link className={styles.ghost} to={program.studentHref}>{t.student}</Link>}</> : <span className={`${styles.ghost} ${styles.disabledButton}`}>{t.unavailable}</span>}</div></div></article>;
 }
 
 export default function LevelCatalog({levelKey}: {levelKey: keyof typeof levels}): React.JSX.Element {
-  const [language, setLanguage] = useState<Language>('es');
+  const {i18n} = useDocusaurusContext();
+  const language = i18n.currentLocale === 'en' ? 'en' : 'es';
   const level = levels[levelKey]; const t = labels[language];
-  return <Layout title={`GuateGeeks · ${level.title[language === 'es' ? 0 : 1]}`}><main className={`${styles.page} ${styles[level.theme]}`}><div className={styles.wrap}><div className={styles.toprow}><Link className={styles.back} to="/">{t.back}</Link><div className={styles.langSwitch}><button className={language === 'es' ? styles.active : ''} type="button" onClick={() => setLanguage('es')}>ES</button><button className={language === 'en' ? styles.active : ''} type="button" onClick={() => setLanguage('en')}>EN</button></div></div><section className={styles.hero}><img src={useBaseUrl(level.image)} alt={level.tag[language === 'es' ? 0 : 1]} /><div className={styles.heroCopy}><span className={styles.tag}>{level.tag[language === 'es' ? 0 : 1]}</span><h1>{level.title[language === 'es' ? 0 : 1]}</h1><p>{level.intro[language === 'es' ? 0 : 1]}</p></div></section><div className={styles.sectionHead}><div><h2>{t.programs}</h2><p>{levelKey === 'constructor' ? (language === 'es' ? 'Aquí se visualiza el portafolio de proyectos del nivel constructor. CiudadBots está disponible y los demás se muestran como próximos programas para completar la oferta.' : 'This page shows the builder project portfolio. CiudadBots is available and the others are upcoming programs to complete the offer.') : (language === 'es' ? 'Estos programas funcionan como vitrina del ecosistema GuateGeeks y muestran la ruta de crecimiento de cada nivel.' : 'These programs showcase the GuateGeeks ecosystem and show each level\'s growth path.')}</p></div></div><section className={styles.programGrid}>{level.programs.map((program) => <ProgramCard key={program.title} program={program} language={language} />)}</section></div></main></Layout>;
+  return <Layout title={`GuateGeeks · ${level.title[language === 'es' ? 0 : 1]}`}><main className={`${styles.page} ${styles[level.theme]}`}><div className={styles.wrap}><div className={styles.toprow}><Link className={styles.back} to="/">{t.back}</Link></div><section className={styles.hero}><img src={useBaseUrl(level.image)} alt={level.tag[language === 'es' ? 0 : 1]} /><div className={styles.heroCopy}><span className={styles.tag}>{level.tag[language === 'es' ? 0 : 1]}</span><h1>{level.title[language === 'es' ? 0 : 1]}</h1><p>{level.intro[language === 'es' ? 0 : 1]}</p></div></section><div className={styles.sectionHead}><div><h2>{t.programs}</h2><p>{levelKey === 'constructor' ? (language === 'es' ? 'Aquí se visualiza el portafolio de proyectos del nivel constructor. CiudadBots está disponible y los demás se muestran como próximos programas para completar la oferta.' : 'This page shows the builder project portfolio. CiudadBots is available and the others are upcoming programs to complete the offer.') : (language === 'es' ? 'Estos programas funcionan como vitrina del ecosistema GuateGeeks y muestran la ruta de crecimiento de cada nivel.' : 'These programs showcase the GuateGeeks ecosystem and show each level\'s growth path.')}</p></div></div><section className={styles.programGrid}>{level.programs.map((program) => <ProgramCard key={program.title} program={program} language={language} />)}</section></div></main></Layout>;
 }

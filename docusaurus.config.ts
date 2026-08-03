@@ -94,31 +94,11 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'GuateGeeks',
       logo: {
         alt: 'GuateGeeks',
         src: 'img/guategeeks-logo.png',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'ciudadbotsSidebar',
-          position: 'left',
-          label: 'CiudadBots',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'guategeeksSidebar',
-          position: 'left',
-          label: 'GuateGeeks SMARS',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'tiempoCircularSidebar',
-          position: 'left',
-          label: 'Tiempo Circular',
-        },
-        {to: '/estudiante', label: 'Modo estudiante', position: 'left'},
         {
           type: 'localeDropdown',
           position: 'right',
