@@ -1,151 +1,194 @@
 .shell {
-  max-width: 1100px;
+  width: min(1120px, calc(100% - 40px));
   margin: 0 auto;
-  padding: 32px 20px 56px;
+  padding: 52px 0 76px;
 }
 
-.hero {
-  background: linear-gradient(180deg, #2a2d3a 0%, #202430 100%);
-  color: #f5f5f7;
-  border-radius: 24px;
-  padding: 44px 36px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 56px rgba(15, 19, 28, 0.18);
+.header {
+  max-width: 760px;
+  margin-bottom: 42px;
 }
 
-.eyebrow {
-  font-size: 12px;
-  font-weight: 700;
+.eyebrow,
+.levelKicker {
+  margin: 0;
+  color: var(--gg-coral-500);
+  font-size: 0.78rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #b9baca;
 }
 
-.title {
-  font-size: 40px;
-  line-height: 1.05;
-  margin: 12px 0 0;
+.header h1 {
+  margin: 9px 0 0;
+  color: var(--ifm-heading-color);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1;
   font-weight: 900;
-  max-width: 20ch;
 }
 
-.lead {
-  font-size: 17px;
-  line-height: 1.7;
-  color: #d4d5dd;
-  max-width: 48rem;
-  margin-top: 14px;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 24px;
-}
-
-.primary,
-.secondary {
-  display: inline-block;
-  padding: 12px 22px;
-  border-radius: 12px;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.primary {
-  background: linear-gradient(135deg, var(--gg-coral-500), var(--gg-coral-600));
-  color: #fff;
-  box-shadow: 0 4px 20px rgba(239, 133, 86, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.primary:hover {
-  color: #fff;
-  text-decoration: none;
-  box-shadow: 0 8px 32px rgba(239, 133, 86, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-}
-
-.secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.secondary:hover {
-  background: rgba(255, 255, 255, 0.18);
-  color: #fff;
-  text-decoration: none;
-}
-
-.programs {
-  margin-top: 40px;
-}
-
-.programsTitle {
-  font-size: 22px;
-  margin-bottom: 16px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 18px;
-}
-
-.card {
-  display: block;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 18px;
-  padding: 22px;
-  background: var(--ifm-background-surface-color);
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.card:hover {
-  text-decoration: none;
-  color: inherit;
-  transform: translateY(-3px);
-  box-shadow: 0 18px 42px rgba(27, 34, 42, 0.12);
-}
-
-.card h3 {
-  margin: 12px 0 8px;
-  font-size: 20px;
-}
-
-.card p {
-  font-size: 14px;
+.headerNote {
+  margin: 12px 0 0;
   color: var(--ifm-color-emphasis-700);
-  margin: 0 0 12px;
+  font-size: 1rem;
 }
 
-.badge {
-  display: inline-block;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--gg-coral-500);
-  background: rgba(239, 133, 86, 0.08);
+.levels {
+  display: grid;
+  gap: 30px;
+}
+
+.level {
+  --level-color: var(--gg-sky-500);
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+  padding-top: 28px;
+}
+
+.level-sky {
+  --level-color: var(--gg-sky-500);
+}
+
+.level-coral {
+  --level-color: var(--gg-coral-500);
+}
+
+.level-plum {
+  --level-color: var(--gg-plum-500);
+}
+
+.levelIntro {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.levelNumber {
+  display: inline-flex;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--level-color), transparent 84%);
+  color: var(--level-color);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.levelIntro h2 {
+  margin: 4px 0 0;
+  color: var(--ifm-heading-color);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  font-weight: 900;
+}
+
+.levelDescription {
+  max-width: 750px;
+  margin: 12px 0 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.programList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+  margin: 22px 0 0 72px;
+}
+
+.programCard {
+  display: grid;
+  grid-template-columns: 10px minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 11px;
+  align-items: center;
+  min-width: 0;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 999px;
-  padding: 4px 10px;
+  border-left: 3px solid var(--level-color);
+  border-radius: 8px;
+  padding: 14px 15px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-heading-color);
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
-.cardLink {
-  font-weight: 700;
-  color: var(--gg-coral-500);
+a.programCard:hover {
+  color: var(--ifm-heading-color);
+  text-decoration: none;
+  border-color: var(--level-color);
+  box-shadow: 0 10px 24px rgba(27, 34, 42, 0.1);
+  transform: translateY(-2px);
 }
 
-.cardPlaceholder {
+.programCardUpcoming {
   border-style: dashed;
   background: var(--ifm-background-color);
-  cursor: default;
+  color: var(--ifm-color-emphasis-700);
 }
 
-.cardPlaceholder:hover {
-  transform: none;
-  box-shadow: none;
+.programDot {
+  display: block;
+  grid-row: 1 / span 2;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--level-color);
+}
+
+.programName {
+  min-width: 0;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.programStatus {
+  display: block;
+  margin-top: 5px;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a.programCard .programStatus {
+  color: var(--level-color);
+}
+
+@media (max-width: 700px) {
+  .shell {
+    width: min(100% - 30px, 560px);
+    padding-top: 34px;
+  }
+
+  .header {
+    margin-bottom: 30px;
+  }
+
+  .levelIntro {
+    grid-template-columns: 42px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .levelNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 0.78rem;
+  }
+
+  .programList {
+    grid-template-columns: 1fr;
+    margin-left: 54px;
+  }
+}
+
+@media (max-width: 420px) {
+  .programList {
+    margin-left: 0;
+  }
 }

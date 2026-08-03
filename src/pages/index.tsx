@@ -1,101 +1,132 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
-import Translate, {translate} from '@docusaurus/Translate';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Translate from '@docusaurus/Translate';
 import styles from './index.module.css';
 
-/**
- * Hub landing page. GuateGeeks is a hub of educational programs; CiudadBots is
- * the first. Future programs get their own card here without changing existing
- * program routes.
- */
+type Program = {
+  name: string;
+  href?: string;
+  available?: boolean;
+};
+
+type LearningLevel = {
+  kicker: React.ReactNode;
+  name: React.ReactNode;
+  description: React.ReactNode;
+  programs: readonly Program[];
+  accent: string;
+};
+
+const levels: readonly LearningLevel[] = [
+  {
+    kicker: <Translate id="platform.level.explorador.kicker">Descubrir y probar</Translate>,
+    name: <Translate id="platform.level.explorador.name">Explorador</Translate>,
+    description: (
+      <Translate id="platform.level.explorador.description">
+        Primer contacto con tecnología creativa: circuitos, narrativas con robots y experiencias
+        aumentadas para aprender haciendo antes de programar proyectos complejos.
+      </Translate>
+    ),
+    accent: 'sky',
+    programs: [
+      {name: 'Circuitos en Acción'},
+      {name: 'Rutas con Tale-Bot'},
+      {name: 'Mundo Aumentado'},
+    ],
+  },
+  {
+    kicker: <Translate id="platform.level.constructor.kicker">Diseñar y programar</Translate>,
+    name: <Translate id="platform.level.constructor.name">Constructor</Translate>,
+    description: (
+      <Translate id="platform.level.constructor.description">
+        Programas donde el equipo convierte ideas en máquinas: estructura, sensores, código,
+        pruebas y mejora iterativa conectada con retos reales.
+      </Translate>
+    ),
+    accent: 'coral',
+    programs: [
+      {name: 'CiudadBots Guatemala', href: '/ciudadbots', available: true},
+      {name: 'GuateGeeks SMARS', href: '/guategeeks', available: true},
+      {name: 'Rescate Makerzoid'},
+      {name: 'Expediciones VR'},
+    ],
+  },
+  {
+    kicker: <Translate id="platform.level.creador.kicker">Prototipar y comunicar</Translate>,
+    name: <Translate id="platform.level.creador.name">Creador</Translate>,
+    description: (
+      <Translate id="platform.level.creador.description">
+        Rutas para construir artefactos propios: pantallas, wearables, IA creativa y fabricación
+        digital con documentación, iteración y presentación pública.
+      </Translate>
+    ),
+    accent: 'plum',
+    programs: [
+      {name: 'Tiempo Circular'},
+      {name: 'SmartLab Wearables'},
+      {name: 'Estudio IA Creativa'},
+      {name: 'FabLab 3D'},
+    ],
+  },
+];
+
+function ProgramCard({program}: {program: Program}): React.JSX.Element {
+  if (program.href) {
+    return (
+      <Link className={styles.programCard} to={program.href}>
+        <span className={styles.programDot} aria-hidden="true" />
+        <span className={styles.programName}>{program.name}</span>
+        {program.available && <span className={styles.programStatus}>Disponible</span>}
+      </Link>
+    );
+  }
+
+  return (
+    <div className={`${styles.programCard} ${styles.programCardUpcoming}`} aria-disabled="true">
+      <span className={styles.programDot} aria-hidden="true" />
+      <span className={styles.programName}>{program.name}</span>
+      <span className={styles.programStatus}>Próximamente</span>
+    </div>
+  );
+}
+
+function LevelSection({level, index}: {level: LearningLevel; index: number}): React.JSX.Element {
+  return (
+    <section className={`${styles.level} ${styles[`level-${level.accent}`]}`}>
+      <div className={styles.levelIntro}>
+        <span className={styles.levelNumber}>0{index + 1}</span>
+        <div>
+          <p className={styles.levelKicker}>{level.kicker}</p>
+          <h2>{level.name}</h2>
+          <p className={styles.levelDescription}>{level.description}</p>
+        </div>
+      </div>
+      <div className={styles.programList}>
+        {level.programs.map((program) => (
+          <ProgramCard key={program.name} program={program} />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home(): React.JSX.Element {
-  const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={translate({id: 'ciudadbots.home.pageTitle', message: 'Programas Educativos'})}
-      description={siteConfig.tagline}>
+      title="Programas Educativos"
+      description="Programas educativos GuateGeeks por niveles de aprendizaje.">
       <main className={styles.shell}>
-        <section className={styles.hero}>
-          <div className={styles.eyebrow}>GuateGeeks · Programas Educativos</div>
-          <h1 className={styles.title}>
-            <Translate id="ciudadbots.home.title">
-              Robótica aplicada y ciudadanía tecnológica para Guatemala
-            </Translate>
-          </h1>
-          <p className={styles.lead}>
-            <Translate id="ciudadbots.home.lead">
-              Un hub de programas educativos con retos de ingeniería urbana. Cada programa reúne
-              su secuencia docente, recursos por módulo, alineación curricular y evaluación en un
-              solo lugar.
-            </Translate>
-          </p>
-          <div className={styles.actions}>
-            <Link className={styles.primary} to="/ciudadbots">
-              <Translate id="ciudadbots.home.exploreLink">Explorar CiudadBots</Translate>
-            </Link>
-            <Link className={styles.secondary} to="/estudiante">
-              <Translate id="ciudadbots.home.studentModeLink">Modo estudiante</Translate>
-            </Link>
-          </div>
-        </section>
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>GuateGeeks · Programas Educativos</p>
+          <h1>Programas Educativos</h1>
+        </header>
 
-        <section className={styles.programs}>
-          <h2 className={styles.programsTitle}>
-            <Translate id="ciudadbots.home.programsTitle">Programas</Translate>
-          </h2>
-          <div className={styles.grid}>
-            <Link className={styles.card} to="/ciudadbots">
-              <span className={styles.badge}>
-                <Translate id="ciudadbots.home.cicloBasicoBadge">Ciclo Básico</Translate>
-              </span>
-              <h3>CiudadBots Guatemala</h3>
-              <p>
-                <Translate id="ciudadbots.home.ciudadbotsCardBody">
-                  12 misiones de robótica LEGO SPIKE con retos de ciudad: cartografía, entrega,
-                  logística, infraestructura, emergencia y más. Incluye guía docente, programas
-                  base y rúbricas.
-                </Translate>
-              </p>
-              <span className={styles.cardLink}>
-                <Translate id="ciudadbots.home.viewProgram">Ver programa →</Translate>
-              </span>
-            </Link>
-
-            <Link className={styles.card} to="/guategeeks">
-              <span className={styles.badge}>
-                <Translate id="guategeeks.home.terceroBadge">Tercero Básico</Translate>
-              </span>
-              <h3>GuateGeeks SMARS</h3>
-              <p>
-                <Translate id="guategeeks.home.smarsCardBody">
-                  12 sesiones para construir un robot de orugas autónomo con Arduino puro: dos
-                  motores, sensor ultrasónico y máquina de estados. Incluye guía docente, cinco
-                  sketches verificados y rúbrica. Material disponible en español.
-                </Translate>
-              </p>
-              <span className={styles.cardLink}>
-                <Translate id="ciudadbots.home.viewProgram">Ver programa →</Translate>
-              </span>
-            </Link>
-
-            <div className={`${styles.card} ${styles.cardPlaceholder}`}>
-              <span className={styles.badge}>
-                <Translate id="ciudadbots.home.comingSoonBadge">Próximamente</Translate>
-              </span>
-              <h3>
-                <Translate id="ciudadbots.home.newProgramsTitle">Nuevos programas</Translate>
-              </h3>
-              <p>
-                <Translate id="ciudadbots.home.newProgramsBody">
-                  Este hub está diseñado para crecer. Los próximos programas educativos de
-                  GuateGeeks aparecerán aquí, con su propia ruta y recursos.
-                </Translate>
-              </p>
-            </div>
-          </div>
-        </section>
+        <div className={styles.levels}>
+          {levels.map((level, index) => (
+            <LevelSection key={index} level={level} index={index} />
+          ))}
+        </div>
       </main>
     </Layout>
   );
