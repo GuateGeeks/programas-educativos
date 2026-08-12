@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GuateGeeks | Programas educativos</title>
+  <meta name="description" content="Programas educativos GuateGeeks por nivel, tecnología e inversión de referencia.">
+  <style>
+    :root { --navy:#062d52; --blue:#1594b8; --cyan:#62d2e9; --ink:#10243a; --muted:#5e7183; --paper:#f6f8f7; --lime:#d4f36b; --orange:#ff845c; --line:#dbe5e8; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.5; }
+    a { color:inherit; }
+    .wrap { width:min(1160px, calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(246,248,247,.94); backdrop-filter:blur(16px); border-bottom:1px solid var(--line); }
+    nav { min-height:72px; display:flex; align-items:center; justify-content:space-between; gap:20px; }
+    .brand { display:inline-flex; align-items:center; text-decoration:none; }
+    .brand img { display:block; width:auto; height:48px; }
+    nav ul { display:flex; gap:24px; list-style:none; padding:0; margin:0; font-size:.9rem; color:var(--muted); }
+    nav a { text-decoration:none; }
+    nav a:hover { color:var(--navy); }
+    .hero { min-height:650px; display:grid; place-items:center; overflow:hidden; background:var(--navy); color:#fff; }
+    .hero-inner { display:grid; grid-template-columns:1.05fr .95fr; align-items:center; gap:60px; padding:80px 0; }
+    .eyebrow { color:var(--cyan); font-weight:800; text-transform:uppercase; letter-spacing:.16em; font-size:.75rem; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { font-size:clamp(3rem, 7vw, 6.3rem); line-height:.92; letter-spacing:-.07em; max-width:680px; margin:18px 0 28px; }
+    h2 { font-size:clamp(2rem, 4vw, 3.5rem); line-height:1; letter-spacing:-.06em; margin-bottom:16px; }
+    h3 { line-height:1.1; letter-spacing:-.03em; }
+    .hero-copy { max-width:580px; color:#d8e6ed; font-size:1.13rem; }
+    .hero-art { height:430px; border-radius:18px; background:url('assets/hero-aula.png') center/cover; box-shadow:24px 28px 0 var(--blue); }
+    .button { display:inline-flex; flex-wrap:nowrap; align-items:center; justify-content:center; gap:9px; white-space:nowrap; border:0; border-radius:999px; padding:13px 19px; font-weight:800; text-decoration:none; cursor:pointer; background:var(--lime); color:var(--navy); }
+    .button span { display:inline-block; flex:0 0 auto; line-height:1; }
+    .button.secondary { background:transparent; color:#fff; border:1px solid rgba(255,255,255,.35); margin-left:8px; }
+    .hero-actions { display:flex; align-items:center; flex-wrap:wrap; gap:12px; }
+    .hero-actions .button.secondary { margin-left:0; }
+    section { padding:92px 0; }
+    .section-intro { max-width:700px; margin-bottom:34px; }
+    .section-intro p { color:var(--muted); font-size:1.05rem; }
+    .stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+    .stat { background:#fff; padding:28px; }
+    .stat strong { display:block; font-size:2.5rem; color:var(--blue); letter-spacing:-.06em; }
+    .stat span { color:var(--muted); }
+    .value-section { background:var(--navy); color:#fff; }
+    .value-layout { display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:stretch; }
+    .value-image { min-height:390px; background:url('assets/valor-institucional.png') center/cover; }
+    .value-copy { padding:10px 0; }
+    .value-copy p { color:#c9dbe4; max-width:550px; }
+    .value-list { display:grid; gap:16px; margin-top:28px; }
+    .value-point { display:grid; grid-template-columns:42px 1fr; gap:14px; align-items:start; }
+    .value-point b { display:grid; place-items:center; width:32px; height:32px; border-radius:50%; background:var(--lime); color:var(--navy); }
+    .value-point h3 { margin-bottom:4px; }
+    .value-point p { margin-bottom:0; font-size:.94rem; }
+    .path-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .path { background:#fff; border:1px solid var(--line); padding:26px; min-height:240px; position:relative; overflow:hidden; }
+    .path-image { height:112px; margin:-26px -26px 24px; background:center/cover; filter:saturate(.72); }
+    .path:nth-child(1) .path-image { background-image:url('assets/nivel-explorador.png'); background-position:center 54%; }
+    .path:nth-child(2) .path-image { background-image:url('assets/nivel-constructor.png'); background-position:center 58%; }
+    .path:nth-child(3) .path-image { background-image:url('assets/nivel-creador.png'); background-position:center 52%; }
+    .path:after { content:""; position:absolute; width:100px; height:100px; border-radius:50%; right:-35px; bottom:-35px; background:var(--cyan); opacity:.25; }
+    .path:nth-child(2):after { background:var(--orange); }
+    .path:nth-child(3):after { background:var(--lime); }
+    .tag { color:var(--blue); font-size:.74rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+    .path p, .program p { color:var(--muted); }
+    .path ul, .program ul { color:var(--muted); padding-left:18px; }
+    .institutional-benefits { background:#fff; }
+    .benefit-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .benefit { border-top:4px solid var(--blue); padding:24px; background:var(--paper); }
+    .benefit:nth-child(2) { border-top-color:var(--orange); }
+    .benefit:nth-child(3) { border-top-color:var(--lime); }
+    .benefit p, .benefit ul { color:var(--muted); }
+    .benefit ul { padding-left:18px; }
+    .programs { background:#fff; }
+    .program-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .program { border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column; overflow:hidden; }
+    .program-image { height:170px; background:url('assets/circuitos-aula.png') center/cover; }
+    .program:nth-child(2) .program-image { background-image:url('assets/hero-aula.png'); background-position:center 62%; }
+    .program:nth-child(3) .program-image { background-image:url('assets/prototipado-aula.png'); background-position:center 54%; }
+    .program-body { padding:22px; display:flex; flex-direction:column; flex:1; }
+    .program-body .button { margin-top:auto; align-self:flex-start; padding:10px 14px; font-size:.85rem; }
+    .status { display:inline-block; margin-bottom:10px; color:var(--navy); background:var(--lime); padding:4px 8px; font-size:.72rem; font-weight:800; text-transform:uppercase; }
+    .status.soon { background:#e7edf0; color:var(--muted); }
+    .investment { background:var(--navy); color:#fff; }
+    .investment .section-intro p { color:#bfd2dc; }
+    .offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .offer { background:#fff; color:var(--ink); padding:26px; min-height:300px; display:flex; flex-direction:column; }
+    .offer.featured { background:var(--lime); }
+    .offer-icon { width:48px; height:48px; display:grid; place-items:center; margin-bottom:24px; background:var(--blue); color:#fff; font-weight:900; font-size:1.05rem; }
+    .offer.featured .offer-icon { background:var(--navy); }
+    .offer p { color:var(--muted); }
+    .offer strong { display:block; margin-top:auto; margin-bottom:8px; font-size:1.15rem; color:var(--navy); }
+    .offer span { color:var(--muted); font-size:.9rem; }
+    .table-wrap { overflow:auto; border:1px solid rgba(255,255,255,.16); }
+    table { width:100%; min-width:760px; border-collapse:collapse; text-align:left; background:rgba(255,255,255,.04); }
+    th, td { padding:15px 16px; border-bottom:1px solid rgba(255,255,255,.13); }
+    th { color:var(--cyan); font-size:.75rem; text-transform:uppercase; letter-spacing:.1em; }
+    td { color:#e6f0f4; }
+    td:first-child { font-weight:800; }
+    .note { color:#bfd2dc; font-size:.88rem; margin-top:15px; }
+    .offer .note { color:var(--muted); }
+    .curriculum { background:#fff; }
+    .curriculum-table { width:100%; border-collapse:collapse; border:1px solid var(--line); }
+    .curriculum-table th, .curriculum-table td { color:var(--ink); border-bottom:1px solid var(--line); padding:16px; vertical-align:top; }
+    .curriculum-table th { color:var(--blue); background:#eaf6f7; }
+    .model-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .model { padding:30px; border:1px solid var(--line); background:#fff; }
+    .model.featured { border:2px solid var(--blue); }
+    .model strong { color:var(--blue); }
+    .included { display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:stretch; }
+    .included-image { min-height:360px; background:url('assets/prototipado-aula.png') center/cover; }
+    .included-copy { padding:34px; background:#dff5f6; }
+    .included-copy ul { padding-left:20px; color:var(--muted); }
+    .process { background:#fff; }
+    .process-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .process-step { position:relative; padding:28px 24px 32px; border-right:1px solid var(--line); }
+    .process-step:last-child { border-right:0; }
+    .process-step:after { content:"→"; position:absolute; right:-12px; top:29px; width:24px; height:24px; display:grid; place-items:center; background:var(--lime); color:var(--navy); border-radius:50%; font-weight:900; z-index:1; }
+    .process-step:last-child:after { display:none; }
+    .process-number { color:var(--blue); font-size:.76rem; font-weight:900; letter-spacing:.14em; }
+    .process-step p { color:var(--muted); font-size:.92rem; }
+    .cta { background:var(--blue); color:#fff; }
+    .cta-inner { display:flex; justify-content:space-between; align-items:center; gap:30px; }
+    .cta p { color:#d8f1f5; max-width:630px; }
+    footer { padding:30px 0; background:var(--navy); color:#bfd2dc; font-size:.9rem; }
+    footer a { color:#fff; }
+    @media (max-width:800px) { nav ul { display:none; } .wrap { width:min(100% - 28px, 1160px); } .hero-inner, .included, .model-grid, .offer-grid, .benefit-grid, .value-layout { grid-template-columns:1fr; } .hero { min-height:auto; } .hero-art { height:280px; box-shadow:12px 14px 0 var(--blue); } .hero .button.secondary { margin-left:0; margin-top:10px; } .path-grid, .program-grid, .process-grid { grid-template-columns:1fr; } .process-step { border-right:0; border-bottom:1px solid var(--line); } .process-step:last-child { border-bottom:0; } .process-step:after { content:"↓"; right:auto; left:24px; top:auto; bottom:-12px; } .process-step:last-child:after { display:none; } .stats { grid-template-columns:1fr; } .value-image { min-height:250px; } section { padding:64px 0; } .curriculum-table { display:block; overflow:auto; min-width:680px; } .cta-inner { display:block; } .cta .button { margin-top:10px; max-width:100%; } }
+
+    /* Visual language aligned with guategeeks.com: dark canvas, coral actions and glass panels. */
+    :root { --navy:#1e2233; --blue:#ef8556; --cyan:#ffc0a2; --ink:#f5f5f7; --muted:#bfc0c8; --paper:#2a2e42; --lime:#f47f43; --orange:#ef8556; --line:rgba(255,255,255,.14); }
+    html { background:var(--navy); }
+    body { position:relative; isolation:isolate; background:transparent; color:var(--ink); overflow-x:hidden; }
+    body::before { content:""; position:fixed; inset:-18%; z-index:-1; pointer-events:none; background:radial-gradient(circle at 13% 18%, rgba(239,133,86,.20), transparent 19%), radial-gradient(circle at 83% 12%, rgba(122,91,190,.18), transparent 23%), radial-gradient(circle at 68% 76%, rgba(62,174,199,.11), transparent 22%), radial-gradient(circle at 24% 87%, rgba(239,133,86,.08), transparent 18%); filter:blur(28px); }
+    body::after { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.45; background:radial-gradient(circle at 50% 0%, rgba(255,255,255,.07), transparent 33%), linear-gradient(115deg, transparent 0 42%, rgba(255,255,255,.025) 52%, transparent 62%); }
+    header, main, footer { position:relative; z-index:0; }
+    header { background:transparent; border-bottom:0; padding-top:16px; }
+    nav { min-height:64px; padding:8px 14px 8px 20px; background:rgba(255,255,255,.075); border:1px solid rgba(255,255,255,.17); border-radius:22px; box-shadow:0 10px 32px rgba(0,0,0,.18), inset 0 1px 0 rgba(255,255,255,.10); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); }
+    .theme-toggle { width:42px; height:42px; display:grid; place-items:center; flex:0 0 auto; border:1px solid rgba(255,255,255,.18); border-radius:10px; background:rgba(255,255,255,.08); color:#fff; cursor:pointer; transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .theme-toggle:hover { transform:translateY(-1px); background:rgba(255,255,255,.15); }
+    .theme-toggle svg { width:19px; height:19px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .theme-toggle .moon-icon { display:none; }
+    .brand img { height:42px; }
+    nav ul { color:#d7d9e2; }
+    nav ul { margin-left:auto; }
+    nav a { transition:color .2s ease, background .2s ease, box-shadow .2s ease, transform .2s ease; }
+    nav a:hover { color:#fff; transform:translateY(-1px); }
+    nav ul a:hover { background:rgba(255,255,255,.08); box-shadow:0 4px 16px rgba(0,0,0,.12); }
+    .hero { background:transparent; }
+    .hero-art { position:relative; overflow:visible; border:1px solid rgba(255,255,255,.20); box-shadow:18px 22px 0 rgba(239,133,86,.34), 0 24px 60px rgba(0,0,0,.24); transition:transform .35s ease, box-shadow .35s ease; }
+    .hero-art::after { content:""; position:absolute; right:-7%; bottom:-9%; width:34%; aspect-ratio:1.16; border:5px solid var(--navy); border-radius:16px; background:url('assets/nivel-creador.png') center/cover; box-shadow:0 16px 34px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.22); transform:rotate(4deg); transition:transform .35s ease; }
+    .hero-art:hover { transform:translateY(-4px); box-shadow:18px 22px 0 rgba(239,133,86,.40), 0 30px 70px rgba(0,0,0,.28); }
+    .hero-art:hover::after { transform:rotate(1deg) translateY(-4px); }
+    .eyebrow, .tag, .process-number { color:var(--blue); }
+    h1 { color:#fff; }
+    h2, h3 { color:#fff; }
+    .section-intro p, .path p, .program p, .path ul, .program ul { color:var(--muted); }
+    .institutional-benefits, .curriculum, .programs { background:transparent; }
+    .benefit, .path, .program { background:rgba(255,255,255,.07); border:1px solid var(--line); border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.06); transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease; }
+    .benefit:hover, .path:hover, .program:hover { transform:translateY(-6px); border-color:rgba(239,133,86,.55); background:rgba(255,255,255,.095); box-shadow:0 20px 38px rgba(0,0,0,.24), 0 0 0 1px rgba(239,133,86,.08); }
+    .benefit { border-top:4px solid var(--blue); }
+    .path-image, .program-image { border-radius:12px; border:1px solid rgba(255,255,255,.18); transition:filter .25s ease, transform .25s ease; }
+    .path:hover .path-image, .program:hover .program-image { filter:saturate(1.12) contrast(1.03); transform:scale(1.015); }
+    .value-section { position:relative; overflow:hidden; background:#1f2030; }
+    .value-layout { position:relative; z-index:1; }
+    .value-image { border-radius:18px; border:1px solid var(--line); box-shadow:0 18px 42px rgba(0,0,0,.22); transition:transform .3s ease, box-shadow .3s ease; }
+    .value-image:hover { transform:translateY(-4px) rotate(-.4deg); box-shadow:0 24px 52px rgba(0,0,0,.30); }
+    .curriculum-table { border-color:var(--line); background:rgba(255,255,255,.05); }
+    .curriculum-table th, .curriculum-table td { color:#f6f7fa; border-color:var(--line); }
+    .curriculum-table th { color:#fff; background:rgba(255,147,107,.22); }
+    .investment { background:#1f2030; }
+    .offer { background:rgba(255,255,255,.08); color:#fff; border:1px solid var(--line); border-radius:18px; box-shadow:0 12px 28px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.06); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .offer:hover { transform:translateY(-5px); border-color:rgba(239,133,86,.55); box-shadow:0 22px 42px rgba(0,0,0,.24); }
+    .offer.featured { background:var(--blue); color:var(--navy); border-color:transparent; transform:translateY(-8px); box-shadow:0 18px 32px rgba(239,133,86,.24); }
+    .offer.featured:hover { transform:translateY(-13px); box-shadow:0 25px 46px rgba(239,133,86,.32); }
+    .offer p, .offer span { color:var(--muted); }
+    .offer h3, .offer ul { color:#fff; }
+    .offer ul { padding-left:18px; }
+    .offer:nth-child(1) { border-top:3px solid var(--cyan); }
+    .offer:nth-child(2) { border-top:3px solid var(--blue); }
+    .offer:nth-child(3) { border-top:3px solid var(--lime); }
+    .investment .section-intro h2 { color:#fff; }
+    .investment .section-intro p { color:#bfd2dc; }
+    .offer.featured p, .offer.featured span, .offer.featured h3, .offer.featured .tag { color:var(--navy); }
+    .offer strong { color:var(--blue); }
+    .offer.featured strong { color:var(--navy); }
+    .offer-icon { background:var(--blue); color:var(--navy); border-radius:12px; }
+    .offer.featured .offer-icon { background:var(--navy); color:var(--blue); }
+    .offer-icon svg { width:25px; height:25px; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+    .recommended { display:inline-flex; align-items:center; width:max-content; margin:-8px 0 14px; padding:6px 10px; border:1px solid rgba(30,34,51,.18); border-radius:999px; color:var(--navy); background:rgba(255,255,255,.45); font-size:.68rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; }
+    .offer.featured { position:relative; }
+    .offer.featured .recommended { position:absolute; top:-15px; left:50%; margin:0; z-index:2; transform:translateX(-50%); background:#ef8556; color:#1e2233; border-color:#ef8556; box-shadow:0 5px 14px rgba(0,0,0,.18); }
+    .offer-action { align-self:flex-start; margin-top:18px; padding:10px 14px; background:var(--blue); color:var(--navy); font-size:.84rem; }
+    .offer-action svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+    .offer.featured .offer-action { background:var(--navy); color:#fff; }
+    .included-image { border-radius:18px; border:1px solid var(--line); box-shadow:0 18px 42px rgba(0,0,0,.22); transition:transform .3s ease, filter .3s ease; }
+    .included-image:hover { transform:translateY(-4px); filter:saturate(1.08); }
+    .included-copy { background:rgba(255,255,255,.08); border:1px solid var(--line); border-radius:18px; color:#fff; box-shadow:0 12px 28px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.06); }
+    .included-copy ul { color:var(--muted); }
+    .process { background:transparent; }
+    .process-grid { border-color:var(--line); }
+    .process-step { border-color:var(--line); transition:background .25s ease, padding .25s ease; }
+    .process-step:hover { background:rgba(255,255,255,.055); }
+    .cta { background:var(--blue); color:var(--navy); }
+    .cta h2, .cta p, .cta .eyebrow { color:var(--navy); }
+    .cta .button { background:var(--navy); color:#fff; }
+    .button { transition:transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease; }
+    .button:hover { transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.24); }
+    .button.secondary:hover { background:rgba(255,255,255,.13); }
+    footer { background:#1f2030; }
+    /* Refined controls: lighter actions and quieter content surfaces. */
+    nav { border-radius:14px; box-shadow:0 8px 22px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.08); }
+    .button { border-radius:7px; padding:11px 16px; font-size:.88rem; font-weight:700; box-shadow:none; }
+    .button:hover { transform:translateY(-1px); box-shadow:0 7px 16px rgba(0,0,0,.16); }
+    .hero-art { box-shadow:0 22px 48px rgba(0,0,0,.24); }
+    .hero-art:hover { box-shadow:0 28px 58px rgba(0,0,0,.28); }
+    .benefit, .path, .program { border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.05); }
+    .benefit:hover, .path:hover, .program:hover { transform:translateY(-3px); box-shadow:0 14px 26px rgba(0,0,0,.16), 0 0 0 1px rgba(239,133,86,.08); }
+    .offer { border-radius:14px; box-shadow:0 8px 20px rgba(0,0,0,.10), inset 0 1px 0 rgba(255,255,255,.05); }
+    .offer.featured { background:rgba(255,255,255,.09); color:#fff; border:1px solid rgba(239,133,86,.55); transform:none; box-shadow:0 12px 26px rgba(0,0,0,.16); }
+    .offer.featured:hover { transform:translateY(-3px); box-shadow:0 16px 30px rgba(0,0,0,.20); }
+    .offer.featured p, .offer.featured span, .offer.featured h3, .offer.featured .tag { color:var(--muted); }
+    .offer.featured h3 { color:#fff; }
+    .offer.featured strong { color:var(--blue); }
+    .offer.featured .offer-icon { background:rgba(239,133,86,.14); color:var(--blue); }
+    .recommended { color:var(--blue); background:rgba(239,133,86,.10); border-color:rgba(239,133,86,.35); }
+    .offer-action { border:1px solid rgba(239,133,86,.62); border-radius:7px; background:transparent; color:var(--blue); box-shadow:none; }
+    .offer-action:hover { background:rgba(239,133,86,.12); color:#fff; box-shadow:none; }
+    .offer.featured .offer-action { background:transparent; color:var(--blue); border-color:var(--blue); }
+    .offer.featured .offer-action:hover { background:var(--blue); color:var(--navy); }
+    body.light-theme { --navy:#f5f7fa; --ink:#242535; --muted:#5d6270; --paper:#fff; --line:rgba(36,37,53,.14); background:#f5f7fa; }
+    body.light-theme::before { opacity:.55; }
+    body.light-theme::after { opacity:.25; }
+    body.light-theme header { background:transparent; }
+    body.light-theme nav { background:rgba(255,255,255,.78); border-color:rgba(36,37,53,.13); box-shadow:0 8px 22px rgba(36,37,53,.10), inset 0 1px 0 rgba(255,255,255,.8); }
+    body.light-theme nav ul { color:#5d6270; }
+    body.light-theme nav a:hover { color:#242535; background:rgba(239,133,86,.10); }
+    body.light-theme .theme-toggle { background:#242535; color:#fff; border-color:#242535; }
+    body.light-theme .theme-toggle .sun-icon { display:none; }
+    body.light-theme .theme-toggle .moon-icon { display:block; }
+    body.light-theme h1, body.light-theme h2, body.light-theme h3 { color:#242535; }
+    body.light-theme .hero-copy, body.light-theme .section-intro p, body.light-theme .path p, body.light-theme .program p, body.light-theme .path ul, body.light-theme .program ul, body.light-theme .benefit p, body.light-theme .benefit ul { color:#5d6270; }
+    body.light-theme .benefit, body.light-theme .path, body.light-theme .program, body.light-theme .offer, body.light-theme .included-copy { background:rgba(255,255,255,.76); border-color:rgba(36,37,53,.12); box-shadow:0 8px 20px rgba(36,37,53,.08); }
+    body.light-theme .value-section, body.light-theme .investment { background:#e9eef5; }
+    body.light-theme .curriculum-table { background:rgba(255,255,255,.72); }
+    body.light-theme .curriculum-table th, body.light-theme .curriculum-table td { color:#242535; border-color:rgba(36,37,53,.12); }
+    body.light-theme .curriculum-table th { background:rgba(239,133,86,.13); color:#b9502c; }
+    body.light-theme .process-step { border-color:rgba(36,37,53,.13); }
+    body.light-theme .process-step p { color:#5d6270; }
+    body.light-theme .offer.featured { background:#fff; border-color:rgba(239,133,86,.55); }
+    body.light-theme .investment .section-intro h2 { color:#242535; }
+    body.light-theme .investment .section-intro p { color:#5d6270; }
+    body.light-theme .offer, body.light-theme .offer h3, body.light-theme .offer ul { color:#242535; }
+    body.light-theme .offer p, body.light-theme .offer span, body.light-theme .offer li { color:#5d6270; }
+    body.light-theme .offer .tag { color:#b9502c; }
+    body.light-theme .offer.featured h3 { color:#242535; }
+    body.light-theme .offer.featured p, body.light-theme .offer.featured span, body.light-theme .offer.featured .tag { color:#5d6270; }
+    body.light-theme .offer:nth-child(1) { border-top-color:#1594b8; }
+    body.light-theme .offer:nth-child(2) { border-top-color:#d8663f; }
+    body.light-theme .offer:nth-child(3) { border-top-color:#7b921b; }
+    body.light-theme .offer-action { color:#b9502c; border-color:rgba(185,80,44,.55); }
+    body.light-theme .offer-action:hover { color:#242535; background:rgba(239,133,86,.13); }
+    body.light-theme footer { background:#e9eef5; color:#5d6270; }
+    body.light-theme .button.secondary { color:#242535; border-color:rgba(36,37,53,.28); }
+    body.light-theme .button.secondary:hover { background:rgba(36,37,53,.08); }
+    body.light-theme .button:not(.secondary) { background:#f47f43; color:#fff; }
+    body.light-theme .button:not(.secondary):hover { background:#ff8d4d; color:#fff; }
+    body.light-theme .button.secondary { color:#f47f43; border-color:#f47f43; }
+    body.light-theme .button.secondary:hover { background:rgba(244,127,67,.12); color:#d8663f; }
+    body.light-theme .process-step:after, body.light-theme .value-point b { background:#f47f43; color:#fff; }
+    body.light-theme .choice input:checked + span { border-color:#f47f43; background:rgba(244,127,67,.13); box-shadow:0 0 0 2px rgba(244,127,67,.16); }
+    body.light-theme .offer-action { background:#f47f43; color:#fff; border-color:#f47f43; }
+    body.light-theme .offer-action:hover { background:#ff8d4d; color:#fff; }
+    body.light-theme .cta .button { background:#f47f43; color:#fff; }
+    body.light-theme .cta .button:hover { background:#ff8d4d; color:#fff; }
+    body.light-theme .status:not(.soon) { background:#f47f43; color:#fff; }
+    body.light-theme .cta .button { background:#fff; color:#f47f43; border:1px solid #fff; }
+    body.light-theme .cta .button:hover { background:#f47f43; color:#fff; border-color:#f47f43; }
+    body.light-theme .offer.featured .recommended { background:#f47f43; color:#fff; border-color:#f47f43; box-shadow:0 5px 14px rgba(216,102,63,.24); }
+    body.light-theme footer { color:#5d6270; }
+    body.light-theme footer a { color:#d8663f; }
+    .diagnostic-shell { max-width:920px; margin:30px auto 0; padding:28px; background:rgba(255,255,255,.055); border:1px solid var(--line); border-radius:16px; box-shadow:0 12px 28px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.06); }
+    .diagnostic-meta { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:18px; color:var(--muted); font-size:.8rem; }
+    .diagnostic-progress { height:4px; flex:1; overflow:hidden; border-radius:999px; background:rgba(255,255,255,.12); }
+    .diagnostic-progress span { display:block; width:20%; height:100%; border-radius:inherit; background:var(--blue); transition:width .25s ease; }
+    .diagnostic-step { display:none; min-height:245px; }
+    .diagnostic-step.active { display:block; animation:diagnostic-in .25s ease both; }
+    .diagnostic-step h3 { max-width:720px; margin:0 0 8px; font-size:1.35rem; }
+    .diagnostic-help { margin:0 0 22px; color:var(--muted); }
+    .choice-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+    .choice-grid.equipment { grid-template-columns:repeat(5,1fr); }
+    .choice { position:relative; display:block; cursor:pointer; }
+    .choice input { position:absolute; opacity:0; pointer-events:none; }
+    .choice span { display:flex; min-height:94px; flex-direction:column; justify-content:center; gap:7px; padding:15px; border:1px solid var(--line); border-radius:10px; background:rgba(255,255,255,.045); transition:border-color .2s ease, background .2s ease, transform .2s ease; }
+    .choice:hover span { transform:translateY(-2px); border-color:rgba(239,133,86,.6); }
+    .choice input:checked + span { border-color:var(--blue); background:rgba(239,133,86,.12); box-shadow:0 0 0 2px rgba(239,133,86,.12); }
+    .choice strong { color:var(--ink); font-size:.93rem; }
+    .choice small { color:var(--muted); line-height:1.4; }
+    .diagnostic-actions { display:flex; justify-content:space-between; gap:12px; margin-top:24px; }
+    .diagnostic-next:disabled { opacity:.42; cursor:not-allowed; transform:none; box-shadow:none; }
+    .diagnostic-next:not(:disabled) { background:#f47f43; color:#fff; box-shadow:0 6px 16px rgba(244,127,67,.28); }
+    .diagnostic-next:not(:disabled):hover { background:#ff8d4d; box-shadow:0 8px 20px rgba(244,127,67,.38); }
+    .diagnostic-actions .diagnostic-back[hidden] { display:none; }
+    .diagnostic-result { display:none; margin-top:30px; padding:28px; border:1px solid rgba(239,133,86,.45); border-radius:16px; background:rgba(239,133,86,.10); }
+    .diagnostic-result.visible { display:block; animation:diagnostic-in .25s ease both; }
+    .diagnostic-result .tag { color:var(--blue); }
+    .diagnostic-result h3 { margin:6px 0 8px; font-size:1.65rem; }
+    .diagnostic-result p { max-width:700px; color:var(--muted); }
+    .diagnostic-result strong { color:var(--ink); }
+    .diagnostic-result .button { margin-top:8px; }
+    body.light-theme .diagnostic-shell { background:rgba(255,255,255,.72); border-color:rgba(36,37,53,.12); box-shadow:0 8px 20px rgba(36,37,53,.08); }
+    body.light-theme .diagnostic-progress { background:rgba(36,37,53,.12); }
+    body.light-theme .choice span { background:rgba(255,255,255,.72); border-color:rgba(36,37,53,.12); }
+    body.light-theme .choice strong, body.light-theme .diagnostic-result strong { color:#242535; }
+    body.light-theme .diagnostic-result { background:rgba(239,133,86,.10); }
+    body.light-theme .diagnostic-next:not(:disabled) { background:#f47f43; color:#fff; }
+    body.light-theme .eyebrow, body.light-theme .tag, body.light-theme .process-number { color:#b9502c; }
+    body.light-theme .value-copy p, body.light-theme .value-point p, body.light-theme .included-copy ul, body.light-theme .note, body.light-theme .offer span, body.light-theme .diagnostic-help, body.light-theme .diagnostic-result p { color:#5d6270; }
+    body.light-theme .value-copy h3, body.light-theme .value-point h3, body.light-theme .diagnostic-step h3, body.light-theme .diagnostic-result h3 { color:#242535; }
+    body.light-theme .offer strong { color:#242535; }
+    .curriculum-recommendation { display:none; margin-top:18px; padding:14px 16px; border:1px solid rgba(239,133,86,.48); border-left:4px solid var(--blue); border-radius:10px; background:rgba(239,133,86,.10); color:var(--muted); }
+    .curriculum-recommendation.visible { display:block; }
+    .curriculum-recommendation strong { color:var(--ink); }
+    .curriculum-row.recommended-level td { background:rgba(239,133,86,.16); border-top:2px solid var(--blue); border-bottom:2px solid var(--blue); }
+    .curriculum-row.recommended-level td:first-child { border-left:4px solid var(--blue); }
+    .level-match { display:none; margin-left:8px; padding:3px 7px; border-radius:999px; background:var(--blue); color:#fff; font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.06em; white-space:nowrap; }
+    .curriculum-row.recommended-level .level-match { display:inline-block; }
+    body.light-theme .curriculum-recommendation { background:rgba(244,127,67,.10); border-color:rgba(216,102,63,.40); border-left-color:#f47f43; color:#5d6270; }
+    body.light-theme .curriculum-recommendation strong { color:#242535; }
+    body.light-theme .curriculum-row.recommended-level td { background:rgba(244,127,67,.13); border-top-color:#f47f43; border-bottom-color:#f47f43; }
+    body.light-theme .curriculum-row.recommended-level td:first-child { border-left-color:#f47f43; }
+    body.light-theme .level-match { background:#f47f43; color:#fff; }
+    .investment .offer:nth-child(1) { border-top:3px solid #ffc0a2; }
+    .investment .offer:nth-child(2) { border-top:3px solid #ef8556; }
+    .investment .offer:nth-child(3) { border-top:3px solid #f47f43; }
+    body.light-theme .investment .offer:nth-child(1) { border-top-color:#1594b8; }
+    body.light-theme .investment .offer:nth-child(2) { border-top-color:#d8663f; }
+    body.light-theme .investment .offer:nth-child(3) { border-top-color:#7b921b; }
+    @keyframes diagnostic-in { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+    @media (max-width:800px) { .offer.featured, .offer.featured:hover { transform:none; } nav { padding-left:12px; } .brand img { height:38px; } .hero-art::after { right:3%; bottom:-7%; width:40%; border-width:4px; } .diagnostic-shell { padding:20px 16px; } .choice-grid, .choice-grid.equipment { grid-template-columns:1fr 1fr; } .choice span { min-height:82px; padding:12px; } .diagnostic-step { min-height:360px; } }
+    @media (prefers-reduced-motion:reduce) { *, *::before, *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; } }
+  </style>
+</head>
+<body>
+  <header><div class="wrap"><nav><a class="brand" href="#inicio" aria-label="GuateGeeks, inicio"><img src="assets/logo-guategeeks.png" alt="GuateGeeks"></a><ul><li><a href="#proceso">Proceso</a></li><li><a href="#ruta">Niveles</a></li><li><a href="#inversion">Paquetes</a></li><li><a href="#programas">Programas</a></li><li><a href="#contacto">Contacto</a></li></ul><button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar a modo claro" title="Cambiar tema"><svg class="sun-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></svg><svg class="moon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></svg></button></nav></div></header>
+
+  <main id="inicio">
+    <section class="hero"><div class="wrap hero-inner"><div><div class="eyebrow">Programas educativos para instituciones</div><h1>Imagina.<br>Diseña.<br>Crea.</h1><p class="hero-copy">Implementamos programas de tecnología educativa alineados con el CNB y estándares internacionales, adaptados a los objetivos, capacidades y necesidades reales de cada institución.</p><div class="hero-actions"><a class="button" href="#ruta">Conocer los niveles <span>→</span></a><a class="button secondary" href="#inversion">Ver paquetes <span>↓</span></a></div></div><div class="hero-art" role="img" aria-label="Estudiantes participando en una experiencia GuateGeeks"></div></div></section>
+
+    <section id="proceso" class="process"><div class="wrap"><div class="section-intro"><div class="eyebrow">Cómo trabajamos con la institución</div><h2>Una solución que se ajusta a la necesidad real.</h2><p>No comenzamos por ofrecer un equipo. Comenzamos por entender qué quiere resolver la institución y cómo la tecnología puede ayudarle a lograrlo.</p></div><div class="process-grid"><article class="process-step"><div class="process-number">01 · IDENTIFICACIÓN</div><h3>Entendemos la necesidad</h3><p>Conocemos los objetivos académicos, grados, estudiantes, docentes, recursos y retos actuales.</p></article><article class="process-step"><div class="process-number">02 · DISEÑO</div><h3>Proponemos la solución</h3><p>Recomendamos nivel, programa, modalidad de implementación, equipo y alcance de acompañamiento.</p></article><article class="process-step"><div class="process-number">03 · IMPLEMENTACIÓN</div><h3>Llevamos el programa al aula</h3><p>Activamos la plataforma, acompañamos al docente y ponemos en marcha las experiencias de aprendizaje.</p></article><article class="process-step"><div class="process-number">04 · SEGUIMIENTO</div><h3>Evaluamos y mejoramos</h3><p>Revisamos evidencias, identificamos avances y ajustamos la implementación para que la necesidad se atienda.</p></article></div></div></section>
+
+    <section class="value-section"><div class="wrap value-layout"><div class="value-image" role="img" aria-label="Coordinadora y docente revisando un proyecto tecnológico con estudiantes"></div><div class="value-copy"><div class="eyebrow">Valor institucional</div><h2>De una buena intención a una implementación que se puede demostrar.</h2><p>La tecnología educativa aporta valor cuando se conecta con la planificación académica, llega al aula y produce evidencias que la institución puede revisar.</p><div class="value-list"><div class="value-point"><b>01</b><div><h3>Claridad académica</h3><p>Un programa que conecta objetivos, niveles, áreas de aprendizaje y estándares.</p></div></div><div class="value-point"><b>02</b><div><h3>Implementación real</h3><p>Materiales, plataforma, acompañamiento y herramientas propias o GuateGeeks según la necesidad.</p></div></div><div class="value-point"><b>03</b><div><h3>Evidencia institucional</h3><p>Resultados, proyectos y aprendizajes que pueden revisarse, comunicarse y mejorar.</p></div></div></div></div></div></section>
+
+    <section class="institutional-benefits"><div class="wrap"><div class="section-intro"><div class="eyebrow">Valor para la institución</div><h2>Una propuesta pensada para toda la comunidad educativa.</h2><p>La implementación tecnológica genera valor cuando dirección, coordinación y docentes pueden ver cómo se conecta con sus responsabilidades.</p></div><div class="benefit-grid"><article class="benefit"><div class="tag">Para dirección y propietarios</div><h3>Una inversión con propósito</h3><ul><li>Diferencia la propuesta académica del colegio.</li><li>Permite iniciar según la capacidad y presupuesto institucional.</li><li>Genera evidencias para compartir con familias y comunidad.</li><li>Reduce el riesgo de adquirir tecnología sin una metodología de uso.</li></ul></article><article class="benefit"><div class="tag">Para coordinación académica</div><h3>Una implementación organizada</h3><ul><li>Programas alineados con el CNB y estándares internacionales.</li><li>Rutas de trabajo por grados, sesiones y objetivos.</li><li>Rúbricas, seguimiento y evidencias de aprendizaje.</li><li>Proceso de diagnóstico, propuesta, implementación y mejora.</li></ul></article><article class="benefit"><div class="tag">Para docentes</div><h3>Más acompañamiento para llevarlo al aula</h3><ul><li>Materiales y secuencias listas para trabajar.</li><li>Orientación metodológica y apoyo durante la ejecución.</li><li>Retos que permiten aprender haciendo y explicar decisiones.</li><li>Flexibilidad para utilizar herramientas GuateGeeks o recursos propios.</li></ul></article></div></div></section>
+
+    <section id="ruta"><div class="wrap"><div class="section-intro"><div class="eyebrow">Elige el punto de entrada</div><h2>Encuentra el punto de entrada de tu institución.</h2><p>Responde cinco preguntas rápidas. No necesitas conocer marcas ni términos técnicos: solo cuéntanos cómo está hoy tu institución.</p></div><div class="diagnostic-shell"><div class="diagnostic-meta"><span id="diagnosticProgressText">Pregunta 1 de 5</span><div class="diagnostic-progress" aria-hidden="true"><span id="diagnosticProgressBar"></span></div></div><form id="diagnosticForm"><div class="diagnostic-step active" data-step="1"><h3>¿Qué experiencia tiene actualmente la institución?</h3><p class="diagnostic-help">Piensa en lo que ya se ha trabajado con estudiantes y docentes.</p><div class="choice-grid"><label class="choice"><input type="radio" name="experience" value="1" required><span><strong>Estamos comenzando</strong><small>Aún no tenemos un programa de tecnología.</small></span></label><label class="choice"><input type="radio" name="experience" value="2"><span><strong>Tenemos algunas experiencias</strong><small>Hemos hecho actividades o talleres puntuales.</small></span></label><label class="choice"><input type="radio" name="experience" value="3"><span><strong>Ya tenemos una base</strong><small>Contamos con clases, proyectos o laboratorio.</small></span></label></div></div><div class="diagnostic-step" data-step="2"><h3>¿Con qué edades o grados desean comenzar?</h3><p class="diagnostic-help">Elige el grupo que representa mejor su primera implementación.</p><div class="choice-grid"><label class="choice"><input type="radio" name="ages" value="1" required><span><strong>Preprimaria y primaria</strong><small>Explorar, jugar y descubrir.</small></span></label><label class="choice"><input type="radio" name="ages" value="2"><span><strong>Primaria y básicos</strong><small>Construir, programar y resolver retos.</small></span></label><label class="choice"><input type="radio" name="ages" value="3"><span><strong>Varios grados</strong><small>Integrar distintos niveles o toda la institución.</small></span></label></div></div><div class="diagnostic-step" data-step="3"><h3>¿Qué les gustaría lograr principalmente?</h3><p class="diagnostic-help">Selecciona el resultado que más se parece a su objetivo.</p><div class="choice-grid"><label class="choice"><input type="radio" name="goal" value="1" required><span><strong>Despertar interés</strong><small>Que los estudiantes se acerquen a la tecnología con confianza.</small></span></label><label class="choice"><input type="radio" name="goal" value="2"><span><strong>Construir y programar</strong><small>Trabajar con retos, robots, circuitos y sensores.</small></span></label><label class="choice"><input type="radio" name="goal" value="3"><span><strong>Crear soluciones</strong><small>Diseñar proyectos, prototipos o soluciones con IA.</small></span></label></div></div><div class="diagnostic-step" data-step="4"><h3>¿Qué materiales o equipos tienen disponibles?</h3><p class="diagnostic-help">Puedes seleccionar más de una opción. Si no tienen equipo, elige “Todavía no tenemos”.</p><div class="choice-grid equipment"><label class="choice"><input type="checkbox" name="equipment" value="robots"><span><strong>Robots</strong><small>Robots educativos o kits para armar.</small></span></label><label class="choice"><input type="checkbox" name="equipment" value="circuits"><span><strong>Circuitos</strong><small>Tarjetas, cables, sensores o electrónica.</small></span></label><label class="choice"><input type="checkbox" name="equipment" value="tablets"><span><strong>Tablets</strong><small>Dispositivos para trabajar en clase.</small></span></label><label class="choice"><input type="checkbox" name="equipment" value="laptops"><span><strong>Laptops</strong><small>Computadoras disponibles para estudiantes.</small></span></label><label class="choice"><input type="checkbox" name="equipment" value="none"><span><strong>Todavía no tenemos</strong><small>Necesitamos orientación para elegir equipo.</small></span></label></div></div><div class="diagnostic-step" data-step="5"><h3>¿Qué tipo de apoyo están buscando?</h3><p class="diagnostic-help">Esto nos ayuda a recomendar una forma de implementación.</p><div class="choice-grid"><label class="choice"><input type="radio" name="support" value="program" required><span><strong>Solo el programa</strong><small>Trabajar con nuestros contenidos y sus materiales.</small></span></label><label class="choice"><input type="radio" name="support" value="equipment"><span><strong>Programa y equipo</strong><small>Integrar herramientas seleccionadas para la necesidad.</small></span></label><label class="choice"><input type="radio" name="support" value="full"><span><strong>Acompañamiento completo</strong><small>Programa, equipo, capacitación y seguimiento.</small></span></label></div></div><div class="diagnostic-actions"><button class="button secondary diagnostic-back" type="button" hidden>Anterior</button><button class="button diagnostic-next" type="button">Continuar <span>→</span></button></div></form><div class="diagnostic-result" id="diagnosticResult" aria-live="polite"><div class="tag">Punto de entrada sugerido</div><h3 id="diagnosticResultTitle"></h3><p id="diagnosticResultText"></p><p><strong>Cómo puede apoyar GuateGeeks:</strong> <span id="diagnosticResultSupport"></span></p><a class="button" id="diagnosticResultLink" href="mailto:info@guategeeks.com?subject=Solicitar%20diagnóstico%20de%20integración%20tecnológica">Solicitar diagnóstico personalizado <span>↗</span></a><button class="button secondary diagnostic-restart" type="button">Volver a realizarlo</button></div></div></div></section>
+
+    <section class="curriculum"><div class="wrap"><div class="section-intro"><div class="eyebrow">Cómo se traduce en aprendizaje</div><h2>Un programa que se puede explicar, implementar y evaluar.</h2><p>La institución no recibe solamente una experiencia tecnológica: recibe una propuesta conectada con áreas educativas y evidencias observables.</p></div><div style="overflow:auto"><table class="curriculum-table"><thead><tr><th>Nivel</th><th>Enfoque de integración</th><th>Áreas relacionadas</th><th>Qué puede demostrar el estudiante</th></tr></thead><tbody><tr class="curriculum-row" data-level="0"><td><strong>Explorador</strong><span class="level-match">Nivel sugerido</span></td><td>Descubrir, seguir instrucciones, observar y resolver problemas sencillos.</td><td>Comunicación, pensamiento lógico, ciencia y creatividad.</td><td>Secuencias, pruebas, explicaciones y primeras soluciones.</td></tr><tr class="curriculum-row" data-level="1"><td><strong>Constructor</strong><span class="level-match">Nivel sugerido</span></td><td>Construir, programar, medir, probar y mejorar una solución.</td><td>Matemática, Ciencias Naturales, Tecnología e Ingeniería.</td><td>Código, datos de prueba, funcionamiento y mejoras justificadas.</td></tr><tr class="curriculum-row" data-level="2"><td><strong>Creador</strong><span class="level-match">Nivel sugerido</span></td><td>Diseñar, prototipar, documentar y presentar una solución propia.</td><td>Programación, innovación, comunicación, emprendimiento e IA responsable.</td><td>Prototipo, documentación técnica, decisiones y presentación.</td></tr></tbody></table></div><div class="curriculum-recommendation" id="curriculumRecommendation" aria-live="polite"></div></div></section>
+
+    <section id="inversion" class="investment"><div class="wrap"><div class="section-intro"><div class="eyebrow">Cómo se contrata</div><h2>Tres paquetes para comenzar, implementar o consolidar.</h2><p>La institución puede elegir el nivel de apoyo que necesita. El precio del Plan Plataforma es institucional, no por programa, y las herramientas se definen después del diagnóstico.</p></div><div class="offer-grid"><article class="offer"><div class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"></rect><path d="M8 22h8"></path><path d="M12 18v4"></path><path d="M8 11h.01"></path><path d="M12 11h.01"></path><path d="M16 11h.01"></path></svg></div><div class="tag">Plan Plataforma</div><h3>Plataforma educativa institucional</h3><ul><li>Acceso anual a la plataforma GuateGeeks.</li><li>Contenido y programas educativos disponibles.</li><li>Hasta 5 licencias para autoridades o responsables institucionales.</li><li>Programas alineados con el CNB y estándares internacionales.</li><li>Posibilidad de trabajar con materiales y herramientas propias.</li></ul><strong>Q 4,500 al año</strong><span>Precio por institución. No incluye IVA.</span><a class="button offer-action" href="mailto:info@guategeeks.com?subject=Solicitar%20Plan%20Plataforma">Solicitar este paquete <span>↗</span></a></article><article class="offer featured"><div class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l2-1.1"></path><path d="m16 19 2 2 4-4"></path></svg></div><div class="recommended">Más popular</div><div class="tag">Plan Equipamiento</div><h3>Programa y herramientas para implementar</h3><ul><li>Todo lo incluido en el Plan Plataforma.</li><li>Herramientas seleccionadas según el programa y la necesidad.</li><li>Configuración de grupos, cantidades y modalidad de uso.</li><li>Acceso al programa integrado, sin cobro separado por contenido.</li><li>Posibilidad de renta por bimestre para adaptar la inversión al calendario.</li></ul><strong>Inversión según diagnóstico</strong><span>Se cotiza de acuerdo con programa, grupos, estudiantes y herramientas requeridas.</span><a class="button offer-action" href="mailto:info@guategeeks.com?subject=Solicitar%20Plan%20Equipamiento">Solicitar este paquete <span>↗</span></a></article><article class="offer"><div class="offer-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m7 3 5-2 5 2 4 4v6l-4 4-5 2-5-2-4-4V7l4-4Z"></path><path d="m7 3 5 3 5-3"></path><path d="M12 6v6"></path><path d="m8 14 4 2 4-2"></path><path d="M4 7l4 3v4"></path><path d="m20 7-4 3v4"></path></svg></div><div class="tag">Plan Propiedad</div><h3>Programa y equipo que queda en la institución</h3><ul><li>Todo lo incluido en el Plan Equipamiento.</li><li>Implementación con herramientas durante dos años.</li><li>Mayor continuidad para trabajar en distintos ciclos o grados.</li><li>Planificación de uso y seguimiento de la implementación.</li><li>Las herramientas incluidas quedan para la institución al finalizar el contrato.</li></ul><strong>Inversión según diagnóstico</strong><span>Se presenta una propuesta personalizada con condiciones y alcance.</span><a class="button offer-action" href="mailto:info@guategeeks.com?subject=Solicitar%20Plan%20Propiedad">Solicitar este paquete <span>↗</span></a></article></div><p class="note">La institución puede contratar solo el Plan Plataforma o sumar herramientas tecnológicas. La recomendación y el detalle de lo que recibe durante el año se definen después del análisis de necesidad. Ningún precio incluye IVA.</p></div></section>
+
+    <section id="programas" class="programs"><div class="wrap"><div class="section-intro"><div class="eyebrow">Programas destacados</div><h2>Experiencias que se convierten en evidencia.</h2><p>Estos son los programas que organizan nuestra oferta actual. La duración y la modalidad se ajustan a los grados, grupos y calendario de cada institución.</p></div><div class="program-grid"><article class="program"><div class="program-image"></div><div class="program-body"><span class="status">Disponible</span><div class="tag">Constructor · 1.º a 3.º básico</div><h3>CiudadBots Guatemala</h3><p>Robótica aplicada con retos de ingeniería urbana usando LEGO SPIKE Prime.</p><ul><li>12, 24 o 36+ sesiones.</li><li>Roles rotativos y rúbricas.</li><li>Guía docente y modo estudiante.</li></ul><a class="button" href="https://guategeeks.com/ciudadbots/" target="_blank" rel="noopener">Conocer programa ↗</a></div></article><article class="program"><div class="program-image"></div><div class="program-body"><span class="status">Disponible</span><div class="tag">Creador · 3.º básico</div><h3>GuateGeeks SMARS</h3><p>Construir un robot autónomo que detecta obstáculos, decide y mejora su desempeño.</p><ul><li>12 sesiones de proyecto.</li><li>Arduino, sensores y calibración.</li><li>Presentación técnica final.</li></ul><a class="button" href="https://guategeeks.com/guategeeks/" target="_blank" rel="noopener">Conocer programa ↗</a></div></article><article class="program"><div class="program-image"></div><div class="program-body"><span class="status">Disponible</span><div class="tag">Creador · 2.º básico</div><h3>Tiempo Circular</h3><p>Diseñar un reloj en pantalla circular para aprender geometría, bits, medición y prototipado.</p><ul><li>12 sesiones de proyecto.</li><li>Arduino, ESP32 y pantalla TFT.</li><li>Carátula final con ciclos del Cholq'ij.</li></ul><a class="button" href="https://guategeeks.com/tiempo-circular/" target="_blank" rel="noopener">Conocer programa ↗</a></div></article></div></div></section>
+
+    <section><div class="wrap"><div class="included"><div class="included-image" role="img" aria-label="Estudiantes trabajando en equipo con tecnología"></div><div class="included-copy"><div class="eyebrow">Qué recibe la institución</div><h2>Lo que recibe la institución depende de la solución elegida.</h2><ul><li>Acceso a la plataforma y contenidos educativos de GuateGeeks.</li><li>Hasta 5 licencias para autoridades o responsables institucionales.</li><li>Programas alineados con el CNB y estándares internacionales.</li><li>Materiales, secuencias, retos y evidencias según el programa.</li><li>Capacitación, acompañamiento y seguimiento cuando estén incluidos en la propuesta.</li><li>Herramientas GuateGeeks o uso de materiales propios, según la necesidad.</li></ul></div></div></div></section>
+
+    <section id="contacto" class="cta"><div class="wrap cta-inner"><div><div class="eyebrow">Siguiente paso</div><h2>Identifiquemos qué necesita tu institución.</h2><p>Iniciamos con una conversación de diagnóstico para comprender el reto, analizar las condiciones actuales y proponer una solución educativa con programa, equipo y acompañamiento cuando sea necesario.</p></div><a class="button" href="mailto:info@guategeeks.com?subject=Quiero%20analizar%20las%20necesidades%20de%20mi%20institución">Solicitar diagnóstico ↗</a></div></section>
+  </main>
+  <footer><div class="wrap">GuateGeeks · Imagina, diseña y crea · <a href="https://guategeeks.com" target="_blank" rel="noopener">guategeeks.com</a> · info@guategeeks.com · 3004 4972</div></footer>
+  <script>
+    (function () {
+      var logo = document.querySelector('.brand img');
+      if (logo) logo.src = 'assets/GuateGeekSVG.svg';
+    }());
+  </script>
+  <script>
+    (function () {
+      var button = document.getElementById('themeToggle');
+      if (!button) return;
+      var savedTheme = null;
+      try { savedTheme = window.localStorage.getItem('guategeeks-theme'); } catch (error) {}
+      if (savedTheme === 'light') document.body.classList.add('light-theme');
+      function updateThemeLabel() {
+        var isLight = document.body.classList.contains('light-theme');
+        var label = isLight ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+        button.setAttribute('aria-label', label);
+        button.setAttribute('title', label);
+      }
+      updateThemeLabel();
+      button.addEventListener('click', function () {
+        var isLight = document.body.classList.toggle('light-theme');
+        try { window.localStorage.setItem('guategeeks-theme', isLight ? 'light' : 'dark'); } catch (error) {}
+        updateThemeLabel();
+      });
+    }());
+  </script>
+  <script>
+    (function () {
+      var form = document.getElementById('diagnosticForm');
+      if (!form) return;
+      var steps = Array.prototype.slice.call(form.querySelectorAll('.diagnostic-step'));
+      var next = form.querySelector('.diagnostic-next');
+      var back = form.querySelector('.diagnostic-back');
+      var result = document.getElementById('diagnosticResult');
+      var progressText = document.getElementById('diagnosticProgressText');
+      var progressBar = document.getElementById('diagnosticProgressBar');
+      var curriculumRows = Array.prototype.slice.call(document.querySelectorAll('.curriculum-row'));
+      var curriculumRecommendation = document.getElementById('curriculumRecommendation');
+      var current = 0;
+      var total = steps.length;
+      var levelNames = ['Explorador', 'Constructor', 'Creador'];
+      function currentAnswered() {
+        var radios = steps[current].querySelectorAll('input[type="radio"]');
+        var checkboxes = steps[current].querySelectorAll('input[type="checkbox"]');
+        if (radios.length) return Array.prototype.some.call(radios, function (input) { return input.checked; });
+        if (checkboxes.length) return Array.prototype.some.call(checkboxes, function (input) { return input.checked; });
+        return true;
+      }
+      function updateNextState() { next.disabled = !currentAnswered(); }
+      function showStep(index) {
+        current = index;
+        steps.forEach(function (step, stepIndex) { step.classList.toggle('active', stepIndex === current); });
+        back.hidden = current === 0;
+        next.innerHTML = current === total - 1 ? 'Ver mi recomendación <span>→</span>' : 'Continuar <span>→</span>';
+        progressText.textContent = 'Pregunta ' + (current + 1) + ' de ' + total;
+        progressBar.style.width = ((current + 1) / total * 100) + '%';
+        updateNextState();
+      }
+      function value(name) {
+        var selected = form.querySelector('input[name="' + name + '"]:checked');
+        return selected ? selected.value : '';
+      }
+      function calculateResult() {
+        var score = Number(value('experience')) + Number(value('ages')) + Number(value('goal'));
+        var equipment = Array.prototype.slice.call(form.querySelectorAll('input[name="equipment"]:checked')).map(function (input) { return input.value; });
+        if (equipment.indexOf('none') === -1 && equipment.length >= 2) score += 1;
+        var level = score <= 5 ? 0 : score <= 7 ? 1 : 2;
+        var equipmentText = equipment.indexOf('none') !== -1 || equipment.length === 0 ? 'necesita orientación para seleccionar las herramientas adecuadas' : 'puede aprovechar parte de sus materiales actuales y complementar lo que haga falta';
+        var texts = [
+          'Su institución está en un buen momento para comenzar con experiencias guiadas que construyan confianza y despierten curiosidad.',
+          'Su institución puede avanzar con retos prácticos para construir, programar, probar y mejorar soluciones.',
+          'Su institución está preparada para desarrollar proyectos, prototipos y soluciones con mayor autonomía.'
+        ];
+        var support = [
+          'un programa Explorador, acceso a la plataforma y herramientas sencillas seleccionadas según sus grupos.',
+          'un programa Constructor, acompañamiento docente y equipo para trabajar con robots, circuitos o sensores.',
+          'un programa Creador, prototipado, programación, IA y una implementación con seguimiento y evidencia.'
+        ];
+        document.getElementById('diagnosticResultTitle').textContent = levelNames[level];
+        document.getElementById('diagnosticResultText').textContent = texts[level] + ' Según sus respuestas, ' + equipmentText + '.';
+        document.getElementById('diagnosticResultSupport').textContent = support[level];
+        curriculumRows.forEach(function (row) { row.classList.toggle('recommended-level', Number(row.getAttribute('data-level')) === level); });
+        curriculumRecommendation.innerHTML = '<strong>Tu nivel sugerido: ' + levelNames[level] + '.</strong> Esta fila muestra el enfoque de integración y las evidencias que puede desarrollar tu institución en este momento.';
+        curriculumRecommendation.classList.add('visible');
+        result.classList.add('visible');
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        next.hidden = true;
+        back.hidden = true;
+      }
+      next.addEventListener('click', function () {
+        if (!currentAnswered()) return;
+        var requiredFields = Array.prototype.slice.call(steps[current].querySelectorAll('[required]'));
+        var requiredNames = requiredFields.reduce(function (names, field) {
+          if (names.indexOf(field.name) === -1) names.push(field.name);
+          return names;
+        }, []);
+        var valid = requiredNames.every(function (name) {
+          return steps[current].querySelector('input[name="' + name + '"]:checked') !== null;
+        });
+        if (!valid) { requiredFields[0].reportValidity(); return; }
+        if (current === total - 1) calculateResult(); else showStep(current + 1);
+      });
+      back.addEventListener('click', function () { if (current > 0) showStep(current - 1); });
+      form.addEventListener('change', updateNextState);
+      document.querySelector('.diagnostic-restart').addEventListener('click', function () {
+        form.reset(); result.classList.remove('visible'); curriculumRows.forEach(function (row) { row.classList.remove('recommended-level'); }); curriculumRecommendation.classList.remove('visible'); curriculumRecommendation.textContent = ''; next.hidden = false; showStep(0);
+      });
+      showStep(0);
+    }());
+  </script>
+</body>
+</html>
