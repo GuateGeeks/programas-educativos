@@ -145,8 +145,8 @@ const es: SmarsCurriculumContent = {
       text: 'Innovative Designer, Computational Thinker, Creative Communicator, Knowledge Constructor y Empowered Learner, traducidos a diseño, programación, documentación y reflexión.',
     },
     {
-      area: 'CSTA K-12 · Secundaria alta',
-      text: 'Sistemas, programación, datos, abstracción, descomposición, depuración sistemática, desarrollo iterativo y colaboración técnica.',
+      area: 'CSTA PK–12 (2026) · High School y Physical Computing',
+      text: 'La versión 2026 organiza la alineación por Systems & Security, Programming, Data & Analysis y Physical Computing, además de las prácticas de abstracción, creación, prueba, refinamiento y gestión colaborativa de proyectos.',
     },
     {
       area: 'NGSS HS-ETS1 y HS-PS2',
