@@ -30,3 +30,9 @@ export const sessionTitles: Record<Locale, Record<string, string>> = {
   es,
   en: es,
 };
+
+/** Resolve a session's title for a given locale, falling back to `es`. */
+export function getSessionTitle(id: string, locale: string): string {
+  const table = sessionTitles[locale as Locale] ?? sessionTitles.es;
+  return table[id] ?? sessionTitles.es[id] ?? id;
+}

@@ -1,106 +1,182 @@
 ---
 sidebar_position: 0
 sidebar_label: "Cómo usar este material"
-title: "GuateGeeks · SMARS Aula Autónomo"
-description: "Programa de robótica con Arduino para tercero básico: construir un robot de orugas autónomo en 12 sesiones."
+title: "GuateGeeks SMARS"
+description: "Programa de robótica con Arduino para 4.º, 5.º y 6.º bachillerato: construir, programar y presentar un robot autónomo."
 ---
 
 import FlagNote from '@site/src/components/FlagNote';
+import ProgressTracker from '@site/src/components/ProgressTracker';
+import ScopeOptions from '@site/src/components/ScopeOptions';
+import SmarsCnbAlignment from '@site/src/components/SmarsCnbAlignment';
 
-# GuateGeeks · SMARS Aula Autónomo
+export const smarsScopeOptions = [
+  {
+    title: 'Ruta compacta · 12 experiencias',
+    text: 'Un bloque de 60 minutos por experiencia. Funciona para laboratorios intensivos o equipos ya familiarizados con Arduino; las impresiones se preparan fuera de clase.',
+  },
+  {
+    title: 'Ruta estándar · 18-24 sesiones',
+    text: 'La ruta recomendada para bachillerato: cada sesión dura 60 minutos y las experiencias de fabricación, programación y calibración reciben bloques adicionales.',
+  },
+  {
+    title: 'Ruta extendida · 30+ sesiones',
+    text: 'Agrega fabricación, documentación técnica, rediseño mecánico, análisis de datos y una presentación final más robusta.',
+  },
+  {
+    title: 'Proyecto institucional',
+    text: 'El robot se convierte en evidencia de feria científica, curso de robótica, emprendimiento tecnológico o proyecto STEAM interdisciplinario.',
+  },
+];
 
-Programa de **12 sesiones** en el que los equipos construyen un robot de orugas que detecta
-obstáculos, decide una maniobra y se mueve por sí mismo. Sin teléfono, sin Bluetooth y sin
-aplicación externa: el robot se opera con dos botones y responde con un buzzer.
+# GuateGeeks SMARS
 
-Se programa en Arduino sobre un **shield L293D compatible con Motor Shield v1**. Los sketches que
-mueven motores usan `AFMotor`; los demás se mantienen sobre el core de Arduino. Es el complemento
-de [CiudadBots](/ciudadbots), que trabaja robótica aplicada con bloques visuales.
+Programa de robótica con Arduino en el que los equipos construyen un robot de orugas que detecta
+obstáculos, decide una maniobra y opera sin control externo. La experiencia combina fabricación
+digital, electrónica, programación en C/C++, medición, calibración y comunicación técnica.
 
 ![Robot SMARS terminado con orugas, Arduino y sensor ultrasónico](/assets/guategeeks/smars/heroshot.jpg)
 
-Está diseñado para **tercero básico**. Las competencias que ejercita —investigación tecnológica,
-comunicación de resultados con gráficos, vectores, dispersión de datos y mejora continua— son las
-de ese grado, y así están citadas en cada sesión.
-
 ## Cómo se usa este material
 
-- **Una página por sesión.** Cada sesión trae su pregunta central, las cuatro fases con tiempos,
-  los conceptos, los materiales, el reto y la evidencia esperada.
-- **Cuatro fases por sesión.** Activar (15 min) → Explorar (25 min) → Crear (60-90 min) →
-  Reflexionar (15 min).
-- **Roles que rotan.** Cuatro responsabilidades por equipo, cambiando cada dos o tres sesiones.
-- **Código incluido y verificable.** Cinco sketches por capas, comentados en español, para Arduino
-  Uno y shield L293D.
+- **Navegue experiencia por experiencia.** Cada sesión organiza implementación, recursos, marco
+  curricular y evaluación con la misma estructura visual de los demás programas de la plataforma.
+- **Qué incluye.** Sketches Arduino, materiales por sesión, referencias de cableado, modelos 3D,
+  evidencia esperada y criterios de evaluación listos para usar.
+- **Cómo planificar.** Ruta compacta, estándar, extendida o proyecto institucional, según calendario,
+  laboratorio disponible y profundidad esperada.
 
-<FlagNote tone="info" title="Para docentes">
-Empiece por la Guía docente para ver la secuencia completa de 12 sesiones y los materiales por
-sesión. Antes de energizar cualquier robot, revise la página de Seguridad: el checklist debe estar
-firmado.
+<FlagNote tone="info" title="Cómo acceder al contenido">
+Use este material como panel de navegación docente. Empiece por esta vista general, elija la
+experiencia que trabajará, revise la pestaña de implementación, prepare los recursos y luego
+consulte CNB, estándares y evaluación para cerrar la planificación.
 </FlagNote>
 
-## Duración
+## Diseñado para 4.º, 5.º y 6.º bachillerato
 
-| Ruta | Formato | Calendario |
+El programa usa el mismo robot como eje, pero la profundidad crece por nivel. Las referencias
+directas del CNB corresponden a cuarto y quinto grado; sexto se trabaja como profundización
+institucional y debe vincularse a la malla específica del centro educativo.
+
+### 4.º bachillerato · Comprender y construir
+
+- Reconoce los subsistemas mecánico, eléctrico y lógico.
+- Aplica normas de seguridad y verifica energía, polaridad y conexiones.
+- Interpreta modelos 3D, mide piezas y construye el prototipo con guía.
+- Explica el funcionamiento de un subsistema mediante diagramas y bitácora.
+
+### 5.º bachillerato · Programar, medir y mejorar
+
+- Relaciona entradas, salidas, sensores, motores y código.
+- Recolecta datos de tolerancias, motores y distancia.
+- Depura, compara ensayos y justifica cambios con evidencia.
+- Calibra el robot y documenta el proceso de mejora.
+
+### 6.º bachillerato · Integrar y comunicar
+
+- Integra una solución autónoma bajo criterios y restricciones.
+- Evalúa el desempeño y propone una segunda versión.
+- Documenta decisiones de diseño, programación y seguridad.
+- Defiende el proyecto con reporte, video, demostración y reflexión.
+
+| Eje | 4.º bachillerato | 5.º bachillerato | 6.º bachillerato |
+|---|---|---|---|
+| Pensamiento computacional | Hardware, software, entradas y salidas. | Estados, funciones, parámetros y depuración. | Arquitectura autónoma, optimización y transferencia. |
+| Ciencia e ingeniería | Energía, circuitos, movimiento y seguridad. | Sensores, error, repetibilidad y calibración. | Criterios, restricciones y evaluación de la solución. |
+| Matemática aplicada | Unidades, medidas y comparación de valores. | Variables, tablas, rangos y ensayos. | Modelación, decisiones y justificación con datos. |
+| Comunicación técnica | Diagramas, checklist y bitácora. | Código comentado y reportes de prueba. | Presentación, video, defensa y reflexión. |
+
+## Perfiles de trabajo del equipo
+
+Organice equipos con cuatro perfiles rotativos:
+
+- **Seguridad y energía** — mide voltajes, valida conexiones y autoriza energizar.
+- **Mecánica** — arma chasis, orugas y soporte físico; cuida tolerancias y alineación.
+- **Electrónica** — cablea, verifica continuidad y diagnostica fallas de conexión.
+- **Código y documentación** — carga sketches, ajusta parámetros y registra evidencia técnica.
+
+La recomendación es rotar perfiles durante el programa para que cada estudiante viva al menos dos
+responsabilidades distintas.
+
+## Acceso para estudiantes
+
+Cuando el centro tenga este material alojado en red, puede compartir las páginas de cada experiencia
+con los equipos. La pestaña **Recursos** concentra lo que necesitan para trabajar: materiales,
+código, cableado, reto y evidencia esperada.
+
+## Rutas de implementación
+
+Elija la ruta que mejor se ajuste a sus sesiones disponibles y a la profundidad que busca:
+
+<ScopeOptions options={smarsScopeOptions} />
+
+## Cómo se organiza cada sesión
+
+Cada experiencia se puede trabajar en uno o más bloques de 60 minutos. En cada bloque se conserva
+el mismo ciclo de aprendizaje:
+
+| Fase | Tiempo guía | Propósito |
+|---|---:|---|
+| **Activar** | 10 min | Recuperar saberes previos y presentar el reto |
+| **Explorar** | 15 min | Observar, investigar, medir o analizar |
+| **Crear** | 25 min | Construir, programar, probar o producir evidencia |
+| **Reflexionar** | 10 min | Explicar resultados, errores y próximos pasos |
+
+La distribución puede ajustarse según el grupo. Cuando una experiencia requiera más tiempo para
+imprimir, ensamblar, probar o calibrar, el docente debe continuarla en un segundo bloque sin
+eliminar la reflexión de la primera sesión.
+
+## Etapas generales del programa
+
+Las etapas generales no sustituyen las cuatro fases de cada sesión. Sirven para leer la progresión
+completa del proyecto:
+
+| Etapa | Experiencias | Propósito |
 |---|---|---|
-| Intensivo | 12 sesiones de 90-120 min | 2-3 semanas |
-| Escolar | 12 sesiones de 50-60 min | 4-6 semanas |
-| Club maker | 4 jornadas de 3 horas | 1 mes |
+| **Comprender y preparar** | 1-2 | Sistemas del robot, seguridad y energía |
+| **Diseñar y construir** | 3-5 | Diseño 3D, fabricación, calidad y ensamblaje |
+| **Programar y medir** | 6-8 | Entradas, motores, sensores y datos |
+| **Integrar y demostrar** | 9-13 | Código, autonomía, calibración, misión y presentación |
 
-## Las cuatro fases del programa
+## Seguimiento del programa
 
-| Fase | Sesiones | Qué se logra |
-|---|---|---|
-| **Activar** | 1-2 | Subsistemas del robot, seguridad y energía |
-| **Explorar** | 3-4 | Preparación de piezas 3D, tolerancias, control de calidad |
-| **Crear** | 5-11 | Ensamblaje, botones, dos motores, sensor, integración y calibración |
-| **Reflexionar** | 12 | Reto integrador en arena y presentación técnica |
-
-## Progresión del código
-
-Cada sketch prueba un subsistema en aislamiento antes de integrarlo. Si el robot autónomo falla,
-se puede volver a la capa anterior para localizar el problema.
-
-| Sesión | Sketch | Qué prueba |
-|---|---|---|
-| 6 | `01_botones_y_buzzer` | Entradas con `INPUT_PULLUP`, antirrebote, tonos |
-| 7 | `02_prueba_motores` | Shield L293D, M1/M2, dirección y velocidad de las dos orugas |
-| 8 | `03_prueba_ultrasonido` | Distancia por tiempo de vuelo |
-| 9-10 | `04_smars_autonomo` | Máquina de estados, tres modos, evasión de obstáculos |
-| 11 | `05_asistente_calibracion` | Compensación de la diferencia entre orugas |
-
-## Roles del equipo
-
-Equipos de 3 o 4 estudiantes, con rotación cada dos o tres sesiones para que todos pasen por cada
-responsabilidad.
-
-- **Seguridad y energía** — mide voltajes, valida conexiones antes de energizar
-- **Mecánica** — arma el chasis y las orugas, cuida tolerancias y alineación
-- **Electrónica** — cablea, verifica continuidad, diagnostica fallas
-- **Código y documentación** — carga los sketches, ajusta parámetros, registra resultados
+<ProgressTracker program="guategeeks" />
 
 ## Marco curricular
 
-Alineado al **CNB de Tercero Básico** —Ciencias Naturales, Tecnologías del Aprendizaje y la
-Comunicación, Emprendimiento para la Productividad, Comunicación y Lenguaje, y Matemática— con
-citas verificadas contra las mallas del Mineduc, incluida su página fuente.
+El programa permite reportar evidencia en áreas afines a tecnología, computación, física aplicada,
+matemática, comunicación técnica, emprendimiento y diseño de soluciones. La evidencia no debe ser
+solo "el robot funcionó"; debe incluir código, datos de prueba, explicación técnica, mejora del
+diseño y comunicación del proceso.
 
-Los estándares internacionales se citan en la banda que corresponde al grado: **CSTA Nivel 3A**
-(grados 9-10), **NGSS HS-ETS1** e **ISTE** con sub-indicadores. Ver
-[Alineación curricular](/guategeeks/alineacion-cnb).
+<SmarsCnbAlignment />
 
-<FlagNote tone="warn" title="Atribución">
-SMARS es un proyecto educativo modular creado por Kevin Thomas y desarrollado por una comunidad de
-makers. GuateGeeks no está afiliado oficialmente. El código Arduino se distribuye bajo licencia MIT.
-Los modelos 3D **se distribuyen aquí** bajo su licencia original CC BY-NC-SA, lo que sujeta al
-paquete completo a la condición No Comercial.
+<FlagNote tone="info" title="Qué se espera del docente">
+El programa está pensado para que usted conduzca la experiencia, decida el ritmo, organice roles,
+recoja evidencias y use la información de cada sesión para acompañar la mejora técnica y el
+aprendizaje de sus estudiantes.
 </FlagNote>
 
-## El otro programa del Ciclo Básico
+## Sesiones del programa
+
+1. [01 · Conoce tu Robot](./sistemas-del-robot) — Sistemas, piezas y propósito del SMARS
+2. [02 · Energía Segura](./seguridad-y-energia) — Voltajes, checklist y prevención
+3. [03 · Del Diseño a la Pieza](./slicer-y-tolerancias) — Modelos 3D, slicer y tolerancias
+4. [04 · Piezas que Encajan](./impresion-y-control-de-calidad) — Inspección y control de calidad
+5. [05 · Robot en Movimiento](./ensamblaje-de-orugas) — Chasis, orugas y transmisión
+6. [06 · Botones y Señales](./botones-y-buzzer) — Interfaz local con botones y buzzer
+7. [07 · Aprender a Girar](./dos-motores-y-direccion) — Motores, dirección y velocidad
+8. [08 · Medir sin Tocar](./sensor-ultrasonico) — Sensor ultrasónico y datos de distancia
+9. [09 · Leer el Cerebro del Robot](./lectura-de-codigo) — Máquina de estados y predicción
+10. [10 · Robot Autónomo](./integracion-autonoma) — Integración y operación autónoma
+11. [11 · Afinar el Movimiento](./calibracion) — Calibración, offsets y repetibilidad
+12. [12 · Misión Autónoma](./reto-integrador) — Prueba final del robot en arena
+13. [★ Showcase](./showcase) — Evidencias, exposición y demostración final
+14. [Evaluación del programa](./rubrica) — Rúbrica, criterios y evidencias acumuladas
+
+## Otro programa de la plataforma
 
 [**CiudadBots Guatemala**](/ciudadbots) trabaja robótica aplicada con LEGO SPIKE y programación por
-bloques, a partir de retos de ingeniería urbana, y **cubre los tres grados del ciclo**. Es el
-complemento natural de este programa: donde CiudadBots parte del problema de ciudad, GuateGeeks baja
-al nivel de la electrónica y el código.
-
-Si trabaja con **1.º o 2.º básico**, CiudadBots es el programa indicado.
+bloques, a partir de retos de ingeniería urbana. Los dos programas son complementarios: CiudadBots
+introduce diseño robótico por misiones; GuateGeeks SMARS profundiza en electrónica, código,
+calibración y autonomía.

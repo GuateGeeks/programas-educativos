@@ -17,11 +17,11 @@ import type {PhaseKind} from '@site/src/data/ciudadbots/types';
 export type {PhaseKind};
 
 /**
- * Which of the program's four macro-phases a session belongs to. Distinct from
- * `PhaseKind`: that describes the mini-cycle *inside* every session, while this
- * groups the twelve sessions into the program's overall arc.
+ * Which general stage of the program a session belongs to. Distinct from
+ * `PhaseKind`: that describes the four-part learning cycle inside every
+ * 60-minute session.
  */
-export type ProgramPhase = 'activar' | 'explorar' | 'crear' | 'reflexionar';
+export type ProgramStage = 'comprender' | 'construir' | 'programar' | 'integrar';
 
 /**
  * Challenge level, rising across the program.
@@ -48,8 +48,8 @@ export interface Session {
   n: string;
   /** URL/file slug, e.g. "sistemas-del-robot". */
   slug: string;
-  /** Which macro-phase of the program this session belongs to. */
-  programPhase: ProgramPhase;
+  /** Which general stage of the program this session belongs to. */
+  programStage: ProgramStage;
   /**
    * Ordered sequence of the four mini-cycle phase kinds, driving accent colour
    * and matching each locale's <SessionModule.Phase> order.
@@ -57,6 +57,8 @@ export interface Session {
   phaseKinds: readonly [PhaseKind, PhaseKind, PhaseKind, PhaseKind];
   /** Challenge level introduced in this session. */
   retoLevel: RetoLevel;
+  /** Suggested number of 60-minute blocks for the experience. */
+  recommendedBlocks: number;
   /** The Arduino sketch this session works with, when there is one. */
   sketch?: SketchRef;
 }

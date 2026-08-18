@@ -1,7 +1,7 @@
 ---
 sidebar_position: 7
-sidebar_label: "07 · Dos motores y dirección"
-title: "Dos motores y dirección"
+sidebar_label: "07 · Aprender a Girar"
+title: "Aprender a Girar"
 description: "Shield L293D, puertos M1/M2 y velocidad con signo. Primera vez que el robot se mueve."
 ---
 
@@ -10,7 +10,7 @@ import SketchBlock from '@site/src/components/SketchBlock';
 import VisualStepGuide from '@site/src/components/VisualStepGuide';
 import sketchCode from '@site/arduino/guategeeks/02_prueba_motores/02_prueba_motores.ino';
 
-# 07 · Dos motores y dirección
+# 07 · Aprender a Girar
 
 :::danger Levanten el robot antes de cargar
 El sketch mueve ambas orugas apenas termina de cargar. Con el robot apoyado en la mesa, se cae. El
@@ -37,27 +37,27 @@ propio código lo advierte por el Monitor Serie: «Levanta el robot: inicia prue
     'Velocidad con signo: un solo número para sentido y magnitud',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="Tres cables por motor">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="Tres cables por motor">
     Recordar el diagrama de la sesión 1: el motor no se conecta al Arduino sino al shield.
     Preguntar qué necesita decidir el programa para mover una oruga: sentido, velocidad y qué lado
     del robot está controlando. Contrastar las propuestas con el contrato de aula: M1 izquierdo y
     M2 derecho.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Leer la función motor()">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Leer la función motor()">
     Analizar la función `motor()` del sketch antes de cargarlo. Recibe una velocidad con signo: el
     signo decide FORWARD o BACKWARD, y el valor absoluto se entrega al shield como velocidad.
     Preguntar qué ocurre cuando la velocidad es exactamente cero.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Cablear, levantar y cargar">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Cablear, levantar y cargar">
     Conectar el motor izquierdo en M1 y el derecho en M2. Alimentar la entrada de motores del
     shield desde el interruptor, nunca desde el pin 5V. Verificar polaridad, LED de potencia si el
     shield lo incluye y bornes firmes. **Levantar el robot.** Cargar el sketch y verificar la
     secuencia: adelante, atrás y giro a la izquierda.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="Identificar qué motor es cuál">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="Identificar qué motor es cuál">
     Determinar si M1 quedó efectivamente en la oruga izquierda y M2 en la derecha, y si alguno gira
     al revés de lo esperado. Anotarlo y corregirlo: importa para interpretar el giro en las
     sesiones siguientes. Si nada se movió, revisar potencia del shield, M1/M2 y `AFMotor`.
@@ -90,10 +90,9 @@ propio código lo advierte por el Monitor Serie: «Levanta el robot: inicia prue
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 4.3: representa la resultante de un sistema de vectores mediante el método rectangular (p. 26).',
-    'CN 4.4: resuelve problemas vinculados con el movimiento rectilíneo acelerado (p. 26).',
-    'MAT 2.3: identifica la gráfica de una función lineal y la usa para representar un problema (p. 17).',
-    'MAT 5.1: determina cantidades del sistema decimal y su relación con otros sistemas de base (p. 18).',
+    'Ciencias y tecnología: relaciona velocidad, sentido, tracción diferencial y trayectoria.',
+    'Matemática aplicada: interpreta parámetros de velocidad y los compara con el movimiento real.',
+    'Computación: modifica variables del programa y predice su efecto antes de probar.',
   ]} />
 
   <SessionModule.Standards items={[

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 9
-sidebar_label: "09 · Lectura de código"
-title: "Lectura de código y máquina de estados"
+sidebar_label: "09 · Leer el Cerebro del Robot"
+title: "Leer el Cerebro del Robot"
 description: "Leer un programa ajeno y predecir su comportamiento antes de ejecutarlo. Estados, transiciones y por qué el giro es aleatorio."
 ---
 
@@ -9,7 +9,7 @@ import SessionModule from '@site/src/components/SessionModule';
 import SketchBlock from '@site/src/components/SketchBlock';
 import sketchCode from '@site/arduino/guategeeks/04_smars_autonomo/04_smars_autonomo.ino';
 
-# 09 · Lectura de código y máquina de estados
+# 09 · Leer el Cerebro del Robot
 
 :::note Sesión sin cargar nada
 Hoy no se sube el firmware. La predicción escrita que produzca el equipo se contrasta con la
@@ -36,25 +36,25 @@ realidad en la sesión 10: si se carga hoy, se pierde el ejercicio.
     'Constantes calibrables frente a lógica fija',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="Predecir sin ejecutar">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="Predecir sin ejecutar">
     Plantear el reto de la sesión: al final, cada equipo entrega por escrito qué hará el robot ante
     un obstáculo. No se carga el código. La única herramienta es leerlo.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Localizar las seis piezas">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Localizar las seis piezas">
     Recorrer el sketch identificando: las constantes de pines, los parámetros calibrables, las
     funciones de motores, la función de distancia, la función de evasión y las decisiones del
     `loop`. Marcarlas en una copia impresa. Notar que las tres primeras ya se conocen de las
     sesiones 6, 7 y 8.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Dibujar la máquina de estados">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Dibujar la máquina de estados">
     Cada equipo dibuja el diagrama de estados: los tres estados como nodos, y las transiciones como
     flechas etiquetadas con lo que las dispara. Añadir aparte la secuencia interna de
     `evitarObstaculo()`, que no es un estado sino una maniobra completa.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="¿Por qué al azar?">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="¿Por qué al azar?">
     La dirección y la duración del giro son aleatorias. Preguntar qué pasaría si siempre girara al
     mismo lado el mismo tiempo, y llevar el razonamiento hasta una esquina: repetiría la misma
     maniobra indefinidamente. La aleatoriedad no es descuido, es la solución a ese problema.
@@ -86,9 +86,9 @@ realidad en la sesión 10: si se carga hoy, se pierde el ejercicio.
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 1.2: describe técnicas para realizar investigación científica y tecnológica (p. 22).',
-    'CN 1.3: aplica el método científico formulando hipótesis antes de la experimentación (p. 22).',
-    'COM 1.2: determina la objetividad del mensaje que expone, controlando adecuación y coherencia (p. 28).',
+    'Computación: descompone un programa en estados, funciones, entradas y salidas.',
+    'Pensamiento científico: formula una predicción antes de ejecutar el firmware.',
+    'Comunicación técnica: explica la lógica del programa de forma ordenada y verificable.',
   ]} />
 
   <SessionModule.Standards items={[

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 3
-sidebar_label: "03 · Slicer y tolerancias"
-title: "Slicer y tolerancias"
+sidebar_label: "03 · Del Diseño a la Pieza"
+title: "Del Diseño a la Pieza"
 description: "De archivo STL a pieza física: parámetros de impresión y por qué lo impreso nunca mide exactamente lo diseñado."
 ---
 
@@ -9,7 +9,7 @@ import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
 import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
-# 03 · Slicer y tolerancias
+# 03 · Del Diseño a la Pieza
 
 :::note Para el docente
 Si el centro no tiene impresora 3D, esta sesión y la siguiente funcionan igual con piezas impresas
@@ -37,25 +37,25 @@ página de materiales para alternativas de fabricación.
     'Compromiso entre calidad y tiempo',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="De la pantalla al plástico">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="De la pantalla al plástico">
     Abrir un archivo STL y girarlo en pantalla. Preguntar cómo creen que se convierte eso en un
     objeto sólido. Pasar de mano en mano una pieza ya impresa y pedir que localicen las capas: la
     respuesta está a la vista.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Los tres parámetros que deciden">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Los tres parámetros que deciden">
     En el slicer, modificar altura de capa, relleno y velocidad, observando cómo cambia el tiempo
     estimado. Plantear la pregunta que guía la sesión: ¿cuál de los tres afecta más la precisión de
     una medida, y cuál solo afecta la resistencia de la pieza?
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Preparar, imprimir y medir">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Preparar, imprimir y medir">
     Cada equipo carga las piezas del chasis SMARS, ajusta los parámetros acordados y genera el
     G-code. Mientras imprime (o con piezas ya disponibles), medir cinco dimensiones críticas con
     calibrador y compararlas con las del diseño, anotando el error de cada una.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="¿Dónde se concentra el error?">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="¿Dónde se concentra el error?">
     Comparar las tablas entre equipos. ¿El error es parejo o se concentra en cierto tipo de
     dimensión, como los agujeros? Formular una hipótesis sobre la causa. Se comprobará en la
     sesión 5, cuando esas piezas tengan que encajar de verdad.
@@ -83,9 +83,9 @@ página de materiales para alternativas de fabricación.
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 1.3: registra, analiza y representa los datos obtenidos en la indagación (p. 22).',
-    'MAT 4.1: obtiene el valor del rango en un conjunto de datos (p. 18).',
-    'TAC 2.1: trabaja con las herramientas que proporciona una hoja de cálculo (p. 20).',
+    'Ciencias y tecnología: registra mediciones y formula una hipótesis sobre el error de fabricación.',
+    'Matemática aplicada: compara valores esperados y medidos usando unidades y diferencias.',
+    'Tecnología: relaciona parámetros del slicer con tiempo, precisión y calidad de la pieza.',
   ]} />
 
   <SessionModule.Standards items={[

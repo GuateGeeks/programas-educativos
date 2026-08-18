@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {useDoc} from '@docusaurus/plugin-content-docs/client';
-import {getModule, PROGRAMS_BASE} from '@site/src/data/ciudadbots';
+import {getModule, getModuleTitle, PROGRAMS_BASE} from '@site/src/data/ciudadbots';
 import type {PhaseKind} from '@site/src/data/ciudadbots/types';
 import BuildGuide from '@site/src/components/BuildGuide';
 import PhaseTimeline, {type Phase} from '@site/src/components/PhaseTimeline';
@@ -175,9 +174,8 @@ const RUBRIC_LEVELS = [
  */
 const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
   const m = getModule(id);
-  const {metadata} = useDoc();
   const {i18n} = useDocusaurusContext();
-  const title = metadata.title;
+  const title = getModuleTitle(id, i18n.currentLocale);
   const leadWithInternational = i18n.currentLocale === 'en';
   const [tab, setTab] = useState<TabKey>('metodo');
   const programHref = useBaseUrl(`${PROGRAMS_BASE}${m.program}`);

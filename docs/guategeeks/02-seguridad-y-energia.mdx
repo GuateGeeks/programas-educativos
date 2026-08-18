@@ -1,13 +1,13 @@
 ---
 sidebar_position: 2
-sidebar_label: "02 · Seguridad y energía"
-title: "Seguridad y energía"
+sidebar_label: "02 · Energía Segura"
+title: "Energía Segura"
 description: "Voltajes, riesgos reales y el checklist que se firma antes de energizar cualquier robot."
 ---
 
 import SessionModule from '@site/src/components/SessionModule';
 
-# 02 · Seguridad y energía
+# 02 · Energía Segura
 
 :::warning Requisito del programa
 Ningún equipo energiza un robot antes de completar y firmar el checklist de esta sesión. Es la única
@@ -35,26 +35,26 @@ sesión con carácter de requisito: lo demás se puede reordenar, esto no.
     'Verificación previa como práctica de ingeniería',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="¿Qué es lo peor que puede pasar?">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="¿Qué es lo peor que puede pasar?">
     Mostrar la batería, el Arduino y el driver sobre la mesa. Preguntar qué creen que ocurriría si
     se conectaran mal. Recoger las respuestas sin corregir. Luego mostrar (o describir) un driver
     quemado: la conversación cambia cuando el daño es concreto.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Medir antes de creer">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Medir antes de creer">
     Con la batería desconectada del robot, medir su voltaje con el multímetro: debe rondar 7.2 V.
     Comparar con lo que tolera cada componente. Introducir la distinción clave: por el pin 5V del
     Arduino pasa poca corriente, y los motores piden mucha, por eso su energía viene del
     interruptor directo al driver y nunca del Arduino.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Completar y firmar el checklist">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Completar y firmar el checklist">
     Cada equipo recorre el checklist de seguridad punto por punto sobre su propio kit, anotando los
     valores medidos donde se piden. Al terminar, el responsable de seguridad y el docente firman.
     Fotografiar el checklist completado para el expediente.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="Reglas propias del equipo">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="Reglas propias del equipo">
     Cada equipo agrega dos reglas de seguridad propias, específicas de su espacio de trabajo: dónde
     guardan la batería, quién autoriza energizar, qué hacen si huele a quemado. Las reglas que uno
     mismo escribe se cumplen más que las que le imponen.
@@ -82,9 +82,9 @@ sesión con carácter de requisito: lo demás se puede reordenar, esto no.
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 1.3: registra el proceso de una indagación, incluidos sus aciertos y errores (p. 22).',
-    'EP 1.3: describe y organiza las funciones en la administración de un proyecto (p. 17).',
-    'TAC 1.1: elige el formato adecuado para documentar un procedimiento de seguridad (p. 19).',
+    'Ciencias y tecnología: mide condiciones de operación y registra aciertos, errores y riesgos.',
+    'Diseño y productividad: asume una responsabilidad dentro del equipo y aplica un procedimiento.',
+    'Comunicación técnica: documenta verificaciones de seguridad con datos y firmas.',
   ]} />
 
   <SessionModule.Standards items={[

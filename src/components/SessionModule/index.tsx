@@ -2,17 +2,16 @@ import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {useDoc} from '@docusaurus/plugin-content-docs/client';
 import * as guategeeksData from '@site/src/data/guategeeks';
 import * as tiempoCircularData from '@site/src/data/tiempo-circular';
 import type {PhaseKind} from '@site/src/data/guategeeks/types';
-import type {Phase} from '@site/src/components/PhaseTimeline';
-import HorizontalStepReader from '@site/src/components/HorizontalStepReader';
+import PhaseTimeline, {type Phase} from '@site/src/components/PhaseTimeline';
 import CnbBlock from '@site/src/components/CnbBlock';
 import CardGrid from '@site/src/components/CardGrid';
 import AchievementIndicators from '@site/src/components/AchievementIndicators';
 import InternationalAlignment from '@site/src/components/InternationalAlignment';
 import CnbSourceLinks from '@site/src/components/CnbSourceLinks';
+import SmarsCnbAlignment from '@site/src/components/SmarsCnbAlignment';
 import RubricTable, {type RubricRow} from '@site/src/components/RubricTable';
 // Deliberately reuses the CiudadBots module stylesheet rather than copying it,
 // so the two programs stay visually identical by construction instead of by
@@ -235,7 +234,7 @@ const PROGRAMS = {
     cnbTitle: () =>
       translate({
         id: 'guategeeks.session.cnb.title',
-        message: 'Alineación Guatemala · Ciclo Básico · Tercero Básico',
+        message: 'Alineación Guatemala · Bachillerato · 4.º, 5.º y 6.º',
       }),
     sketchBody: () => (
       <Translate id="guategeeks.session.sketchBody">
@@ -299,9 +298,11 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
 }) => {
   const cfg = PROGRAMS[program];
   const s = cfg.getSession(id);
-  const {metadata} = useDoc();
   const {i18n} = useDocusaurusContext();
-  const title = metadata.title;
+  const title =
+    program === 'guategeeks'
+      ? guategeeksData.getSessionTitle(id, i18n.currentLocale)
+      : tiempoCircularData.getSessionTitle(id, i18n.currentLocale);
   const leadWithInternational = i18n.currentLocale === 'en';
   const [tab, setTab] = useState<TabKey>('metodo');
   const wiringHref = useBaseUrl(cfg.wiringReference);
@@ -319,19 +320,9 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
     criterion,
     levels: RUBRIC_LEVELS,
   }));
-  const phaseSteps = content.phases.map((phase) => ({
-    label: phase.label,
-    title: phase.title,
-    body: phase.body,
-    tone: phase.kind,
-  }));
-
-  // The code panel only exists for the six sessions that work with a sketch.
   const TABS: {key: TabKey; label: string}[] = [
     {key: 'metodo', label: translate({id: 'guategeeks.session.tab.metodo', message: 'Implementación'})},
-    ...(s.sketch
-      ? [{key: 'codigo' as TabKey, label: translate({id: 'guategeeks.session.tab.codigo', message: 'Código'})}]
-      : []),
+    {key: 'codigo', label: translate({id: 'guategeeks.session.tab.codigo', message: 'Recursos'})},
     {key: 'cnb', label: translate({id: 'guategeeks.session.tab.cnb', message: 'CNB y estándares'})},
     {key: 'eval', label: translate({id: 'guategeeks.session.tab.eval', message: 'Evaluación'})},
   ];
@@ -355,6 +346,10 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
       <InternationalAlignment />
       <CardGrid items={standardsItems} />
     </>
+  );
+
+  const smarsAlignmentBlock = (
+    <SmarsCnbAlignment sessionTitle={title} cnbItems={content.cnb} standardsItems={content.standards} />
   );
 
   return (
@@ -393,20 +388,18 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
         <div className={styles.panel}>
           <div className={styles.chips}>
             <span className={styles.chip}>{RETO_LABELS[s.retoLevel]}</span>
-            {content.concepts.map((c) => (
+          {content.concepts.map((c) => (
               <span className={styles.chip} key={c}>
                 {c}
               </span>
             ))}
           </div>
-          <HorizontalStepReader
-            ariaLabel={translate(
-              {id: 'guategeeks.session.phaseReaderLabel', message: 'Fases de implementación de {title}'},
-              {title},
-            )}
-            steps={phaseSteps}
-          />
+          <PhaseTimeline phases={content.phases} />
+        </div>
+      )}
 
+      {tab === 'codigo' && (
+        <div className={styles.panel}>
           {content.materials.length > 0 && (
             <div className={styles.resourceCard}>
               <strong>
@@ -418,6 +411,32 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
                 ))}
               </ul>
             </div>
+          )}
+
+          {s.sketch && (
+            <>
+              <div className={styles.resourceCard}>
+                <strong>
+                  {translate(
+                    {id: 'guategeeks.session.sketchTitle', message: 'Sketch Arduino · {label}'},
+                    {label: s.sketch.label},
+                  )}
+                </strong>
+                <p>{cfg.sketchBody()}</p>
+              </div>
+
+              {content.code}
+
+              <div className={styles.resourceCard}>
+                <strong>
+                  <Translate id="guategeeks.session.wiringTitle">Cableado y tabla de pines</Translate>
+                </strong>
+                <p>{cfg.wiringBody()}</p>
+                <a className={styles.pdfLink} href={wiringHref}>
+                  <Translate id="guategeeks.session.wiringLink">Ver materiales y pines</Translate>
+                </a>
+              </div>
+            </>
           )}
 
           {content.reto && (
@@ -447,35 +466,11 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
         </div>
       )}
 
-      {tab === 'codigo' && s.sketch && (
-        <div className={styles.panel}>
-          <div className={styles.resourceCard}>
-            <strong>
-              {translate(
-                {id: 'guategeeks.session.sketchTitle', message: 'Sketch Arduino · {label}'},
-                {label: s.sketch.label},
-              )}
-            </strong>
-            <p>{cfg.sketchBody()}</p>
-          </div>
-
-          {content.code}
-
-          <div className={styles.resourceCard}>
-            <strong>
-              <Translate id="guategeeks.session.wiringTitle">Cableado y tabla de pines</Translate>
-            </strong>
-            <p>{cfg.wiringBody()}</p>
-            <a className={styles.pdfLink} href={wiringHref}>
-              <Translate id="guategeeks.session.wiringLink">Ver materiales y pines</Translate>
-            </a>
-          </div>
-        </div>
-      )}
-
       {tab === 'cnb' && (
         <div className={styles.panel}>
-          {leadWithInternational ? (
+          {program === 'guategeeks' ? (
+            smarsAlignmentBlock
+          ) : leadWithInternational ? (
             <>
               {internationalBlock}
               <details className={styles.secondary}>

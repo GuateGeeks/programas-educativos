@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
-sidebar_label: "08 · Sensor ultrasónico"
-title: "Sensor ultrasónico"
+sidebar_label: "08 · Medir sin Tocar"
+title: "Medir sin Tocar"
 description: "Medir distancia con tiempo de vuelo. De dónde sale el 58 y por qué dividir otra vez entre dos es un error."
 ---
 
@@ -9,7 +9,7 @@ import SessionModule from '@site/src/components/SessionModule';
 import SketchBlock from '@site/src/components/SketchBlock';
 import sketchCode from '@site/arduino/guategeeks/03_prueba_ultrasonido/03_prueba_ultrasonido.ino';
 
-# 08 · Sensor ultrasónico
+# 08 · Medir sin Tocar
 
 :::note El número 58 no es magia
 El sonido viaja a unos 343 m/s, o sea 0.0343 cm por microsegundo. El pulso va y vuelve, así que
@@ -38,25 +38,25 @@ de la distancia real.
     'Repetición como forma de estimar confiabilidad',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="Medir sin tocar">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="Medir sin tocar">
     Preguntar cómo medirían la distancia a una pared sin acercarse. Mencionar el eco y los
     murciélagos. Presentar el sensor: un emisor y un receptor, y entre ellos un cronómetro muy
     preciso.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Derivar el 58 en la pizarra">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Derivar el 58 en la pizarra">
     Con la velocidad del sonido, calcular colectivamente cuántos microsegundos tarda el pulso en
     recorrer un centímetro de ida y vuelta. Llegar a 58 antes de verlo en el código. Discutir qué
     debería devolver la función cuando el eco nunca llega: el sketch devuelve 400 cm, no cero.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Caracterizar el sensor">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Caracterizar el sensor">
     Conectar TRIG a A3 y ECHO a A4. Cargar el sketch y abrir el Monitor Serie. Colocar un objeto
     plano a 10, 20, 30 y 40 cm medidos con cinta métrica, y anotar varias lecturas en cada
     distancia. Buscar además la distancia mínima a la que el sensor deja de ser confiable.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="¿Cuánto le creemos al sensor?">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="¿Cuánto le creemos al sensor?">
     Calcular el error en cada distancia y ver si crece, se mantiene o es errático. Conectar con la
     decisión de diseño que viene: el firmware autónomo toma tres lecturas y usa la mediana. Con los
     datos en la mano, discutir por qué la mediana y no el promedio.
@@ -89,10 +89,10 @@ de la distancia real.
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 4.3: aplica el despeje de variables en ecuaciones del movimiento rectilíneo (p. 26).',
-    'MAT 4.1: identifica el rango y el rango intercuartílico en un conjunto de datos (p. 18).',
-    'TAC 2.2: ingresa información estadística en hojas de cálculo y crea gráficas para su análisis (p. 20).',
-    'CN 1.3: expresa en gráficos los datos obtenidos de la indagación (p. 22).',
+    'Ciencias y tecnología: explica la relación entre tiempo de vuelo, distancia y medición.',
+    'Matemática aplicada: analiza variación, error y repetibilidad en lecturas del sensor.',
+    'Tecnología: organiza datos y utiliza patrones para elegir un umbral de decisión.',
+    'Comunicación técnica: representa los resultados de la caracterización con claridad.',
   ]} />
 
   <SessionModule.Standards items={[

@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
-sidebar_label: "01 · Sistemas del robot"
-title: "Sistemas del robot"
+sidebar_label: "01 · Conoce tu Robot"
+title: "Conoce tu Robot"
 description: "Subsistemas mecánico, eléctrico y lógico: qué hace cada parte y cómo se comunican."
 ---
 
@@ -9,7 +9,7 @@ import SessionModule from '@site/src/components/SessionModule';
 import StlViewer from '@site/src/components/StlViewer';
 import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
-# 01 · Sistemas del robot
+# 01 · Conoce tu Robot
 
 :::note Para el docente
 Revise la pestaña **Implementación** para las fases y el reto, y cierre planificando con **CNB y
@@ -36,26 +36,26 @@ estándares** y **Evaluación**. Esta sesión no energiza nada: es de observaci�
     'Documentación técnica con diagrama',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="¿Qué partes ves?">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="¿Qué partes ves?">
     Mostrar el robot SMARS armado, o una fotografía si todavía no existe. Preguntar qué partes se
     distinguen y para qué serviría cada una. Anotar en la pizarra todo lo que el grupo nombre, sin
     corregir aún: orugas, motores, sensor, placa, batería, botones, buzzer.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="Agrupar en tres subsistemas">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="Agrupar en tres subsistemas">
     Clasificar lo anotado en tres grupos: **mecánico** (chasis, orugas, dos motorreductores),
     **eléctrico** (batería, interruptor, shield L293D, cableado) y **lógico** (Arduino, sensor
     HC-SR04, dos botones, buzzer). Discutir el caso interesante: los motores aparecen en el grupo
     mecánico y en el eléctrico. ¿Por qué?
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Diagrama anotado del sistema">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Diagrama anotado del sistema">
     Cada equipo dibuja el robot completo con los componentes etiquetados y las conexiones entre
     ellos. Se piden dos tipos de flecha distintos: uno para energía y otro para información. Al
     terminar, fotografiar el diagrama para el expediente del equipo.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="Validar contra el robot real">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="Validar contra el robot real">
     Intercambiar diagramas entre equipos y buscar diferencias. El docente valida la precisión.
     Cerrar registrando qué conexión costó más entender y por qué, porque ese punto es el candidato
     natural a confundir durante el cableado de la sesión 7.
@@ -84,9 +84,9 @@ estándares** y **Evaluación**. Esta sesión no energiza nada: es de observaci�
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 1.2: aplica procedimientos de investigación científica y tecnológica al describir un sistema técnico (p. 22).',
-    'TAC 1.1: elige la herramienta y el formato apropiados para transmitir una idea técnica (p. 19).',
-    'COM 3.1: escribe de forma autónoma un texto coherente y cohesionado, atendiendo las fases de la redacción (p. 33).',
+    'Ciencias y tecnología: analiza un sistema técnico y explica la relación entre sus subsistemas.',
+    'Computación: distingue hardware, software, entradas, salidas y flujo de información.',
+    'Comunicación técnica: produce un diagrama legible que otro equipo puede interpretar.',
   ]} />
 
   <SessionModule.Standards items={[

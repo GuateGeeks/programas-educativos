@@ -2,10 +2,13 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {modules, getModuleTitle} from '@site/src/data/ciudadbots';
+import {sessions as guategeeksSessions, getSessionTitle} from '@site/src/data/guategeeks';
 import styles from './styles.module.css';
 
-// Program-scoped storage key (kept from the original publication).
-const STORAGE_KEY = 'guategeeks-citybots-docente-progreso-v1';
+const STORAGE_KEYS = {
+  ciudadbots: 'guategeeks-citybots-docente-progreso-v1',
+  guategeeks: 'guategeeks-smars-docente-progreso-v1',
+} as const;
 
 type TrackerState = Record<string, boolean[]>;
 
@@ -16,15 +19,19 @@ interface TrackerItem {
   steps: number;
 }
 
+interface ProgressTrackerProps {
+  program?: 'ciudadbots' | 'guategeeks';
+}
+
 /** Largest number in a range like "2-4" → 4 suggested sessions. */
 function recommendedSessions(range: string): number {
   const nums = String(range).match(/\d+/g) || [];
   return nums.length ? Math.max(...nums.map(Number)) : 1;
 }
 
-function loadState(): TrackerState {
+function loadState(storageKey: string): TrackerState {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') as TrackerState;
+    return JSON.parse(localStorage.getItem(storageKey) || '{}') as TrackerState;
   } catch {
     return {};
   }
@@ -44,14 +51,29 @@ function valuesFor(state: TrackerState, item: TrackerItem): boolean[] {
  * localStorage, and shows aggregate progress. Hydrates after mount so SSR and
  * first client render match (both start empty).
  */
-export default function ProgressTracker(): React.JSX.Element {
+export default function ProgressTracker({
+  program = 'ciudadbots',
+}: ProgressTrackerProps): React.JSX.Element {
   const {i18n} = useDocusaurusContext();
   const [state, setState] = useState<TrackerState>({});
   const [mounted, setMounted] = useState(false);
+  const storageKey = STORAGE_KEYS[program];
 
   const items: TrackerItem[] = useMemo(
-    () =>
-      modules.map((m) => ({
+    () => {
+      if (program === 'guategeeks') {
+        return guategeeksSessions.map((s) => ({
+          id: s.id,
+          title: getSessionTitle(s.id, i18n.currentLocale),
+          detail: translate(
+            {id: 'guategeeks.progressTracker.blocksSuggested', message: '{blocks} bloques de 60 min sugeridos'},
+            {blocks: s.recommendedBlocks},
+          ),
+          steps: s.recommendedBlocks,
+        }));
+      }
+
+      return modules.map((m) => ({
         id: m.id,
         title: getModuleTitle(m.id, i18n.currentLocale),
         detail: translate(
@@ -59,23 +81,24 @@ export default function ProgressTracker(): React.JSX.Element {
           {sessions: m.sessions},
         ),
         steps: recommendedSessions(m.sessions),
-      })),
-    [i18n.currentLocale],
+      }));
+    },
+    [i18n.currentLocale, program],
   );
 
   useEffect(() => {
-    setState(loadState());
+    setState(loadState(storageKey));
     setMounted(true);
-  }, []);
+  }, [storageKey]);
 
   const persist = useCallback((next: TrackerState) => {
     setState(next);
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      localStorage.setItem(storageKey, JSON.stringify(next));
     } catch {
       /* storage unavailable — keep in-memory only */
     }
-  }, []);
+  }, [storageKey]);
 
   const toggle = useCallback(
     (item: TrackerItem, stepIndex: number) => {
@@ -88,12 +111,12 @@ export default function ProgressTracker(): React.JSX.Element {
 
   const reset = useCallback(() => {
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(storageKey);
     } catch {
       /* ignore */
     }
     setState({});
-  }, []);
+  }, [storageKey]);
 
   const summary = useMemo(() => {
     const totalSteps = items.reduce((sum, item) => sum + item.steps, 0);
@@ -121,8 +144,9 @@ export default function ProgressTracker(): React.JSX.Element {
           <p className={styles.lead}>
             {translate({
               id: 'ciudadbots.progressTracker.lead',
-              message:
-                'Marque las sesiones ya implementadas. El avance se guarda en este navegador y le permite visualizar cuánto del programa ya trabajó con su grupo.',
+              message: program === 'guategeeks'
+                ? 'Marque los bloques de 60 minutos ya implementados. El avance se guarda en este navegador y le permite visualizar cuánto del programa ya trabajó con su grupo.'
+                : 'Marque las sesiones ya implementadas. El avance se guarda en este navegador y le permite visualizar cuánto del programa ya trabajó con su grupo.',
             })}
           </p>
         </div>
@@ -131,13 +155,13 @@ export default function ProgressTracker(): React.JSX.Element {
             <strong>
               {summary.doneSteps}/{summary.totalSteps}
             </strong>
-            <span>{translate({id: 'ciudadbots.progressTracker.kpi.sessions', message: 'Sesiones marcadas'})}</span>
+              <span>{program === 'guategeeks' ? 'Bloques marcados' : translate({id: 'ciudadbots.progressTracker.kpi.sessions', message: 'Sesiones marcadas'})}</span>
           </div>
           <div className={styles.kpi}>
             <strong>
               {summary.completedModules}/{items.length}
             </strong>
-            <span>{translate({id: 'ciudadbots.progressTracker.kpi.modules', message: 'Módulos completos'})}</span>
+              <span>{program === 'guategeeks' ? 'Experiencias completas' : translate({id: 'ciudadbots.progressTracker.kpi.modules', message: 'Módulos completos'})}</span>
           </div>
           <div className={styles.kpi}>
             <strong>{summary.percent}%</strong>
@@ -170,7 +194,7 @@ export default function ProgressTracker(): React.JSX.Element {
                 </div>
                 <div className={styles.rowStatus}>
                   {translate(
-                    {id: 'ciudadbots.progressTracker.rowStatus', message: '{done} de {steps} sesiones'},
+                    {id: 'ciudadbots.progressTracker.rowStatus', message: program === 'guategeeks' ? '{done} de {steps} bloques' : '{done} de {steps} sesiones'},
                     {done, steps: item.steps},
                   )}
                 </div>
@@ -185,7 +209,7 @@ export default function ProgressTracker(): React.JSX.Element {
                     onClick={() => toggle(item, idx)}
                     aria-pressed={val}
                     aria-label={translate(
-                      {id: 'ciudadbots.progressTracker.markSession', message: 'Marcar sesión {n} de {title}'},
+                      {id: 'ciudadbots.progressTracker.markSession', message: program === 'guategeeks' ? 'Marcar bloque {n} de {title}' : 'Marcar sesión {n} de {title}'},
                       {n: idx + 1, title: item.title},
                     )}>
                     {idx + 1}

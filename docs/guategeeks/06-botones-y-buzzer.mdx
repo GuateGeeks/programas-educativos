@@ -1,7 +1,7 @@
 ---
 sidebar_position: 6
-sidebar_label: "06 · Botones y buzzer"
-title: "Botones y buzzer"
+sidebar_label: "06 · Botones y Señales"
+title: "Botones y Señales"
 description: "Entradas digitales con INPUT_PULLUP, antirrebote y salida audible. Primer sketch cargado al robot."
 ---
 
@@ -9,12 +9,12 @@ import SessionModule from '@site/src/components/SessionModule';
 import SketchBlock from '@site/src/components/SketchBlock';
 import sketchCode from '@site/arduino/guategeeks/01_botones_y_buzzer/01_botones_y_buzzer.ino';
 
-# 06 · Botones y buzzer
+# 06 · Botones y Señales
 
 :::note Para el docente
 Primera sesión que carga código al robot. No mueve motores, así que el riesgo es bajo: es el momento
 ideal para que el equipo practique el ciclo completo de compilar, cargar y observar. Revise la
-pestaña **Código** antes de clase.
+pestaña **Recursos** antes de clase.
 :::
 
 <SessionModule id="s6">
@@ -37,27 +37,27 @@ pestaña **Código** antes de clase.
     'Monitor Serie como herramienta de diagnóstico',
   ]} />
 
-  <SessionModule.Phase kind="act" label="Activar · 15 min" title="Un robot sin pantalla">
+  <SessionModule.Phase kind="act" label="Activar · 10 min" title="Un robot sin pantalla">
     Preguntar cómo sabría el equipo que el robot entendió una orden, si no tiene pantalla ni
     pantalla ni conexión al teléfono. Recoger propuestas: luces, sonidos, movimiento. Presentar la
     decisión del diseño: dos botones de entrada y un buzzer de salida.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="exp" label="Explorar · 25 min" title="La resistencia que no se ve">
+  <SessionModule.Phase kind="exp" label="Explorar · 15 min" title="La resistencia que no se ve">
     Conectar un botón entre el pin y GND y medir con el multímetro qué lee el pin en reposo.
     Introducir `INPUT_PULLUP`: el Arduino activa una resistencia interna que mantiene el pin en
     HIGH, y presionar el botón lo baja a LOW. Discutir por qué el diseño elige esa convención en
     lugar de la intuitiva.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="cre" label="Crear · 60-90 min" title="Cargar y verificar la interfaz">
+  <SessionModule.Phase kind="cre" label="Crear · 25 min" title="Cargar y verificar la interfaz">
     Cablear los dos pulsadores (A1 y A2, cada uno a GND) y el buzzer pasivo (A0). Cargar el sketch.
     Verificar en el Monitor Serie a 9600 baudios que cada botón imprime su nombre, y de oído que
     MODO suena más grave que INICIO. Si un botón dispara dos veces por pulsación, ahí está el
     antirrebote.
   </SessionModule.Phase>
 
-  <SessionModule.Phase kind="ref" label="Reflexionar · 15 min" title="¿Qué falló y en qué capa?">
+  <SessionModule.Phase kind="ref" label="Reflexionar · 10 min" title="¿Qué falló y en qué capa?">
     Cuando un botón no responde, el problema puede estar en el cable, en el pin declarado o en el
     tiempo de antirrebote. Practicar el diagnóstico por capas: primero el Monitor Serie, después el
     multímetro, al final el código. Registrar qué capa resultó ser la culpable.
@@ -90,9 +90,9 @@ pestaña **Código** antes de clase.
   ]} />
 
   <SessionModule.Cnb items={[
-    'CN 1.3: comunica los aciertos y errores ocurridos durante el proceso (p. 22).',
-    'TAC 1.1: elige la herramienta apropiada para verificar el funcionamiento de un sistema (p. 19).',
-    'CN 1.2: describe procedimientos para realizar investigación tecnológica (p. 22).',
+    'Computación: relaciona entradas digitales, salidas y estados del sistema.',
+    'Tecnología: verifica el funcionamiento con herramientas de prueba y registro.',
+    'Comunicación técnica: documenta aciertos, errores y decisiones de depuración.',
   ]} />
 
   <SessionModule.Standards items={[

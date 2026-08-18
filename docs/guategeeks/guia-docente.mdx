@@ -2,35 +2,37 @@
 sidebar_position: 13
 sidebar_label: "Guía docente"
 title: "Guía docente"
-description: "Secuencia de 12 sesiones, materiales por bloque y orientaciones para conducir el programa."
+description: "Secuencia de experiencias, bloques de 60 minutos, materiales y orientaciones para conducir el programa."
 ---
 
 import FlagNote from '@site/src/components/FlagNote';
 
 # Guía docente
 
-Vista de conjunto para planificar. Cada sesión tiene su propia página con las cuatro fases, el reto
-y la evidencia esperada; aquí está la secuencia completa y lo que conviene preparar.
+Vista de conjunto para planificar. Cada experiencia tiene su propia página con las cuatro fases, el
+reto y la evidencia esperada. Una experiencia puede ocupar uno o más bloques de 60 minutos.
 
-## Secuencia de 12 sesiones
+## Secuencia de experiencias
 
-| # | Fase | Tema | Sketch | Reto | Entregable |
+| # | Etapa | Tema | Bloques sugeridos | Sketch | Entregable |
 |--:|---|---|---|:--:|---|
-| 1 | Activar | [Sistemas del robot](/guategeeks/sistemas-del-robot) | — | 0 | Diagrama anotado |
-| 2 | Activar | [Seguridad y energía](/guategeeks/seguridad-y-energia) | — | 0 | Checklist firmado |
-| 3 | Explorar | [Slicer y tolerancias](/guategeeks/slicer-y-tolerancias) | — | 1 | Tabla de tolerancias |
-| 4 | Explorar | [Impresión y control de calidad](/guategeeks/impresion-y-control-de-calidad) | — | 1 | Reporte de QC |
-| 5 | Crear | [Ensamblaje de orugas](/guategeeks/ensamblaje-de-orugas) | — | 1 | Robot montado |
-| 6 | Crear | [Botones y buzzer](/guategeeks/botones-y-buzzer) | `01` | 2 | Interfaz verificada |
-| 7 | Crear | [Dos motores y dirección](/guategeeks/dos-motores-y-direccion) | `02` | 2 | PWM mínimo por oruga |
-| 8 | Crear | [Sensor ultrasónico](/guategeeks/sensor-ultrasonico) | `03` | 2 | Tabla de error |
-| 9 | Crear | [Lectura de código](/guategeeks/lectura-de-codigo) | `04` | 3 | Mapa de estados |
-| 10 | Crear | [Integración autónoma](/guategeeks/integracion-autonoma) | `04` | 3 | Robot autónomo |
-| 11 | Reflexionar | [Calibración](/guategeeks/calibracion) | `05` | 3 | Offsets y 3 ensayos |
-| 12 | Reflexionar | [Reto integrador](/guategeeks/reto-integrador) | — | 4 | Demostración y presentación |
+| 1 | Comprender y preparar | [Sistemas del robot](/guategeeks/sistemas-del-robot) | 1 | — | Diagrama anotado |
+| 2 | Comprender y preparar | [Seguridad y energía](/guategeeks/seguridad-y-energia) | 1 | — | Checklist firmado |
+| 3 | Diseñar y construir | [Slicer y tolerancias](/guategeeks/slicer-y-tolerancias) | 1-2 | — | Tabla de tolerancias |
+| 4 | Diseñar y construir | [Impresión y control de calidad](/guategeeks/impresion-y-control-de-calidad) | 1 | — | Reporte de calidad |
+| 5 | Diseñar y construir | [Ensamblaje de orugas](/guategeeks/ensamblaje-de-orugas) | 1-2 | — | Robot montado |
+| 6 | Programar y medir | [Botones y buzzer](/guategeeks/botones-y-buzzer) | 1 | `01` | Interfaz verificada |
+| 7 | Programar y medir | [Dos motores y dirección](/guategeeks/dos-motores-y-direccion) | 1-2 | `02` | PWM mínimo por oruga |
+| 8 | Programar y medir | [Sensor ultrasónico](/guategeeks/sensor-ultrasonico) | 1-2 | `03` | Tabla de error |
+| 9 | Integrar y demostrar | [Lectura de código](/guategeeks/lectura-de-codigo) | 1 | `04` | Mapa de estados |
+| 10 | Integrar y demostrar | [Integración autónoma](/guategeeks/integracion-autonoma) | 1-2 | `04` | Robot autónomo |
+| 11 | Integrar y demostrar | [Calibración](/guategeeks/calibracion) | 1-2 | `05` | Offsets y tres ensayos |
+| 12 | Integrar y demostrar | [Reto integrador](/guategeeks/reto-integrador) | 2 | — | Demostración y presentación |
+| 13 | Integrar y demostrar | [Presentación final](/guategeeks/showcase) | 1-2 | — | Defensa técnica |
 
-Duración por sesión: 90-120 minutos en ruta intensiva, 50-60 en ruta escolar dividiendo las fases
-de Crear en dos bloques.
+La ruta estándar requiere aproximadamente 18-24 bloques de 60 minutos. La impresión 3D puede
+continuar fuera del horario de clase, pero las decisiones de diseño, medición y control de calidad
+deben quedar registradas por los estudiantes.
 
 ## Los niveles de reto
 
@@ -48,18 +50,18 @@ Suben de forma gradual y nunca retroceden.
 
 Lista completa y especificaciones en [Materiales y pines](/guategeeks/materiales).
 
-**Sesiones 1-2** — Arduino, driver y motores para mostrar en físico, portapilas, multímetro,
+**Experiencias 1-2** — Arduino, driver y motores para mostrar en físico, portapilas, multímetro,
 pliegos para diagramas y el checklist impreso.
 
-**Sesiones 3-4** — Slicer instalado, impresora o piezas por encargo, calibrador y formato de control
+**Experiencias 3-4** — Slicer instalado, impresora o piezas por encargo, calibrador y formato de control
 de calidad. Los archivos STL se descargan del [catálogo de modelos](/guategeeks/materiales); no hace
 falta buscarlos en catálogos externos.
 
-**Sesiones 5-11** — Kit completo por equipo, piezas aprobadas en la sesión 4, Arduino IDE con
+**Experiencias 5-11** — Kit completo por equipo, piezas aprobadas en la experiencia 4, Arduino IDE con
 permisos de puerto serie, cautín para los cables de motor, **soporte para levantar el robot** en la
 sesión 7 y cinta métrica para la sesión 8.
 
-**Sesión 12** — Arena de 2×2 m, tres obstáculos, cronómetro, cámara y baterías de repuesto.
+**Experiencias 12-13** — Arena de 2×2 m, tres obstáculos, cronómetro, cámara y baterías de repuesto.
 
 ## Qué piezas trabaja cada sesión
 

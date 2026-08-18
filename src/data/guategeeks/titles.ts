@@ -12,21 +12,27 @@
 export type Locale = 'es' | 'en';
 
 const es: Record<string, string> = {
-  s1: 'Sistemas del robot',
-  s2: 'Seguridad y energía',
-  s3: 'Slicer y tolerancias',
-  s4: 'Impresión y control de calidad',
-  s5: 'Ensamblaje de orugas',
-  s6: 'Botones y buzzer',
-  s7: 'Dos motores y dirección',
-  s8: 'Sensor ultrasónico',
-  s9: 'Lectura de código y máquina de estados',
-  s10: 'Integración autónoma',
-  s11: 'Calibración',
-  s12: 'Reto integrador y presentación',
+  s1: 'Conoce tu Robot',
+  s2: 'Energía Segura',
+  s3: 'Del Diseño a la Pieza',
+  s4: 'Piezas que Encajan',
+  s5: 'Robot en Movimiento',
+  s6: 'Botones y Señales',
+  s7: 'Aprender a Girar',
+  s8: 'Medir sin Tocar',
+  s9: 'Leer el Cerebro del Robot',
+  s10: 'Robot Autónomo',
+  s11: 'Afinar el Movimiento',
+  s12: 'Misión Autónoma',
 };
 
 export const sessionTitles: Record<Locale, Record<string, string>> = {
   es,
   en: es,
 };
+
+/** Resolve a session's title for a given locale, falling back to `es`. */
+export function getSessionTitle(id: string, locale: string): string {
+  const table = sessionTitles[locale as Locale] ?? sessionTitles.es;
+  return table[id] ?? sessionTitles.es[id] ?? id;
+}
