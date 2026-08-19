@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import StlViewer from '@site/src/components/StlViewer';
 import styles from './styles.module.css';
 
@@ -39,6 +40,7 @@ export default function ResourceGallery(): React.JSX.Element {
   const [mode, setMode] = useState<GalleryMode>('visual');
   const [index, setIndex] = useState(0);
   const total = mode === 'visual' ? visualReferences.length : stlModels.length;
+  const visualImage = useBaseUrl(visualReferences[index].image);
   const previous = () => setIndex((current) => (current - 1 + total) % total);
   const next = () => setIndex((current) => (current + 1) % total);
 
@@ -66,7 +68,7 @@ export default function ResourceGallery(): React.JSX.Element {
 
       {mode === 'visual' ? (
         <div className={styles.visualSlide}>
-          <img src={visualReferences[index].image} alt={visualReferences[index].alt} />
+          <img src={visualImage} alt={visualReferences[index].alt} />
           <div className={styles.slideCopy}>
             <span className={styles.counter}>Imagen {index + 1} / {total}</span>
             <h4>{visualReferences[index].title}</h4>
