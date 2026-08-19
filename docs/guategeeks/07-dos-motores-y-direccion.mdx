@@ -7,7 +7,6 @@ description: "Shield L293D, puertos M1/M2 y velocidad con signo. Primera vez que
 
 import SessionModule from '@site/src/components/SessionModule';
 import SketchBlock from '@site/src/components/SketchBlock';
-import VisualStepGuide from '@site/src/components/VisualStepGuide';
 import sketchCode from '@site/arduino/guategeeks/02_prueba_motores/02_prueba_motores.ino';
 
 # 07 · Aprender a Girar
@@ -109,38 +108,3 @@ propio código lo advierte por el Monitor Serie: «Levanta el robot: inicia prue
     'Interpreta la velocidad con signo en términos de sentido y magnitud.',
   ]} />
 </SessionModule>
-
-<VisualStepGuide
-  title="Guía visual del shield"
-  steps={[
-    {
-      image: '/assets/guategeeks/smars/motordriver.webp',
-      alt: 'Shield de motores L293D antes de montarlo sobre Arduino',
-      title: 'Ubicar los bornes M1 y M2',
-      body: <>
-        Identifiquen los bornes de motor antes de cablear. Para GuateGeeks, usen M1 para la oruga
-        izquierda y M2 para la derecha. Si su shield tiene más puertos, no los usen en la ruta
-        canónica del curso.
-      </>,
-    },
-    {
-      image: '/assets/guategeeks/smars/add-motor-shield-01.webp',
-      alt: 'Shield L293D colocado sobre Arduino Uno',
-      title: 'Montar el shield recto',
-      body: <>
-        Al montar el shield, todos los pines deben entrar rectos en los headers del Arduino. Un pin
-        doblado puede dejar el shield encendido pero sin control real de motores.
-      </>,
-    },
-    {
-      image: '/assets/guategeeks/smars/connect-cables.webp',
-      alt: 'Cables de motor conectados a los bornes del shield',
-      title: 'Conectar motores sin adoptar la batería de la foto',
-      body: <>
-        Esta foto es referencia de bornes y orden de conexión. Si aparece una batería rectangular
-        de 9 V, no la tomen como estándar de alimentación del curso: GuateGeeks usa 6×AAA NiMH o un
-        pack recargable equivalente verificado por el docente.
-      </>,
-    },
-  ]}
-/>

@@ -6,8 +6,6 @@ description: "De archivo STL a pieza física: parámetros de impresión y por qu
 ---
 
 import SessionModule from '@site/src/components/SessionModule';
-import StlViewer from '@site/src/components/StlViewer';
-import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 03 · Del Diseño a la Pieza
 
@@ -101,28 +99,3 @@ página de materiales para alternativas de fabricación.
     'Formula una hipótesis comprobable sobre el origen del error.',
   ]} />
 </SessionModule>
-
-<VisualStepGuide
-  title="Guía visual de impresión"
-  steps={[
-    {
-      image: '/assets/guategeeks/smars/printed-parts.webp',
-      alt: 'Piezas SMARS impresas antes de retirar y clasificar el lote',
-      title: 'Leer el lote antes de medir',
-      body: <>
-        Antes de abrir el slicer, observen el lote completo: el chasis concentra superficies largas,
-        las ruedas necesitan ejes limpios y los eslabones se repiten muchas veces. Esa repetición
-        vuelve visible cualquier error sistemático de impresión.
-      </>,
-    },
-  ]}
-/>
-
-## Las piezas de esta sesión
-
-Estas son las dos que van al slicer y sobre las que se miden tolerancias. Obsérvenlas antes de
-cargarlas: dónde hay superficies curvas, dónde agujeros, dónde paredes finas.
-
-<StlViewer file="chassis_sl.stl" name="Chasis" role="La pieza grande; define la mayoría de las tolerancias críticas" quantity={1} size="1.8 MB" />
-
-<StlViewer file="powered_wheel.stl" name="Rueda motriz" role="Acoplada al eje del motor; el diámetro del eje es la medida más delicada" quantity={2} size="1.9 MB" />

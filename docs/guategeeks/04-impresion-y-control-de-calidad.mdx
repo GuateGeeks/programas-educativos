@@ -6,8 +6,6 @@ description: "Inspeccionar, clasificar y decidir qué pieza sirve. El criterio d
 ---
 
 import SessionModule from '@site/src/components/SessionModule';
-import StlViewer from '@site/src/components/StlViewer';
-import VisualStepGuide from '@site/src/components/VisualStepGuide';
 
 # 04 · Piezas que Encajan
 
@@ -100,28 +98,3 @@ armado, pero una pieza mala descubierta en la sesión 5 cuesta mucho más que un
     'Relaciona un defecto con el parámetro de impresión que lo causa.',
   ]} />
 </SessionModule>
-
-<VisualStepGuide
-  title="Guía visual de control de calidad"
-  steps={[
-    {
-      image: '/assets/guategeeks/smars/printed-parts.webp',
-      alt: 'Piezas impresas SMARS listas para inspección dimensional y prueba de encaje',
-      title: 'Inspección del lote completo',
-      body: <>
-        Usen la foto como referencia de lote: no basta con que una pieza aislada se vea bien.
-        Revisen si los defectos se repiten en varias ruedas o eslabones, porque un problema
-        sistemático de impresión se multiplica durante el armado de las orugas.
-      </>,
-    },
-  ]}
-/>
-
-## Comparar contra el modelo
-
-El control de calidad consiste en contrastar la pieza impresa con su diseño. Tengan el modelo a la
-vista mientras inspeccionan: es más fácil detectar una deformación cuando se sabe qué forma debía tener.
-
-<StlViewer file="mechanical_track.stl" name="Eslabón de oruga" role="Se imprime 32 veces: un defecto sistemático se multiplica" quantity={32} size="142 KB" />
-
-<StlViewer file="holding_board_9v.stl" name="Soporte de motores y batería" role="Sus alojamientos deben encajar sin forzar" quantity={1} size="176 KB" />
