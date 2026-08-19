@@ -27,7 +27,7 @@ export interface SmarsCurriculumContent {
 
 const es: SmarsCurriculumContent = {
   readingNote:
-    'Esta alineación integra el área común del Bachillerato en Ciencias y Letras con la orientación en Computación. El programa trabaja 4.º y 5.º con referentes directos del CNB; 6.º se presenta como profundización institucional y debe vincularse a la malla específica de cada centro.',
+    'Esta alineación integra el área común del Bachillerato en Ciencias y Letras con la orientación en Computación. El programa trabaja 4.º y 5.º con referentes directos del CNB.',
 
   levelProgression: [
     ['Nivel', 'Propósito formativo', 'Indicadores observables', 'Evidencia para seguimiento'],
@@ -42,12 +42,6 @@ const es: SmarsCurriculumContent = {
       'Programar, medir, depurar y mejorar con datos.',
       'Relaciona código, sensores y movimiento; compara ensayos; justifica cambios y documenta el proceso.',
       'Sketch anotado, datos del sensor, mapa de estados, umbral justificado y calibración.',
-    ],
-    [
-      '6.º bachillerato',
-      'Integrar una solución autónoma y comunicar decisiones técnicas.',
-      'Evalúa restricciones, propone mejoras, sustenta decisiones con evidencia y defiende el proyecto ante una audiencia.',
-      'Misión autónoma, reporte técnico, video, presentación y reflexión individual.',
     ],
   ],
 
@@ -111,13 +105,13 @@ const es: SmarsCurriculumContent = {
       'EGP 2.2 · Identifica las principales fases de un proyecto.',
       'Reconoce comprender, diseñar, construir, programar, probar, calibrar y presentar como fases relacionadas.',
       'Mapa de ruta, cronograma de bloques y bitácora del equipo.',
-      'Directo · 4.º-6.º',
+      'Directo · 4.º-5.º',
     ],
     [
       'EGP 3.1-3.2 · Planifica actividades y redacta objetivos.',
       'Define el reto autónomo, criterios de éxito, roles, materiales, restricciones y objetivo de la misión.',
       'Plan de trabajo y ficha de reto antes de la demostración.',
-      'Directo · 4.º-6.º',
+      'Directo · 4.º-5.º',
     ],
     [
       'Física 4.º 1.1-1.2 · Interpreta y opera con cantidades vectoriales.',
@@ -135,7 +129,7 @@ const es: SmarsCurriculumContent = {
       'Seminario 5.º 3.3.3-3.3.8 · Integra fuentes, formula, ejecuta y evalúa un proyecto.',
       'Sustenta la misión con datos del proceso y evalúa el resultado frente a criterios acordados.',
       'Reporte final, video, presentación y reflexión sobre la siguiente versión.',
-      'Transferible · 5.º-6.º',
+      'Directo · 5.º',
     ],
   ],
 
@@ -168,19 +162,13 @@ const es: SmarsCurriculumContent = {
       'Analiza datos del sensor y motores, compara ensayos y calibra con evidencia.',
       'Documenta cambios, resultados y justificaciones técnicas.',
     ],
-    [
-      '6.º bachillerato',
-      'Integra una solución autónoma, propone mejoras y explica sus decisiones de arquitectura.',
-      'Evalúa la misión frente a restricciones y plantea una segunda versión viable.',
-      'Defiende el proyecto ante una audiencia con reporte, video y demostración.',
-    ],
   ],
 
   internationalEvidence: [
-    ['Medición', '4.º bachillerato', '5.º bachillerato', '6.º bachillerato'],
-    ['Evidencia técnica', 'Diagrama, checklist y pruebas guiadas.', 'Código, datos, depuración y calibración.', 'Documentación completa y arquitectura justificada.'],
-    ['Evidencia de ingeniería', 'Piezas aceptadas, robot ensamblado y criterio de seguridad.', 'Comparación de ensayos, error y mejora con parámetros.', 'Misión autónoma evaluada frente a restricciones.'],
-    ['Evidencia de comunicación', 'Explicación oral y bitácora básica.', 'Reporte de pruebas y explicación de decisiones.', 'Presentación técnica, video y defensa ante preguntas.'],
+    ['Medición', '4.º bachillerato', '5.º bachillerato'],
+    ['Evidencia técnica', 'Diagrama, checklist y pruebas guiadas.', 'Código, datos, depuración, calibración y arquitectura justificada.'],
+    ['Evidencia de ingeniería', 'Piezas aceptadas, robot ensamblado y criterio de seguridad.', 'Comparación de ensayos, error, mejora con parámetros y misión autónoma.'],
+    ['Evidencia de comunicación', 'Explicación oral y bitácora básica.', 'Reporte técnico, video, presentación y defensa ante preguntas.'],
   ],
 
   sourceLinks: [
@@ -217,7 +205,7 @@ const es: SmarsCurriculumContent = {
 const en: SmarsCurriculumContent = {
   ...es,
   readingNote:
-    'This alignment integrates the common area of the Bachelor of Science and Letters with the Computing orientation. The program uses direct CNB references for grades 4 and 5; grade 6 is presented as an institutional deepening level and must be linked to each school\'s specific curriculum.',
+    'This alignment integrates the common area of the Bachelor of Science and Letters with the Computing orientation. The program uses direct CNB references for grades 4 and 5.',
 };
 
 export function getSmarsCurriculumContent(locale: string): SmarsCurriculumContent {

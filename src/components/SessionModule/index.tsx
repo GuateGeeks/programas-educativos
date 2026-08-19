@@ -244,7 +244,7 @@ const PROGRAMS = {
     cnbTitle: () =>
       translate({
         id: 'guategeeks.session.cnb.title',
-        message: 'Alineación Guatemala · Bachillerato · 4.º, 5.º y 6.º',
+        message: 'Alineación Guatemala · Bachillerato · 4.º y 5.º',
       }),
     sketchBody: () => (
       <Translate id="guategeeks.session.sketchBody">
