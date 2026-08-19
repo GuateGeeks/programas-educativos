@@ -413,6 +413,20 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
             </div>
           )}
 
+          <div className={styles.resourceCard}>
+            <strong>
+              <Translate id="guategeeks.session.visualResourcesTitle">Piezas y referencias visuales</Translate>
+            </strong>
+            <p>
+              <Translate id="guategeeks.session.visualResourcesBody">
+                Consulta en un solo lugar los modelos STL, cantidades, fotografías, descargas y recomendaciones de impresión y montaje del programa.
+              </Translate>
+            </p>
+            <a className={styles.pdfLink} href={wiringHref}>
+              <Translate id="guategeeks.session.visualResourcesLink">Consultar piezas y referencias visuales del programa</Translate>
+            </a>
+          </div>
+
           {s.sketch && (
             <>
               <div className={styles.resourceCard}>

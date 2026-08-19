@@ -1,59 +1,18 @@
-.phase {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--ifm-background-surface-color);
-  margin-bottom: 14px;
-}
-
-.phaseHdr {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
-  color: #fff;
-}
-
-.phaseHdr.act {
-  background: var(--gg-coral-400);
-}
-.phaseHdr.exp {
-  background: var(--gg-sky-400);
-}
-.phaseHdr.cre {
-  background: var(--gg-plum-400);
-}
-.phaseHdr.ref {
-  background: var(--gg-coral-300);
-}
-
-.phCircle {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.22);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-.phLbl {
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  opacity: 0.9;
-}
-
-.phTitle {
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.phaseCopy {
-  margin: 0;
-  padding: 12px 14px;
-  font-size: 14px;
-  color: var(--ifm-color-emphasis-700);
-}
+.timeline { display: grid; gap: 10px; }
+.phaseList { display: grid; gap: 8px; }
+.phaseToggle { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; border: 0; border-radius: 10px; color: #fff; text-align: left; cursor: pointer; opacity: .78; }
+.phaseToggle.selected { opacity: 1; box-shadow: 0 0 0 3px var(--ifm-color-emphasis-200); }
+.phaseToggle.act, .phaseBody.act { background: var(--gg-coral-400); }
+.phaseToggle.exp, .phaseBody.exp { background: var(--gg-sky-400); }
+.phaseToggle.cre, .phaseBody.cre { background: var(--gg-plum-400); }
+.phaseToggle.ref, .phaseBody.ref { background: var(--gg-coral-300); }
+.phCircle { display: flex; align-items: center; justify-content: center; flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.22); font-weight: 800; }
+.phaseHeading { display: grid; gap: 2px; min-width: 0; }
+.phLbl { font-size: 12px; text-transform: uppercase; letter-spacing: .04em; opacity: .9; }
+.phTitle { font-size: 15px; font-weight: 700; }
+.chevron { margin-left: auto; font-size: 1.4rem; line-height: 1; }
+.phaseBody { overflow: hidden; border-radius: 10px; color: #fff; }
+.phaseCopy { margin: 0; padding: 16px; font-size: 14px; }
+.navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 16px; border-top: 1px solid rgba(255,255,255,.3); font-size: .82rem; font-weight: 700; }
+.navigation button { border: 0; color: inherit; background: transparent; cursor: pointer; font-weight: 700; }
+.navigation button:disabled { opacity: .5; cursor: not-allowed; }
