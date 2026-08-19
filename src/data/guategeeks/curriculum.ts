@@ -54,15 +54,15 @@ const es: SmarsCurriculumContent = {
   cnbCompetencies: [
     {
       area: 'Física · 4.º · Competencia 1',
-      text: 'Utiliza el cálculo vectorial para interpretar cantidades físicas. Se aplica de forma focalizada al sentido, magnitud y resultante de las velocidades de las dos orugas; no se afirma que SMARS cubra toda la competencia.',
+      text: 'Utiliza el cálculo vectorial para interpretar cantidades físicas. Se aplica de forma focalizada al sentido, magnitud y resultante de las velocidades de las dos orugas; no se afirma que Curiosity cubra toda la competencia.',
     },
     {
       area: 'Física · 4.º · Competencia 4',
-      text: 'Aplica principios de energía en problemas cotidianos. SMARS aporta una experiencia concreta de circuito, polaridad, alimentación, driver y verificación antes de energizar.',
+      text: 'Aplica principios de energía en problemas cotidianos. Curiosity aporta una experiencia concreta de circuito, polaridad, alimentación, driver y verificación antes de energizar.',
     },
     {
       area: 'Elaboración y Gestión de Proyectos · 4.º',
-      text: 'Determina problemas, identifica fases del proyecto y planifica su ejecución. La secuencia SMARS convierte el diseño, la fabricación, las pruebas y la misión en un proyecto documentado.',
+      text: 'Determina problemas, identifica fases del proyecto y planifica su ejecución. La secuencia de Curiosity convierte el diseño, la fabricación, las pruebas y la misión en un proyecto documentado.',
     },
     {
       area: 'Computación Aplicada · 4.º',
@@ -106,7 +106,7 @@ const es: SmarsCurriculumContent = {
   ],
 
   indicators: [
-    ['Indicador de logro de referencia', 'Aplicación en SMARS', 'Evidencia observable', 'Alcance'],
+    ['Indicador de logro de referencia', 'Aplicación en Curiosity', 'Evidencia observable', 'Alcance'],
     [
       'EGP 2.2 · Identifica las principales fases de un proyecto.',
       'Reconoce comprender, diseñar, construir, programar, probar, calibrar y presentar como fases relacionadas.',
@@ -211,7 +211,7 @@ const es: SmarsCurriculumContent = {
   ],
 
   reportingNote:
-    'Para reportar el programa, conserve por equipo una evidencia de proceso, una evidencia técnica, una evidencia de datos y una evidencia de comunicación. El docente debe indicar qué parte del indicador se observó y qué parte queda fuera del alcance de SMARS.',
+    'Para reportar el programa, conserve por equipo una evidencia de proceso, una evidencia técnica, una evidencia de datos y una evidencia de comunicación. El docente debe indicar qué parte del indicador se observó y qué parte queda fuera del alcance de Curiosity.',
 };
 
 const en: SmarsCurriculumContent = {

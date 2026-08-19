@@ -1,7 +1,7 @@
 ---
 sidebar_position: 0
 sidebar_label: "Cómo usar este material"
-title: "GuateGeeks SMARS"
+title: "Curiosity"
 description: "Programa de robótica con Arduino para 4.º, 5.º y 6.º bachillerato: construir, programar y presentar un robot autónomo."
 ---
 
@@ -9,8 +9,9 @@ import FlagNote from '@site/src/components/FlagNote';
 import ProgressTracker from '@site/src/components/ProgressTracker';
 import ScopeOptions from '@site/src/components/ScopeOptions';
 import SmarsCnbAlignment from '@site/src/components/SmarsCnbAlignment';
+import CuriosityHero from '@site/src/components/CuriosityHero';
 
-export const smarsScopeOptions = [
+export const curiosityScopeOptions = [
   {
     title: 'Ruta compacta · 12 experiencias',
     text: 'Un bloque de 60 minutos por experiencia. Funciona para laboratorios intensivos o equipos ya familiarizados con Arduino; las impresiones se preparan fuera de clase.',
@@ -29,13 +30,13 @@ export const smarsScopeOptions = [
   },
 ];
 
-# GuateGeeks SMARS
+# Curiosity
 
 Programa de robótica con Arduino en el que los equipos construyen un robot de orugas que detecta
 obstáculos, decide una maniobra y opera sin control externo. La experiencia combina fabricación
 digital, electrónica, programación en C/C++, medición, calibración y comunicación técnica.
 
-![Robot SMARS terminado con orugas, Arduino y sensor ultrasónico](/assets/guategeeks/smars/heroshot.jpg)
+<CuriosityHero />
 
 ## Cómo se usa este material
 
@@ -108,7 +109,7 @@ código, cableado, reto y evidencia esperada.
 
 Elija la ruta que mejor se ajuste a sus sesiones disponibles y a la profundidad que busca:
 
-<ScopeOptions options={smarsScopeOptions} />
+<ScopeOptions options={curiosityScopeOptions} />
 
 ## Cómo se organiza cada sesión
 
@@ -159,7 +160,7 @@ aprendizaje de sus estudiantes.
 
 ## Sesiones del programa
 
-1. [01 · Conoce tu Robot](./sistemas-del-robot) — Sistemas, piezas y propósito del SMARS
+1. [01 · Conoce tu Robot](./sistemas-del-robot) — Sistemas, piezas y propósito de Curiosity
 2. [02 · Energía Segura](./seguridad-y-energia) — Voltajes, checklist y prevención
 3. [03 · Del Diseño a la Pieza](./slicer-y-tolerancias) — Modelos 3D, slicer y tolerancias
 4. [04 · Piezas que Encajan](./impresion-y-control-de-calidad) — Inspección y control de calidad
@@ -178,5 +179,5 @@ aprendizaje de sus estudiantes.
 
 [**CiudadBots Guatemala**](/ciudadbots) trabaja robótica aplicada con LEGO SPIKE y programación por
 bloques, a partir de retos de ingeniería urbana. Los dos programas son complementarios: CiudadBots
-introduce diseño robótico por misiones; GuateGeeks SMARS profundiza en electrónica, código,
+introduce diseño robótico por misiones; Curiosity profundiza en electrónica, código,
 calibración y autonomía.

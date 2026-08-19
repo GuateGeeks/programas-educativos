@@ -100,7 +100,7 @@ export const sessions: readonly Session[] = [
     phaseKinds: ['act', 'exp', 'cre', 'ref'],
     retoLevel: 3,
     recommendedBlocks: 1,
-    sketch: {dir: '04_smars_autonomo', label: 'SMARS autónomo'},
+    sketch: {dir: '04_smars_autonomo', label: 'Curiosity autónomo'},
   },
   {
     id: 's10',
@@ -110,7 +110,7 @@ export const sessions: readonly Session[] = [
     phaseKinds: ['act', 'exp', 'cre', 'ref'],
     retoLevel: 3,
     recommendedBlocks: 2,
-    sketch: {dir: '04_smars_autonomo', label: 'SMARS autónomo'},
+    sketch: {dir: '04_smars_autonomo', label: 'Curiosity autónomo'},
   },
   {
     id: 's11',
