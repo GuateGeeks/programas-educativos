@@ -13,6 +13,7 @@ import InternationalAlignment from '@site/src/components/InternationalAlignment'
 import CnbSourceLinks from '@site/src/components/CnbSourceLinks';
 import SmarsCnbAlignment from '@site/src/components/SmarsCnbAlignment';
 import RubricTable, {type RubricRow} from '@site/src/components/RubricTable';
+import ResourceGallery from '@site/src/components/ResourceGallery';
 // Deliberately reuses the CiudadBots module stylesheet rather than copying it,
 // so the two programs stay visually identical by construction instead of by
 // discipline. See design decision D6.
@@ -315,6 +316,7 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
   const leadWithInternational = i18n.currentLocale === 'en';
   const [tab, setTab] = useState<TabKey>('metodo');
   const wiringHref = useBaseUrl(cfg.wiringReference);
+  const inlineResourceGallery = program === 'guategeeks' && /^s(6|7|8|9|10|11)$/.test(id);
 
   const content = collectChildren(children);
   const actualKinds = content.phases.map((p) => p.kind).join(',');
@@ -443,9 +445,13 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
                   <Translate id="guategeeks.session.wiringTitle">Cableado y tabla de pines</Translate>
                 </strong>
                 <p>{cfg.wiringBody()}</p>
-                <a className={styles.pdfLink} href={wiringHref}>
-                  <Translate id="guategeeks.session.wiringLink">Ver materiales y pines</Translate>
-                </a>
+                {inlineResourceGallery ? (
+                  <ResourceGallery />
+                ) : (
+                  <a className={styles.pdfLink} href={wiringHref}>
+                    <Translate id="guategeeks.session.wiringLink">Ver materiales y pines</Translate>
+                  </a>
+                )}
               </div>
             </>
           )}
