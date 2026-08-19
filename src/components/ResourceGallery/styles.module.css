@@ -1,0 +1,18 @@
+.gallery { display: grid; gap: 14px; }
+.galleryHeader { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.galleryHeader h3 { margin: 0 0 4px; }
+.galleryHeader p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: .9rem; }
+.modeTabs { display: flex; gap: 6px; }
+.modeTabs button { padding: 8px 12px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 6px; background: transparent; cursor: pointer; font-weight: 700; }
+.modeTabs button.activeTab { border-color: var(--ifm-color-primary); color: var(--ifm-color-primary-darkest); background: var(--ifm-color-primary-lightest); }
+.visualSlide { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); gap: 18px; align-items: center; min-height: 280px; }
+.visualSlide img { display: block; width: 100%; height: 280px; object-fit: cover; border-radius: 8px; background: var(--ifm-color-emphasis-100); }
+.slideCopy { padding: 8px 0; }
+.slideCopy h4 { margin: 6px 0; font-size: 1.25rem; }
+.slideCopy p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: .92rem; }
+.counter { color: var(--ifm-color-primary); font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+.stlSlide :global(.block) { margin: 0; }
+.controls { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 10px; border-top: 1px solid var(--ifm-color-emphasis-200); font-size: .84rem; font-weight: 700; }
+.controls button { border: 0; color: var(--ifm-color-primary); background: transparent; cursor: pointer; font-weight: 700; }
+.controls button:hover { text-decoration: underline; }
+@media (max-width: 700px) { .visualSlide { grid-template-columns: 1fr; } .visualSlide img { height: 220px; } }
