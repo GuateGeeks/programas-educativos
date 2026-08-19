@@ -1,5 +1,6 @@
 .timeline { display: grid; gap: 10px; }
 .phaseList { display: grid; gap: 8px; }
+.phaseItem { display: grid; gap: 4px; }
 .phaseToggle { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; border: 0; border-radius: 10px; color: #fff; text-align: left; cursor: pointer; opacity: .78; }
 .phaseToggle.selected { opacity: 1; box-shadow: 0 0 0 3px var(--ifm-color-emphasis-200); }
 .phaseToggle.act, .phaseBody.act { background: var(--gg-coral-400); }

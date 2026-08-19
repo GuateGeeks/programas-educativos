@@ -66,6 +66,10 @@ function Materials(_props: ItemsProps): null {
   return null;
 }
 Materials.displayName = 'SessionModule.Materials';
+function VisualResources(_props: ContextProps): null {
+  return null;
+}
+VisualResources.displayName = 'SessionModule.VisualResources';
 function Reto(_props: ContextProps): null {
   return null;
 }
@@ -99,6 +103,7 @@ interface CollectedContent {
   context?: React.ReactNode;
   reto?: React.ReactNode;
   code?: React.ReactNode;
+  visualResources?: React.ReactNode;
   concepts: readonly string[];
   materials: readonly string[];
   evidence: readonly string[];
@@ -134,6 +139,9 @@ function collectChildren(children: React.ReactNode): CollectedContent {
         break;
       case Code:
         collected.code = (child.props as ContextProps).children;
+        break;
+      case VisualResources:
+        collected.visualResources = (child.props as ContextProps).children;
         break;
       case Concepts:
         collected.concepts = (child.props as ConceptsProps).items;
@@ -173,6 +181,7 @@ interface SessionModuleComponent extends React.FC<SessionModuleProps> {
   Concepts: typeof Concepts;
   Phase: typeof SessionPhase;
   Materials: typeof Materials;
+  VisualResources: typeof VisualResources;
   Reto: typeof Reto;
   Evidence: typeof Evidence;
   Code: typeof Code;
@@ -427,6 +436,8 @@ const SessionModuleImpl: React.FC<SessionModuleProps> = ({
             </a>
           </div>
 
+          {content.visualResources && <div className={styles.resourceCard}>{content.visualResources}</div>}
+
           {s.sketch && (
             <>
               <div className={styles.resourceCard}>
@@ -529,6 +540,7 @@ SessionModule.Context = SessionContext;
 SessionModule.Concepts = Concepts;
 SessionModule.Phase = SessionPhase;
 SessionModule.Materials = Materials;
+SessionModule.VisualResources = VisualResources;
 SessionModule.Reto = Reto;
 SessionModule.Evidence = Evidence;
 SessionModule.Code = Code;
