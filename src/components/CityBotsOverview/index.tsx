@@ -12,7 +12,7 @@ const labels = {
     levels: 'Tres niveles, una progresión',
     progression: 'Progresión por grado',
     all: 'Vista general',
-    cnb: 'CNB en acción',
+    cnb: 'CNB de Guatemala · Progresión para Ciclo Básico',
     cnbHint: 'Abra un área para ver cómo se traduce en el aula.',
     grade: 'Grado',
   },
@@ -20,7 +20,7 @@ const labels = {
     levels: 'Three levels, one progression',
     progression: 'Progression by grade',
     all: 'All grades',
-    cnb: 'CNB in action',
+    cnb: 'Guatemala CNB · Lower-secondary progression',
     cnbHint: 'Open an area to see how it translates into classroom work.',
     grade: 'Grade',
   },
@@ -49,9 +49,9 @@ function ProgressionTabs({rows, text}: {rows: readonly ImpactRow[]; text: typeof
   const [, ...body] = rows;
   const grades: readonly {key: GradeKey; label: string}[] = [
     {key: 'all', label: text.all},
-    {key: '1.º básico', label: '1.º básico'},
-    {key: '2.º básico', label: '2.º básico'},
-    {key: '3.º básico', label: '3.º básico'},
+    {key: '1.º básico', label: text === labels.en ? 'Grade 7' : '1.º básico'},
+    {key: '2.º básico', label: text === labels.en ? 'Grade 8' : '2.º básico'},
+    {key: '3.º básico', label: text === labels.en ? 'Grade 9' : '3.º básico'},
   ];
   const gradeIndex = selected === 'all' ? -1 : grades.findIndex((grade) => grade.key === selected);
   return (

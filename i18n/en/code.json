@@ -873,6 +873,12 @@
   "ciudadbots.estudiante.tip": {
     "message": "Before moving on, compare the physical robot with the image. If something doesn't match, stop, adjust, and then continue to the next step."
   },
+  "ciudadbots.module.navigation.primaryHint": {
+    "message": "Choose a view and move through the blocks."
+  },
+  "ciudadbots.module.resource.shareStudent": {
+    "message": "Open student view"
+  },
   "ciudadbots.overview.transversalCnbTitle": {
     "message": "Cross-cutting Guatemala alignment · Lower Secondary"
   }

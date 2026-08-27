@@ -2,6 +2,7 @@ import React, {createContext, useContext, useEffect, useMemo, useState} from 're
 import Link from '@docusaurus/Link';
 import {useLocation} from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   clearStoredGrant,
   grantFromQuery,
@@ -112,32 +113,36 @@ export function AccessBoundary({children}: {children: React.ReactNode}): React.J
 }
 
 export function DemoNotice(): React.JSX.Element | null {
+  const {i18n} = useDocusaurusContext();
   const {isDemo, grant, signOut} = useAccessControl();
   const home = useBaseUrl('/ciudadbots/');
   if (!isDemo) return null;
-  const expiry = grant ? new Date(grant.expiresAt).toLocaleDateString('es-GT') : '';
+  const en = i18n.currentLocale === 'en';
+  const expiry = grant ? new Date(grant.expiresAt).toLocaleDateString(en ? 'en-US' : 'es-GT') : '';
   return (
-    <aside className={styles.notice} aria-label="Demo institucional activa">
-      <div><strong>Demo institucional · CiudadBots</strong><span>Acceso a overview, módulos 01–03, Showcase y Cobertura y progresión{expiry ? ` · válida hasta ${expiry}` : ''}.</span></div>
-      <div className={styles.noticeActions}><Link to={home}>Inicio demo</Link><button type="button" onClick={signOut}>Salir</button></div>
+    <aside className={styles.notice} aria-label={en ? 'Active institutional demo' : 'Demo institucional activa'}>
+      <div><strong>{en ? 'Institutional demo · CiudadBots' : 'Demo institucional · CiudadBots'}</strong><span>{en ? `Access to overview, modules 01–03, Showcase, and Coverage and progression${expiry ? ` · valid through ${expiry}` : ''}.` : `Acceso a overview, módulos 01–03, Showcase y Cobertura y progresión${expiry ? ` · válida hasta ${expiry}` : ''}.`}</span></div>
+      <div className={styles.noticeActions}><Link to={home}>{en ? 'Demo home' : 'Inicio demo'}</Link><button type="button" onClick={signOut}>{en ? 'Exit' : 'Salir'}</button></div>
     </aside>
   );
 }
 
 function AccessDenied({status}: {status: AccessStatus}): React.JSX.Element {
+  const {i18n} = useDocusaurusContext();
   const home = useBaseUrl('/');
+  const en = i18n.currentLocale === 'en';
   const copy = status === 'expired'
-    ? {eyebrow: 'Acceso expirado', title: 'Esta demo ya terminó.', body: 'Solicite un nuevo enlace institucional para continuar.'}
+    ? (en ? {eyebrow: 'Access expired', title: 'This demo has ended.', body: 'Request a new institutional link to continue.'} : {eyebrow: 'Acceso expirado', title: 'Esta demo ya terminó.', body: 'Solicite un nuevo enlace institucional para continuar.'})
     : status === 'denied'
-      ? {eyebrow: 'Contenido no incluido', title: 'Esta vista no forma parte de la demo.', body: 'El enlace institucional solo habilita el recorrido autorizado.'}
-      : {eyebrow: 'Acceso requerido', title: 'Necesita un enlace autorizado.', body: 'Abra el enlace que le compartió GuateGeeks para ingresar al contenido.'};
+      ? (en ? {eyebrow: 'Content not included', title: 'This view is not part of the demo.', body: 'The institutional link only enables the authorized tour.'} : {eyebrow: 'Contenido no incluido', title: 'Esta vista no forma parte de la demo.', body: 'El enlace institucional solo habilita el recorrido autorizado.'})
+      : (en ? {eyebrow: 'Access required', title: 'You need an authorized link.', body: 'Open the link shared by GuateGeeks to access this content.'} : {eyebrow: 'Acceso requerido', title: 'Necesita un enlace autorizado.', body: 'Abra el enlace que le compartió GuateGeeks para ingresar al contenido.'});
   return (
     <main className={styles.denied} aria-labelledby="access-denied-title">
       <div className={styles.deniedCard}>
         <span className={styles.eyebrow}>{copy.eyebrow}</span>
         <h1 id="access-denied-title">{copy.title}</h1>
         <p>{copy.body}</p>
-        <Link className={styles.homeLink} to={home}>Volver al catálogo</Link>
+        <Link className={styles.homeLink} to={home}>{en ? 'Back to catalog' : 'Volver al catálogo'}</Link>
       </div>
     </main>
   );

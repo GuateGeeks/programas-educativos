@@ -1,5 +1,6 @@
 import React from 'react';
 import {translate} from '@docusaurus/Translate';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {useStandardsContent} from '@site/src/data/ciudadbots';
 import {GRADES, type GradeId} from '@site/src/data/ciudadbots';
 import FlagNote from '@site/src/components/FlagNote';
@@ -21,11 +22,14 @@ interface AchievementIndicatorsProps {
 export default function AchievementIndicators({moduleTitle, grade = 'general'}: AchievementIndicatorsProps): React.JSX.Element {
   const {depthByGradeNote, maturityByGrade, cnbOfficialCompetencies, achievementNoteFor, achievementIndicators} =
     useStandardsContent();
-  const gradeLabel = grade === 'general' ? '' : GRADES.find((item) => item.id === grade)?.label || '';
+  const {i18n} = useDocusaurusContext();
+  const isEnglish = i18n.currentLocale === 'en';
+  const gradeIndex = grade === 'general' ? -1 : GRADES.findIndex((item) => item.id === grade);
+  const gradeLabel = grade === 'general' ? '' : isEnglish ? `Grade ${Number(grade?.[0]) + 6}` : GRADES[gradeIndex]?.label || '';
   const gradeRows = (rows: readonly (readonly string[])[], labels: readonly string[]) => {
     if (grade === 'general') return {rows, compact: false};
-    const row = rows.slice(1).find((item) => item[0] === gradeLabel);
-    return {rows: [['Aspecto', `Aplicación en ${gradeLabel}`], ...labels.map((label, index) => [label, row?.[index + 1] || 'Sin contenido'])], compact: true};
+    const row = rows[gradeIndex + 1];
+    return {rows: [[isEnglish ? 'Aspect' : 'Aspecto', `${isEnglish ? 'Application in' : 'Aplicación en'} ${gradeLabel}`], ...labels.map((label, index) => [isEnglish ? ['What to achieve', 'Observable evidence', 'Impact measurement'][index] || label : label, row?.[index + 1] || (isEnglish ? 'No content' : 'Sin contenido')])], compact: true};
   };
   const maturity = gradeRows(maturityByGrade, ['Qué debe cumplir', 'Evidencia observable', 'Medición de impacto']);
   const indicators = gradeRows(achievementIndicators(moduleTitle), ['Competencias CNB afines', 'Indicadores de logro', 'Evidencia esperada']);

@@ -163,6 +163,7 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
   const m = getModule(id);
   const {i18n} = useDocusaurusContext();
   const {isDemo} = useAccessControl();
+  const en = i18n.currentLocale === 'en';
   const title = getModuleTitle(id, i18n.currentLocale);
   const [tab, setTab] = useState<TabKey>('metodo');
   const [programGrade, setProgramGrade] = useState<GradeId>('1-basico');
@@ -195,10 +196,10 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
     : undefined;
 
   const TABS: {key: TabKey; label: string; hint: string}[] = [
-    {key: 'metodo', label: translate({id: 'ciudadbots.module.tab.metodo', message: 'Implementación'}), hint: 'Plan y sesiones'},
-    {key: 'recursos', label: translate({id: 'ciudadbots.module.tab.recursos', message: 'Recursos'}), hint: 'Material listo'},
-    {key: 'cnb', label: translate({id: 'ciudadbots.module.tab.cnb', message: 'CNB y estándares'}), hint: 'Alineación'},
-    {key: 'eval', label: translate({id: 'ciudadbots.module.tab.eval', message: 'Evaluación'}), hint: 'Referencia docente'},
+    {key: 'metodo', label: translate({id: 'ciudadbots.module.tab.metodo', message: 'Implementación'}), hint: en ? 'Plan and sessions' : 'Plan y sesiones'},
+    {key: 'recursos', label: translate({id: 'ciudadbots.module.tab.recursos', message: 'Recursos'}), hint: en ? 'Ready-to-use material' : 'Material listo'},
+    {key: 'cnb', label: translate({id: 'ciudadbots.module.tab.cnb', message: 'CNB y estándares'}), hint: en ? 'Curriculum alignment' : 'Alineación'},
+    {key: 'eval', label: translate({id: 'ciudadbots.module.tab.eval', message: 'Evaluación'}), hint: en ? 'Teacher reference' : 'Referencia docente'},
   ];
   const activeTab = TABS.find((item) => item.key === tab) || TABS[0];
 
@@ -231,24 +232,24 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
   const internationalBlock = (
     <>
       <InternationalAlignment grade={alignmentGrade} />
-      {alignmentGrade !== 'general' && <div className={styles.gradeStandards}><div><span className={styles.alignmentEyebrow}>Aplicación del módulo</span><h4>Cómo se evidencia en {GRADES.find((grade) => grade.id === alignmentGrade)?.label}</h4><p>Estas son las conexiones concretas entre Robot Cartógrafo y los estándares seleccionados.</p></div><CardGrid items={standardsItems} /></div>}
+      {alignmentGrade !== 'general' && <div className={styles.gradeStandards}><div><span className={styles.alignmentEyebrow}>{en ? 'Module application' : 'Aplicación del módulo'}</span><h4>{en ? `How it is shown in Grade ${Number(alignmentGrade[0]) + 6}` : `Cómo se evidencia en ${GRADES.find((grade) => grade.id === alignmentGrade)?.label}`}</h4><p>{en ? 'These are the concrete connections between this module and the selected standards.' : 'Estas son las conexiones concretas entre este módulo y los estándares seleccionados.'}</p></div><CardGrid items={standardsItems} /></div>}
     </>
   );
 
   const alignmentPanel = (
     <div className={styles.alignmentExperience}>
-      <div className={styles.alignmentSectionHead}><div><span className={styles.alignmentEyebrow}>Marco de referencia</span><h3>CNB y estándares</h3><p>Consulte el propósito curricular, la progresión por grado y las referencias internacionales del módulo.</p></div><span className={styles.alignmentViewCount}>3 vistas</span></div>
+      <div className={styles.alignmentSectionHead}><div><span className={styles.alignmentEyebrow}>{en ? 'Reference framework' : 'Marco de referencia'}</span><h3>CNB y estándares</h3><p>{en ? 'Review the curriculum purpose, grade progression, and international references for this module.' : 'Consulte el propósito curricular, la progresión por grado y las referencias internacionales del módulo.'}</p></div><span className={styles.alignmentViewCount}>{en ? '3 views' : '3 vistas'}</span></div>
       <div className={styles.alignmentSummary}>
-        <div><span className={styles.alignmentIcon}>CNB</span><strong>Ruta curricular</strong><small>Qué se trabaja en Guatemala</small></div>
-        <div><span className={styles.alignmentIcon}>{content.cnb.length}</span><strong>Áreas relacionadas</strong><small>Conexiones del módulo</small></div>
-        <div><span className={styles.alignmentIcon}>{content.standards.length}</span><strong>Referencias globales</strong><small>Estándares aplicados</small></div>
+        <div><span className={styles.alignmentIcon}>CNB</span><strong>{en ? 'Curriculum route' : 'Ruta curricular'}</strong><small>{en ? 'What is taught in Guatemala' : 'Qué se trabaja en Guatemala'}</small></div>
+        <div><span className={styles.alignmentIcon}>{content.cnb.length}</span><strong>{en ? 'Related areas' : 'Áreas relacionadas'}</strong><small>{en ? 'Module connections' : 'Conexiones del módulo'}</small></div>
+        <div><span className={styles.alignmentIcon}>{content.standards.length}</span><strong>{en ? 'Global references' : 'Referencias globales'}</strong><small>{en ? 'Applied standards' : 'Estándares aplicados'}</small></div>
       </div>
-      <div className={styles.alignmentToolbar} role="tablist" aria-label="Vista de alineación">
-        {([['overview', 'Resumen'], ['cnb', 'CNB'], ['standards', 'Estándares']] as [AlignmentView, string][]).map(([view, label], index) => <button key={view} type="button" role="tab" aria-selected={alignmentView === view} className={alignmentView === view ? styles.alignmentActive : ''} onClick={() => setAlignmentView(view)}><span>0{index + 1}</span>{label}</button>)}
-        <label className={styles.alignmentGrade}><span>Mostrar</span><select value={alignmentGrade} onChange={(event) => { const next = event.target.value as AlignmentGrade; setAlignmentGrade(next); if (next !== 'general') setProgramGrade(next); }}><option value="general">Todos los grados · panorama completo</option>{GRADES.map((grade) => <option key={grade.id} value={grade.id}>{grade.label}</option>)}</select></label>
+      <div className={styles.alignmentToolbar} role="tablist" aria-label={en ? 'Alignment view' : 'Vista de alineación'}>
+        {([['overview', en ? 'Overview' : 'Resumen'], ['cnb', 'CNB'], ['standards', en ? 'Standards' : 'Estándares']] as [AlignmentView, string][]).map(([view, label], index) => <button key={view} type="button" role="tab" aria-selected={alignmentView === view} className={alignmentView === view ? styles.alignmentActive : ''} onClick={() => setAlignmentView(view)}><span>0{index + 1}</span>{label}</button>)}
+        <label className={styles.alignmentGrade}><span>{en ? 'Show' : 'Mostrar'}</span><select value={alignmentGrade} onChange={(event) => { const next = event.target.value as AlignmentGrade; setAlignmentGrade(next); if (next !== 'general') setProgramGrade(next); }}><option value="general">{en ? 'All grades · full overview' : 'Todos los grados · panorama completo'}</option>{GRADES.map((grade) => <option key={grade.id} value={grade.id}>{en ? `Grade ${Number(grade.id[0]) + 6}` : grade.label}</option>)}</select></label>
       </div>
       <div className={styles.alignmentGradeCard} aria-live="polite"><span className={styles.alignmentEyebrow}>{alignmentGrade === 'general' ? 'Panorama completo · 1.º, 2.º y 3.º básico' : `Vista filtrada · ${GRADES.find((grade) => grade.id === alignmentGrade)?.label}`}</span><strong>{gradeExpectation?.minimum || 'Consulte la progresión completa y seleccione un grado para ver únicamente su alcance.'}</strong><p>{gradeExpectation?.support || 'El panorama completo reúne los tres niveles para planificar; cada vista de grado reduce la información a lo que debe observar.'}</p></div>
-      {alignmentView === 'overview' && <div className={styles.alignmentOverview}><button type="button" onClick={() => setAlignmentView('cnb')}><strong>CNB Guatemala</strong><span>Áreas, competencias e indicadores que puede observar.</span><b>Explorar CNB →</b></button><button type="button" onClick={() => setAlignmentView('standards')}><strong>Estándares internacionales</strong><span>Lenguaje común para comunicar el impacto del programa.</span><b>Explorar estándares →</b></button></div>}
+      {alignmentView === 'overview' && <div className={styles.alignmentOverview}><button type="button" onClick={() => setAlignmentView('cnb')}><strong>CNB Guatemala</strong><span>{en ? 'Areas, competencies, and indicators to observe.' : 'Áreas, competencias e indicadores que puede observar.'}</span><b>{en ? 'Explore CNB →' : 'Explorar CNB →'}</b></button><button type="button" onClick={() => setAlignmentView('standards')}><strong>{en ? 'International standards' : 'Estándares internacionales'}</strong><span>{en ? 'A common language for communicating program impact.' : 'Lenguaje común para comunicar el impacto del programa.'}</span><b>{en ? 'Explore standards →' : 'Explorar estándares →'}</b></button></div>}
       {alignmentView === 'cnb' && <div className={styles.alignmentDetail}>{cnbBlock}<AchievementIndicators moduleTitle={title} grade={alignmentGrade} /><CnbSourceLinks /></div>}
       {alignmentView === 'standards' && <div className={styles.alignmentDetail}>{internationalBlock}</div>}
     </div>
@@ -299,18 +300,18 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
 
       {tab === 'metodo' && (
         <div className={styles.panel}>
-          <div className={styles.sectionIntro}><span>01 · Ruta de implementación</span><h3>Del reto a la prueba</h3><p>Trabaje el módulo por bloques de 60 minutos y avance según la evidencia del grupo.</p></div>
+          <div className={styles.sectionIntro}><span>{en ? '01 · Implementation route' : '01 · Ruta de implementación'}</span><h3>{en ? 'From challenge to test' : 'Del reto a la prueba'}</h3><p>{en ? 'Work through the module in 60-minute blocks and move forward according to the group’s evidence.' : 'Trabaje el módulo por bloques de 60 minutos y avance según la evidencia del grupo.'}</p></div>
           <details className={styles.conceptsDisclosure}>
-            <summary><span>Conceptos del módulo</span><small>{content.concepts.length} focos técnicos</small></summary>
+            <summary><span>{en ? 'Module concepts' : 'Conceptos del módulo'}</span><small>{content.concepts.length} {en ? 'technical focus areas' : 'focos técnicos'}</small></summary>
             <div className={styles.chips}>
               {content.concepts.map((c) => <span className={styles.chip} key={c}>{c}</span>)}
             </div>
           </details>
           <TeacherSessionPlan moduleId={id} grade={programGrade} onGradeChange={syncGrade} />
           {isDemo && m.guide && (
-            <button className={styles.guideShortcut} type="button" onClick={() => setTab('recursos')}>
-              <span><strong>Guía visual de construcción</strong><small>Abra los pasos ilustrados de este robot</small></span>
-              <span aria-hidden="true">Ver recursos →</span>
+              <button className={styles.guideShortcut} type="button" onClick={() => setTab('recursos')}>
+              <span><strong>{en ? 'Visual build guide' : 'Guía visual de construcción'}</strong><small>{en ? 'Open this robot’s illustrated steps' : 'Abra los pasos ilustrados de este robot'}</small></span>
+              <span aria-hidden="true">{en ? 'View resources →' : 'Ver recursos →'}</span>
             </button>
           )}
         </div>
@@ -318,11 +319,11 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
 
       {tab === 'recursos' && (
         <div className={styles.panel}>
-          <div className={styles.sectionIntro}><span>02 · Material de clase</span><h3>Recursos listos para usar</h3><p>Prepare el programa, consulte la guía y comparta únicamente lo que el estudiante necesita.</p></div>
+          <div className={styles.sectionIntro}><span>{en ? '02 · Class material' : '02 · Material de clase'}</span><h3>{en ? 'Ready-to-use resources' : 'Recursos listos para usar'}</h3><p>{en ? 'Prepare the program, check the guide, and share only what students need.' : 'Prepare el programa, consulte la guía y comparta únicamente lo que el estudiante necesita.'}</p></div>
           <div className={styles.resourceCard}>
             <div className={styles.resourceHeader}>
               <div>
-                <span className={styles.resourceEyebrow}>Recurso del módulo</span>
+                <span className={styles.resourceEyebrow}>{en ? 'Module resource' : 'Recurso del módulo'}</span>
                 <strong>
                   <Translate id="ciudadbots.module.resource.programTitle">Programa base LEGO SPIKE / LLSP</Translate>
                 </strong>
@@ -335,7 +336,7 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
                 bloques, sensores y la secuencia esperada.
               </Translate>
             </p>
-            <div className={styles.resourceHint}>Primero revise el programa. Después comparta la vista de estudiante para que cada equipo avance a su ritmo. Si no abre con doble clic, impórtelo desde <strong>LEGO Education SPIKE · Abrir proyecto</strong>.</div>
+            <div className={styles.resourceHint}>{en ? 'Review the program first. Then share the student view so each team can work at its own pace. If it does not open with a double click, import it from ' : 'Primero revise el programa. Después comparta la vista de estudiante para que cada equipo avance a su ritmo. Si no abre con doble clic, impórtelo desde '}<strong>LEGO Education SPIKE · {en ? 'Open project' : 'Abrir proyecto'}</strong>.</div>
             <div className={styles.resourceActions}>
               <a className={styles.download} href={programHref} download>
                 {translate({id: 'ciudadbots.module.resource.download', message: 'Descargar {program}'}, {program: `${title} · ${m.program}`})}
@@ -378,7 +379,7 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
 
       {tab === 'eval' && (
         <div className={styles.panel}>
-          <div className={`${styles.sectionIntro} ${styles.sectionIntroCompact}`}><span>04 · Referencia docente</span><p>Use la evidencia del equipo para orientar la retroalimentación y el siguiente paso.</p></div>
+          <div className={`${styles.sectionIntro} ${styles.sectionIntroCompact}`}><span>{en ? '04 · Teacher reference' : '04 · Referencia docente'}</span><p>{en ? 'Use the team’s evidence to guide feedback and the next step.' : 'Use la evidencia del equipo para orientar la retroalimentación y el siguiente paso.'}</p></div>
           <GradeEvaluation moduleId={id} grade={programGrade} onGradeChange={syncGrade} />
         </div>
       )}

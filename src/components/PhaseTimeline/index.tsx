@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import type {PhaseKind} from '@site/src/data/ciudadbots/types';
 import styles from './styles.module.css';
 
@@ -23,6 +24,8 @@ interface PhaseTimelineProps {
  * "Implementation" tab and the `Showcase` page.
  */
 export default function PhaseTimeline({phases}: PhaseTimelineProps): React.JSX.Element {
+  const {i18n} = useDocusaurusContext();
+  const en = i18n.currentLocale === 'en';
   const [activeIndex, setActiveIndex] = useState(0);
   const activePhase = phases[activeIndex];
   if (!activePhase) return null;
@@ -30,7 +33,7 @@ export default function PhaseTimeline({phases}: PhaseTimelineProps): React.JSX.E
 
   return (
     <div className={styles.timeline}>
-      <div className={styles.phaseList} role="tablist" aria-label="Fases de la experiencia">
+      <div className={styles.phaseList} role="tablist" aria-label={en ? 'Experience phases' : 'Fases de la experiencia'}>
         {phases.map((phase, i) => (
           <div className={styles.phaseItem} key={i}>
             <button
@@ -50,9 +53,9 @@ export default function PhaseTimeline({phases}: PhaseTimelineProps): React.JSX.E
               <div className={`${styles.phaseBody} ${styles[activePhase.kind]}`} role="tabpanel">
                 <p className={styles.phaseCopy}>{activePhase.body}</p>
                 <div className={styles.navigation}>
-                  <button type="button" onClick={() => move(-1)} disabled={activeIndex === 0}>Anterior</button>
-                  <span>{activeIndex + 1} de {phases.length}</span>
-                  <button type="button" onClick={() => move(1)} disabled={activeIndex === phases.length - 1}>Siguiente</button>
+                  <button type="button" onClick={() => move(-1)} disabled={activeIndex === 0}>{en ? 'Previous' : 'Anterior'}</button>
+                  <span>{activeIndex + 1} {en ? 'of' : 'de'} {phases.length}</span>
+                  <button type="button" onClick={() => move(1)} disabled={activeIndex === phases.length - 1}>{en ? 'Next' : 'Siguiente'}</button>
                 </div>
               </div>
             )}

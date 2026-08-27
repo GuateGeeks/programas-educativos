@@ -280,7 +280,7 @@ export default function Showcase(): React.JSX.Element {
     <section className={styles.showcase}>
       <section className={styles.gradeSwitcher} aria-label={isEnglish ? 'Showcase grade filter' : 'Filtro del showcase por grado'}>
         <div><span>{isEnglish ? 'Showcase route' : 'Ruta del showcase'}</span><strong>{isEnglish ? 'Choose the group grade' : 'Elija el grado del grupo'}</strong><small>{isEnglish ? 'This selection updates the closing phases and final evaluation.' : 'Esta selección actualiza las fases de cierre y la evaluación final.'}</small></div>
-        <div className={styles.gradeSwitcherButtons} role="tablist" aria-label={isEnglish ? 'Filter showcase by grade' : 'Filtrar showcase por grado'}>{GRADES.map((item) => <button type="button" role="tab" aria-selected={grade === item.id} className={grade === item.id ? styles.gradeSwitcherActive : ''} onClick={() => setGrade(item.id)} key={item.id}>{item.label}</button>)}</div>
+        <div className={styles.gradeSwitcherButtons} role="tablist" aria-label={isEnglish ? 'Filter showcase by grade' : 'Filtrar showcase por grado'}>{GRADES.map((item) => <button type="button" role="tab" aria-selected={grade === item.id} className={grade === item.id ? styles.gradeSwitcherActive : ''} onClick={() => setGrade(item.id)} key={item.id}>{isEnglish ? `Grade ${Number(item.id[0]) + 6}` : item.label}</button>)}</div>
       </section>
 
       <PhaseTimeline phases={showcasePhases} />

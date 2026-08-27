@@ -455,6 +455,62 @@ export function getGradeCopy(session: SessionPlan, grade: GradeId, isEnglish = f
   return expectation ? (isEnglish ? expectation.en || expectation : expectation) : undefined;
 }
 
+const englishResourceLabels: Record<string, string> = {
+  'Programa base LEGO SPIKE': 'LEGO SPIKE base program',
+  'Piezas y motores del kit': 'Kit pieces and motors',
+  'Guía visual o referencia de construcción': 'Visual build guide or reference',
+  'Hoja de pruebas del equipo': 'Team test sheet',
+  'Programa base LEGO SPIKE / LLSP': 'LEGO SPIKE / LLSP base program',
+  'Piezas, motores y sensores del kit': 'Kit pieces, motors, and sensors',
+  'Guía visual de construcción': 'Visual build guide',
+  'Hoja de pruebas y extensión de calibración': 'Test sheet and calibration extension',
+  'Tarjeta de problemática y criterios de éxito': 'Problem and success-criteria card',
+  'Piezas, sensores y dispositivos disponibles': 'Available pieces, sensors, and devices',
+  'Bitácora de decisiones y pruebas': 'Decision and test log',
+  'Reto de extensión para optimizar la solución': 'Extension challenge to optimize the solution',
+};
+
+const englishSessionText: Record<string, string> = {
+  'Preparar': 'Prepare', 'Usar en clase': 'Use in class', 'Ampliar': 'Extend',
+  'Antes de clase': 'Before class', 'Durante la clase': 'During class', 'Extensión': 'Extension',
+  'Constructor: arma y verifica la estructura.': 'Builder: assemble and check the structure.',
+  'Organizador: cuida piezas, tiempos y evidencias.': 'Organizer: manage pieces, time, and evidence.',
+  'Programador: prueba bloques, sensores y ajustes.': 'Programmer: test blocks, sensors, and adjustments.',
+  'Constructor: propone y prueba estructuras.': 'Builder: propose and test structures.',
+  'Organizador: registra acuerdos, materiales y tiempos.': 'Organizer: record agreements, materials, and time.',
+  'Programador: diseña, prueba y documenta el comportamiento.': 'Programmer: design, test, and document behavior.',
+  'Fotografía o descripción del robot funcional.': 'Photo or description of the working robot.',
+  'Programa probado y explicado por el equipo.': 'Program tested and explained by the team.',
+  'Tabla breve con intento, error y ajuste.': 'Brief table with attempt, error, and adjustment.',
+  'Boceto o diagrama de la solución.': 'Solution sketch or diagram.',
+  'Registro de una prueba y una iteración.': 'Record of one test and one iteration.',
+  'Retroalimentación del docente y siguiente paso acordado.': 'Teacher feedback and agreed next step.',
+  'Conservar la evidencia para comparar el avance con el siguiente reto.': 'Keep the evidence to compare progress in the next challenge.',
+  'Retomar el siguiente hito con base en la evidencia, no solo en la intuición.': 'Resume the next milestone using evidence, not intuition alone.',
+  'Si el grupo necesita más tiempo, repita este bloque antes de construir.': 'If the group needs more time, repeat this block before building.',
+  'Registre el error principal y retome desde la prueba que aún no funciona.': 'Record the main error and resume from the test that still fails.',
+  'Cuando el grupo esté listo, avance a la siguiente sesión guiada.': 'When the group is ready, move to the next guided session.',
+  'Clase principal': 'Main class',
+};
+
+function enText(value: string): string {
+  return englishSessionText[value] || value;
+}
+
+function localizeBase(session: SessionPlan): Pick<SessionPlan, 'preparation' | 'resources' | 'roles' | 'evidence' | 'nextStep' | 'cnb' | 'indicators' | 'standards' | 'notApplicable'> {
+  return {
+    preparation: session.preparation.map(enText),
+    resources: session.resources.map((item) => ({...item, label: englishResourceLabels[item.label] || enText(item.label), action: item.action ? enText(item.action) : item.action})),
+    roles: session.roles.map(enText),
+    evidence: session.evidence.map(enText),
+    nextStep: enText(session.nextStep),
+    cnb: session.cnb,
+    indicators: session.indicators,
+    standards: session.standards,
+    notApplicable: session.notApplicable.map(enText),
+  };
+}
+
 function createGradePhases(title: string, focus: string, grade: GradeId, sessionIndex: number, isEnglish: boolean): ExperiencePhase[] {
   const subject = title.toLowerCase();
   const context = focus.toLowerCase();
@@ -550,8 +606,10 @@ export function getGradeSessionPlan(session: SessionPlan, grade: GradeId, isEngl
 
   if (session.kind === 'guided') {
     const baseTitle = session.title.split(' · ')[0];
+    const baseLocale = isEnglish ? localizeBase(session) : {};
     return {
       ...session,
+      ...baseLocale,
       title: `${baseTitle} · ${copy.sessionTitles[sessionIndex]}`,
       purpose: copy.sessionPurposes[sessionIndex] || session.purpose,
       question: copy.sessionQuestions[sessionIndex] || copy.question,
@@ -564,7 +622,8 @@ export function getGradeSessionPlan(session: SessionPlan, grade: GradeId, isEngl
         ...block,
         activities: `${guidance.focus}. ${guidance.teacherAction}`,
         checkpoint: guidance.evidence,
-        continuation: sessionIndex === copy.blockGuidance.length - 1 ? copy.extension : block.continuation,
+        title: isEnglish ? (block.kind === 'continuation' ? `Continuation · ${copy.sessionTitles[sessionIndex]}` : 'Main class') : block.title,
+        continuation: sessionIndex === copy.blockGuidance.length - 1 ? copy.extension : (isEnglish ? enText(block.continuation) : block.continuation),
       })),
     };
   }
@@ -586,14 +645,17 @@ export function getGradeSessionPlan(session: SessionPlan, grade: GradeId, isEngl
     } : undefined;
   }).filter(Boolean) as SessionBlock[];
 
+  const baseLocale = isEnglish ? localizeBase(session) : {};
+  const localizedChallenge = isEnglish && openChallenge?.en ? openChallenge.en : openChallenge;
   return {
     ...session,
+    ...baseLocale,
     title: `${session.title.split(' · ')[0]} · ${isEnglish ? 'Open challenge' : 'Desafío abierto'}`,
     purpose: copy.openChallenge,
     question: copy.question,
     blocks,
-    openChallenge: openChallenge ? {
-      ...openChallenge,
+    openChallenge: localizedChallenge ? {
+      ...localizedChallenge,
       need: copy.openNeed,
       challenge: copy.openChallenge,
       complexity: copy.openComplexity,
