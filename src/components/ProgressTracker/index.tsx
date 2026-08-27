@@ -3,6 +3,7 @@ import {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {modules, getModuleTitle} from '@site/src/data/ciudadbots';
 import {sessions as guategeeksSessions, getSessionTitle} from '@site/src/data/guategeeks';
+import CiudadBotsProgress from '@site/src/components/CiudadBotsProgress';
 import styles from './styles.module.css';
 
 const STORAGE_KEYS = {
@@ -54,6 +55,9 @@ function valuesFor(state: TrackerState, item: TrackerItem): boolean[] {
 export default function ProgressTracker({
   program = 'ciudadbots',
 }: ProgressTrackerProps): React.JSX.Element {
+  if (program === 'ciudadbots') {
+    return <CiudadBotsProgress />;
+  }
   const {i18n} = useDocusaurusContext();
   const [state, setState] = useState<TrackerState>({});
   const [mounted, setMounted] = useState(false);

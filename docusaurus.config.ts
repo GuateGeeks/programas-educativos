@@ -75,7 +75,7 @@ const config: Config = {
           path: 'docs',
           // Docs are served from the site root; each program owns a
           // subdirectory of docs/ that supplies its URL segment, e.g.
-          // docs/ciudadbots/mapper-bot.mdx -> /ciudadbots/mapper-bot.
+          // docs/ciudadbots/robot-cartografo.mdx -> /ciudadbots/robot-cartografo.
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
         },

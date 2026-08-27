@@ -2,16 +2,20 @@ import React, {useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {getModule, getModuleTitle, PROGRAMS_BASE} from '@site/src/data/ciudadbots';
+import {getModule, getModuleTitle, getSessionPlansForModule, GRADES, PROGRAMS_BASE} from '@site/src/data/ciudadbots';
+import type {GradeId} from '@site/src/data/ciudadbots';
 import type {PhaseKind} from '@site/src/data/ciudadbots/types';
 import BuildGuide from '@site/src/components/BuildGuide';
-import PhaseTimeline, {type Phase} from '@site/src/components/PhaseTimeline';
+import type {Phase} from '@site/src/components/PhaseTimeline';
 import CnbBlock from '@site/src/components/CnbBlock';
 import CardGrid from '@site/src/components/CardGrid';
 import AchievementIndicators from '@site/src/components/AchievementIndicators';
 import InternationalAlignment from '@site/src/components/InternationalAlignment';
 import CnbSourceLinks from '@site/src/components/CnbSourceLinks';
-import RubricTable, {type RubricRow} from '@site/src/components/RubricTable';
+import TeacherSessionPlan from '@site/src/components/TeacherSessionPlan';
+import GradeEvaluation from '@site/src/components/GradeEvaluation';
+import FinalVisual from '@site/src/components/FinalVisual';
+import {useAccessControl} from '@site/src/components/AccessControl';
 import styles from './styles.module.css';
 
 // ---- Compound sub-components -------------------------------------------
@@ -144,25 +148,8 @@ interface ModuleProps {
 }
 
 type TabKey = 'metodo' | 'recursos' | 'cnb' | 'eval';
-
-const RUBRIC_LEVELS = [
-  translate({
-    id: 'ciudadbots.module.rubric.level4',
-    message: 'Lo demuestra con autonomía, precisión y puede justificar decisiones con evidencia.',
-  }),
-  translate({
-    id: 'ciudadbots.module.rubric.level3',
-    message: 'Lo demuestra de forma correcta y suficiente para cumplir la meta.',
-  }),
-  translate({
-    id: 'ciudadbots.module.rubric.level2',
-    message: 'Lo demuestra parcialmente o necesita apoyo para completarlo.',
-  }),
-  translate({
-    id: 'ciudadbots.module.rubric.level1',
-    message: 'Todavía no logra aplicarlo o explicarlo con claridad.',
-  }),
-] as const;
+type AlignmentView = 'overview' | 'cnb' | 'standards';
+type AlignmentGrade = GradeId | 'general';
 
 /**
  * Reusable renderer for a module's content. Structural fields (number, slug,
@@ -175,13 +162,19 @@ const RUBRIC_LEVELS = [
 const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
   const m = getModule(id);
   const {i18n} = useDocusaurusContext();
+  const {isDemo} = useAccessControl();
   const title = getModuleTitle(id, i18n.currentLocale);
-  const leadWithInternational = i18n.currentLocale === 'en';
   const [tab, setTab] = useState<TabKey>('metodo');
+  const [programGrade, setProgramGrade] = useState<GradeId>('1-basico');
+  const [alignmentView, setAlignmentView] = useState<AlignmentView>('overview');
+  const [alignmentGrade, setAlignmentGrade] = useState<AlignmentGrade>('1-basico');
   const programHref = useBaseUrl(`${PROGRAMS_BASE}${m.program}`);
-  const pdfHref = useBaseUrl(`/assets/ciudadbots/${m.slug}-guia-construccion.pdf`);
+  const studentHref = useBaseUrl(`/estudiante?module=${id}`);
 
   const content = collectChildren(children);
+  const modulePlan = getSessionPlansForModule(id)[0];
+  const gradeExpectation = alignmentGrade === 'general' ? undefined : modulePlan?.expectations.find((item) => item.grade === alignmentGrade);
+  const syncGrade = (nextGrade: GradeId) => { setProgramGrade(nextGrade); setAlignmentGrade(nextGrade); };
   const actualKinds = content.phases.map((p) => p.kind).join(',');
   const expectedKinds = m.phaseKinds.join(',');
   if (actualKinds !== expectedKinds) {
@@ -201,25 +194,27 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
       )
     : undefined;
 
-  const rubricRows: RubricRow[] = content.evaluation.map((criterion) => ({
-    criterion,
-    levels: RUBRIC_LEVELS,
-  }));
-
-  const TABS: {key: TabKey; label: string}[] = [
-    {key: 'metodo', label: translate({id: 'ciudadbots.module.tab.metodo', message: 'Implementación'})},
-    {key: 'recursos', label: translate({id: 'ciudadbots.module.tab.recursos', message: 'Recursos'})},
-    {key: 'cnb', label: translate({id: 'ciudadbots.module.tab.cnb', message: 'CNB y estándares'})},
-    {key: 'eval', label: translate({id: 'ciudadbots.module.tab.eval', message: 'Evaluación'})},
+  const TABS: {key: TabKey; label: string; hint: string}[] = [
+    {key: 'metodo', label: translate({id: 'ciudadbots.module.tab.metodo', message: 'Implementación'}), hint: 'Plan y sesiones'},
+    {key: 'recursos', label: translate({id: 'ciudadbots.module.tab.recursos', message: 'Recursos'}), hint: 'Material listo'},
+    {key: 'cnb', label: translate({id: 'ciudadbots.module.tab.cnb', message: 'CNB y estándares'}), hint: 'Alineación'},
+    {key: 'eval', label: translate({id: 'ciudadbots.module.tab.eval', message: 'Evaluación'}), hint: 'Referencia docente'},
   ];
+  const activeTab = TABS.find((item) => item.key === tab) || TABS[0];
 
-  const cnbItems = content.cnb.map((text) => ({
-    area: translate({id: 'ciudadbots.module.cnb.area', message: 'Área curricular'}),
-    text,
-  }));
+  const gradeLens = {
+    '1-basico': 'En este grado: reconocer componentes, seguir secuencias y explicar el resultado con apoyo visual.',
+    '2-basico': 'En este grado: medir, comparar pruebas y justificar ajustes con datos sencillos.',
+    '3-basico': 'En este grado: diseñar, documentar y defender una solución con criterios de éxito.',
+  } satisfies Record<GradeId, string>;
+  const selectedGradeLens = alignmentGrade === 'general' ? '' : gradeLens[alignmentGrade];
+  const cnbItems = content.cnb.map((text) => {
+    const [area, ...detail] = text.split(':');
+    return {area: area || translate({id: 'ciudadbots.module.cnb.area', message: 'Área curricular'}), text: `${detail.join(':').trim() || text}${selectedGradeLens ? ` ${selectedGradeLens}` : ''}`};
+  });
   const standardsItems = content.standards.map((text) => ({
-    title: translate({id: 'ciudadbots.module.standards.itemTitle', message: 'Aplicación específica del módulo'}),
-    text,
+    title: `${alignmentGrade === 'general' ? 'General' : GRADES.find((grade) => grade.id === alignmentGrade)?.label} · ${translate({id: 'ciudadbots.module.standards.itemTitle', message: 'Aplicación específica del módulo'})}`,
+    text: `${text}${selectedGradeLens ? ` ${selectedGradeLens}` : ''}`,
   }));
 
   const cnbBlock = (
@@ -227,7 +222,7 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
       badge="CNB"
       title={translate({
         id: 'ciudadbots.module.cnb.title',
-        message: 'Alineación Guatemala · Ciclo Básico · 1.º, 2.º y 3.º básico',
+        message: alignmentGrade === 'general' ? 'Alineación Guatemala · Ciclo Básico · 1.º, 2.º y 3.º básico' : `Alineación Guatemala · Ciclo Básico · ${GRADES.find((grade) => grade.id === alignmentGrade)?.label}`,
       })}
       items={cnbItems}
     />
@@ -235,25 +230,52 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
 
   const internationalBlock = (
     <>
-      <InternationalAlignment />
-      <CardGrid items={standardsItems} />
+      <InternationalAlignment grade={alignmentGrade} />
+      {alignmentGrade !== 'general' && <div className={styles.gradeStandards}><div><span className={styles.alignmentEyebrow}>Aplicación del módulo</span><h4>Cómo se evidencia en {GRADES.find((grade) => grade.id === alignmentGrade)?.label}</h4><p>Estas son las conexiones concretas entre Robot Cartógrafo y los estándares seleccionados.</p></div><CardGrid items={standardsItems} /></div>}
     </>
+  );
+
+  const alignmentPanel = (
+    <div className={styles.alignmentExperience}>
+      <div className={styles.alignmentSectionHead}><div><span className={styles.alignmentEyebrow}>Marco de referencia</span><h3>CNB y estándares</h3><p>Consulte el propósito curricular, la progresión por grado y las referencias internacionales del módulo.</p></div><span className={styles.alignmentViewCount}>3 vistas</span></div>
+      <div className={styles.alignmentSummary}>
+        <div><span className={styles.alignmentIcon}>CNB</span><strong>Ruta curricular</strong><small>Qué se trabaja en Guatemala</small></div>
+        <div><span className={styles.alignmentIcon}>{content.cnb.length}</span><strong>Áreas relacionadas</strong><small>Conexiones del módulo</small></div>
+        <div><span className={styles.alignmentIcon}>{content.standards.length}</span><strong>Referencias globales</strong><small>Estándares aplicados</small></div>
+      </div>
+      <div className={styles.alignmentToolbar} role="tablist" aria-label="Vista de alineación">
+        {([['overview', 'Resumen'], ['cnb', 'CNB'], ['standards', 'Estándares']] as [AlignmentView, string][]).map(([view, label], index) => <button key={view} type="button" role="tab" aria-selected={alignmentView === view} className={alignmentView === view ? styles.alignmentActive : ''} onClick={() => setAlignmentView(view)}><span>0{index + 1}</span>{label}</button>)}
+        <label className={styles.alignmentGrade}><span>Mostrar</span><select value={alignmentGrade} onChange={(event) => { const next = event.target.value as AlignmentGrade; setAlignmentGrade(next); if (next !== 'general') setProgramGrade(next); }}><option value="general">Todos los grados · panorama completo</option>{GRADES.map((grade) => <option key={grade.id} value={grade.id}>{grade.label}</option>)}</select></label>
+      </div>
+      <div className={styles.alignmentGradeCard} aria-live="polite"><span className={styles.alignmentEyebrow}>{alignmentGrade === 'general' ? 'Panorama completo · 1.º, 2.º y 3.º básico' : `Vista filtrada · ${GRADES.find((grade) => grade.id === alignmentGrade)?.label}`}</span><strong>{gradeExpectation?.minimum || 'Consulte la progresión completa y seleccione un grado para ver únicamente su alcance.'}</strong><p>{gradeExpectation?.support || 'El panorama completo reúne los tres niveles para planificar; cada vista de grado reduce la información a lo que debe observar.'}</p></div>
+      {alignmentView === 'overview' && <div className={styles.alignmentOverview}><button type="button" onClick={() => setAlignmentView('cnb')}><strong>CNB Guatemala</strong><span>Áreas, competencias e indicadores que puede observar.</span><b>Explorar CNB →</b></button><button type="button" onClick={() => setAlignmentView('standards')}><strong>Estándares internacionales</strong><span>Lenguaje común para comunicar el impacto del programa.</span><b>Explorar estándares →</b></button></div>}
+      {alignmentView === 'cnb' && <div className={styles.alignmentDetail}>{cnbBlock}<AchievementIndicators moduleTitle={title} grade={alignmentGrade} /><CnbSourceLinks /></div>}
+      {alignmentView === 'standards' && <div className={styles.alignmentDetail}>{internationalBlock}</div>}
+    </div>
   );
 
   return (
     <section className={styles.module}>
+      <div className={styles.moduleLead}>
+        <div>
+          <span className={styles.moduleKicker}>CiudadBots Guatemala · Módulo {m.n}</span>
+          <strong>{title}</strong>
+          <small>Una vista de trabajo para preparar, acompañar y cerrar esta experiencia.</small>
+        </div>
+        <span className={styles.moduleStatus}>{m.sessions} sesiones sugeridas</span>
+      </div>
       {content.question && (
-        <p className={styles.question}>
+        <div className={styles.question}>
           <strong>
             <Translate id="ciudadbots.module.drivingQuestion">Pregunta motora.</Translate>
           </strong>{' '}
-          {content.question}
-        </p>
+          <span>{content.question}</span>
+        </div>
       )}
       {content.context && <div className={styles.context}>{content.context}</div>}
 
-      <div
-        className={styles.tabs}
+      <div className={styles.navigationCard}>
+        <div className={styles.tabs}
         role="tablist"
         aria-label={translate(
           {id: 'ciudadbots.module.tablistLabel', message: 'Secciones de {title}'},
@@ -267,47 +289,66 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
             className={`${styles.tab} ${tab === t.key ? styles.tabActive : ''}`}
             onClick={() => setTab(t.key)}
             type="button">
-            {t.label}
+            <span className={styles.tabNumber}>0{TABS.indexOf(t) + 1}</span>
+            <span><strong>{t.label}</strong><small>{t.hint}</small></span>
           </button>
         ))}
+        </div>
+        <div className={styles.navigationLegend}><span>{activeTab.label}</span><small>{activeTab.hint} · {translate({id: 'ciudadbots.module.navigation.primaryHint', message: 'Seleccione una vista y avance por bloques.'})}</small></div>
       </div>
 
       {tab === 'metodo' && (
         <div className={styles.panel}>
-          <div className={styles.chips}>
-            {content.concepts.map((c) => (
-              <span className={styles.chip} key={c}>
-                {c}
-              </span>
-            ))}
-          </div>
-          <PhaseTimeline phases={content.phases} />
+          <div className={styles.sectionIntro}><span>01 · Ruta de implementación</span><h3>Del reto a la prueba</h3><p>Trabaje el módulo por bloques de 60 minutos y avance según la evidencia del grupo.</p></div>
+          <details className={styles.conceptsDisclosure}>
+            <summary><span>Conceptos del módulo</span><small>{content.concepts.length} focos técnicos</small></summary>
+            <div className={styles.chips}>
+              {content.concepts.map((c) => <span className={styles.chip} key={c}>{c}</span>)}
+            </div>
+          </details>
+          <TeacherSessionPlan moduleId={id} grade={programGrade} onGradeChange={syncGrade} />
+          {isDemo && m.guide && (
+            <button className={styles.guideShortcut} type="button" onClick={() => setTab('recursos')}>
+              <span><strong>Guía visual de construcción</strong><small>Abra los pasos ilustrados de este robot</small></span>
+              <span aria-hidden="true">Ver recursos →</span>
+            </button>
+          )}
         </div>
       )}
 
       {tab === 'recursos' && (
         <div className={styles.panel}>
+          <div className={styles.sectionIntro}><span>02 · Material de clase</span><h3>Recursos listos para usar</h3><p>Prepare el programa, consulte la guía y comparta únicamente lo que el estudiante necesita.</p></div>
           <div className={styles.resourceCard}>
-            <strong>
-              <Translate id="ciudadbots.module.resource.programTitle">Programa base LEGO SPIKE / LLSP</Translate>
-            </strong>
-            <p>
+            <div className={styles.resourceHeader}>
+              <div>
+                <span className={styles.resourceEyebrow}>Recurso del módulo</span>
+                <strong>
+                  <Translate id="ciudadbots.module.resource.programTitle">Programa base LEGO SPIKE / LLSP</Translate>
+                </strong>
+              </div>
+              <span className={styles.resourceFormat}>.LLSP</span>
+            </div>
+            <p className={styles.resourceDescription}>
               <Translate id="ciudadbots.module.resource.programBody">
                 Úselo como base de implementación del módulo. Puede abrirlo antes de clase para revisar
                 bloques, sensores y la secuencia esperada.
               </Translate>
             </p>
-            <a className={styles.download} href={programHref} download>
-              {translate({id: 'ciudadbots.module.resource.download', message: 'Descargar {program}'}, {program: m.program})}
-            </a>
+            <div className={styles.resourceHint}>Primero revise el programa. Después comparta la vista de estudiante para que cada equipo avance a su ritmo. Si no abre con doble clic, impórtelo desde <strong>LEGO Education SPIKE · Abrir proyecto</strong>.</div>
+            <div className={styles.resourceActions}>
+              <a className={styles.download} href={programHref} download>
+                {translate({id: 'ciudadbots.module.resource.download', message: 'Descargar {program}'}, {program: `${title} · ${m.program}`})}
+              </a>
+              <a className={styles.studentLink} href={studentHref}>
+                <Translate id="ciudadbots.module.resource.shareStudent">Abrir vista de estudiante</Translate>
+              </a>
+            </div>
           </div>
 
           {m.guide && guideTitle ? (
             <div className={styles.guideBlock}>
               <BuildGuide guide={m.guide} title={guideTitle} />
-              <a className={styles.pdfLink} href={pdfHref} download>
-                <Translate id="ciudadbots.module.resource.downloadPdf">Descargar guía en PDF</Translate>
-              </a>
             </div>
           ) : (
             <div className={`${styles.resourceCard} ${styles.pending}`}>
@@ -325,44 +366,20 @@ const ModuleImpl: React.FC<ModuleProps> = ({id, children}) => {
               </span>
             </div>
           )}
+          <FinalVisual src={m.finalVisual.src} version={m.finalVisual.version} title={title} />
         </div>
       )}
 
       {tab === 'cnb' && (
         <div className={styles.panel}>
-          {leadWithInternational ? (
-            <>
-              {internationalBlock}
-              <details className={styles.secondary}>
-                <summary>
-                  <Translate id="ciudadbots.module.cnb.secondarySummary">
-                    Guatemala National Curriculum (CNB) alignment
-                  </Translate>
-                </summary>
-                {cnbBlock}
-                <AchievementIndicators moduleTitle={title} />
-                <CnbSourceLinks />
-              </details>
-            </>
-          ) : (
-            <>
-              {cnbBlock}
-              <AchievementIndicators moduleTitle={title} />
-              {internationalBlock}
-              <CnbSourceLinks />
-            </>
-          )}
+          {alignmentPanel}
         </div>
       )}
 
       {tab === 'eval' && (
         <div className={styles.panel}>
-          <p className={styles.scaleNote}>
-            <Translate id="ciudadbots.module.eval.scaleNote">
-              Escala sugerida: 4 = Sobresaliente, 3 = Logrado, 2 = En proceso, 1 = Inicial.
-            </Translate>
-          </p>
-          <RubricTable rows={rubricRows} />
+          <div className={`${styles.sectionIntro} ${styles.sectionIntroCompact}`}><span>04 · Referencia docente</span><p>Use la evidencia del equipo para orientar la retroalimentación y el siguiente paso.</p></div>
+          <GradeEvaluation moduleId={id} grade={programGrade} onGradeChange={syncGrade} />
         </div>
       )}
     </section>

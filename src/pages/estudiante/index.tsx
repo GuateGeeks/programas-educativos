@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from '@theme/Layout';
 import Translate, {translate} from '@docusaurus/Translate';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {getModule, getModuleTitle} from '@site/src/data/ciudadbots';
+import {getModule, getModuleTitle, modules} from '@site/src/data/ciudadbots';
 import BuildGuide from '@site/src/components/BuildGuide';
+import FinalVisual from '@site/src/components/FinalVisual';
 import styles from './styles.module.css';
 
 const STUDENT_MODULE_ID = 'm1';
@@ -16,8 +17,13 @@ const STUDENT_MODULE_ID = 'm1';
  */
 export default function EstudiantePage(): React.JSX.Element {
   const {i18n} = useDocusaurusContext();
-  const module = getModule(STUDENT_MODULE_ID);
-  const title = getModuleTitle(STUDENT_MODULE_ID, i18n.currentLocale);
+  const [studentModuleId, setStudentModuleId] = useState(STUDENT_MODULE_ID);
+  useEffect(() => {
+    const requested = new URLSearchParams(window.location.search).get('module');
+    if (requested && modules.some((item) => item.id === requested)) setStudentModuleId(requested);
+  }, []);
+  const module = getModule(studentModuleId);
+  const title = getModuleTitle(studentModuleId, i18n.currentLocale);
   const guide = module.guide;
 
   const ROLES = [
@@ -95,6 +101,7 @@ export default function EstudiantePage(): React.JSX.Element {
               </Translate>
             </p>
           )}
+          <FinalVisual src={module.finalVisual.src} version={module.finalVisual.version} title={title} />
           <p className={styles.tip}>
             <Translate id="ciudadbots.estudiante.tip">
               Antes de avanzar, comparen el robot físico con la imagen. Si algo no coincide,

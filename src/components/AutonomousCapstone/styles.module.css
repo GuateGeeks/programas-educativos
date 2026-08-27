@@ -1,0 +1,35 @@
+.panel { display: grid; gap: 16px; margin: 24px 0; padding: 20px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 16px; background: var(--ifm-background-surface-color); box-shadow: 0 14px 32px var(--glass-shadow); }
+.header { display: flex; justify-content: space-between; gap: 18px; align-items: flex-start; }
+.header h3 { margin: 3px 0; }
+.header p { margin: 0; max-width: 54rem; color: var(--ifm-color-emphasis-700); }
+.eyebrow { color: var(--gg-coral-500); font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.controls { display: flex; gap: 8px; flex-wrap: wrap; }
+.controls label { display: grid; gap: 4px; font-size: 11px; font-weight: 800; color: var(--ifm-color-emphasis-700); }
+.controls input, .controls select { min-height: 36px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; padding: 7px 9px; background: var(--ifm-background-color); color: inherit; }
+.contexts, .expectation, .detail { padding: 14px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px; }
+.contexts > div { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 8px; }
+.contexts span { border: 1px solid rgba(239, 133, 86, .32); border-radius: 999px; padding: 6px 9px; color: var(--gg-coral-500); font-size: 12px; }
+.expectation { display: grid; gap: 4px; border-left: 4px solid var(--gg-sky-500); background: rgba(67, 169, 199, .07); }
+.expectation span { color: var(--gg-sky-600); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.expectation strong { font-size: 15px; }
+.expectation p, .detail > p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.milestones { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.milestones button { display: grid; grid-template-columns: auto 1fr; gap: 4px 8px; align-items: center; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 11px; background: var(--ifm-background-color); color: inherit; text-align: left; cursor: pointer; }
+.milestones button:hover, .milestones .active { border-color: var(--gg-coral-500); }
+.milestones .active { background: rgba(239, 133, 86, .08); }
+.milestones b { grid-row: span 2; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--gg-coral-500); color: #fff; }
+.milestones small { color: var(--ifm-color-emphasis-700); font-size: 11px; }
+.detail { display: grid; gap: 12px; }
+.detailTop { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.detail h4 { margin: 3px 0 0; }
+.status, .form button { border: 1px solid var(--gg-coral-500); border-radius: 8px; padding: 8px 11px; background: var(--gg-coral-500); color: #fff; cursor: pointer; font-weight: 800; }
+.columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.columns > div { padding: 11px; border-radius: 9px; background: rgba(31, 41, 55, .035); }
+.columns ul { margin: 7px 0 0; padding-left: 18px; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.form label { display: grid; gap: 5px; font-size: 12px; font-weight: 800; }
+.form textarea { min-height: 78px; resize: vertical; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; padding: 8px; background: var(--ifm-background-color); color: inherit; font: inherit; }
+.form button { min-height: 40px; }
+.note { padding: 10px 12px; border-left: 3px solid var(--gg-sky-500); color: var(--ifm-color-emphasis-700); font-size: 12px; }
+.alignment { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 11px 12px; }.alignment summary { cursor: pointer; color: var(--gg-coral-500); font-weight: 800; }.alignmentGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-top:10px; }.alignmentGrid > div { min-width:0; padding:10px; border-radius:8px; background:rgba(67,169,199,.06); }.alignmentGrid ul { margin:6px 0 0; padding-left:18px; color:var(--ifm-color-emphasis-700); font-size:12px; }
+@media (max-width: 700px) { .header, .detailTop { flex-direction: column; } .controls { width: 100%; } .controls label { flex: 1; } .milestones, .columns, .form, .alignmentGrid { grid-template-columns: 1fr; } }

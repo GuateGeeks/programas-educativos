@@ -752,6 +752,36 @@
   "ciudadbots.module.resource.guidePendingTag": {
     "message": "Viewer pending"
   },
+  "ciudadbots.finalVisual.eyebrow": {
+    "message": "Visual reference"
+  },
+  "ciudadbots.finalVisual.title": {
+    "message": "This is the finished result"
+  },
+  "ciudadbots.finalVisual.open": {
+    "message": "Enlarge visual reference for {title}"
+  },
+  "ciudadbots.finalVisual.alt": {
+    "message": "{title}, completed robot"
+  },
+  "ciudadbots.finalVisual.enlarge": {
+    "message": "View large image"
+  },
+  "ciudadbots.finalVisual.caption": {
+    "message": "Use the image to recognize the expected result and discuss what could be improved."
+  },
+  "ciudadbots.finalVisual.close": {
+    "message": "Close image"
+  },
+  "ciudadbots.finalVisual.pendingLabel": {
+    "message": "Visual reference pending"
+  },
+  "ciudadbots.finalVisual.pendingTitle": {
+    "message": "Final image in preparation"
+  },
+  "ciudadbots.finalVisual.pendingBody": {
+    "message": "This reference will be added when the final model and its visual guide are ready."
+  },
   "ciudadbots.module.cnb.secondarySummary": {
     "message": "Guatemala National Curriculum (CNB) alignment"
   },

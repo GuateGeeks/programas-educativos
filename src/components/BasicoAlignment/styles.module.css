@@ -39,3 +39,36 @@
   font-size: 12px;
   line-height: 1.55;
 }
+
+.filtered {
+  grid-template-columns: 1fr;
+}
+
+.filtered .card {
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
+  gap: 8px 20px;
+  align-items: start;
+}
+
+.filtered .card h4,
+.filtered .card p {
+  grid-column: 1;
+}
+
+.filtered .card ul {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+}
+
+@media (max-width: 780px) {
+  .filtered .card {
+    grid-template-columns: 1fr;
+  }
+
+  .filtered .card ul {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}

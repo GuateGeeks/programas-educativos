@@ -1,0 +1,121 @@
+.shell {
+  display: grid;
+  gap: 16px;
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 16px;
+  background: var(--ifm-background-surface-color);
+  box-shadow: 0 14px 32px var(--glass-shadow);
+}
+
+.header { display: flex; gap: 20px; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; }
+.eyebrow, .kind { color: var(--gg-coral-500); font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; }
+.header h3, .detail h4 { margin: 4px 0; }
+.header p, .purpose, .question span { color: var(--ifm-color-emphasis-700); }
+.header p { margin: 0; max-width: 54rem; }
+.libraryLink { display: inline-flex; margin-top: 8px; color: var(--gg-coral-500); font-size: 13px; font-weight: 800; }
+.planMetrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; }
+.planMetrics > div { display: grid; grid-template-columns: auto 1fr; column-gap: 8px; align-items: center; min-width: 0; padding: 10px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: var(--ifm-background-color); }
+.planMetrics strong, .planMetrics small { grid-column: 2; overflow-wrap: anywhere; }
+.planMetrics small { color: var(--ifm-color-emphasis-700); font-size: 11px; }
+.metricIcon { grid-row: span 2; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 9px; background: rgba(239, 133, 86, .12); color: var(--gg-coral-500); font-size: 11px; font-weight: 900; }
+.gradeSelect { display: grid; gap: 5px; min-width: 150px; font-size: 12px; font-weight: 700; }
+.gradeSelect select { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; background: var(--ifm-background-color); padding: 8px 10px; color: var(--ifm-font-color-base); }
+.route { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 8px; }
+.routeSwitch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.routeSwitch button { display: grid; gap: 3px; text-align: left; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 12px; background: var(--ifm-background-color); color: inherit; cursor: pointer; }
+.routeSwitch button:hover, .routeActive { border-color: var(--gg-coral-500) !important; background: rgba(239, 133, 86, .08) !important; }
+.routeSwitch button:focus-visible, .sessionButton:focus-visible, .blockNav button:focus-visible, .detailControls button:focus-visible { outline: 2px solid var(--gg-coral-500); outline-offset: 2px; }
+.routeSwitch small { color: var(--ifm-color-emphasis-700); }
+.gradeContext { display: grid; gap: 3px; padding: 10px 12px; border-left: 3px solid var(--gg-coral-500); background: rgba(239, 133, 86, .07); }
+.gradeContext strong { overflow-wrap: anywhere; }
+.gradeContext small { color: var(--ifm-color-emphasis-700); overflow-wrap: anywhere; }
+.sessionButton { display: flex; gap: 10px; align-items: center; text-align: left; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 10px; background: var(--ifm-background-color); color: inherit; cursor: pointer; min-width: 0; }
+.sessionButton:hover, .selected { border-color: var(--gg-coral-500); background: rgba(239, 133, 86, .08); }
+.sessionButton { transition: transform .25s cubic-bezier(.22,1,.36,1), border-color .25s ease, background .25s ease; }
+.sessionButton:hover { transform: translateY(-2px); }
+.sessionButton strong, .sessionButton small { display: block; overflow-wrap: anywhere; }
+.sessionButton small { margin-top: 3px; color: var(--ifm-color-emphasis-700); }
+.sessionNumber { color: var(--gg-coral-500); font-weight: 800; font-size: 18px; }
+.detail { display: grid; gap: 14px; border-top: 3px solid var(--gg-coral-500); padding-top: 16px; }
+.detail.open { border-top-color: var(--gg-sky-500); }
+.detailTop { display: flex; justify-content: space-between; gap: 14px; align-items: flex-start; }
+.duration { white-space: nowrap; border-radius: 999px; padding: 5px 10px; background: rgba(67, 169, 199, .12); color: var(--gg-sky-600); font-weight: 800; font-size: 12px; }
+.purpose { margin: 0; }
+.question { display: grid; gap: 4px; padding: 12px; border-left: 4px solid var(--gg-coral-500); background: var(--ifm-background-color); }
+.blockNav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.blockNav button { display: flex; align-items: center; gap: 8px; min-width: 0; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px; background: var(--ifm-background-color); color: inherit; cursor: pointer; text-align: left; }
+.blockNav button b { display: grid; place-items: center; width: 24px; height: 24px; flex: 0 0 auto; border-radius: 50%; background: var(--ifm-color-emphasis-200); }
+.blockNav button span { overflow-wrap: anywhere; }
+.blockActive { border-color: var(--gg-coral-500) !important; background: rgba(239, 133, 86, .08) !important; }
+.blockActive b { background: var(--gg-coral-500) !important; color: #fff; }
+.currentBlock { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(220px, .8fr); gap: 12px; min-width: 0; padding: 14px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: var(--ifm-background-color); }
+.currentBlock > div { min-width: 0; }
+.currentBlock h5 { margin: 3px 0; font-size: 1.15rem; }
+.currentBlock p { margin: 0; color: var(--ifm-color-emphasis-700); }
+.checkpoint { display: grid; gap: 5px; align-content: start; min-width: 0; padding: 11px; border-left: 3px solid var(--gg-sky-500); }
+.checkpoint span, .checkpoint small { min-width: 0; color: var(--ifm-color-emphasis-700); overflow-wrap: anywhere; }
+.gradeGuide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.gradeGuide > div { min-width: 0; padding: 12px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: rgba(67, 169, 199, .06); }
+.gradeGuide strong { display: block; margin-top: 4px; }
+.gradeGuide p { margin: 6px 0 0; color: var(--ifm-color-emphasis-700); font-size: 13px; overflow-wrap: anywhere; }
+.visualReference { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 360px); gap: 14px; align-items: center; padding: 12px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: rgba(67, 169, 199, .05); }
+.visualReference strong { display: block; margin-top: 4px; }
+.visualReference p { margin: 6px 0 0; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.visualReference img { display: block; width: 100%; max-height: 240px; object-fit: contain; border-radius: 8px; background: #fff; box-shadow: 0 8px 20px var(--glass-shadow); }
+.visualReferenceHint { display: block; margin-top: 8px; color: var(--ifm-color-emphasis-700); font-size: 12px; line-height: 1.45; }
+.detailControls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.detailControls button { display: flex; justify-content: space-between; gap: 6px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px; background: var(--ifm-background-color); color: inherit; cursor: pointer; font-weight: 700; text-align: left; }
+.detailControls button:hover { border-color: var(--gg-coral-500); color: var(--gg-coral-500); }
+.detailControls button:focus-visible { outline: 2px solid var(--gg-coral-500); outline-offset: 2px; }
+.detailLegend { display: grid; gap: 3px; padding: 10px 12px 0; border-top: 1px solid var(--ifm-color-emphasis-300); }
+.detailLegend small { color: var(--ifm-color-emphasis-700); overflow-wrap: anywhere; }
+.implementationPhases { display: grid; gap: 9px; }
+.sectionLabel { color: var(--ifm-color-emphasis-700); font-size: 12px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+.resourceGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.resourceGrid > div, .evaluationPanel { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 12px; background: var(--ifm-background-color); }
+.resourceGrid ul { margin: 8px 0 0; padding-left: 18px; }
+.resourceGrid li { margin-bottom: 7px; }.resourceGrid li span, .resourceGrid li small { display: block; }.resourceGrid li small { color: var(--ifm-color-emphasis-700); }
+.evaluationPanel p { margin: 6px 0 0; color: var(--ifm-color-emphasis-700); }
+.challengeCard { display: grid; gap: 12px; margin-top: 16px; padding: 16px; border: 1px solid rgba(239, 133, 86, .38); border-radius: 14px; background: linear-gradient(135deg, rgba(239, 133, 86, .08), rgba(67, 169, 199, .06)); }
+.challengeHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.challengeHeader h5 { margin: 3px 0 0; font-size: 1.1rem; }
+.challengeLevel { flex: 0 0 auto; border: 1px solid rgba(239, 133, 86, .4); border-radius: 999px; padding: 5px 9px; color: var(--gg-coral-500); font-size: 11px; font-weight: 800; }
+.challengeContext { margin: 0; color: var(--ifm-color-emphasis-700); }
+.challengeFocus { display: grid; gap: 4px; padding: 11px 12px; border-left: 3px solid var(--gg-sky-500); background: rgba(67, 169, 199, .08); }
+.challengeFocus span { font-weight: 700; }
+.challengeGrid, .challengeDetailGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.challengeGrid > div, .challengeDetailGrid > div { min-width: 0; padding: 11px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; background: var(--ifm-background-color); }
+.challengeGrid p, .challengeDetailGrid p { margin: 5px 0 0; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.challengeDetails { border-top: 1px solid var(--ifm-color-emphasis-300); padding-top: 10px; }
+.challengeDetails summary { cursor: pointer; color: var(--gg-coral-500); font-weight: 800; }
+.challengeDetailGrid { margin-top: 10px; }
+.challengeDetailGrid ul { margin: 5px 0 0; padding-left: 18px; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.openNotice { margin: 10px 0 0; color: var(--ifm-color-emphasis-700); font-size: 12px; font-style: italic; }
+.metaGrid, .alignment, .gradeGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.metaGrid > div, .alignment > div, .gradeGrid > div { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; padding: 12px; min-width: 0; }
+.metaGrid ul, .alignment ul, .checkpoint ul { margin: 8px 0 0; padding-left: 18px; }
+.phaseGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.phase { border-radius: 10px; padding: 12px; background: rgba(239, 133, 86, .08); border-top: 4px solid var(--gg-coral-500); }
+.phase.exp { border-top-color: var(--gg-sky-500); background: rgba(67, 169, 199, .08); }
+.phase.cre { border-top-color: #6f5aa8; background: rgba(111, 90, 168, .08); }
+.phase.ref { border-top-color: #b24d27; background: rgba(178, 77, 39, .08); }
+.phase span { font-size: 11px; font-weight: 800; color: var(--ifm-color-emphasis-700); }
+.phase strong { display: block; margin-top: 5px; }
+.phase p { margin: 7px 0 0; font-size: 13px; color: var(--ifm-color-emphasis-700); }
+.checkpoint { padding: 14px; border-radius: 10px; background: var(--ifm-background-color); }
+.checkpoint p { margin: 0; color: var(--ifm-color-emphasis-700); }
+.checkpoint ul { margin: 0; }
+.gradeDetails { border: 1px dashed var(--ifm-color-emphasis-300); border-radius: 10px; padding: 12px; }
+.gradeDetails summary { cursor: pointer; font-weight: 800; }
+.gradeGrid { margin-top: 12px; }
+.gradeGrid p { margin: 5px 0 0; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.alignment { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.alignment p { margin: 8px 0 0; color: var(--ifm-color-emphasis-700); }
+.sessionSupport { display: grid; gap: 7px; padding: 14px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; background: rgba(67, 169, 199, .06); }
+.sessionSupport p { margin: 0; color: var(--ifm-color-emphasis-700); }
+.sessionSupport small { color: var(--ifm-color-emphasis-700); }
+
+@media (max-width: 800px) { .phaseGrid, .metaGrid, .alignment, .gradeGrid, .resourceGrid, .gradeGuide { grid-template-columns: 1fr 1fr; } .currentBlock, .visualReference { grid-template-columns: 1fr; } .detailControls { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .phaseGrid, .metaGrid, .alignment, .gradeGrid, .resourceGrid, .gradeGuide, .routeSwitch, .detailControls, .challengeGrid, .challengeDetailGrid, .planMetrics { grid-template-columns: 1fr; } .blockNav { grid-template-columns: 1fr; } .shell { padding: 14px; } .checkpoint { border-left: 0; border-top: 3px solid var(--gg-sky-500); } .challengeHeader { flex-direction: column; } }

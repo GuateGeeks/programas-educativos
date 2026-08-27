@@ -50,3 +50,15 @@ Los 12 módulos se editan en dos lugares:
 
 Español (`es`) es el idioma por defecto; inglés (`en`) está configurado y usa el contenido en
 español como respaldo hasta que se agreguen traducciones (`npm run write-translations`).
+
+## Acceso de demos
+
+El recorrido demo gratuito de CiudadBots se activa con un enlace como
+`/programas-educativos/ciudadbots/?demo=ciudadbots` y habilita el overview, los módulos
+01–03, Showcase y Cobertura y progresión durante 30 días en esa sesión del navegador.
+Los demás módulos se muestran atenuados y no son accionables. El acceso completo de
+validación local puede abrirse con `?access=authorized`.
+
+Este control limita la experiencia y la navegación del sitio estático. GitHub Pages no
+protege la confidencialidad de HTML, JavaScript, PDF ni otros archivos publicados; para
+material sensible debe colocarse un proxy o servidor con autenticación antes de publicarlo.

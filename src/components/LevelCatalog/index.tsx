@@ -6,7 +6,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import styles from './styles.module.css';
 
 type Program = {title: string; level: string; complexity: number; description: string; meta: string[]; image: string; available?: boolean; href?: string; studentHref?: string};
-type Level = {slug: string; tag: [string, string]; title: [string, string]; intro: [string, string]; image: string; theme: string; programs: Program[]};
+type Level = {slug: string; tag: string[]; title: string[]; intro: string[]; image: string; theme: string; programs: Program[]};
 
 const levels: Record<string, Level> = {
   explorador: {slug: 'explorador', tag: ['Nivel explorador', 'Explorer level'], title: ['Primeras experiencias para descubrir tecnología', 'First experiences to discover technology'], intro: ['Una ruta visual y amigable para introducir pensamiento lógico, juego guiado y tecnología aplicada desde edades tempranas.', 'A visual and approachable pathway to introduce logical thinking, guided play, and applied technology from an early stage.'], image: '/assets/platform/levels/explorador.png', theme: 'explorer', programs: [

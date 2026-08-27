@@ -12,8 +12,9 @@ interface BuildGuideProps {
   initialPage?: number;
 }
 
-function pagePath(imageBase: string, page: number): string {
-  return `${imageBase}${String(page).padStart(2, '0')}.jpg`;
+function pagePath(imageBase: string, page: number, pageDigits = 2, imageExtension = 'jpg'): string {
+  const filename = `${imageBase}${String(page).padStart(pageDigits, '0')}.${imageExtension}`;
+  return filename;
 }
 
 /**
@@ -32,7 +33,7 @@ export default function BuildGuide({guide, title, initialPage = 1}: BuildGuidePr
   );
 
   // Base-url resolved image src (respects site baseUrl for static assets).
-  const src = useBaseUrl(pagePath(imageBase, page));
+  const src = useBaseUrl(pagePath(imageBase, page, guide.pageDigits, guide.imageExtension));
 
   const atStart = page === 1;
   const atEnd = page === pages;
@@ -123,7 +124,7 @@ export default function BuildGuide({guide, title, initialPage = 1}: BuildGuidePr
         </button>
       </div>
       <div className={styles.stage}>
-        <img src={src} alt={pageAlt} draggable={false} loading="lazy" />
+        <img src={src} alt={pageAlt} draggable={false} loading="eager" />
       </div>
 
       {lightbox && (

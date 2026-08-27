@@ -10,7 +10,7 @@ export interface CurriculumLink {
   linkLabel?: string;
 }
 
-export type CurriculumRow = readonly [string, string, string, string];
+export type CurriculumRow = readonly string[];
 
 export interface SmarsCurriculumContent {
   readingNote: string;

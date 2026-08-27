@@ -1,0 +1,39 @@
+.container { display: grid; grid-template-columns: minmax(0, 1fr); gap: .7rem; margin: 1.2rem 0 2rem; }
+.linearSteps { margin: 1.2rem 0 2rem; border: 1px solid var(--ifm-color-emphasis-300); border-radius: .9rem; background: var(--glass-bg); overflow: hidden; }
+.stepRail { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--ifm-color-emphasis-300); }
+.stepButton { display: flex; align-items: center; gap: .55rem; min-height: 3.2rem; border: 0; border-right: 1px solid var(--ifm-color-emphasis-300); background: transparent; color: var(--ifm-color-emphasis-700); cursor: pointer; padding: .65rem .8rem; text-align: left; font: inherit; font-size: .76rem; font-weight: 800; transition: background .3s cubic-bezier(.22,1,.36,1), color .3s cubic-bezier(.22,1,.36,1); }
+.stepButton:last-child { border-right: 0; }
+.stepButton:hover, .stepButton:focus-visible { color: var(--gg-coral-500); background: color-mix(in srgb, var(--gg-coral-500) 8%, transparent); }
+.stepButton:focus-visible { outline: 2px solid var(--gg-coral-500); outline-offset: -3px; }
+.stepButtonActive { color: var(--gg-coral-500); background: color-mix(in srgb, var(--gg-coral-500) 12%, transparent); box-shadow: inset 0 -3px 0 var(--gg-coral-500); }
+.stepNumber { color: var(--gg-coral-500); font-size: .68rem; font-weight: 900; }
+.stepContent { padding: 1rem 1.1rem 1.1rem; min-height: 6.5rem; animation: guideFade .3s cubic-bezier(.22,1,.36,1); }
+.stepContentKicker { color: var(--gg-coral-500); font-size: .68rem; font-weight: 900; letter-spacing: .1em; }
+.stepContent h3 { margin: .2rem 0 .4rem; font-size: 1rem; }
+.stepContent p { margin: 0; color: var(--ifm-color-emphasis-700); font-size: .82rem; line-height: 1.55; }
+.stepContent a { color: var(--gg-coral-500); font-weight: 800; }
+.panel { border: 1px solid var(--ifm-color-emphasis-300); border-radius: .9rem; background: var(--glass-bg); overflow: hidden; transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s cubic-bezier(.22,1,.36,1), border-color .3s ease; }
+.panel:hover { transform: translateY(-2px); box-shadow: 0 12px 26px var(--glass-shadow); }
+.panelOpen { border-color: color-mix(in srgb, var(--gg-coral-500) 52%, transparent); box-shadow: 0 10px 22px var(--glass-shadow); }
+.panelButton { width: 100%; min-height: 4.3rem; display: flex; justify-content: space-between; align-items: center; gap: .8rem; border: 0; background: transparent; color: var(--ifm-font-color-base); padding: .85rem 1rem; cursor: pointer; text-align: left; font: inherit; }
+.panelButton:focus-visible { outline: 2px solid var(--gg-coral-500); outline-offset: -3px; }
+.panelButton small { display: block; color: var(--gg-coral-500); font-size: .65rem; font-weight: 900; letter-spacing: .1em; margin-bottom: .2rem; }
+.panelButton strong { display: block; font-size: .9rem; line-height: 1.25; }
+.toggle { color: var(--gg-coral-500); font-size: 1.35rem; font-weight: 400; }
+.panelContent { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .35s cubic-bezier(.22,1,.36,1); }
+.panelContent > div { min-height: 0; overflow: hidden; padding: 0 1rem; color: var(--ifm-color-emphasis-700); font-size: .8rem; line-height: 1.55; }
+.panelOpen .panelContent { grid-template-rows: 1fr; }
+.panelOpen .panelContent > div { padding-bottom: 1rem; }
+.panelContent p { margin: .1rem 0 .65rem; }
+.panelContent ul { margin: .25rem 0 .7rem 1.1rem; padding: 0; }
+.panelContent li { margin: .25rem 0; }
+.routeGrid { display: grid; grid-template-columns: minmax(0, 1fr); gap: .55rem; }
+.route { border-left: 2px solid var(--gg-sky-500); padding-left: .6rem; }
+.route b { color: var(--ifm-font-color-base); font-size: .75rem; }
+.route p { font-size: .73rem; }
+.inlineLink { color: var(--gg-coral-500); font-weight: 800; text-decoration: none; }
+.inlineLink:hover { text-decoration: underline; }
+@media (prefers-reduced-motion: reduce) { .panel, .panelContent { transition: none; } }
+@keyframes guideFade { from { opacity: .35; transform: translateY(3px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 700px) { .stepRail { grid-template-columns: repeat(2, minmax(0, 1fr)); } .stepButton:nth-child(2) { border-right: 0; } .stepButton:nth-child(-n + 2) { border-bottom: 1px solid var(--ifm-color-emphasis-300); } }
+@media (prefers-reduced-motion: reduce) { .stepButton, .stepContent { transition: none; animation: none; } }

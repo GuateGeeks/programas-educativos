@@ -1,6 +1,6 @@
 import React from 'react';
 import {translate} from '@docusaurus/Translate';
-import {useStandardsContent} from '@site/src/data/ciudadbots';
+import {GRADES, useStandardsContent, type GradeId} from '@site/src/data/ciudadbots';
 import CnbBlock from '@site/src/components/CnbBlock';
 import ImpactTable from '@site/src/components/ImpactTable';
 import CardGrid from '@site/src/components/CardGrid';
@@ -11,9 +11,21 @@ import CardGrid from '@site/src/components/CardGrid';
  * original HTML's `internationalAlignment()`. Used per-module (CNB tab) and
  * on the overview/Showcase pages.
  */
-export default function InternationalAlignment(): React.JSX.Element {
+interface InternationalAlignmentProps {grade?: GradeId | 'general'; interactive?: boolean;}
+
+export default function InternationalAlignment({grade = 'general', interactive = false}: InternationalAlignmentProps): React.JSX.Element {
   const {internationalCards, internationalProgression, internationalEvidence, internationalSourceCards} =
     useStandardsContent();
+  const gradeIndex = grade === 'general' ? -1 : GRADES.findIndex((item) => item.id === grade);
+  const gradeLabel = grade === 'general' ? '' : GRADES.find((item) => item.id === grade)?.label || '';
+  const visibleRows = (rows: readonly (readonly string[])[], header: string) => {
+    if (grade === 'general') return {rows, compact: false};
+    return {rows: [[rows[0][0], header], ...rows.slice(1).map((row) => [row[0], row[gradeIndex + 1]])], compact: true};
+  };
+  const progression = grade === 'general'
+    ? {rows: internationalProgression, compact: false}
+    : {rows: [[internationalProgression[0][0], `Aplicación en ${gradeLabel}`], ['ISTE', internationalProgression[gradeIndex + 1]?.[1] || 'Sin contenido'], ['CSTA', internationalProgression[gradeIndex + 1]?.[2] || 'Sin contenido'], ['NGSS / Ingeniería', internationalProgression[gradeIndex + 1]?.[3] || 'Sin contenido']], compact: true};
+  const evidence = visibleRows(internationalEvidence, `Qué observar en ${gradeLabel}`);
   return (
     <>
       <CnbBlock
@@ -25,8 +37,8 @@ export default function InternationalAlignment(): React.JSX.Element {
         })}
         items={internationalCards}
       />
-      <ImpactTable rows={internationalProgression} />
-      <ImpactTable rows={internationalEvidence} />
+      <ImpactTable rows={progression.rows} compact={progression.compact} interactive={interactive} />
+      <ImpactTable rows={evidence.rows} compact={evidence.compact} interactive={interactive} />
       <CardGrid items={internationalSourceCards} />
     </>
   );

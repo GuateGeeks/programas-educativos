@@ -1,0 +1,55 @@
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import {GRADES, getGradeSessionPlan, moduleSessionPlans, modules, sessionPlans, type GradeId, type SessionKind, type SessionPlan} from '@site/src/data/ciudadbots';
+import styles from './styles.module.css';
+
+type SessionStatus = 'pending' | 'completed';
+interface GroupProgress {name: string; updatedAt: string; sessions: Record<string, SessionStatus>; evidence?: Record<string, unknown>; blocks: Record<string, SessionStatus>;}
+interface TrackerState {version: 4; groups: Partial<Record<GradeId, Record<string, GroupProgress>>>;}
+const STORAGE_KEY = 'guategeeks-citybots-docente-progreso-v4';
+const PREVIOUS_KEY = 'guategeeks-citybots-docente-progreso-v3';
+const LEGACY_GROUP_KEY = 'guategeeks-citybots-docente-progreso-v2';
+const LEGACY_KEY = 'guategeeks-citybots-docente-progreso-v1';
+const blankState = (): TrackerState => ({version: 4, groups: {}});
+function migrateGroup(group: Partial<GroupProgress>): GroupProgress { const blocks = group.blocks && typeof group.blocks === 'object' ? group.blocks : {}; const sessions = group.sessions && typeof group.sessions === 'object' ? group.sessions : {}; moduleSessionPlans.forEach((plan) => { if (sessions[plan.id] === 'completed') plan.blocks?.forEach((block) => {blocks[block.id] = 'completed';}); }); return {name: typeof group.name === 'string' && group.name.trim() ? group.name : 'Mi grupo', updatedAt: typeof group.updatedAt === 'string' ? group.updatedAt : '', sessions, blocks}; }
+function migrateGroups(groups: TrackerState['groups']): TrackerState['groups'] { return Object.fromEntries(Object.entries(groups || {}).map(([grade, gradeGroups]) => [grade, Object.fromEntries(Object.entries(gradeGroups || {}).map(([id, group]) => [id, migrateGroup(group)]))])); }
+function loadState(): TrackerState { try { const stored = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null') as TrackerState | null; if (stored?.version === 4 && stored.groups) return {...stored, groups: migrateGroups(stored.groups)}; const previous = JSON.parse(localStorage.getItem(PREVIOUS_KEY) || 'null') as TrackerState | null; if (previous?.groups) return {version: 4, groups: migrateGroups(previous.groups)}; const older = JSON.parse(localStorage.getItem(LEGACY_GROUP_KEY) || 'null') as TrackerState | null; if (older?.groups) return {version: 4, groups: migrateGroups(older.groups)}; const legacy = JSON.parse(localStorage.getItem(LEGACY_KEY) || '{}') as Record<string, boolean[]>; const sessions: Record<string, SessionStatus> = {}; sessionPlans.filter((item) => item.kind === 'guided').forEach((item) => { sessions[item.id] = legacy[item.moduleId || '']?.some(Boolean) ? 'completed' : 'pending'; }); return Object.keys(sessions).length ? {version: 4, groups: {'1-basico': {'mi-grupo': migrateGroup({name: 'Mi grupo', updatedAt: new Date().toISOString(), sessions, blocks: {}})}}} : blankState(); } catch { return blankState(); } }
+function statusLabel(status: SessionStatus): string { return status === 'completed' ? 'Implementada' : 'Pendiente'; }
+function cycle(status: SessionStatus): SessionStatus { return status === 'completed' ? 'pending' : 'completed'; }
+
+export default function CiudadBotsProgress(): React.JSX.Element {
+  const [state, setState] = useState<TrackerState>(blankState());
+  const [mounted, setMounted] = useState(false);
+  const [grade, setGrade] = useState<GradeId>('1-basico');
+  const [groupId, setGroupId] = useState('mi-grupo');
+  const [groupInput, setGroupInput] = useState('Mi grupo');
+  const [routeMode, setRouteMode] = useState<SessionKind>('guided');
+  const [resetArmed, setResetArmed] = useState(false);
+  const [storageWarning, setStorageWarning] = useState(false);
+  const modulesBaseUrl = useBaseUrl('/ciudadbots/');
+  useEffect(() => { const loaded = loadState(); setState(loaded); const first = Object.entries(loaded.groups['1-basico'] || {})[0]; if (first) { setGroupId(first[0]); setGroupInput(first[1].name); } setMounted(true); }, []);
+  const groups = state.groups[grade] || {};
+  const currentGroup = groups[groupId] || {name: groupInput || 'Mi grupo', updatedAt: '', sessions: {}, blocks: {}};
+  const gradeSessions = useMemo(() => moduleSessionPlans.map((session) => getGradeSessionPlan(session, grade)), [grade]);
+  const routeSessions = useMemo(() => gradeSessions.filter((session) => session.kind === routeMode), [gradeSessions, routeMode]);
+  const routeBlocks = useMemo(() => routeSessions.flatMap((session) => session.blocks || []), [routeSessions]);
+  const moduleCards = useMemo(() => modules.map((module) => ({module, sessions: routeSessions.filter((session) => session.moduleId === module.id)})), [routeSessions]);
+  const done = routeBlocks.filter((block) => currentGroup.blocks[block.id] === 'completed').length;
+  const completedModules = moduleCards.filter(({sessions}) => { const blocks = sessions.flatMap((session) => session.blocks || []); return blocks.length > 0 && blocks.every((block) => currentGroup.blocks[block.id] === 'completed'); }).length;
+  const percent = routeBlocks.length ? Math.round((done / routeBlocks.length) * 100) : 0;
+  const persist = useCallback((next: TrackerState) => { setState(next); try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); setStorageWarning(false); } catch { setStorageWarning(true); } }, []);
+  const updateGroup = (nextGroup: GroupProgress, targetId = groupId) => persist({...state, groups: {...state.groups, [grade]: {...(state.groups[grade] || {}), [targetId]: {...nextGroup, updatedAt: new Date().toISOString()}}}});
+  const saveGroup = () => { const name = groupInput.trim() || 'Mi grupo'; const id = name.toLowerCase().replace(/[^a-z0-9áéíóúüñ]+/gi, '-').replace(/^-|-$/g, '') || 'mi-grupo'; const existing = groups[id]; const nextGroup = existing || {name, updatedAt: '', sessions: {}, blocks: {}}; setGroupId(id); setGroupInput(name); updateGroup({...nextGroup, name}, id); };
+  const selectGrade = (next: GradeId) => { setGrade(next); const first = Object.entries(state.groups[next] || {})[0]; setGroupId(first?.[0] || 'mi-grupo'); setGroupInput(first?.[1]?.name || 'Mi grupo'); };
+  const toggleBlock = (session: SessionPlan, blockId: string) => updateGroup({...currentGroup, blocks: {...currentGroup.blocks, [blockId]: cycle(currentGroup.blocks[blockId] || 'pending')}, sessions: {...currentGroup.sessions, [session.id]: 'pending'}});
+  const reset = () => { if (!resetArmed) { setResetArmed(true); return; } updateGroup({name: currentGroup.name, updatedAt: '', sessions: {}, blocks: {}}); setResetArmed(false); };
+  return <section className={styles.panel} aria-live="polite">
+    <div className={styles.header}><div><span className={styles.eyebrow}>Seguimiento docente</span><h3>Seguimiento del programa</h3><p>Marque cada clase implementada. Una sesión guiada puede tener una continuidad; el desafío abierto usa los bloques que necesita cada módulo.</p></div><div className={styles.kpis}><strong>{done}/{routeBlocks.length}<small>clases marcadas</small></strong><strong>{completedModules}/{modules.length}<small>módulos completos</small></strong><strong>{percent}%<small>avance global</small></strong></div></div>
+    <div className={styles.controls}><div><div className={styles.grades}>{GRADES.map((item) => <button key={item.id} type="button" className={grade === item.id ? styles.active : ''} onClick={() => selectGrade(item.id)}>{item.label}</button>)}</div><small className={styles.controlHint}>La vista, las clases y el avance corresponden al grado seleccionado.</small></div><div className={styles.groupForm}><label>Grupo activo<select value={groupId} onChange={(event) => {const id = event.target.value; setGroupId(id); setGroupInput(groups[id]?.name || 'Mi grupo');}}>{Object.entries(groups).length ? Object.entries(groups).map(([id, group]) => <option key={id} value={id}>{group.name}</option>) : <option value="mi-grupo">Mi grupo</option>}</select></label><label>Nuevo grupo<input value={groupInput} onChange={(event) => setGroupInput(event.target.value)} placeholder="Ej. 2.º B" /></label><button type="button" onClick={saveGroup}>Guardar y usar grupo</button><small className={styles.groupHint}>Se guarda por grado y grupo en este navegador para continuar después.</small></div></div>
+    <div className={styles.progress}><div style={{width: `${percent}%`}} /></div>
+    {storageWarning && <p className={styles.warning}>El navegador no pudo guardar el avance. Este registro será temporal.</p>}
+    <div className={styles.routeTabs}><button type="button" className={routeMode === 'guided' ? styles.routeActive : ''} onClick={() => setRouteMode('guided')}>Ruta guiada <small>3 momentos · continuidad opcional</small></button><button type="button" className={routeMode === 'open' ? styles.routeActive : ''} onClick={() => setRouteMode('open')}>Desafíos abiertos <small>1 reto por módulo · duración según grado</small></button></div>
+    <div className={styles.moduleList}>{moduleCards.map(({module, sessions}) => { const moduleBlocks = sessions.flatMap((session) => session.blocks || []); const moduleDone = moduleBlocks.filter((block) => currentGroup.blocks[block.id] === 'completed').length; return <article className={styles.moduleCard} key={module.id}><div className={styles.moduleTop}><div><span className={styles.moduleNumber}>{module.n}</span><h4>{sessions[0]?.title.split(' · ')[0] || module.slug}</h4><a className={styles.moduleLink} href={`${modulesBaseUrl}${module.slug}/`}>Ver programa detallado</a></div><div><strong>{moduleDone} de {moduleBlocks.length} clases</strong><small>{routeMode === 'guided' ? 'Contenido adaptado al grado seleccionado' : `${sessions[0]?.openChallenge?.suggestedBlocks || 1} bloque${(sessions[0]?.openChallenge?.suggestedBlocks || 1) === 1 ? '' : 's'} para este grado`}</small></div></div><div className={styles.sessionDots}>{sessions.flatMap((session) => (session.blocks || []).map((block) => { const status = currentGroup.blocks[block.id] || 'pending'; const sessionName = session.title.split(' · ')[1] || session.title; const displayName = block.kind === 'challenge' ? block.title : sessionName; const blockLabel = block.kind === 'continuation' ? 'Continuidad opcional' : block.kind === 'challenge' ? 'Bloque de desafío' : 'Clase principal'; const number = block.kind === 'challenge' ? block.order : session.order; return <button key={block.id} type="button" className={status === 'completed' ? styles.sessionDone : ''} onClick={() => toggleBlock(session, block.id)} aria-label={`${session.title}, ${blockLabel}: ${statusLabel(status)}`}><b>{number}</b><span>{displayName}</span><small>{blockLabel} · {statusLabel(status)}</small></button>; }))}</div></article>; })}</div>
+    <div className={styles.footerActions}><button type="button" onClick={reset}>{resetArmed ? 'Confirmar reinicio' : 'Reiniciar este grupo'}</button>{resetArmed && <button type="button" onClick={() => setResetArmed(false)}>Cancelar</button>}<span>{mounted && currentGroup.updatedAt ? `Actualizado ${new Date(currentGroup.updatedAt).toLocaleDateString()}` : 'Aún sin registros'}</span></div>
+  </section>;
+}

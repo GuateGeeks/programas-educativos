@@ -1,0 +1,54 @@
+.panel { display: grid; gap: 16px; margin: 24px 0; padding: 20px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 16px; background: var(--ifm-background-surface-color); box-shadow: 0 14px 32px var(--glass-shadow); }
+.header { display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.eyebrow { display: block; color: var(--gg-coral-500); font-size: 11px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; }
+.header h3, .evidenceTop h4 { margin: 4px 0; }
+.header p { margin: 0; max-width: 48rem; color: var(--ifm-color-emphasis-700); }
+.kpis { display: flex; gap: 8px; }
+.kpis strong { min-width: 70px; padding: 8px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 10px; color: var(--gg-coral-500); font-size: 19px; text-align: center; }
+.kpis small { display: block; color: var(--ifm-color-emphasis-700); font-size: 10px; font-weight: 600; }
+.controls { display: grid; gap: 12px; }
+.controlHint, .groupHint { display: block; margin-top: 6px; color: var(--ifm-color-emphasis-700); font-size: 12px; }
+.routeTabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.routeTabs button { display: flex; justify-content: space-between; gap: 8px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px 11px; background: var(--ifm-background-color); color: inherit; cursor: pointer; font-weight: 800; text-align: left; }
+.routeTabs small { color: var(--ifm-color-emphasis-700); font-weight: 600; }
+.routeTabs .routeActive { border-color: var(--gg-coral-500); background: rgba(239, 133, 86, .08); color: var(--gg-coral-500); }
+.grades { display: flex; gap: 8px; flex-wrap: wrap; }
+.grades button, .footerActions button, .groupForm button, .statusButton { border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; padding: 8px 11px; background: var(--ifm-background-color); color: inherit; cursor: pointer; font-weight: 700; }
+.grades button.active, .statusButton { background: var(--gg-coral-500); border-color: var(--gg-coral-500); color: #fff; }
+.groupForm { display: flex; align-items: end; gap: 8px; flex-wrap: wrap; }
+.groupForm label, .form label { display: grid; gap: 5px; font-size: 12px; font-weight: 700; color: var(--ifm-color-emphasis-700); }
+.groupForm input, .groupForm select, .form input, .form textarea, .form select { width: 100%; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; background: var(--ifm-background-color); color: var(--ifm-font-color-base); padding: 8px; font: inherit; }
+.groupForm input { min-width: 190px; }
+.groupForm select { min-width: 150px; }
+.progress { height: 9px; overflow: hidden; border-radius: 999px; background: var(--ifm-color-emphasis-300); }
+.progress div { height: 100%; background: linear-gradient(90deg, var(--gg-coral-500), var(--gg-sky-500)); transition: width .2s; }
+.warning { margin: 0; padding: 10px; border-left: 4px solid #b24d27; color: var(--ifm-color-emphasis-700); background: rgba(178, 77, 39, .08); }
+.sessionList { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; max-height: 390px; overflow: auto; padding-right: 4px; }
+.session { display: flex; align-items: flex-start; gap: 9px; text-align: left; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px; background: var(--ifm-background-color); color: inherit; cursor: pointer; }
+.session.selected { border-color: var(--gg-coral-500); background: rgba(239, 133, 86, .08); }
+.session strong, .session small { display: block; overflow-wrap: anywhere; }
+.session small { margin-top: 3px; color: var(--ifm-color-emphasis-700); }
+.dot { flex: 0 0 auto; width: 10px; height: 10px; margin-top: 4px; border-radius: 50%; background: var(--ifm-color-emphasis-400); }
+.dot.in-progress { background: var(--gg-sky-500); }.dot.completed { background: var(--gg-coral-500); }.dot.reinforcement { background: #b24d27; }
+.evidenceCard { display: grid; gap: 10px; border-top: 3px solid var(--gg-sky-500); padding-top: 14px; }
+.evidenceTop { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.evidenceCard > p { margin: 0; color: var(--ifm-color-emphasis-700); }
+.blockIntro { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; margin: 6px 0 -2px; color: var(--ifm-color-emphasis-700); font-size: 13px; }
+.blockIntro strong { color: var(--ifm-font-color-base); }
+.blockStatus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.blockStatus button { display: grid; gap: 3px; min-width: 0; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px; background: var(--ifm-background-color); color: inherit; cursor: pointer; text-align: left; font-weight: 700; }
+.blockStatus button span { color: var(--gg-coral-500); font-size: 18px; }.blockStatus button small { color: var(--ifm-color-emphasis-700); font-weight: 600; }.blockStatus .blockDone { border-color: var(--gg-coral-500); background: rgba(239, 133, 86, .08); }.blockStatus .blockCurrent { border-color: var(--gg-sky-500); background: rgba(67, 169, 199, .08); }
+.secondaryAction { width: max-content; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 8px; padding: 8px 11px; background: var(--ifm-background-color); color: inherit; cursor: pointer; font-weight: 800; }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.form label:nth-last-of-type(-n+3), .save { grid-column: 1 / -1; }
+.save { width: max-content; border: 0; border-radius: 8px; padding: 9px 14px; background: var(--gg-coral-500); color: #fff; cursor: pointer; font-weight: 800; }
+.footerActions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }.footerActions span { margin-left: auto; color: var(--ifm-color-emphasis-700); font-size: 12px; }
+.moduleList { display: grid; gap: 10px; }
+.moduleCard { display: grid; gap: 12px; padding: 14px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 12px; background: var(--ifm-background-color); }
+.moduleTop { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+.moduleTop h4 { display: inline; margin: 0 0 0 8px; font-size: 1rem; }.moduleTop strong, .moduleTop small { display: block; text-align: right; }.moduleTop small { margin-top: 3px; color: var(--ifm-color-emphasis-700); font-size: 12px; }
+.moduleLink { display: block; margin: 5px 0 0 31px; color: var(--gg-coral-500); font-size: 12px; font-weight: 700; }
+.moduleNumber { color: var(--gg-coral-500); font-weight: 900; font-size: 1.2rem; }
+.sessionDots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }.sessionDots button { display: grid; gap: 4px; min-height: 72px; border: 1px solid var(--ifm-color-emphasis-300); border-radius: 9px; padding: 9px; background: var(--ifm-background-surface-color); color: inherit; cursor: pointer; text-align: left; }.sessionDots button:hover, .sessionDots .sessionDone { border-color: var(--gg-coral-500); background: rgba(239, 133, 86, .1); }.sessionDots b { color: var(--gg-coral-500); font-size: 1.1rem; }.sessionDots span { color: var(--ifm-font-color-base); font-size: 12px; font-weight: 800; overflow-wrap: anywhere; }.sessionDots small { color: var(--ifm-color-emphasis-700); font-size: 10px; font-weight: 600; overflow-wrap: anywhere; }
+@media (max-width: 620px) { .panel { padding: 14px; }.form { grid-template-columns: 1fr; }.form label:nth-last-of-type(-n+3), .save { grid-column: auto; }.footerActions span { margin-left: 0; width: 100%; }.blockStatus, .routeTabs { grid-template-columns: 1fr; } }
+@media (max-width: 620px) { .moduleTop { flex-direction: column; }.moduleTop strong, .moduleTop small { text-align: left; }.sessionDots { grid-template-columns: repeat(3, 1fr); }.sessionDots button { padding: 8px 6px; } }

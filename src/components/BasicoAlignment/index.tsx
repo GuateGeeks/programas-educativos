@@ -1,5 +1,5 @@
 import React from 'react';
-import {useStandardsContent} from '@site/src/data/ciudadbots';
+import {GRADES, useStandardsContent, type GradeId} from '@site/src/data/ciudadbots';
 import ImpactTable from '@site/src/components/ImpactTable';
 import styles from './styles.module.css';
 
@@ -8,12 +8,20 @@ import styles from './styles.module.css';
  * (goal + checklist) plus a 4-axis comparison table. Ported from the original
  * HTML's `basicoAlignment()`. Used on the overview page and the Showcase page.
  */
-export default function BasicoAlignment(): React.JSX.Element {
+interface BasicoAlignmentProps {grade?: GradeId | 'general'; interactive?: boolean;}
+
+export default function BasicoAlignment({grade = 'general', interactive = false}: BasicoAlignmentProps): React.JSX.Element {
   const {basicoLevels, basicoComparison} = useStandardsContent();
+  const gradeIndex = grade === 'general' ? -1 : GRADES.findIndex((item) => item.id === grade);
+  const visibleLevels = grade === 'general' ? basicoLevels : basicoLevels.filter((level) => level.heading.startsWith(GRADES[gradeIndex]?.label || ''));
+  const visibleComparison = grade === 'general' ? basicoComparison : [
+    [basicoComparison[0][0], GRADES[gradeIndex]?.label || ''] as readonly string[],
+    ...basicoComparison.slice(1).map((row) => [row[0], row[gradeIndex + 1]] as readonly string[]),
+  ];
   return (
     <>
-      <div className={styles.grid}>
-        {basicoLevels.map((level) => (
+      <div className={`${styles.grid} ${grade !== 'general' ? styles.filtered : ''}`}>
+        {visibleLevels.map((level) => (
           <div className={styles.card} key={level.heading}>
             <h4>{level.heading}</h4>
             <p>{level.goal}</p>
@@ -25,7 +33,7 @@ export default function BasicoAlignment(): React.JSX.Element {
           </div>
         ))}
       </div>
-      <ImpactTable rows={basicoComparison} />
+      <ImpactTable rows={visibleComparison} compact={grade !== 'general'} interactive={interactive} />
     </>
   );
 }

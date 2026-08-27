@@ -3,6 +3,7 @@ import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import {useAccessControl} from '@site/src/components/AccessControl';
 import styles from './index.module.css';
 
 const text = {
@@ -14,7 +15,8 @@ const routes = ['/nivel-explorador', '/nivel-constructor', '/nivel-creador'];
 
 export default function Home(): React.JSX.Element {
   const {i18n} = useDocusaurusContext();
+  const {isDemo} = useAccessControl();
   const copy = text[i18n.currentLocale === 'en' ? 'en' : 'es'];
   const imageUrls = [useBaseUrl(images[0]), useBaseUrl(images[1]), useBaseUrl(images[2])];
-  return <Layout title="Programas Educativos" description="Programas educativos GuateGeeks"><main className={styles.shell}><section className={styles.hero}><div className={styles.heroPanel}><span className={styles.eyebrow}>{copy.badge}</span><h1>{copy.title}</h1><p>{copy.lead}</p><div className={styles.heroStats}><div className={styles.heroStat}><strong>3</strong><span>{copy.stats[0]}</span></div><div className={styles.heroStat}><strong>STEAM</strong><span>{copy.stats[1]}</span></div><div className={styles.heroStat}><strong>1 ruta</strong><span>{copy.stats[2]}</span></div></div></div></section><section className={styles.section}><div className={styles.sectionHead}><h2>{copy.section}</h2><p>{copy.sectionCopy}</p></div><div className={styles.levels}>{copy.levels.map((level, index) => <article className={styles.card} key={level[1]}><div className={styles.cardMedia}><img src={imageUrls[index]} alt={level[1]} /></div><div className={styles.cardBody}><span className={styles.badge}>{level[0]}</span><h3>{level[1]}</h3><div className={styles.cardLead}>{level[2]}</div><p>{level[3]}</p><Link className={styles.cta} to={routes[index]}>{copy.enter}</Link></div></article>)}</div></section></main></Layout>;
+  return <Layout title="Programas Educativos" description="Programas educativos GuateGeeks"><main className={styles.shell}><section className={styles.hero}><div className={styles.heroPanel}><span className={styles.eyebrow}>{copy.badge}</span><h1>{copy.title}</h1><p>{copy.lead}</p><div className={styles.heroStats}><div className={styles.heroStat}><strong>3</strong><span>{copy.stats[0]}</span></div><div className={styles.heroStat}><strong>STEAM</strong><span>{copy.stats[1]}</span></div><div className={styles.heroStat}><strong>1 ruta</strong><span>{copy.stats[2]}</span></div></div></div></section><section className={styles.section}><div className={styles.sectionHead}><h2>{copy.section}</h2><p>{copy.sectionCopy}</p></div><div className={styles.levels}>{copy.levels.map((level, index) => <article className={styles.card} key={level[1]}><div className={styles.cardMedia}><img src={imageUrls[index]} alt={level[1]} /></div><div className={styles.cardBody}><span className={styles.badge}>{level[0]}</span><h3>{level[1]}</h3><div className={styles.cardLead}>{level[2]}</div><p>{level[3]}</p>{isDemo && index !== 1 ? <span className={`${styles.cta} ${styles.disabledCta}`} aria-disabled="true">{copy.enter}</span> : <Link className={styles.cta} to={routes[index]}>{copy.enter}</Link>}</div></article>)}</div></section></main></Layout>;
 }
